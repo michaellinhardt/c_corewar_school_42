@@ -6,7 +6,7 @@
 #    By: pba <pba@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/09 11:34:20 by pba               #+#    #+#              #
-#    Updated: 2016/08/10 12:54:54 by abary            ###   ########.fr        #
+#    Updated: 2016/08/10 14:12:33 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRC			= ft_atoi.c \
 			  free_map.c \
 			  tab_new.c \
 			  count_words.c \
+			  ft_print_memory.c \
 			  push_lines.c
 
 OBJ			= $(SRC:%.c=$(OPATH)%.o)

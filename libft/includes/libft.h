@@ -6,7 +6,7 @@
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/01 04:49:02 by pba               #+#    #+#             */
-/*   Updated: 2016/05/07 01:05:03 by pba              ###   ########.fr       */
+/*   Updated: 2016/08/10 14:13:53 by abary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ void				free_map(char **map);
 int					*tab_new(int size);
 int					count_words(char **str);
 char				**push_line(char **str, char *line);
+void				ft_print_memory(const void *addr, size_t size);
 
 #endif
