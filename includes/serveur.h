@@ -28,5 +28,6 @@ int		ft_socket_serveur(int bloquant, t_server *server);
 int		ft_init_serveur(char *ip, char *port, t_server *server);
 int		ft_accept_connection(t_server *server);
 int		ft_server_send_message(t_server *server, char *message);
+int		ft_server_receive_message(t_server *server, char *receive);
 
 #endif

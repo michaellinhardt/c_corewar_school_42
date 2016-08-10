@@ -13,8 +13,9 @@ int		ft_server_send_message(t_server *server, char *message)
 	size_message = ft_strlen(message);
 	while (nbr < server->nbr_clients)
 	{
-		if ((send(server->clients[nbr], message, size_message, 0)) != size_message)
-			return (-1);
+		//if ((send(server->clients[nbr], message, size_message, 0)) != size_message)
+		//	return (-1);
+		write(server->clients[nbr], message, size_message);
 		++nbr;
 	}
 	return (1);

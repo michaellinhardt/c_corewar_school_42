@@ -78,11 +78,13 @@ int		main(int argc, char **argv)
 	char buf[BUFF_SIZE];
 	fd = -1;
 	t_server server;
+	//gerer les signaux pour close le fd lors d'un ctl c kill ctrl d
+	//voir pur utiliser un keep-alive pour les clients
 	if (argc > 1)
 	{
 		// on seras client -> pour les tests
 		ft_putendl("Client");
-		fd = ft_socket_client(0);
+		fd = ft_socket_client(1);
 		if (fd == -1)
 			ft_putendl("error fd");
 		if ((ft_connexion_client("127.0.0.1", "4242", fd)) == -1)
@@ -95,6 +97,7 @@ int		main(int argc, char **argv)
 		close(fd);
 	}else
 	{
+		//gerer auqnd un client se deconnecte
 		ft_putendl("server");
 		ft_init_server(&server);
 		fd = ft_socket_serveur(1, &server);
@@ -104,9 +107,9 @@ int		main(int argc, char **argv)
 			ft_putendl("Erreur init server");
 		while (1)
 		{
-			ft_putendl("loop");
 			ft_accept_connection(&server);
 			ft_server_send_message(&server, "mouhahahahha");
+			ft_server_receive_message(&server, buf);
 		}
 		// on seras serveur -> pour les tests
 		//
