@@ -6,11 +6,11 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/08/10 12:54:14 by abary            ###   ########.fr        #
+#    Updated: 2016/08/10 12:58:12 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 21sh
+NAME = corewar
 
 INC_DIR = includes
 
@@ -18,10 +18,9 @@ LIB_DIR = libft
 
 INC_LIB_DIR = $(LIB_DIR)/$(INC_DIR)
 
-NAME_LIB = lib21sh.a\
+NAME_LIB = corewar.a\
 
-#CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
-CFLAGS = -I$(INC_DIR) -I $(INC_LIB_DIR)
+CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
 
 SRC = main.c
 
