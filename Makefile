@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/08/10 21:36:02 by abary            ###   ########.fr        #
+#    Updated: 2016/08/11 16:10:25 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,13 @@ INC_LIB_DIR = $(LIB_DIR)/$(INC_DIR)
 
 NAME_LIB = corewar.a\
 
-CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
+#CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
+CFLAGS =  -I$(INC_DIR) -I $(INC_LIB_DIR)
+
 
 SRC = main.c ft_init_client.c ft_connexion_client.c ft_send_client.c\
 	  ft_init_serveur.c ft_send_server.c ft_send_client.c ft_receive_client.c\
-	  ft_receive_server.c
+	  ft_receive_server.c ft_serveur_check_sockets.c ft_server_disconnect_client.c
 
 SRCS = $(addprefix sources/,$(SRC))
 

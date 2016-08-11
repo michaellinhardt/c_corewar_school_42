@@ -13,6 +13,10 @@
 ** Renvoie le fd ouver par Socket
 */
 
+
+/*
+ * Rajouter gethostbyname ??? Pour se connecter au serveur, au lieu de marquer ip
+ * */
 int	ft_socket_client(char bloquant)
 {
 	int opt;
