@@ -1,4 +1,4 @@
-#include "serveur.h"
+#include "server.h"
 
 #include "libft.h"
 void	ft_client_disconnect(t_server *server, int fd_client, int nbr_client)

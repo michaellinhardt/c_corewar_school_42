@@ -1,5 +1,5 @@
-#ifndef SERVEUR_H
-#define SERVEUR_H
+#ifndef SERVER_H
+#define SERVER_H
 
 #define BUFF_SIZE 1024
 #define MAX_CONNECT 3

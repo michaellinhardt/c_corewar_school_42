@@ -3,12 +3,16 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "libft.h"
-#include "serveur.h"
+#include "server.h"
 
 
 void	ft_init_server(t_server *server)
 {
-	ft_bzero(&server, sizeof(server));
+//	ft_bzero(&server, sizeof(server));
+	server->nbr_clients = 0;
+	server->fd_socket = -1;
+	server->max = 0;
+	ft_bzero(server->buf, BUFF_SIZE);
 }
 /*
 ** A voir si ne pas utiliser la meme fonction que client.....

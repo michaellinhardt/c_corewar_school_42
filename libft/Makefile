@@ -15,7 +15,8 @@
 .SUFFIXES:
 
 NAME		= libft.a
-CFLAGS		= -Wall -Wextra -Werror
+#CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= 
 SPATH		= src/
 HPATH		= includes/
 OPATH		= obj/

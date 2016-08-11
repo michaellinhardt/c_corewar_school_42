@@ -24,11 +24,15 @@ NAME_LIB = corewar.a\
 CFLAGS =  -I$(INC_DIR) -I $(INC_LIB_DIR)
 
 
-SRC = main.c ft_init_client.c ft_connexion_client.c ft_send_client.c\
-	  ft_init_serveur.c ft_send_server.c ft_send_client.c ft_receive_client.c\
-	  ft_receive_server.c ft_serveur_check_sockets.c ft_server_disconnect_client.c
+SRC_SERVER = ft_receive_server.c ft_send_server.c ft_init_serveur.c\
+	     ft_server_disconnect_client.c ft_server_check_sockets_read.c
 
-SRCS = $(addprefix sources/,$(SRC))
+SRC_CLIENT = ft_init_client.c ft_connexion_client.c ft_send_client.c\
+	  ft_send_client.c ft_receive_client.c\
+
+SRC = main.c
+
+SRCS = $(addprefix sources/,$(SRC)) $(addprefix sources/server/,$(SRC_SERVER)) $(addprefix sources/client/,$(SRC_CLIENT))
 
 OBJ = $(SRCS:.c=.o)
 CC = gcc

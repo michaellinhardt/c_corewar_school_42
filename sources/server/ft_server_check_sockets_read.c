@@ -1,4 +1,4 @@
-#include "serveur.h"
+#include "server.h"
 #include <sys/select.h>
 
 #include <sys/types.h>
@@ -23,13 +23,12 @@ int		ft_check_sockets(t_server *server)
 	FD_SET(server->fd_socket, &fdset); //socket du server
 
 	timeout.tv_sec = 0;
-	timeout.tv_usec = 2000;
+	timeout.tv_usec = 200000;
 	/*
 	 ** Clients sockets
 	 */
 	while (clients < server->nbr_clients)
 		FD_SET(server->clients[clients++], &fdset);
-
 	if ((ret = select(server->max + 1, &fdset, 0, 0, &timeout)) == -1)
 	{
 		ft_putendl("erreur");

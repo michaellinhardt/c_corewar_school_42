@@ -61,11 +61,10 @@ int		main(int argc, char **argv)
 			ft_putendl("Erreur init server");
 		while (1)
 		{
-
 			ft_check_sockets(&server);
 			//ft_accept_connection(&server);
 			//ft_server_send_message(&server, "mouhahahahha");
-			//ft_server_receive_message_all(&server, buf);
+			ft_server_receive_message_all(&server, buf);
 		}
 		close(fd);
 	}

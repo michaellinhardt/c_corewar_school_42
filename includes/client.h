@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "serveur.h"
+#include "server.h"
 /*
 ** Strcuture Client
 */
