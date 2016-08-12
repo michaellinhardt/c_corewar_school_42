@@ -11,6 +11,10 @@
 #include <stdio.h>
 #include <signal.h>
 #include <sys/ioctl.h>
+
+
+// faire une static pour plus tard
+// signaux  gerer dans le programme principal
 void		ft_sigint(int sig)
 {
 	char interrupt;
@@ -21,6 +25,11 @@ void		ft_sigint(int sig)
 	ioctl(0, TIOCSTI, &interrupt);
 	signal(SIGINT, SIG_DFL);
 }
+
+
+
+// rendre le code plus propre, envoi nom champoin lors de laconnexion,
+// ajouter une surcouche du code pour une integration simplifie
 int		main(int argc, char **argv)
 {
 	signal(SIGINT, ft_sigint);
@@ -29,8 +38,10 @@ int		main(int argc, char **argv)
 	int fd;
 
 	char buf[BUFF_SIZE];
+	int ret;
 	fd = -1;
 	t_server server;
+	t_client client;
 
 	//gerer les signaux pour close le fd lors d'un ctl c kill ctrl d
 	//voir pur utiliser un keep-alive pour les clients
@@ -38,15 +49,21 @@ int		main(int argc, char **argv)
 	{
 		// on seras client -> pour les tests
 		ft_putendl("Client");
-		fd = ft_socket_client(1);
+		fd = ft_client_socket(0, &client);
 		if (fd == -1)
 			ft_putendl("error fd");
-		if ((ft_connexion_client("127.0.0.1", "4242", fd)) == -1)
+		if ((ft_client_connexion("127.0.0.1", "4242", &client)) == -1)
 			ft_putendl("error connexion");
 		while(1)
 		{
+			ret = ft_client_check_read_sockets(&client);
+			if (ret == 2)
+			{
+				ft_putendl("programme exit");
+				break ;
+			}
 			ft_client_send_message(fd, "coucou\n");
-			ft_client_receive_message(fd, buf);
+			//ft_client_receive_message(fd, buf);
 		}
 		close(fd);
 	}else
@@ -61,10 +78,15 @@ int		main(int argc, char **argv)
 			ft_putendl("Erreur init server");
 		while (1)
 		{
-			ft_check_sockets(&server);
+		ret = 	ft_server_check_read_sockets(&server);
+		if (ret == 2)
+		{
+			ft_putendl("programme exit");
+			break ;
+		}
 			//ft_accept_connection(&server);
-			//ft_server_send_message(&server, "mouhahahahha");
-			ft_server_receive_message_all(&server, buf);
+			ft_server_send_message(&server, "mouhahahahha");
+			//ft_server_receive_message_all(&server, buf);
 		}
 		close(fd);
 	}

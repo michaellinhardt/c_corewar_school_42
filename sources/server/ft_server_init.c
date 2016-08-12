@@ -12,6 +12,8 @@ void	ft_init_server(t_server *server)
 	server->nbr_clients = 0;
 	server->fd_socket = -1;
 	server->max = 0;
+	server->timeout.tv_sec = 0;
+	server->timeout.tv_usec = 200000;
 	ft_bzero(server->buf, BUFF_SIZE);
 }
 /*

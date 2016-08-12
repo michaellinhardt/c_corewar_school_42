@@ -9,16 +9,16 @@
 ** Renvoie le nombre d'octet lus
 */
 
-int		ft_client_receive_message(int fd_socket, char *receive)
+int		ft_client_receive_message(t_client *client)
 {
 	int ret;
 
-	ret = recv(fd_socket, receive, BUFF_SIZE - 1, 0);
+	ret = recv(client->fd_socket, client->buf, BUFF_SIZE - 1, 0);
 
 	if (ret)
 	{
-		receive[ret] = 0;
-		ft_putendl(receive);
+		client->buf[ret] = 0;
+		ft_putendl(client->buf);
 	}
 	return (ret);
 }

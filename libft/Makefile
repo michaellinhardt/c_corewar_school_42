@@ -6,7 +6,7 @@
 #    By: pba <pba@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/09 11:34:20 by pba               #+#    #+#              #
-#    Updated: 2016/08/10 14:12:33 by abary            ###   ########.fr        #
+#    Updated: 2016/08/12 10:33:42 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@
 .SUFFIXES:
 
 NAME		= libft.a
-#CFLAGS		= -Wall -Wextra -Werror
-CFLAGS		= 
+CFLAGS		= -Wall -Wextra -Werror
 SPATH		= src/
 HPATH		= includes/
 OPATH		= obj/

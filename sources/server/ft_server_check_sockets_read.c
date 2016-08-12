@@ -2,7 +2,6 @@
 #include <sys/select.h>
 
 #include <sys/types.h>
-#include <sys/time.h>
 #include <unistd.h>
 
 
@@ -10,29 +9,37 @@
  ** Fonction qui check l'etat des sockets
  */
 #include "libft.h"
-int		ft_check_sockets(t_server *server)
+int		ft_server_check_read_sockets(t_server *server)
 {
 	int				ret;
 	int				clients;
 	fd_set			fdset;
-	struct timeval	timeout; // a opti;
 
 	clients = 0;
 	FD_ZERO(&fdset);
 
+	FD_SET(0, &fdset); // pour faire un exit
 	FD_SET(server->fd_socket, &fdset); //socket du server
 
-	timeout.tv_sec = 0;
-	timeout.tv_usec = 200000;
 	/*
 	 ** Clients sockets
 	 */
 	while (clients < server->nbr_clients)
 		FD_SET(server->clients[clients++], &fdset);
-	if ((ret = select(server->max + 1, &fdset, 0, 0, &timeout)) == -1)
+	if ((ret = select(server->max + 1, &fdset, 0, 0, &server->timeout)) == -1)
 	{
 		ft_putendl("erreur");
 		return (ret);
+	}
+	if (FD_ISSET(0, &fdset))
+	{
+		char buf[1024];
+		int		fin;
+		fin = read(0, buf, 1023);
+		buf[fin] = 0;
+		if (*buf == 'q')
+			return (2);
+
 	}
 	/*
 	 ** Connexion d'un client

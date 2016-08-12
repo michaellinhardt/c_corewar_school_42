@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/08/11 16:10:25 by abary            ###   ########.fr        #
+#    Updated: 2016/08/12 12:29:31 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ NAME_LIB = corewar.a\
 CFLAGS =  -I$(INC_DIR) -I $(INC_LIB_DIR)
 
 
-SRC_SERVER = ft_receive_server.c ft_send_server.c ft_init_serveur.c\
+SRC_SERVER = ft_server_receive.c ft_server_send.c ft_server_init.c\
 	     ft_server_disconnect_client.c ft_server_check_sockets_read.c
 
-SRC_CLIENT = ft_init_client.c ft_connexion_client.c ft_send_client.c\
-	  ft_send_client.c ft_receive_client.c\
+SRC_CLIENT = ft_client_init.c ft_client_connexion.c ft_client_send.c\
+			ft_client_receive.c ft_client_check_socket.c
 
 SRC = main.c
 

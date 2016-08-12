@@ -17,7 +17,7 @@
 /*
  * Rajouter gethostbyname ??? Pour se connecter au serveur, au lieu de marquer ip
  * */
-int	ft_socket_client(char bloquant)
+int	ft_client_socket(char bloquant, t_client *client)
 {
 	int opt;
 	int	fd_socket;
@@ -31,6 +31,7 @@ int	ft_socket_client(char bloquant)
 		if ((ioctl(fd_socket, FIONBIO, &opt)) == -1)
 			return (-1);
 	}
+	client->fd_socket = fd_socket;
 	return (fd_socket);
 }
 
@@ -42,7 +43,7 @@ int	ft_socket_client(char bloquant)
 ** Renvoie -1 en cas d'erreur
 */
 
-int	ft_connexion_client(char *ip, char *port, int fd_socket)
+int	ft_client_connexion(char *ip, char *port, t_client *client)
 {
 	struct sockaddr_in address;
 
@@ -50,10 +51,9 @@ int	ft_connexion_client(char *ip, char *port, int fd_socket)
 	address.sin_family = AF_INET;
 	address.sin_addr.s_addr = inet_addr(ip);
 	address.sin_port = htons(ft_atoi(port));
-	if ((connect(fd_socket, (struct sockaddr *) &address, sizeof(address))) == -1)
+	if ((connect(client->fd_socket, (struct sockaddr *) &address, sizeof(address))) == -1)
 		return (-1);
-	//envoyer non champion
-	ft_client_send_message(fd_socket, "Aodren");
-
+	//envoyer nom champion
+	ft_client_send_message(client->fd_socket, "Aodren");
 	return (1);
 }
