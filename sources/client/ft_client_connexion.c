@@ -13,17 +13,12 @@
 ** Renvoie le fd ouver par Socket
 */
 
-
-/*
- * Rajouter gethostbyname ??? Pour se connecter au serveur, au lieu de marquer ip
- * */
 int	ft_client_socket(char bloquant, t_client *client)
 {
 	int opt;
 	int	fd_socket;
 
 	opt = 1;
-
 	if ((fd_socket = socket(PF_INET, SOCK_STREAM, 6)) == -1)
 		return (-1);
 	if (bloquant == 1)
@@ -48,14 +43,12 @@ int	ft_client_connexion(char *ip, char *port, t_client *client)
 	struct sockaddr_in address;
 
 	ft_bzero(&address, sizeof(address));
-
 	address.sin_family = AF_INET;
 	address.sin_addr.s_addr = inet_addr(ip);
 	address.sin_port = htons(ft_atoi(port));
-
-	if ((connect(client->fd_socket, (struct sockaddr *) &address, sizeof(address))) == -1)
+	if ((connect(client->fd_socket, (struct sockaddr *)&address,
+					sizeof(address))) == -1)
 		return (-1);
-	//envoyer nom champion
 	ft_client_send_message(client, client->champion);
 	return (1);
 }

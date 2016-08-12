@@ -14,7 +14,6 @@ int		ft_client_receive_message(t_client *client)
 	int ret;
 
 	ret = recv(client->fd_socket, client->buf, BUFF_SIZE - 1, 0);
-
 	if (ret)
 	{
 		client->buf[ret] = 0;

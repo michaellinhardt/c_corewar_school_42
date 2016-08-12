@@ -1,6 +1,7 @@
 #include "libft.h"
 #include "client.h"
 #include <sys/socket.h>
+
 /*
 ** Fonction qui envoi un message au server
 ** Param 1 : le fd du socket

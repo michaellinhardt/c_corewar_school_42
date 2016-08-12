@@ -80,7 +80,6 @@ int		main(int argc, char **argv)
 			ft_putendl("error socket server");
 		if ((ft_init_server("127.0.0.1", "4242", &server, "KIKI")) == -1)
 			ft_putendl("Erreur init server");
-		ft_putendl("okoko");
 		while (1)
 		{
 		ret = 	ft_server_check_read_sockets(&server);
