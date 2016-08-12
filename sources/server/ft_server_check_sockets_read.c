@@ -59,7 +59,7 @@ int		ft_server_check_read_sockets(t_server *server)
 		{
 			if ((ft_server_receive_message(server, server->clients[clients])) == -1)
 			{
-				ft_client_disconnect(server, server->clients[clients], clients);
+				ft_server_disconnect_client(server, server->clients[clients], clients);
 			}
 		}
 		++clients;

@@ -48,12 +48,14 @@ int	ft_client_connexion(char *ip, char *port, t_client *client)
 	struct sockaddr_in address;
 
 	ft_bzero(&address, sizeof(address));
+
 	address.sin_family = AF_INET;
 	address.sin_addr.s_addr = inet_addr(ip);
 	address.sin_port = htons(ft_atoi(port));
+
 	if ((connect(client->fd_socket, (struct sockaddr *) &address, sizeof(address))) == -1)
 		return (-1);
 	//envoyer nom champion
-	ft_client_send_message(client->fd_socket, "Aodren");
+	ft_client_send_message(client, client->champion);
 	return (1);
 }
