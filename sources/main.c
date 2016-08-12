@@ -33,6 +33,7 @@ void		ft_sigint(int sig)
 int		main(int argc, char **argv)
 {
 	signal(SIGINT, ft_sigint);
+	signal(SIGPIPE, SIG_IGN);
 
 	(void)argv;
 	int fd;
@@ -90,11 +91,13 @@ int		main(int argc, char **argv)
 		}
 		//ft_print_memory(server.name, (sizeof(server.name)));
 			//ft_accept_connection(&server);
-			ft_server_send_message_all(&server, "mouhahahahha");
+			if ((ft_server_send_message_all(&server, "mouhahahahha") == -1))
+				break ;
 			//ft_server_receive_message_all(&server, buf);
 		}
 		ft_server_disconnect_client_all(&server);
 		close(fd);
 	}
+	ft_putendl("the end");
 	return (0);
 }

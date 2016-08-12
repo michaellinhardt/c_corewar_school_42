@@ -20,7 +20,7 @@ int		ft_server_send_message_all(t_server *server, char *message)
 	{
 		if ((send(server->clients[nbr], message, size_message, 0))
 				!= size_message)
-			return (-1);
+			ft_server_disconnect_client(server, server->clients[nbr], nbr);
 		++nbr;
 	}
 	return (1);
