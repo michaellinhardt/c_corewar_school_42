@@ -3,6 +3,7 @@
 
 #define BUFF_SIZE 1024
 #define MAX_CONNECT 3
+#define SIZE_CHAMPION 10
 
 #include <arpa/inet.h>
 #include <sys/time.h>
@@ -15,7 +16,7 @@
 
 typedef struct	s_server
 {
-	char				name[MAX_CONNECT + 1][10];
+	char				name[MAX_CONNECT + 1][SIZE_CHAMPION];
 	char				buf[BUFF_SIZE];
 	int					clients[MAX_CONNECT];
 	int					nbr_clients;
@@ -31,7 +32,8 @@ void	ft_init_struct_server(t_server *server, char *champion);
 int		ft_socket_serveur(int bloquant, t_server *server);
 int		ft_init_server(char *ip, char *port, t_server *server, char *champion);
 int		ft_accept_connection(t_server *server);
-int		ft_server_send_message(t_server *server, char *message);
+int		ft_server_send_message_all(t_server *server, char *message);
+int		ft_server_send_message(int fd_client, char *message);
 int		ft_server_receive_message(t_server *server,  int fd_client);
 int		ft_server_receive_message_all(t_server *server, char *receive);
 int		ft_server_check_read_sockets(t_server *server);

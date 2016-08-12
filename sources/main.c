@@ -64,7 +64,7 @@ int		main(int argc, char **argv)
 				ft_putendl("programme exit");
 				break ;
 			}
-			ft_client_send_message(&client, "coucou\n");
+			ft_client_send_message(&client, "i'm alive\n");
 			//ft_client_receive_message(fd, buf);
 		}
 		close(fd);
@@ -87,8 +87,9 @@ int		main(int argc, char **argv)
 			ft_putendl("programme exit");
 			break ;
 		}
+		//ft_print_memory(server.name, (sizeof(server.name)));
 			//ft_accept_connection(&server);
-			ft_server_send_message(&server, "mouhahahahha");
+			ft_server_send_message_all(&server, "mouhahahahha");
 			//ft_server_receive_message_all(&server, buf);
 		}
 		ft_server_disconnect_client_all(&server);

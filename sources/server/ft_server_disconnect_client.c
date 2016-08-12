@@ -1,17 +1,33 @@
 #include "server.h"
-
 #include "libft.h"
+
+/*
+** Deconnecte le client indiquer par le fd_client
+** Param 1 struct server
+** Param 2 socket lie au client
+** Param 3 numero du client
+*/
+
 void	ft_server_disconnect_client(t_server *server, int fd_client, int nbr_client)
 {
 	int nbr;
-	// rcuperer le nom du server pour afficher qui est deconnecter
-	ft_putendl("Client deconnecte");
+
+
+	ft_putstr(server->name[nbr_client]);
+	ft_putendl(" deconnecte");
 	close(fd_client);
-	// voir plus tard pour le name du client
-	//recalculer le max
 	ft_memmove(&server->clients[nbr_client], &server->clients[nbr_client + 1],
-			sizeof(&server->clients[MAX_CONNECT]) -
-			sizeof(&server->clients[nbr_client]));
+			&(server->clients[MAX_CONNECT]) -
+			&(server->clients[nbr_client]));
+	ft_print_memory(server->clients, sizeof(server->clients));
+	ft_memmove(&server->name[nbr_client], &server->name[nbr_client + 1],
+		(	server->name[MAX_CONNECT] -
+			server->name[nbr_client]));
+	ft_putstr("result :");
+	ft_putnbr((&server->name[MAX_CONNECT] -
+			&server->name[nbr_client]) * MAX_CONNECT);
+	ft_putendl("----------");
+		ft_print_memory(server->name, (sizeof(server->name)));
 	server->nbr_clients--;
 	nbr = 0;
 	while (nbr < server->nbr_clients)
@@ -25,12 +41,19 @@ void	ft_server_disconnect_client(t_server *server, int fd_client, int nbr_client
 void	ft_server_disconnect_client_all(t_server *server)
 {
 	int clients;
+	int	i;
 
 	clients = 0;
 	ft_putendl("deconnection de tous les clients");
 	while (clients < server->nbr_clients)
 		close(server->clients[clients++]);
 	ft_bzero(&server->clients, sizeof(&server->clients));
+	i = 0;
+	while (i < server->nbr_clients)
+	{
+		ft_bzero(server->name[i], sizeof(server->name[i]));
+		++i;
+	}
 	server->nbr_clients = 0;
 	server->max = 0;
 }
