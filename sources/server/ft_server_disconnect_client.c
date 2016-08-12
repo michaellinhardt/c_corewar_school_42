@@ -6,12 +6,13 @@
 ** Param 1 struct server
 ** Param 2 socket lie au client
 ** Param 3 numero du client
+** Voir pour retourner le nom du client deconneter
 */
 
-void	ft_server_disconnect_client(t_server *server, int fd_client, int nbr_client)
+void	ft_server_disconnect_client(t_server *server,
+		int fd_client, int nbr_client)
 {
 	int nbr;
-
 
 	ft_putstr(server->name[nbr_client]);
 	ft_putendl(" deconnecte");
@@ -19,15 +20,9 @@ void	ft_server_disconnect_client(t_server *server, int fd_client, int nbr_client
 	ft_memmove(&server->clients[nbr_client], &server->clients[nbr_client + 1],
 			&(server->clients[MAX_CONNECT]) -
 			&(server->clients[nbr_client]));
-	ft_print_memory(server->clients, sizeof(server->clients));
 	ft_memmove(&server->name[nbr_client], &server->name[nbr_client + 1],
-		(	server->name[MAX_CONNECT] -
+		(server->name[MAX_CONNECT] -
 			server->name[nbr_client]));
-	ft_putstr("result :");
-	ft_putnbr((&server->name[MAX_CONNECT] -
-			&server->name[nbr_client]) * MAX_CONNECT);
-	ft_putendl("----------");
-		ft_print_memory(server->name, (sizeof(server->name)));
 	server->nbr_clients--;
 	nbr = 0;
 	while (nbr < server->nbr_clients)

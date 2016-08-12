@@ -4,6 +4,7 @@
 #define BUFF_SIZE 1024
 #define MAX_CONNECT 3
 #define SIZE_CHAMPION 10
+#define PORT "4242"
 
 #include <arpa/inet.h>
 #include <sys/time.h>

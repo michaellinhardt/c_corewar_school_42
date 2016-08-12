@@ -73,12 +73,14 @@ int		main(int argc, char **argv)
 		//gerer auqnd un client se deconnecte
 		ft_putendl("server");
 		//ft_init_server(&server);
+
 		ft_init_struct_server(&server, "lol");
 		fd = ft_socket_serveur(0, &server);
 		if (fd == -1)
 			ft_putendl("error socket server");
 		if ((ft_init_server("127.0.0.1", "4242", &server, "KIKI")) == -1)
 			ft_putendl("Erreur init server");
+		ft_putendl("okoko");
 		while (1)
 		{
 		ret = 	ft_server_check_read_sockets(&server);
