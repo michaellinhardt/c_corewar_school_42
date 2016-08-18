@@ -28,5 +28,5 @@ typedef struct			s_dvm
 // {
 //   return data()->vm.players[index];
 // }
-// 
+//
 // player(2).
