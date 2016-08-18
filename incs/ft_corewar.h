@@ -11,9 +11,11 @@
 # include "mlx.h"
 # include "libft.h"
 /* LIB COREWAR/MLX */
+# include "op.h"
 # include "ft_conf.h"
 # include "ft_terminal_log.h"
 # include "ft_struct_mlx.h"
+# include "ft_struct_vm.h"
 # include "ft_struct_data.h"
 # include "ft_mlx.h"
 
