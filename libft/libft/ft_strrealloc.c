@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strrealloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 19:52:53 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/06/29 09:19:23 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/03/10 13:31:00 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/03/10 16:12:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
-# define BUFF_SIZE 65568
-# define MAP 0
-# define F ft_bootstrap
-
-typedef struct		s_gnl
+char	*ft_strrealloc(char *str, int size)
 {
-	char			b[BUFF_SIZE + 1];
-	int				fd;
-	char			*t;
-	int				r;
-	int				i;
-	char			*s;
-	struct s_gnl	*next;
-}					t_gnl;
+	char	*ret;
 
-int					get_next_line(int fd, char **line);
-void				ft_bootstrap(char **line);
-
-#endif
+	if (!(ret = ft_strnew(ft_strlen(str) + size + 2)))
+		return (NULL);
+	ft_memcpy(ret, str, ft_strlen(str));
+	ft_strdel(&str);
+	return (ret);
+}

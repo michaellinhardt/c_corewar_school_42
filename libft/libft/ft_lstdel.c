@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 19:52:53 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/06/29 09:19:23 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 20:05:31 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/17 21:52:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include "libft.h"
-# define BUFF_SIZE 65568
-# define MAP 0
-# define F ft_bootstrap
-
-typedef struct		s_gnl
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	char			b[BUFF_SIZE + 1];
-	int				fd;
-	char			*t;
-	int				r;
-	int				i;
-	char			*s;
-	struct s_gnl	*next;
-}					t_gnl;
+	t_list	*list;
 
-int					get_next_line(int fd, char **line);
-void				ft_bootstrap(char **line);
-
-#endif
+	if (!alst || !del)
+		return ;
+	list = *alst;
+	while (list)
+	{
+		del(list->content, list->content_size);
+		free(list);
+		list = list->next;
+	}
+	*alst = NULL;
+}

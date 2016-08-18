@@ -1,49 +1,75 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/08/10 12:58:12 by abary            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# VAR COMP
+FLAGS	= -Wall -Wextra -Werror
+CC		= gcc $(FLAGS)
+INCS 	= -I./incs -I./libft/includes
+LIBS	= ./libft
+LIBFT 	= -L$(LIBS) -lft
+LIBMLX	= -L./minilibx -lmlx -framework OpenGL -framework AppKit
+LANGAGE	= c
+NAME	= corewar
 
-NAME = corewar
+# VAR FOLDER/FILE
+SRC_DIR = srcs
+OBJ_DIR = objs
 
-INC_DIR = includes
+LIST 	= ft_corewar \
+			ft_data \
+			ft_mlx_init \
+			ft_mlx_hook \
+			ft_mlx_loop \
+			ft_mlx_img \
+			ft_mlx_scene \
+			ft_mlx_scene_img \
+			ft_terminal_ascii \
+			ft_terminal_log \
+			ft_free \
+			ft_exit \
 
-LIB_DIR = libft
+SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
+OBJ := $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIST)))
 
-INC_LIB_DIR = $(LIB_DIR)/$(INC_DIR)
+C_END	= "\033[0m"
+C_GOOD	= "\033[32m"
+C_GREY  = "\033[1;30m"
+C_BAD	= "\033[31m"
+C_BLUE	= "\033[34;1m"
 
-NAME_LIB = corewar.a\
+all: $(NAME)
 
-CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
+$(NAME): $(OBJ)
+#@make -C $(LIBS)
+	$(CC) $(OBJ) -o $@ $(FLAGS) $(INCS) $(LIBFT) $(LIBMLX)
+	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
-SRC = main.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
+	@mkdir -p $(dir $@)
+	$(CC) $(INCS) -o $@ -c $<
 
-SRCS = $(addprefix sources/,$(SRC))
+test: $(NAME)
+	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] start"
+	@./$(NAME)
 
-OBJ = $(SRCS:.c=.o)
-CC = gcc
-all : $(NAME)
+clean:
+#@make clean -C $(LIBS)
+	@/bin/rm -rf $(OBJ_DIR)
+	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
-$(NAME) : $(OBJ)
-	(cd $(LIB_DIR) && $(MAKE))
-	ar -r $(NAME_LIB) $(OBJ)
-	gcc -o $(NAME) $(NAME_LIB) libft/libft.a  -ltermcap -lncurses -ltcl8.5
+clean2:
+	@/bin/rm -rf $(OBJ_DIR)
+	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
-clean :
-	(cd $(LIB_DIR) && make clean && cd ..)
-	rm -rf $(OBJ)
+fclean: clean2
+	@/bin/rm -rf *.dSYM
+#@make fclean -C $(LIBS)
+	@/bin/rm -f $(NAME)
+	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
-fclean : clean
-	(cd $(LIB_DIR) && make fclean && cd ..)
-	rm -rf $(NAME)
-	rm -rf $(NAME_LIB)
+#leaks: $(NAME) -leaks
+leaks: $(NAME) test
 
-re : fclean all
+-leaks:
+	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
-.PHONY: all clean fclean re
+re: fclean libft $(NAME)
+
+.PHONY: all clean clean2 fclean re libft test leaks

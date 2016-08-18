@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_newjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 19:52:53 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/06/29 09:19:23 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/03 18:44:30 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/01/19 21:20:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
-# define BUFF_SIZE 65568
-# define MAP 0
-# define F ft_bootstrap
-
-typedef struct		s_gnl
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char			b[BUFF_SIZE + 1];
-	int				fd;
-	char			*t;
-	int				r;
-	int				i;
-	char			*s;
-	struct s_gnl	*next;
-}					t_gnl;
+	size_t	len_s1;
+	size_t	len_s2;
+	char	*new;
 
-int					get_next_line(int fd, char **line);
-void				ft_bootstrap(char **line);
-
-#endif
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	if (!(new = ft_strnew(len_s1 + len_s2 + 1)))
+		return (NULL);
+	ft_memcpy(new, s1, len_s1);
+	ft_memcpy(new + len_s1, s2, len_s2);
+	new[len_s1 + len_s2 + 1] = '\0';
+	return (new);
+}

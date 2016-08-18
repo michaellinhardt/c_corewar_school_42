@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 19:52:53 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/06/29 09:19:23 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/10 11:29:08 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/17 21:53:29 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
-# define BUFF_SIZE 65568
-# define MAP 0
-# define F ft_bootstrap
-
-typedef struct		s_gnl
+int		ft_countwords(const char *s, char c)
 {
-	char			b[BUFF_SIZE + 1];
-	int				fd;
-	char			*t;
-	int				r;
-	int				i;
-	char			*s;
-	struct s_gnl	*next;
-}					t_gnl;
+	size_t	i;
+	int		count;
+	int		start;
+	int		end;
 
-int					get_next_line(int fd, char **line);
-void				ft_bootstrap(char **line);
-
-#endif
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		end = i;
+		if (end > start)
+			count++;
+	}
+	return (count);
+}

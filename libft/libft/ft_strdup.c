@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 19:52:53 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/06/29 09:19:23 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/01 07:21:11 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/02/14 05:57:08 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
-# define BUFF_SIZE 65568
-# define MAP 0
-# define F ft_bootstrap
-
-typedef struct		s_gnl
+char	*ft_strdup(const char *s1)
 {
-	char			b[BUFF_SIZE + 1];
-	int				fd;
-	char			*t;
-	int				r;
-	int				i;
-	char			*s;
-	struct s_gnl	*next;
-}					t_gnl;
+	char	*str;
 
-int					get_next_line(int fd, char **line);
-void				ft_bootstrap(char **line);
-
-#endif
+	if (!s1)
+		return ((char *)NULL);
+	str = ft_stralloc(s1);
+	if (str)
+		ft_strcpy(str, s1);
+	return (str);
+}
