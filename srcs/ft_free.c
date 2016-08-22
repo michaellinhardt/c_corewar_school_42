@@ -30,6 +30,7 @@ void	free_img(t_img *img, t_dmlx *m, int i, int j)
 					mlx_destroy_image(m->mlx, img->img);
 }
 
+
 /* FONCTION APPELLER QUAND ON FERME LE PROGRAMME
  * basiquement .. elles lance tous les free et le log en terminal */
 void	free_data(t_data *d)
