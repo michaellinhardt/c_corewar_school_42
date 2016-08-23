@@ -11,10 +11,19 @@
 
 int		ft_client_send_message(t_client *client, char *message)
 {
+	/*
 	ssize_t size_message;
 
 	size_message = ft_strlen(message);
 	if ((send(client->fd_socket, message, size_message, 0)) != size_message)
+		return (-1);
+		*/
+
+	ssize_t size_message;
+
+	size_message = sizeof(&client->data_send);
+	if ((send(client->fd_socket, (void *)&client->data_send,
+					sizeof(&client->data_send), 0) != size_message))
 		return (-1);
 	return (1);
 }

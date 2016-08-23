@@ -65,6 +65,7 @@ int		main(int argc, char **argv)
 				ft_putendl("programme exit");
 				break ;
 			}
+			client.data_send.nbr++;
 			ft_client_send_message(&client, "i'm alive\n");
 			//ft_client_receive_message(fd, buf);
 		}

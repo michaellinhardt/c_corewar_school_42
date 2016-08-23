@@ -8,6 +8,7 @@
 #include <netdb.h>
 #include <stdio.h>
 
+
 void	ft_init_struct_server(t_server *server, char *champion)
 {
 	int i;
@@ -25,6 +26,8 @@ void	ft_init_struct_server(t_server *server, char *champion)
 	server->timeout.tv_usec = 200000;
 	ft_bzero(server->buf, BUFF_SIZE);
 	server->champion = champion;
+	server->data_send.nbr = 404;
+	server->data_receive[0].nbr = 0;
 }
 
 /*
@@ -82,9 +85,11 @@ int		ft_accept_connection(t_server *server)
 	server->clients[server->nbr_clients] = socket;
 	server->nbr_clients++;
 	server->max = socket > server->max ? socket : server->max;
-	ft_server_send_message(socket, server->champion);
-	ft_server_receive_message(server, socket);
+	ft_server_send_message(socket, server->champion, server);
+	//ft_server_receive_message(server, socket);
+	/*
 	ft_strncpy(server->name[server->nbr_clients - 1], server->buf, 9);
 	ft_putendl(server->name[server->nbr_clients - 1]);
+	*/
 	return (socket);
 }

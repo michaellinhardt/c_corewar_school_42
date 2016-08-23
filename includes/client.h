@@ -3,6 +3,8 @@
 
 #include "server.h"
 #include <sys/time.h>
+#include "corewar_vm.h"
+
 /*
 ** Strcuture Client
 */
@@ -13,6 +15,8 @@ typedef struct s_client
 	struct timeval	timeout;
 	char			buf[BUFF_SIZE];
 	char			*champion;
+	t_data			data_send;
+	t_data			data_receive;
 	// rajouter les infos du server
 }				t_client;
 

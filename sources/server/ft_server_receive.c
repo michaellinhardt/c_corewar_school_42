@@ -9,6 +9,7 @@
 ** Renvoie  1
 */
 
+// faire des whiles
 int		ft_server_receive_message_all(t_server *server, char *receive)
 {
 	int ret;
@@ -18,9 +19,12 @@ int		ft_server_receive_message_all(t_server *server, char *receive)
 	ret = -1;
 	while (nbr < server->nbr_clients)
 	{
-		ret = recv(server->clients[nbr], receive, BUFF_SIZE - 1, 0);
+		ret = recv(server->clients[nbr], (void *)&server->data_receive[nbr]
+				, sizeof(&server->data_receive[nbr]), 0);
+		/*
 		if (ret > 0)
 			receive[ret] = 0;
+			*/
 		++nbr;
 	}
 	return (1);
@@ -30,10 +34,16 @@ int		ft_server_receive_message(t_server *server, int fd_client)
 {
 	int ret;
 
-	ret = recv(fd_client, server->buf, BUFF_SIZE - 1, 0);
+	//ret = recv(fd_client, server->buf, BUFF_SIZE - 1, 0);
+	ret = recv(fd_client, (void *)&server->data_receive[0],
+			sizeof(&server->data_receive[0]), 0);
+	if (ret > 0)
+		ft_putnbr(server->data_receive[0].nbr);
 	if (ret == -1)
 		return (ret);
+	/*
 	if (ret > 0)
 		server->buf[ret] = 0;
+		*/
 	return (ret);
 }

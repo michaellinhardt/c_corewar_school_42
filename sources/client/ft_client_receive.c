@@ -13,11 +13,19 @@ int		ft_client_receive_message(t_client *client)
 {
 	int ret;
 
+	/*
 	ret = recv(client->fd_socket, client->buf, BUFF_SIZE - 1, 0);
 	if (ret)
 	{
 		client->buf[ret] = 0;
 		ft_putendl(client->buf);
+	}
+	*/
+	ret = recv(client->fd_socket,(void *)&client->data_receive,
+			sizeof(&client->data_receive), 0);
+	if (ret)
+	{
+		ft_putnbr(client->data_receive.nbr);
 	}
 	return (ret);
 }

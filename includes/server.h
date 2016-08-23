@@ -8,6 +8,7 @@
 
 #include <arpa/inet.h>
 #include <sys/time.h>
+#include "corewar_vm.h"
 /*
 ** address -> info du serveur/ clients
 ** clients -> listes des fd des clients
@@ -26,7 +27,8 @@ typedef struct	s_server
 	struct sockaddr_in	address;
 	struct timeval		timeout;
 	char				*champion;// le server a son propre champion
-
+	t_data				data_send;
+	t_data				data_receive[MAX_CONNECT];
 }				t_server;
 
 void	ft_init_struct_server(t_server *server, char *champion);
@@ -34,7 +36,7 @@ int		ft_socket_serveur(int bloquant, t_server *server);
 int		ft_init_server(char *ip, char *port, t_server *server, char *champion);
 int		ft_accept_connection(t_server *server);
 int		ft_server_send_message_all(t_server *server, char *message);
-int		ft_server_send_message(int fd_client, char *message);
+int		ft_server_send_message(int fd_client, char *message, t_server *server);
 int		ft_server_receive_message(t_server *server,  int fd_client);
 int		ft_server_receive_message_all(t_server *server, char *receive);
 int		ft_server_check_read_sockets(t_server *server);
