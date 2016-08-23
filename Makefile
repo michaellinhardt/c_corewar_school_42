@@ -20,6 +20,7 @@ LIST 	= ft_corewar \
 			ft_mlx_img \
 			ft_mlx_scene \
 			ft_mlx_scene_img \
+			ft_mlx_scene_intro \
 			ft_terminal_ascii \
 			ft_terminal_log \
 			ft_free \

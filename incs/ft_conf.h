@@ -4,8 +4,8 @@
  *	Header pour les parametre réglable
  */
 # define WIN_TITLE "Corewar"
-# define WIN_X 1792
-# define WIN_Y 1008
+# define WIN_X 1920
+# define WIN_Y 1200
 
 /*
 **  DONNEE DE LA VM

@@ -16,8 +16,10 @@ int		free_ascii(int ico, char *type, char *data)
 	return (1);
 }
 
-/* FONCTION QUI FREE TOUTE LA LISTE DES IMG CHARGé EN MEMOIRE PAR MLX
- */
+/*
+** FONCTION QUI FREE TOUTE LA LISTE DES IMG CHARGé EN MEMOIRE PAR MLX
+** Cette fonction log egalement l'action dans le terminal
+*/
 void	free_img(t_img *img, t_dmlx *m, int i, int j)
 {
 	while( ++i < SCENE_MAX )
