@@ -4,5 +4,6 @@
 typedef struct s_data
 {
 	int			nbr;
+	char		name[10];
 }				t_data;
 #endif

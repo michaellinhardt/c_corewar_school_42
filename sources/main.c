@@ -57,6 +57,8 @@ int		main(int argc, char **argv)
 			ft_putendl("error fd");
 		if ((ft_client_connexion(argv[2], "4242", &client)) == -1)
 			ft_putendl("error connexion");
+		ft_strcpy(client.data_send.name, argv[1]);
+		ft_putendl(client.data_send.name);
 		while(1)
 		{
 			ret = ft_client_check_read_sockets(&client);
