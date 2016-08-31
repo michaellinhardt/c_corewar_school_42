@@ -23,6 +23,10 @@ LIST 	= ft_corewar \
 			ft_mlx_scene_intro \
 			ft_terminal_ascii \
 			ft_terminal_log \
+			ft_vm_init \
+			ft_vm \
+			ft_vm_processus \
+			ft_vm_gameloop \
 			ft_free \
 			ft_exit \
 

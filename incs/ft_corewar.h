@@ -29,4 +29,16 @@ void	free_data(t_data *d);
 /* FICHIER FT_COREWAR.C */
 t_data	*data(void);
 
+/* FICHIER FT_VM_INIT.C */
+void	vm_init(t_data *d, t_dvm *v, int i);
+
+/* FICHIER FT_VM.C */
+void	vm(t_dvm *v, int cperloop);
+
+/* FICHIER FT_VM_PROCESSUS.C */
+void	proc_new(t_dvm *v, t_proc *new, int player, int i);
+
+/* FICHIER FT_GAMELOOP.C */
+void	gameloop(t_dvm *v);
+
 #endif

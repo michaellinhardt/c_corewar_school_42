@@ -10,5 +10,6 @@ int			ascii_init(void);
 
 /* FICHIER FT_TERMINAL_LOG.C */
 int			l(char ico, char *name, char *info);
+int			l2(char ico, char *name, char *info, int val1);
 
 #endif

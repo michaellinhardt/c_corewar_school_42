@@ -10,7 +10,8 @@
 /*
 **  DONNEE DE LA VM
 */
-# define VM_CHAMP_NAME_SIZE 2048
+# define CHAMP_NAME_SIZE 2048
+# define CYCLE_PER_LOOP 1
 
 /* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
  * Cela évite de spam le processeur du PC pour rien */
@@ -24,7 +25,7 @@
 */
 # define SCENE_MAX 20
 # define SCENE_IMG_MAX 50
-# define SCENE_START INTRO
+# define SCENE_START VM_INIT
 
 /* DOSSIER DEPUIS LEQUEL SONT AUTOMATIQUEMENT IMPORTé LES GIFS */
 # define GIF_DIR "./gif/"
@@ -61,5 +62,7 @@
 # define LOG_XTOI 0
 # define LOG_NEWI 0
 # define LOG_MLX 0
+# define LOG_VM 1
+# define LOG_PROC 1
 
 #endif
