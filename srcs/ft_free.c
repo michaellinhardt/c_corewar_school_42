@@ -25,11 +25,38 @@ void	free_img(t_img *img, t_dmlx *m, int i, int j)
 	while( ++i < SCENE_MAX )
 		if (m->img_isload[i] == 1 && (j = -1))
 			while( ++j < SCENE_IMG_MAX )
-				if ((img = m->scene_img[m->scene].l[j]) && img->img && ft_printf(
-					" %C %s %13s %s %12s[%03d].l[%03d] %s %-29s %s\e[93m\n", L'✅'
-					, LINE_GREEN, "t_img", LINE_GREEN
-					, "img_isload", m->scene, j, LINE_GREEN, "free\0", LINE_GREEN))
+				if ((img = m->scene_img[m->scene].l[j]) && img->img
+				&& ft_printf(
+				" %C %s %13s %s %12s[%03d].l[%03d] %s %-29s %s\e[93m\n", L'✅'
+				, LINE_GREEN, "t_img", LINE_GREEN
+				, "img_isload", m->scene, j, LINE_GREEN, "free\0", LINE_GREEN))
 					mlx_destroy_image(m->mlx, img->img);
+}
+
+/*
+** FONCTION QUI FREE TOUTE LA LISTE DES PROCESSUS CRéer
+** Cette fonction log egalement l'action dans le terminal
+*/
+void	free_proc(t_proc *lst, t_proc *destroy, int wich)
+{
+	int		i;
+
+	i = 0;
+	while (lst)
+	{
+		++i;
+		destroy = lst;
+		lst = lst->n;
+		ft_memdel((void **)&destroy);
+	}
+	if (wich == 1)
+		ft_printf(" %C %s %13s %s %-24s %s free %5d struct %11s %s\e[93m\n"
+		, L'✅', LINE_GREEN, "t_proc", LINE_GREEN, "d->vm.proc"
+		, LINE_GREEN, i, " ", LINE_GREEN);
+	else
+		ft_printf(" %C %s %13s %s %-24s %s free %5d struct %11s %s\e[93m\n"
+		, L'✅', LINE_GREEN, "t_proc", LINE_GREEN, "d->vm.procdie"
+		, LINE_GREEN, i, " ", LINE_GREEN);
 }
 
 /* FONCTION APPELLER QUAND ON FERME LE PROGRAMME
@@ -39,4 +66,6 @@ void	free_data(t_data *d)
 	ascii(ASC_FREEDATA);
 	get_next_line(-10, NULL);
 	free_img((t_img *)NULL, &d->mlx, -1, -1);
+	free_proc(d->vm.proc, (t_proc *)NULL, 1);
+	free_proc(d->vm.procdie, (t_proc *)NULL, 2);
 }
