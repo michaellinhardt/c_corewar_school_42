@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2014/12/01 17:45:13 by pba               #+#    #+#             */
+/*   Updated: 2015/01/10 12:01:32 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*s2;
 
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	s2 = (char *)malloc(len + 1);
+	if (s2 != NULL)
+	{
+		ft_strncpy(s2, s + start, len);
+		s2[len] = '\0';
+	}
+	return (s2);
+}

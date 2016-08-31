@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2014/09/02 17:15:04 by pba               #+#    #+#             */
+/*   Updated: 2016/01/30 14:16:12 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int		ft_square(int nb)
+{
+	return (nb * nb);
+}
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+int		ft_sqrt(int nb)
+{
+	int sqrt;
 
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	sqrt = 0;
+	while (sqrt <= nb)
+	{
+		if (ft_square(sqrt) == nb)
+			return (sqrt);
+		else if (ft_square(sqrt) > nb)
+			break ;
+		++sqrt;
+	}
+	return (sqrt - 1);
+}

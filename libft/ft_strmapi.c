@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2014/12/01 15:54:27 by pba               #+#    #+#             */
+/*   Updated: 2015/02/25 04:06:17 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int		len;
+	int		count;
+	char	*new_str;
 
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	if (s == NULL)
+		return (NULL);
+	if (f == NULL)
+		return (strdup(s));
+	len = ft_strlen(s);
+	new_str = ft_strnew(len);
+	count = 0;
+	while (len--)
+	{
+		new_str[count] = f(count, s[count]);
+		++count;
+	}
+	return (new_str);
+}

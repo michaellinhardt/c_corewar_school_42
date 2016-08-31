@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2014/11/28 16:36:35 by pba               #+#    #+#             */
+/*   Updated: 2014/12/12 00:46:30 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
+#include "libft.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+int			ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const unsigned char *my_s1;
+	const unsigned char *my_s2;
 
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	my_s1 = s1;
+	my_s2 = s2;
+	while (n--)
+	{
+		if (*my_s1 != *my_s2)
+			return (*my_s1 < *my_s2 ? -1 : 1);
+		++my_s1;
+		++my_s2;
+	}
+	return (0);
+}

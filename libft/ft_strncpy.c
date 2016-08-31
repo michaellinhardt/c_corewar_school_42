@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2014/11/25 18:05:54 by pba               #+#    #+#             */
+/*   Updated: 2016/08/25 19:36:41 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+char		*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	char *my_dst;
+	char *last;
 
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	my_dst = dst;
+	last = dst + n;
+	while (n-- && *src)
+	{
+		*my_dst = *src;
+		++my_dst;
+		++src;
+	}
+	while (my_dst != last)
+	{
+		*my_dst = '\0';
+		++my_dst;
+	}
+	return (dst);
+}

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2014/11/26 16:31:39 by pba               #+#    #+#             */
+/*   Updated: 2015/02/10 03:36:39 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+char		*ft_strnstr(const char *s1, const char *s2, size_t n)
+{
+	size_t j;
+	size_t i;
 
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	if (s2[0] == 0)
+		return ((char*)s1);
+	while (i <= n && s1[i] != '\0')
+	{
+		j = 0;
+		while (s2[j] == s1[i + j] && s1[i + j])
+			++j;
+		if (i + j > n)
+			return (NULL);
+		if (s2[j] == '\0')
+			return ((char*)s1 + i);
+		++i;
+	}
+	return (NULL);
+}

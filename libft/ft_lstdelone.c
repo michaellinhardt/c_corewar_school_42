@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pba <pba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/13 18:16:20 by pba               #+#    #+#             */
-/*   Updated: 2015/04/29 12:53:30 by pba              ###   ########.fr       */
+/*   Created: 2015/02/13 09:13:41 by pba               #+#    #+#             */
+/*   Updated: 2015/05/26 16:02:51 by pba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
-
-# define READ_MAX 16
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+void		ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+{
+	if (alst && del)
+	{
+		del(&((*alst)->content), (*alst)->content_size);
+		free(*alst);
+		*alst = NULL;
+	}
+}
