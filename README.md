@@ -5,7 +5,7 @@
 
 ![alt tag](*img link*)
 
-THE GAME
+THE GAME\n
 The Corewar is an arena (a virtual machine ) where many processes called 
 champions (a maximum of 4 champions) fight. A champion is a list of instructions
 written in a look-alike disassembly language. The goal of each champion is to 
