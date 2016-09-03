@@ -24,9 +24,9 @@ wchar_t log_ico(char ico)
 
 int		log_bool(char ico)
 {
-	if (LOG_DEBUG && ico < -1)
+	if (LOG_DEBUG && (ico == -1 || (LOG_DEBUG_DETAILED && ico == -2)))
 		return (1);
-	if (!LOG_DEBUG && ico < -1)
+	if ((!LOG_DEBUG && ico < 0) || (!LOG_DEBUG_DETAILED && ico == -2))
 		return (0);
 	if (!LOG_DISPLAY
 	|| (!LOG_ALL
@@ -65,7 +65,11 @@ int		l2(char ico, char *name, char *info, int val1)
 	if (!log_bool(ico))
 		return (1);
 	d = data();
-	ft_printf(" %C %s %21s %s \e[35m%21s\e[93m -> %-21d %s\n", log_ico(ico), LINE_BLUE, name
-	, LINE_GREEN2, info, val1, LINE_YEL);
+	if (ico != -2)
+		ft_printf(" %C %s %21s %s \e[35m%21s\e[93m -> %-21d %s\n", log_ico(ico), LINE_BLUE, name
+		, LINE_GREEN2, info, val1, LINE_YEL);
+	else
+		ft_printf(" %C %s %21s %s \e[90m%21s -> %-21d\e[93m %s\n", log_ico(ico), LINE_BLUE, name
+		, LINE_GREEN2, info, val1, LINE_YEL);
 	return (1);
 }
