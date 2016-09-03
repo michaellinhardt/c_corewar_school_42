@@ -6,6 +6,7 @@
 void	vm_init(t_data *d, t_dvm *v, int i)
 {
 	ft_bzero(&d->vm, sizeof(t_dvm));
+	// initialise a null la chaine de process mort (pour eviter de les remalloc)
 	v->procdie = (t_proc *)NULL;
 
 
@@ -26,6 +27,7 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	 		proc_new(v, (t_proc *)NULL, i, i * (MEM_SIZE / 4));
 		else if (!v->p[i].playing)
 			l2(11, "PLAYER", "is not plaing", i);
+	// Change la scene actuel pour afficher la vm
 	d->mlx.scene = VM;
 	exit1(0, d, "test");
 }
