@@ -27,7 +27,7 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int alive)
 
 	// Debug
 	next = v->proc;
-	if (v->ctodie > 3)
+	if (v->ctodie > 0)
 		while (next && (next->live = 1))
 			next = next->n;
 	return (alive);
@@ -37,14 +37,18 @@ int		gameloop(t_dvm *v)
 {
 	// Début du cycle
 	++v->cycle;
+	if (!(v->cycle % 10))
+		v->nbr_live += 4;
 	l2(-1, "NEW CYCLE", "NEW CYCLE BEGING", v->cycle);
 	if (++v->ctodiecount >= v->ctodie
 	&& !checklive(v, v->proc, (t_proc *)NULL, 0))
 		return (0);
-	else if ((++v->max_checks >= MAX_CHECKS && !(v->max_checks = 0)
+	else if (((++v->max_checks >= MAX_CHECKS
 	&& l2(11, "MAX_CHECKS LIMIT", "decrement c2die", (v->ctodie - CYCLE_DELTA)))
 	|| (v->nbr_live >= NBR_LIVE
 	&& l2(11, "NBR_LIVE LIMITS", "decrement c2die", (v->ctodie - CYCLE_DELTA))))
+	&& !(v->max_checks = 0)
+	&& !(v->nbr_live = 0))
 		v->ctodie = ((v->ctodie - CYCLE_DELTA) > 0)
 		? v->ctodie - CYCLE_DELTA : 0;
 	return (1);
