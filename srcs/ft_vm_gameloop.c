@@ -3,9 +3,12 @@
 */
 #include "ft_corewar.h"
 
-void	checklive(t_dvm *v)
+void	checklive(t_dvm *v, t_proc *p)
 {
 	// fonction qui tue les process n'ayant pas fais de live
+	while (p)
+		ft_printf("pid: %d", p->id), p = p->n;
+	// reset le décompte de la prochaien vérif
 	v->ctodiecount = 0;
 }
 
@@ -21,7 +24,7 @@ void	gameloop(t_dvm *v)
 		? v->ctodie - CYCLE_DELTA : 0;
 	// Lance la fonction qui tue les process qui n'on pas fais de live
 	if (++v->ctodiecount >= v->ctodie)
-		checklive(v);
+		checklive(v, &v->proc);
 	ft_printf("gameloop bitch");
 	exit (0);
 }
