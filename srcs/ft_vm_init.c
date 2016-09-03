@@ -32,4 +32,12 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 			l2(11, "PLAYER", "false", i);
 	// Change la scene actuel pour afficher la vm
 	d->mlx.scene = VM;
+
+
+
+	// v->proc->live = 1; // 3
+	// (v->proc->n)->live = 1; // 2
+	// ((v->proc->n)->n)->live = 0; // 1
+	// (((v->proc->n)->n)->n)->live = 1; // 0
+	// v->ctodie = 300;
 }
