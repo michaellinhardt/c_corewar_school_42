@@ -32,5 +32,4 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 			l2(11, "PLAYER", "is not plaing", i);
 	// Change la scene actuel pour afficher la vm
 	d->mlx.scene = VM;
-	exit1(0, d, "test");
 }
