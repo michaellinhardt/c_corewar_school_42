@@ -26,10 +26,10 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	// i est sont numéro (0-3) et MEM_SIZE / 4 la taille max par champion
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (--i > -1)
-		if (v->p[i].playing && l2(11, "PLAYER", "is playing", i))
+		if (v->p[i].playing && l2(11, "PLAYER", "true", i))
 	 		proc_new(v, (t_proc *)NULL, i, i * (MEM_SIZE / 4));
 		else if (!v->p[i].playing)
-			l2(11, "PLAYER", "is not plaing", i);
+			l2(11, "PLAYER", "false", i);
 	// Change la scene actuel pour afficher la vm
 	d->mlx.scene = VM;
 }
