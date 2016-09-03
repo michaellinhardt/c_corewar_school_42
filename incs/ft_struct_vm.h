@@ -4,6 +4,20 @@
  *	Header des données lié a la vm et gameloop
  */
 
+ /* IDENTIFIANT DES ZONE CLICABLE, GRACE A LUI ON RETROUVE LES COORD
+  * DE CHAQUE ZONE */
+ enum imgvm {
+ 	W,
+	R,
+	G,
+	B,
+	Y,
+	R_P,
+	G_P,
+	B_P,
+	Y_P
+ };
+
  /* VM_PLAYER
   * donné lié a la vm, au champion et a l'arene
   */
