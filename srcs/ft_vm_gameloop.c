@@ -60,6 +60,14 @@ void	gameloop(t_dvm *v)
 	proc_new(v, (t_proc *)NULL, 1, 1);
 	v->proc->live = 1;
 	checklive(v, v->proc, (t_proc *)NULL);
+	t_proc *p;
+	proc_kill(v, (p = v->proc), v->procdie);
+	proc_kill(v, (p = v->proc->n), v->procdie);
+	proc_kill(v, (p = v->proc), v->procdie);
+	proc_kill(v, (p = v->proc), v->procdie);
+	proc_kill(v, (p = v->proc), v->procdie);
+	proc_kill(v, (p = v->proc), v->procdie);
+	checklive(v, v->proc, (t_proc *)NULL);
 
 
 	exit1(0, data(), "test");
