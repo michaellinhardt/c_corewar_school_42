@@ -22,6 +22,9 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	l2(11, "VM_INIT", "Cycle per loop", CYCLE_PER_LOOP);
 
 	// Créer le premier proc de chaque player
+	// i * (MEM_SIZE / 4) représente le début du premier processeur de ce joueur dans l'arene
+	// i est sont numéro (0-3) et MEM_SIZE / 4 la taille max par champion
+	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (--i > -1)
 		if (v->p[i].playing && l2(11, "PLAYER", "is playing", i))
 	 		proc_new(v, (t_proc *)NULL, i, i * (MEM_SIZE / 4));
