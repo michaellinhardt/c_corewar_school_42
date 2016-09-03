@@ -62,7 +62,7 @@ int		l2(char ico, char *name, char *info, int val1)
 	|| (ico == 11 && !LOG_VM) || (ico == 12 && !LOG_PROC))))
 		return (1);
 	d = data();
-	ft_printf(" %C %s %21s %s %-6d %-41s %s\n", log_ico(ico), LINE_BLUE, name
-	, LINE_GREEN2, val1, info, LINE_YEL);
+	ft_printf(" %C %s %21s %s %21s -> %-21d %s\n", log_ico(ico), LINE_BLUE, name
+	, LINE_GREEN2, info, val1, LINE_YEL);
 	return (1);
 }
