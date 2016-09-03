@@ -11,7 +11,7 @@
 **  DONNEE DE LA VM
 */
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 1
+# define CYCLE_PER_LOOP 1000
 
 /* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
  * Cela évite de spam le processeur du PC pour rien */

@@ -43,15 +43,13 @@ int		proc_kill(t_dvm *v, t_proc *target, t_proc *procdie)
 {
 	// refais les lien de la liste proc
 	if (target->p && target->n
-	&& ((target->p)->n = target->n)
-	&& l(-2, "proc_kill()", "linking prev and next process together"))
+	&& ((target->p)->n = target->n))
 		(target->n)->p = target->p;
-	else if (target->p && l(-1, "proc_kill()", "setting new end of proc list"))
+	else if (target->p)
 		target->p = (t_proc *)NULL;
-	else if (target->n && (((target->n)->p = (t_proc *)NULL) || 1)
-	&& l(-2, "proc_kill()", "setting new begining of process list"))
+	else if (target->n && (((target->n)->p = (t_proc *)NULL) || 1))
 		v->proc = target->n;
-	else if (l(-2, "proc_kill()", "no more alive process"))
+	else
 		v->proc = (t_proc *)NULL;
 
 	// déplace le proc dans la liste morte
