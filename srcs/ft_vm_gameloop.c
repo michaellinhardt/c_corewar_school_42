@@ -67,6 +67,7 @@ void	gameloop(t_dvm *v)
 	proc_kill(v, (p = v->proc), v->procdie);
 	proc_kill(v, (p = v->proc), v->procdie);
 	proc_kill(v, (p = v->proc), v->procdie);
+	proc_new(v, (t_proc *)NULL, 1, 1);
 	checklive(v, v->proc, (t_proc *)NULL);
 
 
