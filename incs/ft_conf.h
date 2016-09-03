@@ -3,6 +3,7 @@
 /*
  *	Header pour les parametre réglable
  */
+# define GRAPHIC_MODE 0
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
 # define WIN_Y 1200

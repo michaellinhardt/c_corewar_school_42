@@ -8,8 +8,12 @@ int		main(int argc, char **argv)
 	*argv += 0 * argc; // brain compilateur flag
 	/* lance les 4 premiers affichage dans le terminal, puis démarre mlx */
 	d->mlx.scene = SCENE_START;
-	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init() && ascii(ASC_LOG))
+	d->graphic = GRAPHIC_MODE;
+	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init() && ascii(ASC_LOG)
+	&& d->graphic)
 		mlx_start(d, &d->mlx);
-	ft_printf("lol\n");
+	else
+		while (43)
+			loop_vm(d);
 	return (0);
 }

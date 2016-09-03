@@ -14,6 +14,7 @@ int		mouser_hook(int btn, int x, int y, t_data *d);
 /* FICHIER FT_MLX_LOOP.C */
 int		loop(char etat);
 int		loop_hook(t_data *d);
+void	loop_vm(t_data *d);
 
 /* FICHIER FT_MLX_IMG.C */
 void	*mlx_xpmtostruct(t_dmlx *m, t_img *img, char *file);

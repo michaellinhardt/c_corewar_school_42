@@ -24,6 +24,7 @@ typedef struct			s_data
 	struct s_dmlx		mlx;
 	struct s_drez		rez;
 	struct s_dvm		vm;
+	char				graphic;
 }						t_data;
 
 #endif

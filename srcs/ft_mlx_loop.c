@@ -20,14 +20,19 @@ int		loop(char etat)
 	return (1);
 }
 
+void	loop_vm(t_data *d)
+{
+	scene(d, &d->mlx, &d->mlx.input);
+}
+
 /* FONCITON APPELLER EN BOUCLE PAR MLX */
 int		loop_hook(t_data *d)
 {
 	t_dmlx *m;
 
-	scene_img(d, &d->mlx);
-	scene(d, &d->mlx, &d->mlx.input);
 	m = &d->mlx;
+	scene_img(d, &d->mlx);
+	loop_vm(d);
 	if (USLEEP_BOOL && m->loop == 0 && !usleep(USLEEP_TIME))
 		return (0);
 	if (m->loopstop != 0 && --m->loopstop < 1)
