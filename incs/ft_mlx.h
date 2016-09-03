@@ -28,6 +28,6 @@ void	scene(t_data *d, t_dmlx *m, t_input *i);
 void	scene_img(t_data *d, t_dmlx *m);
 
 /* FICHIER FT_MLX_SCENE_INTRO.C */
-void	intro(t_data *d, t_dmlx *m, t_input *i);
+void	scene_intro(t_data *d, t_dmlx *m, t_input *i);
 
 #endif

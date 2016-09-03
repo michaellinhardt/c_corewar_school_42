@@ -1,6 +1,8 @@
 #include "ft_corewar.h"
 
-/* AFFICHAGE AU FUR ET A MESURE DES FREE EFFECTUé */
+/*
+** AFFICHAGE AU FUR ET A MESURE DES FREE EFFECTUé
+*/
 int		free_ascii(int ico, char *type, char *data)
 {
 	wchar_t		uni;
