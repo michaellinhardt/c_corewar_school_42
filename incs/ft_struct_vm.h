@@ -30,7 +30,6 @@ typedef struct			s_proc
 	int					i;
 	struct s_proc		*n;
 	struct s_proc		*p;
-
 }						t_proc;
 
 /* VM_PLAYER

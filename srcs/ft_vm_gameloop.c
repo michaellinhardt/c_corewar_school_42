@@ -14,10 +14,10 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int alive)
 	while (p && ((next = p->n) || 1))
 	{
 		// tue le process ou passe sont live à 0
-		if (p->live < 1 && l2(-2, "checklive()", "kill process id", p->id))
+		if (p->live < 1 && l2(-2, "checklive()", "kill process, id", p->id))
 			proc_kill(v, p, v->procdie);
 		else if ((alive += p->live) && !(p->live = 0))
-			l2(-2, "checklive()", "alive process id", p->id);
+			l2(-2, "checklive()", "alive process, id", p->id);
 		p = next;
 
 	}

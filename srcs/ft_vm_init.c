@@ -13,8 +13,11 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	// Debug pour forcer 4 joueurs ->
 	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
 
-	// log terminal des valeur par default
+	// initialise les variable
 	v->ctodie = (CYCLE_TO_DIE > -1) ? CYCLE_TO_DIE : 0;
+	v->cperloop = (CYCLE_PER_LOOP < 1) ? 1 : CYCLE_PER_LOOP;
+
+	// log terminal des valeur par default
 	l2(11, "VM_INIT", "Cycle to die", CYCLE_TO_DIE);
 	l2(11, "VM_INIT", "Cycle delta", CYCLE_DELTA);
 	l2(11, "VM_INIT", "Nbr live", NBR_LIVE);
