@@ -13,5 +13,7 @@ void	ft_client_init(t_client *client, char *champion)
 	client->champion = champion;
 	client->data_send.nbr = 456;
 	client->data_receive.nbr = 0;
+	ft_memset(client->data_send.arena, 'a', sizeof(client->data_send.arena));
+	ft_putendl(client->data_send.arena);
 	ft_bzero(client->buf, BUFF_SIZE);
 }

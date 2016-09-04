@@ -36,11 +36,14 @@ int		ft_server_receive_message(t_server *server, int fd_client)
 
 	//ret = recv(fd_client, server->buf, BUFF_SIZE - 1, 0);
 	ret = recv(fd_client, (void *)&server->data_receive[0],
-			sizeof(&server->data_receive[0]), 0);
+			sizeof(server->data_receive[0]), 0);
 	if (ret > 0)
 	{
+		ft_putnbr(sizeof(server->data_receive[0]));
+		ft_putendl("");
 		ft_putnbr(server->data_receive[0].nbr);
 		ft_putendl(server->data_receive[0].name);
+		ft_putendl(server->data_receive[0].arena);
 	}
 	if (ret == -1)
 		return (ret);

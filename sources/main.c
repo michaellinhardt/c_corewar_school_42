@@ -94,8 +94,8 @@ int		main(int argc, char **argv)
 		}
 		//ft_print_memory(server.name, (sizeof(server.name)));
 			//ft_accept_connection(&server);
-			if ((ft_server_send_message_all(&server, "mouhahahahha") == -1))
-				break ;
+			//if ((ft_server_send_message_all(&server, "mouhahahahha") == -1))
+			//	break ;
 			//ft_server_receive_message_all(&server, buf);
 		}
 		ft_server_disconnect_client_all(&server);

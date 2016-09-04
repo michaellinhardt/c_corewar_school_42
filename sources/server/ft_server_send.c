@@ -47,7 +47,7 @@ int		ft_server_send_message(int fd_client, char *message, t_server *server)
 {
 	ssize_t size_message;
 
-	size_message = sizeof(&server->data_send);
+	size_message = sizeof(server->data_send);
 	//size_message = ft_strlen(message);
 	//if ((send(fd_client, message, size_message, 0)) != size_message)
 	//	return (-1);
