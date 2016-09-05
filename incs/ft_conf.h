@@ -1,5 +1,5 @@
-#ifndef FT_MLX_CONF_H
-# define FT_MLX_CONF_H
+#ifndef FT_CONF_H
+# define FT_CONF_H
 /*
  *	Header pour les parametre réglable
  */
