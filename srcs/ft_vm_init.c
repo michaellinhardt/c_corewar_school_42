@@ -3,26 +3,29 @@
 */
 #include "ft_corewar.h"
 
-void	vm_init(t_data *d, t_dvm *v, int i)
+void	vm_init_log(void)
 {
-	ft_bzero(&d->vm, sizeof(t_dvm));
-	// initialise a null la chaine de process mort (pour eviter de les remalloc)
-	v->procdie = (t_proc *)NULL;
-
-
-	// Debug pour forcer 4 joueurs ->
-	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
-
-	// initialise les variable
-	v->ctodie = (CYCLE_TO_DIE > -1) ? CYCLE_TO_DIE : 0;
-	v->cperloop = (CYCLE_PER_LOOP < 1) ? 1 : CYCLE_PER_LOOP;
-
 	// log terminal des valeur par default
 	l2(11, "VM_INIT", "Cycle to die", CYCLE_TO_DIE);
 	l2(11, "VM_INIT", "Cycle delta", CYCLE_DELTA);
 	l2(11, "VM_INIT", "Nbr live", NBR_LIVE);
 	l2(11, "VM_INIT", "Max Checks", MAX_CHECKS);
 	l2(11, "VM_INIT", "Cycle per loop", CYCLE_PER_LOOP);
+}
+
+void	vm_init(t_data *d, t_dvm *v, int i)
+{
+	ft_bzero(&d->vm, sizeof(t_dvm));
+	v->procdie = (t_proc *)NULL;
+
+	// Debug pour forcer 4 joueurs ->
+	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
+
+	// initialise les variable et les log
+	v->ctodie = CYCLE_TO_DIE;
+	v->cperloop = CYCLE_PER_LOOP;
+	v->cperprint = CYCLE_PER_PRINT;
+	vm_init_log();
 
 	// Créer le premier proc de chaque player
 	// i * (MEM_SIZE / 4) représente le début du premier processeur de ce joueur dans l'arene
@@ -37,7 +40,7 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	d->mlx.scene = VM;
 
 
-
+	// debug..force le live sur tout les joueur
 	v->proc->live = 1; // 3
 	(v->proc->n)->live = 1; // 2
 	((v->proc->n)->n)->live = 1; // 1

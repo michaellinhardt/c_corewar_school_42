@@ -53,6 +53,8 @@ typedef struct			s_dvm
 	char				arene[MEM_SIZE];
 	int					cycle;
 	int					cperloop;
+	int					cperprint;
+	int					cperprintcount;
 	int					ctodie;
 	int					ctodiecount;
 	int					nbr_live;
