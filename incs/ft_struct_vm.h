@@ -51,6 +51,8 @@ typedef struct			s_dvm
 {
 	t_player			p[MAX_PLAYERS];
 	char				arene[MEM_SIZE];
+	char				graphic;
+	int					dump;
 	int					cycle;
 	int					cperloop;
 	int					cperprint;

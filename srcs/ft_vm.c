@@ -3,7 +3,13 @@
 */
 #include "ft_corewar.h"
 
-void	display(t_dvm *v)
+void	vm_dump(t_dvm *v)
+{
+	l2(12, "BYE BYE", "dump cycle", v->cycle);
+	exit1(0, data(), "dump order");
+}
+
+void	vm_display(t_dvm *v)
 {
 	v->cperprintcount = 0;
 	l2(-2, "PUSH TO WINDOW", "preparing data, cycle", v->cycle);
@@ -20,6 +26,10 @@ void	vm(t_dvm *v, int cperloop)
 			// Ici la partie est terminé
 			exit1(0, data(), "game over");
 		}
-		(++v->cperprintcount >= CYCLE_PER_PRINT) ? display(v) : (void)NULL;
+		// lance l'affichage si necessaire
+		if (v->graphic && ++v->cperprintcount >= CYCLE_PER_PRINT)
+			vm_display(v);
+		if (v->dump == v->cycle)
+			vm_dump(v);
 	}
 }

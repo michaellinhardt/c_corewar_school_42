@@ -66,10 +66,10 @@ int		l2(char ico, char *name, char *info, int val1)
 		return (1);
 	d = data();
 	if (ico != -2)
-		ft_printf(" %C %s %21s %s \e[35m%21s\e[93m -> %-21d %s\n", log_ico(ico), LINE_BLUE, name
-		, LINE_GREEN2, info, val1, LINE_YEL);
+		ft_printf(" %C %s %21s %s %9d \e[90m-> \e[35m%-35s\e[93m %s\n", log_ico(ico), LINE_BLUE, name
+		, LINE_GREEN2, val1, info, LINE_YEL);
 	else
-		ft_printf(" %C %s %21s %s \e[90m%21s -> %-21d\e[93m %s\n", log_ico(ico), LINE_BLUE, name
-		, LINE_GREEN2, info, val1, LINE_YEL);
+		ft_printf(" %C %s %21s %s \e[90m%9d -> %-35s\e[93m %s\n", log_ico(ico), LINE_BLUE, name
+		, LINE_GREEN2, val1, info, LINE_YEL);
 	return (1);
 }

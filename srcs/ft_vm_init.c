@@ -20,6 +20,8 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 
 	// Debug pour forcer 4 joueurs ->
 	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
+	// param dump qui sera récupéré depuis argv par la suite
+	v->dump = 0;
 
 	// initialise les variable et les log
 	v->ctodie = CYCLE_TO_DIE;
