@@ -68,6 +68,6 @@ void	free_data(t_data *d)
 	ascii(ASC_FREEDATA);
 	get_next_line(-10, NULL);
 	free_img((t_img *)NULL, &d->mlx, -1, -1);
-	free_proc(d->vm.proc, (t_proc *)NULL, 1);
-	free_proc(d->vm.procdie, (t_proc *)NULL, 2);
+	free_proc(d->proc, (t_proc *)NULL, 1);
+	free_proc(d->procdie, (t_proc *)NULL, 2);
 }

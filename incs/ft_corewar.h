@@ -37,8 +37,8 @@ void	vm_init(t_data *d, t_dvm *v, int i);
 void	vm(t_dvm *v, int cperloop);
 
 /* FICHIER FT_VM_PROCESSUS.C */
-void	proc_new(t_dvm *v, t_proc *new, int player, int i);
-int		proc_kill(t_dvm *v, t_proc *target, t_proc *procdie);
+void	proc_new(t_data *d, t_proc *new, int player, int i);
+int		proc_kill(t_data *d, t_proc *target, t_proc *procdie);
 
 /* FICHIER FT_GAMELOOP.C */
 int		gameloop(t_dvm *v);

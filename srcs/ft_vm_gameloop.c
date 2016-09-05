@@ -16,7 +16,7 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int alive, int dlive)
 		// tue le process ou passe sont live à 0
 		if (p->live < 1 && ++dlive
 		&& l2(-2, "checklive()", "kill process, id", p->id))
-			proc_kill(v, p, v->procdie);
+			proc_kill(data(), p, data()->procdie);
 		else if ((alive += p->live) && !(p->live = 0))
 			l2(-2, "checklive()", "alive process, id", p->id);
 		p = next;
@@ -37,7 +37,7 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int alive, int dlive)
 		? v->ctodie - CYCLE_DELTA : 0;
 
 	// Debug, met tout les process vivant
-	next = v->proc;
+	next = data()->proc;
 	if (v->ctodie > 0)
 		while (next && (next->live = 1))
 			next = next->n;
@@ -49,7 +49,7 @@ int		gameloop(t_dvm *v)
 	// Début du cycle
 	++v->cycle;
 	if (++v->ctodiecount >= v->ctodie
-	&& !checklive(v, v->proc, (t_proc *)NULL, 0, 0))
+	&& !checklive(v, data()->proc, (t_proc *)NULL, 0, 0))
 		return (0);
 	return (1);
 }

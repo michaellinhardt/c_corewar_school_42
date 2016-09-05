@@ -16,7 +16,7 @@ void	vm_init_log(void)
 void	vm_init(t_data *d, t_dvm *v, int i)
 {
 	ft_bzero(&d->vm, sizeof(t_dvm));
-	v->procdie = (t_proc *)NULL;
+	d->procdie = (t_proc *)NULL;
 
 	// Debug pour forcer 4 joueurs ->
 	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
@@ -35,7 +35,7 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (--i > -1)
 		if (v->p[i].playing && l2(11, "PLAYER", "true", i))
-	 		proc_new(v, (t_proc *)NULL, i, i * (MEM_SIZE / 4));
+	 		proc_new(d, (t_proc *)NULL, i, i * (MEM_SIZE / 4));
 		else if (!v->p[i].playing)
 			l2(11, "PLAYER", "false", i);
 	// Change la scene actuel pour afficher la vm
@@ -43,9 +43,9 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 
 
 	// debug..force le live sur tout les joueur
-	v->proc->live = 1; // 3
-	(v->proc->n)->live = 1; // 2
-	((v->proc->n)->n)->live = 1; // 1
-	(((v->proc->n)->n)->n)->live = 1; // 0
+	d->proc->live = 1; // 3
+	(d->proc->n)->live = 1; // 2
+	((d->proc->n)->n)->live = 1; // 1
+	(((d->proc->n)->n)->n)->live = 1; // 0
 	// v->ctodie = 300;
 }
