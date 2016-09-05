@@ -8,20 +8,21 @@
 ** p est la liste des proc vivant dans data()->vm->proc
 ** reset le décompte de la prochaien vérif à la fin (v->ctodiecount = 0)
 */
-int		checklive(t_dvm *v, t_proc *p, t_proc *next, int alive)
+int		checklive(t_dvm *v, t_proc *p, t_proc *next, int alive, int dlive)
 {
 	l2(-1, "checklive()", "cycle to die is coming!", v->cycle);
 	while (p && ((next = p->n) || 1))
 	{
 		// tue le process ou passe sont live à 0
-		if (p->live < 1 && l2(-2, "checklive()", "kill process, id", p->id))
+		if (p->live < 1 && ++dlive
+		&& l2(-2, "checklive()", "kill process, id", p->id))
 			proc_kill(v, p, v->procdie);
 		else if ((alive += p->live) && !(p->live = 0))
 			l2(-2, "checklive()", "alive process, id", p->id);
 		p = next;
-
 	}
 	l2(-1, "checklive()", "alive process count", alive);
+	l2(-1, "checklive()", "dead process count", dlive);
 	v->ctodiecount = 0;
 	v->nbr_live += alive;
 
@@ -48,7 +49,7 @@ int		gameloop(t_dvm *v)
 	// Début du cycle
 	++v->cycle;
 	if (++v->ctodiecount >= v->ctodie
-	&& !checklive(v, v->proc, (t_proc *)NULL, 0))
+	&& !checklive(v, v->proc, (t_proc *)NULL, 0, 0))
 		return (0);
 	return (1);
 }
