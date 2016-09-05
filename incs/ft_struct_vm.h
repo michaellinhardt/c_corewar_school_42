@@ -18,7 +18,7 @@
 	Y_P
  };
 
- /* VM_PLAYER
+ /* VM_PROC
   * donné lié a la vm, au champion et a l'arene
   */
 typedef struct			s_proc
@@ -50,7 +50,7 @@ typedef struct			s_player
 typedef struct			s_dvm
 {
 	t_player			p[MAX_PLAYERS];
-	char				arene[MEM_SIZE];
+	char				arene[(MEMSIZE * 2) + MEMSIZE + 1];
 	char				graphic;
 	int					dump;
 	int					cycle;
@@ -63,6 +63,7 @@ typedef struct			s_dvm
 	int					max_checks;
 	t_proc				*proc;
 	t_proc				*procdie;
+	t_display			display;
 }						t_dvm;
 
 #endif
