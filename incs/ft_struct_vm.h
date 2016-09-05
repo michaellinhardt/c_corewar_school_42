@@ -61,8 +61,6 @@ typedef struct			s_dvm
 	int					ctodiecount;
 	int					nbr_live;
 	int					max_checks;
-	t_proc				*proc;
-	t_proc				*procdie;
 	t_display			display;
 }						t_dvm;
 
