@@ -21,47 +21,48 @@
  /* VM_PROC
   * donné lié a la vm, au champion et a l'arene
   */
-typedef struct			s_proc
+typedef struct		s_proc
 {
 	// l'état live -> -1 pour mort, 0 pour vivant, 1 pour à déjà fais sont live
-	int					id;
-	int					player;
-	int					live;
-	int					i;
-	struct s_proc		*n;
-	struct s_proc		*p;
-}						t_proc;
+	int				id;
+	int				player;
+	int				live;
+	int				i;
+	struct s_proc	*n;
+	struct s_proc	*p;
+}					t_proc;
 
 /* VM_PLAYER
  * donné lié a la vm, au champion et a l'arene
  */
-typedef struct			s_player
+typedef struct		s_player
 {
-	char				name[CHAMP_NAME_SIZE];
-	char				code[CHAMP_MAX_SIZE];
-	int					playing;
-}						t_player;
+	char			name[PROG_NAME_LENGTH];
+	char			comment[COMMENT_LENGTH];
+	char			code[CHAMP_MAX_SIZE];
+	int				playing;
+}					t_player;
 
 /*
 ** DATA_VM
 ** donné lié a la vm, au champion et a l'arene
 ** Pour y acceder: data()->vm.players[0]->name
 */
-typedef struct			s_dvm
+typedef struct		s_dvm
 {
-	t_player			p[MAX_PLAYERS];
-	char				arene[(MEM_SIZE * 2) + MEM_SIZE + 1];
-	char				graphic;
-	int					dump;
-	int					cycle;
-	int					cperloop;
-	int					cperprint;
-	int					cperprintcount;
-	int					ctodie;
-	int					ctodiecount;
-	int					nbr_live;
-	int					max_checks;
-}						t_dvm;
+	t_player		p[MAX_PLAYERS];
+	char			arene[(MEM_SIZE * 2) + MEM_SIZE + 1];
+	char			graphic;
+	int				dump;
+	int				cycle;
+	int				cperloop;
+	int				cperprint;
+	int				cperprintcount;
+	int				ctodie;
+	int				ctodiecount;
+	int				nbr_live;
+	int				max_checks;
+}					t_dvm;
 
 #endif
 
