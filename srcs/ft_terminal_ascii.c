@@ -3,6 +3,8 @@
 /* AFFICHE L'ETAT DE LA CONF AU CHARGEMENT 2/2 */
 void	ascii_init2(void)
 {
+	if (!data()->vm.console)
+		return ;
 	ft_putstr("🎼  ╠═══════════════════════╬═══════════════════════════════");
 	ft_putendl("═══════════════════╣");
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG NEW IMG"
@@ -22,6 +24,8 @@ void	ascii_init2(void)
 /* AFFICHE L'ETAT DE LA CONF AU CHARGEMENT 1/1 */
 int		ascii_init(void)
 {
+	if (!data()->vm.console)
+		return (1);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "WIN_TITLE"
 	, LINE_GREEN2, WIN_TITLE, LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "GIF_DIR", LINE_GREEN2
@@ -46,6 +50,8 @@ int		ascii(char *path)
 	int		fd;
 	char	*line;
 
+	if (!data()->vm.console)
+		return (1);
 	line = NULL;
 	fd = open(path, O_RDONLY);
 	ft_putstr(TERMINAL_COLOR);

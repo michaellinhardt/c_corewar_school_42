@@ -15,7 +15,6 @@ void	vm_init_log(void)
 
 void	vm_init(t_data *d, t_dvm *v, int i)
 {
-	ft_bzero(&d->vm, sizeof(t_dvm));
 	d->proc = (t_proc *)NULL;
 	d->procdie = (t_proc *)NULL;
 
@@ -23,6 +22,7 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
 	// param dump qui sera récupéré depuis argv par la suite
 	v->dump = 0;
+
 
 	// initialise les variable et les log
 	v->ctodie = CYCLE_TO_DIE;

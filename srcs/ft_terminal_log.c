@@ -26,7 +26,7 @@ int		log_bool(char ico)
 {
 	if (LOG_DEBUG && (ico == -1
 	|| (LOG_DEBUG_DETAILED && ico == -2))
-	|| (LOG_DEBUG_CHECKLIVE && ico == -3)))
+	|| (LOG_DEBUG_CHECKLIVE && ico == -3))
 		return (1);
 	if ((!LOG_DEBUG && ico < 0)
 	|| (!LOG_DEBUG_DETAILED && ico == -2)
@@ -49,10 +49,10 @@ int		l(char ico, char *name, char *info)
 	t_data		*d;
 
 	/* AFFICHE LE LOG qUE SI NECESSAIRE SELON LA CONFIG DU HEADER */
-	if (!log_bool(ico))
+	if (!data()->vm.console || !log_bool(ico))
 		return (1);
 	d = data();
-	if (ico != -2)
+	if (ico != -2 && ico != -3)
 		ft_printf(" %C %s %21s %s %46s %s\n", log_ico(ico), LINE_BLUE, name
 		, LINE_GREEN2, info, LINE_YEL);
 	else
@@ -66,10 +66,10 @@ int		l2(char ico, char *name, char *info, int val1)
 	t_data		*d;
 
 	/* AFFICHE LE LOG qUE SI NECESSAIRE SELON LA CONFIG DU HEADER */
-	if (!log_bool(ico))
+	if (!data()->vm.console || !log_bool(ico))
 		return (1);
 	d = data();
-	if (ico != -2)
+	if (ico != -2 && ico != -3)
 		ft_printf(" %C %s %21s %s %9d \e[90m-> \e[35m%-35s\e[93m %s\n", log_ico(ico), LINE_BLUE, name
 		, LINE_GREEN2, val1, info, LINE_YEL);
 	else

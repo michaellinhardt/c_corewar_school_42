@@ -52,6 +52,7 @@ typedef struct		s_dvm
 {
 	t_player		p[MAX_PLAYERS];
 	char			arene[(MEM_SIZE * 2) + MEM_SIZE + 1];
+	char			console;
 	char			graphic;
 	int				dump;
 	int				cycle;

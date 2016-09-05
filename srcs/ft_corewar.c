@@ -9,6 +9,7 @@ int		main(int argc, char **argv)
 	/* lance les 4 premiers affichage dans le terminal, puis démarre mlx */
 	d->mlx.scene = SCENE_START;
 	d->vm.graphic = GRAPHIC_MODE;
+	d->vm.console = 1;
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init() && ascii(ASC_LOG)
 	&& d->vm.graphic)
 		mlx_start(d, &d->mlx);
