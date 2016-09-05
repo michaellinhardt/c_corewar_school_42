@@ -56,6 +56,7 @@
 # define LOG_ALL 0
 # define LOG_DEBUG 1
 # define LOG_DEBUG_DETAILED 1
+# define LOG_DEBUG_CHECKLIVE 1
 # define LOG_GENERAL 1
 # define LOG_KEY 0
 # define LOG_ITOW 0

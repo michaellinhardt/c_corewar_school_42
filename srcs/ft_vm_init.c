@@ -16,6 +16,7 @@ void	vm_init_log(void)
 void	vm_init(t_data *d, t_dvm *v, int i)
 {
 	ft_bzero(&d->vm, sizeof(t_dvm));
+	d->proc = (t_proc *)NULL;
 	d->procdie = (t_proc *)NULL;
 
 	// Debug pour forcer 4 joueurs ->

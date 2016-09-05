@@ -5,7 +5,7 @@ wchar_t log_ico(char ico)
 	wchar_t		c;
 
 	c = (wchar_t)NULL;
-	(ico == -1) ? (c = L'🆘') : 0;
+	(ico < 0) ? (c = L'🆘') : 0;
 	(ico == 1) ? (c = L'📗') : 0;
 	(ico == 2) ? (c = L'🕹') : 1;
 	(ico == 3) ? (c = L'🖥') : 1;
@@ -24,9 +24,13 @@ wchar_t log_ico(char ico)
 
 int		log_bool(char ico)
 {
-	if (LOG_DEBUG && (ico == -1 || (LOG_DEBUG_DETAILED && ico == -2)))
+	if (LOG_DEBUG && (ico == -1
+	|| (LOG_DEBUG_DETAILED && ico == -2))
+	|| (LOG_DEBUG_CHECKLIVE && ico == -3)))
 		return (1);
-	if ((!LOG_DEBUG && ico < 0) || (!LOG_DEBUG_DETAILED && ico == -2))
+	if ((!LOG_DEBUG && ico < 0)
+	|| (!LOG_DEBUG_DETAILED && ico == -2)
+	|| (!LOG_DEBUG_CHECKLIVE && ico == -3))
 		return (0);
 	if (!LOG_DISPLAY
 	|| (!LOG_ALL
