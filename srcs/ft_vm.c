@@ -20,11 +20,16 @@ void	vm(t_dvm *v, int cperloop)
 			// Ici la partie est terminé
 			exit1(0, data(), "game over");
 		}
-		// lance l'affichage si necessaire
-		if (v->graphic && ++v->cperprintcount >= CYCLE_PER_PRINT
-		&& !(v->cperprintcount = 0))
-			display(&(data()->mlx), v);
 		if (v->dump == v->cycle)
+		{
+			// il serais bon dafficher un ecran special pour préciser
+			// que la parti s'arrete suite a un dump
+			if (v->graphic)
+				display(&(data()->mlx), v);
 			vm_dump(v);
+		}
 	}
+	// lance l'affichage si necessaire
+	if (v->graphic)
+		display(&(data()->mlx), v);
 }

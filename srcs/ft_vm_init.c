@@ -27,7 +27,6 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	// initialise les variable et les log
 	v->ctodie = CYCLE_TO_DIE;
 	v->cperloop = CYCLE_PER_LOOP;
-	v->cperprint = CYCLE_PER_PRINT;
 	vm_init_log();
 
 	// Créer le premier proc de chaque player

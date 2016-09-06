@@ -11,7 +11,10 @@ void	display_arene(t_dmlx *m, t_dvm *v)
 
 void	display_cycle(t_dmlx *m, t_dvm *v)
 {
-	mlx_string_put(m->mlx, m->win, 1539, 197, 0xbab9b9, ft_itoastatic(v->cycle));
+	mlx_string_put(m->mlx, m->win, 1570, 195, 0x33cc33, ft_itoastatic(v->cycle));
+	mlx_string_put(m->mlx, m->win, 1785, 195, 0x33cc33, ft_itoastatic(v->cperloop));
+	mlx_string_put(m->mlx, m->win, 1570, 240, 0xff0000, ft_itoastatic(v->ctodiecount));
+	mlx_string_put(m->mlx, m->win, 1780, 240, 0xff0000, ft_itoastatic(v->ctodie));
 	v->graphic += 0;
 }
 
