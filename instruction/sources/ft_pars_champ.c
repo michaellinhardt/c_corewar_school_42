@@ -17,12 +17,14 @@ static int 	ft_recup_champ(char *str, t_champion *champion)
 		return (0);
 	read (fd, line, 4); // MAGIC NUMBER
 	read (fd, champion->name, PROG_NAME_LENGTH);
-	ft_print_memory(champion->name, PROG_NAME_LENGTH);
+//	ft_print_memory(champion->name, PROG_NAME_LENGTH);
 	read (fd, line, 6); //heu.....
 	read (fd, champion->comment, COMMENT_LENGTH);
 	ft_putchar('\n');
-	ft_print_memory(champion->comment, COMMENT_LENGTH);
+	read (fd, line, 6); //heu.....
+//	ft_print_memory(champion->comment, COMMENT_LENGTH);
 	read (fd, champion->prog_size, CHAMP_MAX_SIZE);
+	ft_print_memory(champion->prog_size, CHAMP_MAX_SIZE);
 	close (fd);
 	return (1);
 }
