@@ -17,7 +17,6 @@ void	display_cycle(t_dmlx *m, t_dvm *v)
 
 void	display(t_dmlx *m, t_dvm *v)
 {
-	v->cperprintcount = 0;
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
 	display_cycle(m, v);
 	display_arene(m, v);

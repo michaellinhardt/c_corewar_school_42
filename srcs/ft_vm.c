@@ -21,7 +21,8 @@ void	vm(t_dvm *v, int cperloop)
 			exit1(0, data(), "game over");
 		}
 		// lance l'affichage si necessaire
-		if (v->graphic && ++v->cperprintcount >= CYCLE_PER_PRINT)
+		if (v->graphic && ++v->cperprintcount >= CYCLE_PER_PRINT
+		&& !(v->cperprintcount = 0))
 			display(&(data()->mlx), v);
 		if (v->dump == v->cycle)
 			vm_dump(v);
