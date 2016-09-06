@@ -13,6 +13,7 @@
 /* LIB COREWAR/MLX */
 # include "op.h"
 # include "ft_conf.h"
+# include "ft_conf_obj.h"
 # include "ft_conf_mlx_vm.h"
 # include "ft_terminal_log.h"
 # include "ft_struct_mlx.h"

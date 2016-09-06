@@ -13,6 +13,8 @@
 */
 # define CHAMP_NAME_SIZE 2048
 # define CYCLE_PER_LOOP 2
+# define CPERLOOP_INC 5
+# define CPERLOOP_MAX 200
 
 /* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
  * Cela évite de spam le processeur du PC pour rien */

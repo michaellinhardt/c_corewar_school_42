@@ -14,7 +14,7 @@ void	*mlx_xpmtostruct(t_dmlx *m, t_img *img, char *file)
 	return (img->img);
 }
 
-void	itow(void *img, int x, int y, char *name)
+int		itow(void *img, int x, int y, char *name)
 {
 	t_data	*d;
 
@@ -23,4 +23,5 @@ void	itow(void *img, int x, int y, char *name)
 		l(3, "IMG TO WINDOW", name);
 	if (!mlx_put_image_to_window(d->mlx.mlx, d->mlx.win, img, x, y))
 		exit1(1, d, "Cant put image to windows");
+	return (1);
 }
