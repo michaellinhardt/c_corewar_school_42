@@ -57,8 +57,6 @@ typedef struct		s_dvm
 	int				dump;
 	int				cycle;
 	int				cperloop;
-	int				cperprint;
-	int				cperprintcount;
 	int				ctodie;
 	int				ctodiecount;
 	int				nbr_live;
