@@ -9,12 +9,6 @@ void	vm_dump(t_dvm *v)
 	exit1(0, data(), "dump order");
 }
 
-void	vm_display(t_dvm *v)
-{
-	v->cperprintcount = 0;
-	l2(-2, "PUSH TO WINDOW", "preparing data, cycle", v->cycle);
-}
-
 void	vm(t_dvm *v, int cperloop)
 {
 	// gameloop() exécute  un cycle, on l'appel cperloop fois,
@@ -28,7 +22,7 @@ void	vm(t_dvm *v, int cperloop)
 		}
 		// lance l'affichage si necessaire
 		if (v->graphic && ++v->cperprintcount >= CYCLE_PER_PRINT)
-			vm_display(v);
+			display(&(data()->mlx), v);
 		if (v->dump == v->cycle)
 			vm_dump(v);
 	}

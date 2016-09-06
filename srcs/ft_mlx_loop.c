@@ -20,6 +20,7 @@ int		loop(char etat)
 	return (1);
 }
 
+/* FONCITON APPELLER EN BOUCLE SI PAS DE MLX */
 void	loop_vm(t_data *d)
 {
 	scene(d, &d->mlx, &d->mlx.input);

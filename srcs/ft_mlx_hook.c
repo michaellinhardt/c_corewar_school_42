@@ -7,12 +7,9 @@
 
 int		mouseo_hook(int x, int y, t_data *d)
 {
-	static t_dmlx	*m;
-
-	m = &d->mlx;
 	/* ENREGISTRE LA POSITION DE LA SOURIS QUAND ELLE SE DEPLACE */
-	m->input.mo_x = x;
-	m->input.mo_y = y;
+	d->mlx.input.mo_x = x;
+	d->mlx.input.mo_y = y;
 	return (0);
 }
 

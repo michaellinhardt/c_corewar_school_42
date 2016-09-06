@@ -28,14 +28,14 @@ void	free_img(t_img *img, t_dmlx *m, int i, int j)
 {
 	while( ++i < SCENE_MAX )
 		if (m->img_isload[i] == 1 && (j = -1))
-			while( ++j < SCENE_IMG_MAX )
-				if ((img = m->scene_img[m->scene].l[j]) && img->img)
+			while( ++j < SCENE_IMG_MAX)
+				if ((img = &m->scene_img[i][j]) && img->img)
 				{
 					if (data()->vm.console)
 						ft_printf(
-						" %C %s %13s %s %12s[%03d].l[%03d] %s %-29s %s\e[93m\n"
+						" %C %s %13s %s %14s[%03d][%03d] %s %-29s %s\e[93m\n"
 						, L'✅', LINE_GREEN, "t_img", LINE_GREEN, "img_isload"
-						, m->scene, j, LINE_GREEN, "free\0", LINE_GREEN);
+						, i, j, LINE_GREEN, "free\0", LINE_GREEN);
 					mlx_destroy_image(m->mlx, img->img);
 				}
 }

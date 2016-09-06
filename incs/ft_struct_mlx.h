@@ -39,15 +39,6 @@ typedef struct		s_img
 	int				i;
 }					t_img;
 
-/* STRUCT CONTENANT LE TABLEAU DE LIEN VERS TOUTES LES IMAGES DUNE SCENES
- * list[x] le x correspond au nombre maximum d'image que l'on pourra charger
- * par scene. si il est trop petit il faudra l'augmenter
- */
-typedef struct		s_scene_img
-{
-	t_img			*l[SCENE_IMG_MAX];
-}					t_scene_img;
-
 /* STRUCT POUR INFORMER DE L'ETAT ENFONCé OU NON D'UNE TOUCHE
  * - si char <touche> = 0 -> touche laché, sinon elle est enfoncé
  * - mp_[x-y] pour la position d'un press, mo_[xy] pour mouseover */
@@ -90,7 +81,7 @@ typedef struct			s_dmlx
 	// nb. img_isload à 0 pour non, 1 pour chargé, 2 pour pas d'image
 	// (cette information servira pour la fonction de free)
 	char				img_isload[SCENE_MAX];
-	t_scene_img			scene_img[SCENE_MAX];
+	t_img				scene_img[SCENE_MAX][SCENE_IMG_MAX];
 	enum coord			coord;
 }						t_dmlx;
 

@@ -18,6 +18,7 @@ void	loop_vm(t_data *d);
 
 /* FICHIER FT_MLX_IMG.C */
 void	*mlx_xpmtostruct(t_dmlx *m, t_img *img, char *file);
+void	itow(void *img, int x, int y, char *name);
 
 /* FICHIER FT_MLX_INIT.C */
 void	mlx_start(t_data *d, t_dmlx *m);
@@ -30,5 +31,8 @@ void	scene_img(t_data *d, t_dmlx *m);
 
 /* FICHIER FT_MLX_SCENE_INTRO.C */
 void	scene_intro(t_data *d, t_dmlx *m, t_input *i);
+
+/* FICHIER FT_MLX_DISPLAY.C */
+void	display(t_dmlx *m, t_dvm *v);
 
 #endif
