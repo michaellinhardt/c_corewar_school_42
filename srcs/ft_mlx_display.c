@@ -9,7 +9,7 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle)
 	int		barsize;
 
 	pixel = 0;
-	barsize = 313;
+	barsize = 310;
 	m->loop += v->graphic * 0;
 	cycle = ((double)v->ctodiecount / (double)v->ctodie) * 100;
 	itow(m->scene_img[2][3].img, 1543, 275, "bar_cycle_left");

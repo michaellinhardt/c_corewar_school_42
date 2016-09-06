@@ -22,27 +22,22 @@ int		keyr_hook(int key, t_data *d)
 
 int		keyp_hook(int key, t_data *d)
 {
-	static t_dmlx	*m;
-
-	m = &d->mlx;
-	return (m->loop += 0 * key);
+	return (d->mlx.loop += 0 * key);
 }
 
 int		mousep_hook(int btn, int x, int y, t_data *d)
 {
-	static t_dmlx	*m;
-
-	m = &d->mlx;
-	return (btn += 0 * m->loop * x * y);
+	(btn == 1) ? d->mlx.input->mleft = 1 : 0;
+	(btn == 2) ? d->mlx.input->mright = 1 : 0;
+	return (btn += 0 * d->mlx.loop * x * y);
 }
 
 int		mouser_hook(int btn, int x, int y, t_data *d)
 {
-	static t_dmlx	*m;
-
-	m = &d->mlx;
+	(btn == 1) ? d->mlx.input->mleft = 0 : 0;
+	(btn == 2) ? d->mlx.input->mright = 0 : 0;
 	/* ENREGISTRE LA POSITION DE LA SOURIS QUAND ON CLIC */
-	m->input.mr_x = x;
-	m->input.mr_y = y;
+	d->mlx.input.mr_x = x;
+	d->mlx.input.mr_y = y;
 	return (btn += 0);
 }
