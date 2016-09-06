@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoastatic.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:48:31 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/09/06 14:42:31 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/09/06 14:47:46 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static void	itoa_isnegative(int *n, int *negative)
+static void	itoa_isnegative(intmax_t *n, int *negative)
 {
 	if (*n < 0)
 	{
@@ -22,15 +22,13 @@ static void	itoa_isnegative(int *n, int *negative)
 	}
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoastatic(intmax_t n)
 {
-	int		tmpn;
-	int		len;
-	int		negative;
-	char	*str;
+	intmax_t	tmpn;
+	int			len;
+	int			negative;
+	static char	str[30];
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	tmpn = n;
 	len = 2;
 	negative = 0;
@@ -38,8 +36,6 @@ char		*ft_itoa(int n)
 	while (tmpn /= 10)
 		len++;
 	len += negative;
-	if ((str = (char*)malloc(sizeof(char) * len)) == NULL)
-		return (NULL);
 	str[--len] = '\0';
 	while (len--)
 	{
