@@ -4,8 +4,6 @@ void	*mlx_xpmtostruct(t_dmlx *m, t_img *img, char *file)
 {
 	if (!(img->img) && LOG_XTOI == 1)
 		l(8, "GET XPM IMG", file);
-	else
-		ft_printf("fail\n");
 	if (!(img->img)
 	&& !(img->img = mlx_xpm_file_to_image(m->mlx, file, &img->sl, &img->end)))
 		exit1(1, data(), "Cant load xpm file");
