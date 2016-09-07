@@ -3,6 +3,7 @@
 /*
  *	Header des données lié a la vm et gameloop
  */
+# define SIZE_CHAR_ARENE (MEM_SIZE * 2) + MEM_SIZE + 1
 
  /* IDENTIFIANT DES ZONE CLICABLE, GRACE A LUI ON RETROUVE LES COORD
   * DE CHAQUE ZONE */
@@ -51,7 +52,7 @@ typedef struct		s_player
 typedef struct		s_dvm
 {
 	t_player		p[MAX_PLAYERS];
-	char			arene[(MEM_SIZE * 2) + MEM_SIZE + 1];
+	char			arene[SIZE_CHAR_ARENE];
 	char			console;
 	char			graphic;
 	int				dump;

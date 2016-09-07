@@ -22,6 +22,7 @@ LIST 	= ft_corewar \
 			ft_mlx_scene_img \
 			ft_mlx_scene_intro \
 			ft_mlx_display \
+			ft_mlx_display_arene \
 			ft_terminal_ascii \
 			ft_terminal_log \
 			ft_vm_init \
@@ -71,7 +72,8 @@ fclean: clean2
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 #leaks: $(NAME) -leaks
-leaks: $(NAME) test
+leaks: re
+	./corewar
 
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)

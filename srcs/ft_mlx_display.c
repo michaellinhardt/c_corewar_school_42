@@ -24,21 +24,14 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 		if (itow(m->scene_img[2][6].img, BTNCTDLESS1X, BTNCTDLESS1Y, "btn_less_over")
 		&& (m->input.mleft == 1))
 			itow(m->scene_img[2][7].img, BTNCTDLESS1X, BTNCTDLESS1Y, "btn_less_push");
-
-}
-
-void	display_arene(t_dmlx *m, t_dvm *v)
-{
-	mlx_string_put(m->mlx, m->win, 100, 100, 0xbab9b9, "ceci est un test");
-	v->graphic += 0;
 }
 
 void	display_cycle(t_dmlx *m, t_dvm *v)
 {
-	mlx_string_put(m->mlx, m->win, 1570, 195, 0x33cc33, ft_itoastatic(v->cycle));
-	mlx_string_put(m->mlx, m->win, 1785, 195, 0x33cc33, ft_itoastatic(v->cperloop));
-	mlx_string_put(m->mlx, m->win, 1570, 240, 0xff0000, ft_itoastatic(v->ctodiecount));
-	mlx_string_put(m->mlx, m->win, 1780, 240, 0xff0000, ft_itoastatic(v->ctodie));
+	mlx_string_put(m->mlx, m->win, 1582, 186, 0x33cc33, ft_itoastatic(v->cycle));
+	mlx_string_put(m->mlx, m->win, 1800, 186, 0x33cc33, ft_itoastatic(v->cperloop));
+	mlx_string_put(m->mlx, m->win, 1583, 231, 0xff0000, ft_itoastatic(v->ctodiecount));
+	mlx_string_put(m->mlx, m->win, 1788, 231, 0xff0000, ft_itoastatic(v->ctodie));
 }
 
 void	display(t_dmlx *m, t_dvm *v)
@@ -46,6 +39,6 @@ void	display(t_dmlx *m, t_dvm *v)
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
-	display_arene(m, v);
+	display_arene(m, v, 0, 0);
 	l2(-2, "display()", "printing cycle", v->cycle);
 }

@@ -17,6 +17,7 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 {
 	d->proc = (t_proc *)NULL;
 	d->procdie = (t_proc *)NULL;
+	ft_memset(v->arene, '0', SIZE_CHAR_ARENE);
 
 	// Debug pour forcer 4 joueurs ->
 	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
