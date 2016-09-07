@@ -28,10 +28,14 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 
 void	display_cycle(t_dmlx *m, t_dvm *v)
 {
-	mlx_string_put(m->mlx, m->win, 1582, 186, 0x33cc33, ft_itoastatic(v->cycle));
-	mlx_string_put(m->mlx, m->win, 1800, 186, 0x33cc33, ft_itoastatic(v->cperloop));
-	mlx_string_put(m->mlx, m->win, 1583, 231, 0xff0000, ft_itoastatic(v->ctodiecount));
-	mlx_string_put(m->mlx, m->win, 1788, 231, 0xff0000, ft_itoastatic(v->ctodie));
+	mlx_string_put(m->mlx, m->win, TEXTCYCLEX, TEXTCYCLEY, 0x33cc33
+		, ft_itoastatic(v->cycle));
+	mlx_string_put(m->mlx, m->win, TEXTCPERLOOPX, TEXTCPERLOOPY, 0x33cc33
+		, ft_itoastatic(v->cperloop));
+	mlx_string_put(m->mlx, m->win, TEXTCTODIECOUNTX, TEXTCTODIECOUNTY, 0xff0000
+		, ft_itoastatic(v->ctodiecount));
+	mlx_string_put(m->mlx, m->win, TEXTCTODIEX, TEXTCTODIEY, 0xff0000
+		, ft_itoastatic(v->ctodie));
 }
 
 void	display(t_dmlx *m, t_dvm *v)
