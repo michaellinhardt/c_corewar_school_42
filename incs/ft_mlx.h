@@ -33,7 +33,7 @@ void	scene_img(t_data *d, t_dmlx *m);
 void	scene_intro(t_data *d, t_dmlx *m, t_input *i);
 
 /* FICHIER FT_MLX_DISPLAY.C */
-void	display(t_dmlx *m, t_dvm *v);
+int		display(t_dmlx *m, t_dvm *v);
 
 /* FICHIER FT_MLX_DISPLAY_ARENE.C */
 void	display_arene(t_dmlx *m, t_dvm *v, int x, int y);

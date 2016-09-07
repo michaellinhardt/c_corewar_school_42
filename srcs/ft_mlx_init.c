@@ -31,6 +31,6 @@ void	mlx_start(t_data *d, t_dmlx *m)
 	mlx_hook(m->win, 17, (1L<<17), &red_cross, d);
 	mlx_loop_hook(m->mlx, loop_hook, d);
 	l(10, "MLX_HOOK", "all hook are initialised");
-	loop((m->loopstop = 127) * 0 + 1);
+	loop(0);
 	mlx_loop(m->mlx);
 }

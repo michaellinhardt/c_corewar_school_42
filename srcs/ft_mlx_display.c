@@ -16,14 +16,12 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 	, BARCTDLEFTY, "bar_cycle_right");
 	if (m->input.mo_x >= BTNCTDPLUSX1 && m->input.mo_x <= BTNCTDPLUSX2
 	&& m->input.mo_y >= BTNCTDPLUSY1 && m->input.mo_y <= BTNCTDPLUSY2)
-		if (itow(m->scene_img[2][4].img, BTNCTDPLUS1X, BTNCTDPLUS1Y, "btn_plus_over")
-		&& (m->input.mleft == 1))
-			itow(m->scene_img[2][5].img, BTNCTDPLUS1X, BTNCTDPLUS1Y, "btn_plus_push");
+		itow(m->scene_img[2][4].img, BTNCTDPLUS1X, BTNCTDPLUS1Y
+			, "btn_plus_over");
 	if (m->input.mo_x >= BTNCTDLESSX1 && m->input.mo_x <= BTNCTDLESSX2
 	&& m->input.mo_y >= BTNCTDLESSY1 && m->input.mo_y <= BTNCTDLESSY2)
-		if (itow(m->scene_img[2][6].img, BTNCTDLESS1X, BTNCTDLESS1Y, "btn_less_over")
-		&& (m->input.mleft == 1))
-			itow(m->scene_img[2][7].img, BTNCTDLESS1X, BTNCTDLESS1Y, "btn_less_push");
+		itow(m->scene_img[2][6].img, BTNCTDLESS1X, BTNCTDLESS1Y
+			, "btn_less_over");
 }
 
 void	display_cycle(t_dmlx *m, t_dvm *v)
@@ -38,11 +36,12 @@ void	display_cycle(t_dmlx *m, t_dvm *v)
 		, ft_itoastatic(v->ctodie));
 }
 
-void	display(t_dmlx *m, t_dvm *v)
+int		display(t_dmlx *m, t_dvm *v)
 {
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
 	display_arene(m, v, 0, 0);
 	l2(-2, "display()", "printing cycle", v->cycle);
+	return (1);
 }

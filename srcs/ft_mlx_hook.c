@@ -36,6 +36,7 @@ int		mouser_hook(int btn, int x, int y, t_data *d)
 {
 	(btn == 1) ? d->mlx.input.mleft = 0 : 0;
 	(btn == 2) ? d->mlx.input.mright = 0 : 0;
+	// getion des bouton + et - du bloc cycle
 	if (d->mlx.input.mo_x >= BTNCTDPLUSX1 && d->mlx.input.mo_x <= BTNCTDPLUSX2
 	&& d->mlx.input.mo_y >= BTNCTDPLUSY1 && d->mlx.input.mo_y <= BTNCTDPLUSY2)
 		d->vm.cperloop -=

@@ -12,9 +12,9 @@
 **  DONNEE DE LA VM
 */
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 2
-# define CPERLOOP_INC 5
-# define CPERLOOP_MAX 200
+# define CYCLE_PER_LOOP 1
+# define CPERLOOP_INC 10
+# define CPERLOOP_MAX 500
 
 /* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
  * Cela évite de spam le processeur du PC pour rien */
@@ -60,7 +60,7 @@
 # define LOG_DEBUG_CHECKLIVE 0
 # define LOG_GENERAL 0
 # define LOG_KEY 0
-# define LOG_ITOW 1
+# define LOG_ITOW 0
 # define LOG_SCENE 0
 # define LOG_MOUSE 0
 # define LOG_LOOP 0
