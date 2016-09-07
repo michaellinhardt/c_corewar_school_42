@@ -20,7 +20,7 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 			, "btn_plus_over");
 	if (m->input.mo_x >= BTNCTDLESSX1 && m->input.mo_x <= BTNCTDLESSX2
 	&& m->input.mo_y >= BTNCTDLESSY1 && m->input.mo_y <= BTNCTDLESSY2)
-		itow(m->scene_img[2][6].img, BTNCTDLESS1X, BTNCTDLESS1Y
+		itow(m->scene_img[2][5].img, BTNCTDLESS1X, BTNCTDLESS1Y
 			, "btn_less_over");
 }
 

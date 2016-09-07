@@ -3,21 +3,7 @@
 /*
  *	Header des données lié a la vm et gameloop
  */
-# define SIZE_CHAR_ARENE (MEM_SIZE * 2) + MEM_SIZE + 1
-
- /* IDENTIFIANT DES ZONE CLICABLE, GRACE A LUI ON RETROUVE LES COORD
-  * DE CHAQUE ZONE */
- enum imgvm {
- 	W,
-	R,
-	G,
-	B,
-	Y,
-	R_P,
-	G_P,
-	B_P,
-	Y_P
- };
+# define SIZE_CHAR_ARENE (MEM_SIZE * 2)
 
  /* VM_PROC
   * donné lié a la vm, au champion et a l'arene
@@ -53,6 +39,7 @@ typedef struct		s_dvm
 {
 	t_player		p[MAX_PLAYERS];
 	char			arene[SIZE_CHAR_ARENE];
+	char			code[SIZE_CHAR_ARENE / 2];
 	char			console;
 	char			graphic;
 	int				dump;
@@ -65,10 +52,3 @@ typedef struct		s_dvm
 }					t_dvm;
 
 #endif
-
-// t_player player(int index)
-// {
-//   return data()->vm.players[index];
-// }
-//
-// player(2).
