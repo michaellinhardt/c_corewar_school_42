@@ -12,7 +12,8 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	// Récupére un proc mort si il existe, sinon le créer
 	// nb. c'est aussi ici qu'on détermine l'id associé au process avec setid
 	setid = 0;
-	if (d->procdie && (new = d->procdie) && (((setid = d->procdie->id) || 1))
+	if (d->procdie && (new = d->procdie)
+	&& (((setid = d->procdie->id) || 1))
 	&& ((d->procdie = d->procdie->n) || 1)
 	&& ((d->procdie && ((d->procdie->p = (t_proc *)NULL) || 1)) || 1))
 		l2(12, "PROC RESURECT", "id", setid);
@@ -20,6 +21,8 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	&& !(new) && !(new = (t_proc *)ft_memalloc(sizeof(t_proc))))
 		exit1(1, data(), "Can't malloc struct s_proc");
 
+	// positionne le processus dans la liste d->proc à l'endroit ou il devrait
+	// se trouver (avec les liens next et previous correspondant)
 	if (d->proc && (new->n = d->proc))
 		(d->proc)->p = new;
 	else

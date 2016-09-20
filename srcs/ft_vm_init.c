@@ -13,7 +13,7 @@ void	vm_init_log(void)
 	l2(11, "VM_INIT", "Cycle per loop", CYCLE_PER_LOOP);
 }
 
-void	vm_init(t_data *d, t_dvm *v, int i)
+void	vm_init(t_data *d, t_dvm *v, int player)
 {
 	d->proc = (t_proc *)NULL;
 	d->procdie = (t_proc *)NULL;
@@ -34,11 +34,11 @@ void	vm_init(t_data *d, t_dvm *v, int i)
 	// i * (MEM_SIZE / 4) représente le début du premier processeur de ce joueur dans l'arene
 	// i est sont numéro (0-3) et MEM_SIZE / 4 la taille max par champion
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
-	while (--i > -1)
-		if (v->p[i].playing && l2(11, "PLAYER", "true", i))
-	 		proc_new(d, (t_proc *)NULL, i, i * (MEM_SIZE / 4));
-		else if (!v->p[i].playing)
-			l2(11, "PLAYER", "false", i);
+	while (--player > -1)
+		if (v->p[player].playing && l2(11, "PLAYER", "joue", player))
+	 		proc_new(d, (t_proc *)NULL, player, player * (MEM_SIZE / 4));
+		else if (!v->p[player].playing)
+			l2(11, "PLAYER", "ne joue pas", player);
 	// Change la scene actuel pour afficher la vm
 	d->mlx.scene = VM;
 

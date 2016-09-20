@@ -31,7 +31,7 @@ void	free_data(t_data *d);
 t_data	*data(void);
 
 /* FICHIER FT_VM_INIT.C */
-void	vm_init(t_data *d, t_dvm *v, int i);
+void	vm_init(t_data *d, t_dvm *v, int player);
 
 /* FICHIER FT_VM.C */
 void	vm(t_dvm *v, int cperloop);

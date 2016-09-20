@@ -28,7 +28,6 @@ void	vm(t_dvm *v, int cperloop)
 			if (v->graphic)
 				display(&(data()->mlx), v);
 			vm_dump(v);
-			break ;
 		}
 	}
 	// lance l'affichage si necessaire

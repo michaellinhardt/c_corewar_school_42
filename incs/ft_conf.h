@@ -4,6 +4,7 @@
  *	Header pour les parametre réglable
  */
 # define GRAPHIC_MODE 1
+# define CONSOLE_LOG 1
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
 # define WIN_Y 1200
@@ -55,10 +56,10 @@
  * LOG_DISPLAY: autorise ou non les log
  * LOG_ALL: force tous les log à 1 */
 # define LOG_DISPLAY 1
-# define LOG_ALL 0
-# define LOG_DEBUG 0
-# define LOG_DEBUG_DETAILED 0
-# define LOG_DEBUG_CHECKLIVE 0
+# define LOG_ALL 1
+# define LOG_DEBUG 1
+# define LOG_DEBUG_DETAILED 1
+# define LOG_DEBUG_CHECKLIVE 1
 # define LOG_GENERAL 0
 # define LOG_KEY 0
 # define LOG_ITOW 0
