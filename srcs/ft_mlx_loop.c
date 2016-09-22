@@ -16,7 +16,7 @@ int		loop(char etat)
 		return (1);
 	else
 		m->loop = etat;
-	(etat == 1) ? l(6, "LOOP STATUS", "-> 1") : l(6, "LOOP STATUS", "-> 0");
+	(etat == 1) ? l1(6, "LOOP STATUS", "-> 1") : l1(6, "LOOP STATUS", "-> 0");
 	return (1);
 }
 

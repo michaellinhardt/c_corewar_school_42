@@ -8,8 +8,8 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include <limits.h>
-# include "mlx.h"
 # include "libft.h"
+# include "mlx.h"
 /* LIB COREWAR/MLX */
 # include "op.h"
 # include "ft_conf.h"
@@ -17,6 +17,7 @@
 # include "ft_terminal_log.h"
 # include "ft_struct_mlx.h"
 # include "ft_struct_vm.h"
+# include "ft_struct_args.h"
 # include "ft_struct_data.h"
 # include "ft_mlx.h"
 
@@ -31,7 +32,7 @@ void	free_data(t_data *d);
 t_data	*data(void);
 
 /* FICHIER FT_VM_INIT.C */
-void	vm_init(t_data *d, t_dvm *v, int player);
+void	vm_init(t_data *d, t_dvm *v);
 
 /* FICHIER FT_VM.C */
 void	vm(t_dvm *v, int cperloop);

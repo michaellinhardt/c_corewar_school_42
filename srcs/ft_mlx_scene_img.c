@@ -19,7 +19,7 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 		if (!ft_strstr(f->d_name, ".xpm"))
 			continue ;
 		ft_printf("%!%s/%s", &file, folder, f->d_name);
-		l(1, f->d_name, "   loading xpm file");
+		l1(1, f->d_name, "   loading xpm file");
 		m->scene_img[m->scene][ft_atoi(f->d_name)].img = mlx_xpmtostruct(m
 			, &m->scene_img[m->scene][ft_atoi(f->d_name)], file);
 	}
@@ -40,7 +40,7 @@ void		scene_img_folder(t_dmlx *m, DIR *dir, struct dirent *f)
 	{
 		if (!ft_strstr(f->d_name, ".xpm"))
 			continue ;
-		else if (ft_atoi(f->d_name) == m->scene && l(1, f->d_name
+		else if (ft_atoi(f->d_name) == m->scene && l1(1, f->d_name
 			, "loading xpm from scene folder") && scene_img_file(m
 			, (DIR *)NULL, (struct dirent *)NULL, f->d_name))
 			break ;

@@ -44,7 +44,7 @@ int		log_bool(char ico)
 	return (1);
 }
 
-int		l(char ico, char *name, char *info)
+int		l1(char ico, char *name, char *info)
 {
 	t_data		*d;
 

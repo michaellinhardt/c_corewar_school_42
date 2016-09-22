@@ -9,7 +9,7 @@ void		scene(t_data *d, t_dmlx *m, t_input *i)
 	if (m->scene == INTRO)
 		scene_intro(d, m, i);
 	else if (m->scene == VM_INIT)
-		vm_init(d, &d->vm, MAX_PLAYERS);
+		vm_init(d, &d->vm);
 	else if (m->scene == VM)
 		vm(&d->vm, d->vm.cperloop);
 }
