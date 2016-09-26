@@ -1,6 +1,7 @@
 #include "ft_corewar.h"
 
 
+/*
 void	wip(t_data *d)
 {
 	d->args.file[4] = (char *)NULL;
@@ -8,6 +9,7 @@ void	wip(t_data *d)
 	d->args.file[0] = "./zaz/_.cor";
 	d->args.file[1] = (char *)NULL;
 }
+*/
 
 
 int		main(int argc, char **argv)
@@ -21,9 +23,10 @@ int		main(int argc, char **argv)
 	d->vm.graphic = GRAPHIC_MODE;
 	d->vm.console = CONSOLE_LOG;
 
-	wip(d);
+//	wip(d);
 
-	ft_recup_files(&d->args, argv, argc);
+	ft_recup_files(&d->vm, &d->args, argv, argc);
+	ft_recup_headers(&d->vm, &d->args);
 	/*
 	int fd;
 	char line[2048];

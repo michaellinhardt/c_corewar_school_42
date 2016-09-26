@@ -27,6 +27,7 @@ LIST 	= ft_corewar \
 			ft_terminal_log \
 			ft_vm_init \
 			ft_vm \
+			ft_recup_headers \
 			ft_vm_processus \
 			ft_vm_gameloop \
 			ft_little_to_big \

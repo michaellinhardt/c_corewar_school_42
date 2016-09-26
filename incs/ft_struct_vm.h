@@ -24,8 +24,11 @@ typedef struct		s_proc
  */
 typedef struct		s_player
 {
+	struct header_s	header;
+	/*
 	char			name[PROG_NAME_LENGTH];
 	char			comment[COMMENT_LENGTH];
+	*/
 	char			code[CHAMP_MAX_SIZE]; // heu
 	int				playing;
 }					t_player;
@@ -50,6 +53,7 @@ typedef struct		s_dvm
 	int				ctodiecount;
 	int				nbr_live;
 	int				max_checks;
+	int				nbr_players;
 }					t_dvm;
 
 #endif

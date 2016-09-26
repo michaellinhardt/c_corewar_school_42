@@ -50,5 +50,6 @@ int		gameloop(t_dvm *v);
 // ca c'est kdo bsx :)
 int		ft_little_to_big(int little);
 char	*ft_read_code_champ(int size);
-void	ft_recup_files(t_dargs *args, char **argv, int argc);
+void	ft_recup_files(t_dvm *vm, t_dargs *args, char **argv, int argc);
+void	ft_recup_headers(t_dvm *vm, t_dargs *args);
 #endif

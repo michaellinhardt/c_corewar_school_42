@@ -1,7 +1,7 @@
 #include "ft_corewar.h"
 #include <fcntl.h>
 
-void	ft_recup_files(t_dargs *args, char **argv, int argc)
+void	ft_recup_files(t_dvm *vm, t_dargs *args, char **argv, int argc)
 {
 	int 	i;
 	char	*message;
@@ -25,6 +25,6 @@ void	ft_recup_files(t_dargs *args, char **argv, int argc)
 		}
 		++i;
 	}
-	args->file[i - 1] = (void *)0;
-	(void)message;
+	vm->nbr_players = i - 1;
+//	args->file[i - 1] = (void *)0;
 }
