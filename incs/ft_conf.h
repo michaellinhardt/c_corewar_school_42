@@ -10,6 +10,15 @@
 # define WIN_Y 1200
 
 /*
+**  COULEUR DE LA VM
+*/
+# define ARENE_CODE_COLOR_WHITE 0xCCCCCC
+# define ARENE_CODE_COLOR_P1 0x1eff00
+# define ARENE_CODE_COLOR_P2 0xff0202
+# define ARENE_CODE_COLOR_P3 0x1fbdff
+# define ARENE_CODE_COLOR_P4 0xeaff00
+
+/*
 **  DONNEE DE LA VM
 */
 # define CHAMP_NAME_SIZE 2048

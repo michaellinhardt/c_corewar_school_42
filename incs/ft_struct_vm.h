@@ -26,7 +26,7 @@ typedef struct		s_player
 {
 	char			name[PROG_NAME_LENGTH];
 	char			comment[COMMENT_LENGTH];
-	char			code[CHAMP_MAX_SIZE];
+	char			code[CHAMP_MAX_SIZE]; // heu
 	int				playing;
 }					t_player;
 
@@ -40,7 +40,7 @@ typedef struct		s_dvm
 	t_player		p[MAX_PLAYERS];
 	char			arene[SIZE_CHAR_ARENE];
 	int				color[MEM_SIZE];
-	char			code[SIZE_CHAR_ARENE / 2];
+	char			code[MEM_SIZE]; // useless
 	char			console;
 	char			graphic;
 	int				dump;

@@ -21,9 +21,10 @@ int		main(int argc, char **argv)
 	d->vm.graphic = GRAPHIC_MODE;
 	d->vm.console = CONSOLE_LOG;
 
-/*
 	wip(d);
 
+	ft_recup_files(&d->args, argv, argc);
+	/*
 	int fd;
 	char line[2048];
 	ft_bzero(line, 2048);
@@ -52,6 +53,8 @@ int		main(int argc, char **argv)
 		read( fd, (void *)&file_header, sizeof(header_t));
 		unsigned char *ptr_octet;
 
+		file_header.magic = ft_little_to_big(file_header.magic);
+
 		ft_printf("Magic number (%lu octet): %X\n", sizeof(file_header.magic), file_header.magic);
 		ptr_octet = (void *)&file_header.magic;
 		ft_printf("octet 1: %.2X\n", ptr_octet[0]);
@@ -59,7 +62,25 @@ int		main(int argc, char **argv)
 		ft_printf("octet 3: %.2X\n", ptr_octet[2]);
 		ft_printf("octet 4: %.2X\n", ptr_octet[3]);
 
+		ft_putchar('\n');
 
+		int big;
+
+		big = ft_little_to_big(file_header.magic);
+
+		unsigned char *ptr_octet2;
+
+		ptr_octet2 = (void *)&big;
+
+		ft_printf("octet 1: %.2X\n", ptr_octet2[0]);
+		ft_printf("octet 2: %.2X\n", ptr_octet2[1]);
+		ft_printf("octet 3: %.2X\n", ptr_octet2[2]);
+		ft_printf("octet 4: %.2X\n", ptr_octet2[3]);
+
+
+
+		file_header.prog_size = ft_little_to_big(file_header.prog_size);
+		ft_printf("Taille du Programme : %d\n" , (file_header.prog_size));
 		ft_printf("Name (%lu octet): %s\n", sizeof(file_header.prog_name), file_header.prog_name);
 
 		ft_printf("Code size (%lu octet): %X\n", sizeof(file_header.prog_size), file_header.prog_size);
@@ -72,9 +93,10 @@ int		main(int argc, char **argv)
 		ft_printf("Comment (%lu octet): %s\n", sizeof(file_header.comment), file_header.comment);
 
 	}
+	
+
 
 	exit (0);
-*/
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
 	&& d->vm.graphic)
@@ -82,5 +104,6 @@ int		main(int argc, char **argv)
 	else
 		while (42)
 			loop_vm(d);
+	*/
 	return (0);
 }

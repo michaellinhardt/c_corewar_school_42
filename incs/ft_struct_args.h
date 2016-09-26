@@ -7,6 +7,7 @@
 typedef struct		s_dargs
 {
 	char			*file[5];
+	int				fd[4];
 }					t_dargs;
 
 #endif

@@ -24,6 +24,7 @@
 /* FICHIER FT_EXIT.C */
 int		exit1(int err, t_data *d, char *msg);
 int		exit2(int err, t_data *d, char *del, char *msg);
+void	exitascii(t_data *d, int err, char *msg);
 
 /* FICHIER FT_FREE.C */
 void	free_data(t_data *d);
@@ -44,4 +45,10 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie);
 /* FICHIER FT_GAMELOOP.C */
 int		gameloop(t_dvm *v);
 
+/* Tools */
+// caca
+// ca c'est kdo bsx :)
+int		ft_little_to_big(int little);
+char	*ft_read_code_champ(int size);
+void	ft_recup_files(t_dargs *args, char **argv, int argc);
 #endif
