@@ -27,6 +27,10 @@ int		main(int argc, char **argv)
 
 	ft_recup_files(&d->vm, &d->args, argv, argc);
 	ft_recup_headers(&d->vm, &d->args);
+	ft_recup_code(&d->vm, &d->args);
+	ft_fill_arene(&d->vm);
+//	ft_print_memory(&d->vm.p[0].code, CHAMP_MAX_SIZE);
+	ft_print_memory(&d->vm.arene, SIZE_CHAR_ARENE);
 	/*
 	int fd;
 	char line[2048];

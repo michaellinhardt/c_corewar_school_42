@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/09/06 14:48:28 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/09/26 21:32:19 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIST_C_LIBFT	= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_wchartostr.c ft_strrealloc.c ft_ldtoa.c ft_atoimax.c \
 				  ft_strrchr.c ft_lstmap.c ft_striter.c ft_strnequ.c \
 				  ft_strnew.c ft_strsplit.c ft_lstiter.c ft_strrev.c \
-				  ft_wstrtostr.c ft_itoastatic.c
+				  ft_wstrtostr.c ft_itoastatic.c ft_print_memory.c
 LIST_C_PRINTF	= ft_printf.c ft_printf_join.c ft_printf_parse.c \
 				  ft_printf_parse_option.c ft_printf_build_color.c \
 				  ft_printf_build_array.c ft_printf_build_format.c \

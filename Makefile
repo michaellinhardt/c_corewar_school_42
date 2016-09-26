@@ -31,6 +31,8 @@ LIST 	= ft_corewar \
 			ft_vm_processus \
 			ft_vm_gameloop \
 			ft_little_to_big \
+			ft_recup_code \
+			ft_fill_arene \
 			ft_recup_files \
 			ft_free \
 			ft_exit \

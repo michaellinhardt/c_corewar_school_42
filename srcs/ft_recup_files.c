@@ -26,5 +26,4 @@ void	ft_recup_files(t_dvm *vm, t_dargs *args, char **argv, int argc)
 		++i;
 	}
 	vm->nbr_players = i - 1;
-//	args->file[i - 1] = (void *)0;
 }
