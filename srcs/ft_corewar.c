@@ -28,6 +28,10 @@ int		main(int argc, char **argv)
 	ft_recup_files(&d->vm, &d->args, argv, argc);
 	ft_recup_headers(&d->vm, &d->args);
 	ft_recup_code(&d->vm, &d->args);
+	
+
+
+	ft_memset(d->vm.arene, '0', SIZE_CHAR_ARENE);
 	ft_fill_arene(&d->vm);
 	ft_putendl("map :");
 	
@@ -39,9 +43,9 @@ int		main(int argc, char **argv)
 
 		ft_putchar(*(d->vm.arene + i));
 		++i;
-		if (!(i % 4))
+		if (!(i % 2))
 			ft_putchar(' ');
-		if (!(i % 32))
+		if (!(i % 128))
 			ft_putchar('\n');
 	}
 	ft_putchar('\n');

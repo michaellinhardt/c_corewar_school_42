@@ -6,20 +6,10 @@ static void	ft_put_hex_arene(char *arene, unsigned char code)
 	unsigned int chiffre;
 	base = 16;
 
-	/*
-	*arene = '0';
-	*(arene + 1) = '0';
-   	if (code < 16)
-	   ++arene;
-	   */
 	while (base)
 	{
 			chiffre = code / base;
 			code = code - chiffre * base;
-		//	if (chiffre)
-		//		code %= chiffre;
-			ft_putnbr(chiffre);
-			ft_putchar(' ');
 			if (chiffre > 9)
 				*arene = chiffre + 55;
 			else

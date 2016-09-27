@@ -41,7 +41,7 @@ typedef struct		s_player
 typedef struct		s_dvm
 {
 	t_player		p[MAX_PLAYERS];
-	char			arene[SIZE_CHAR_ARENE];
+	char			arene[SIZE_CHAR_ARENE + 1];
 	int				color[MEM_SIZE];
 	char			code[MEM_SIZE]; // useless
 	char			console;
