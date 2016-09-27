@@ -2,20 +2,31 @@
 
 static void	ft_put_hex_arene(char *arene, unsigned char code)
 {
-	if (code / 16)
-		ft_put_hex_arene(++arene, code / 16);
+	unsigned int base;
+	unsigned int chiffre;
+	base = 16;
 
-	if (code % 16 >= 10)
+	/*
+	*arene = '0';
+	*(arene + 1) = '0';
+   	if (code < 16)
+	   ++arene;
+	   */
+	while (base)
 	{
-		*arene = (code % 16) + 55;
-		ft_putchar((code % 16) + 55);
+			chiffre = code / base;
+			code = code - chiffre * base;
+		//	if (chiffre)
+		//		code %= chiffre;
+			ft_putnbr(chiffre);
+			ft_putchar(' ');
+			if (chiffre > 9)
+				*arene = chiffre + 55;
+			else
+				*arene = chiffre + '0';
+			++arene;
+		base = base / 16;
 	}
-	else
-	{
-		ft_putchar((code % 16) + '0');
-		*arene = (code % 16) + '0';
-	}
-
 }
 
 static void ft_place_champion(char *arene, char *code, int *color, unsigned int
@@ -34,8 +45,6 @@ static void ft_place_champion(char *arene, char *code, int *color, unsigned int
 		++i;
 		t += 2;
 	}
-
-
 }
 
 void	ft_fill_arene(t_dvm *vm)
@@ -47,6 +56,7 @@ void	ft_fill_arene(t_dvm *vm)
 	{
 		ft_place_champion(vm->arene + ((i * MEM_SIZE) / vm->nbr_players) * 2,
 				vm->p[i].code, vm->color, vm->p[i].header.prog_size);
+		ft_putendl("");
 		++i;
 	}
 

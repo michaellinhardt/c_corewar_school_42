@@ -29,8 +29,25 @@ int		main(int argc, char **argv)
 	ft_recup_headers(&d->vm, &d->args);
 	ft_recup_code(&d->vm, &d->args);
 	ft_fill_arene(&d->vm);
+	ft_putendl("map :");
+	
+	int i;
+
+	i = 0;
+	while (*(d->vm.arene + i))
+	{
+
+		ft_putchar(*(d->vm.arene + i));
+		++i;
+		if (!(i % 4))
+			ft_putchar(' ');
+		if (!(i % 32))
+			ft_putchar('\n');
+	}
+	ft_putchar('\n');
+//	ft_putendl(d->vm.arene);
 //	ft_print_memory(&d->vm.p[0].code, CHAMP_MAX_SIZE);
-	ft_print_memory(&d->vm.arene, SIZE_CHAR_ARENE);
+//	ft_print_memory(&d->vm.arene, SIZE_CHAR_ARENE);
 	/*
 	int fd;
 	char line[2048];
