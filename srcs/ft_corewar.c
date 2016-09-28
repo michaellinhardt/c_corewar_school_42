@@ -25,16 +25,20 @@ int		main(int argc, char **argv)
 
 //	wip(d);
 
+	// parse options + champs;
 	ft_recup_files(&d->vm, &d->args, argv, argc);
 	ft_recup_headers(&d->vm, &d->args);
 	ft_recup_code(&d->vm, &d->args);
-	
 
 
-	ft_memset(d->vm.arene, '0', SIZE_CHAR_ARENE);
-	ft_fill_arene(&d->vm);
+
+
+	ft_init_vm(&d->vm);
+
 	ft_putendl("map :");
+	ft_display_vm(&d->vm);
 	
+	/*
 	int i;
 
 	i = 0;
@@ -48,11 +52,11 @@ int		main(int argc, char **argv)
 		if (!(i % 128))
 			ft_putchar('\n');
 	}
-	ft_putchar('\n');
+	*/
 //	ft_putendl(d->vm.arene);
 //	ft_print_memory(&d->vm.p[0].code, CHAMP_MAX_SIZE);
 //	ft_print_memory(&d->vm.arene, SIZE_CHAR_ARENE);
-	/*
+/*
 	int fd;
 	char line[2048];
 	ft_bzero(line, 2048);
@@ -123,6 +127,7 @@ int		main(int argc, char **argv)
 	}
 	
 
+	*/
 
 	exit (0);
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
@@ -132,6 +137,5 @@ int		main(int argc, char **argv)
 	else
 		while (42)
 			loop_vm(d);
-	*/
 	return (0);
 }

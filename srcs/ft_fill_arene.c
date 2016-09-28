@@ -1,11 +1,13 @@
 #include "ft_corewar.h"
 
-static void	ft_put_hex_arene(char *arene, unsigned char code)
+static void	ft_put_hex_arene(char *arene, unsigned char code, int *color,
+		unsigned int code_color)
 {
 	unsigned int base;
 	unsigned int chiffre;
 	base = 16;
 
+	*color = code_color;
 	while (base)
 	{
 			chiffre = code / base;
@@ -19,21 +21,18 @@ static void	ft_put_hex_arene(char *arene, unsigned char code)
 	}
 }
 
-static void ft_place_champion(char *arene, char *code, int *color, unsigned int
-		prog_size)
+static void ft_place_champion(char *arene, char *code, int p, t_dvm *vm)
 {
 	unsigned int i;
-	unsigned int t;
 
 	i = 0;
-	t= 0;
 
-	(void)(color);
-	while (i < prog_size)
+	while (i < vm->p[p].header.prog_size)
 	{
-		ft_put_hex_arene(arene + t, (unsigned char) *(code + i));
+		ft_put_hex_arene(arene + i * 2, (unsigned char) * (code + i), 
+				vm->color + i + ((p  * MEM_SIZE) / vm->nbr_players),
+				vm->code_color[p + 1]);
 		++i;
-		t += 2;
 	}
 }
 
@@ -45,31 +44,8 @@ void	ft_fill_arene(t_dvm *vm)
 	while (i < vm->nbr_players)
 	{
 		ft_place_champion(vm->arene + ((i * MEM_SIZE) / vm->nbr_players) * 2,
-				vm->p[i].code, vm->color, vm->p[i].header.prog_size);
-		ft_putendl("");
+				vm->p[i].code, i, vm);
 		++i;
 	}
 
 }
-
-
-
-
-
-/*
-#include "libft.h"
-#include "instructions.h"
-
-void	ft_place_champions(char *vm, t_champion *champions, int champs)
-{
-unsigned int nbr;
-
-nbr = 0;
-while (nbr < champs)
-{
-ft_memmove(vm + ((nbr * MEM_SIZE) / champs), champions->prog_size, CHAMP_MAX_SIZE);
-++champions;
-++nbr;
-}
-}
-*/

@@ -34,6 +34,8 @@ LIST 	= ft_corewar \
 			ft_recup_code \
 			ft_fill_arene \
 			ft_recup_files \
+			ft_init_vm \
+			ft_display_vm \
 			ft_free \
 			ft_exit \
 

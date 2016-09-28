@@ -54,4 +54,6 @@ void	ft_recup_files(t_dvm *vm, t_dargs *args, char **argv, int argc);
 void	ft_recup_headers(t_dvm *vm, t_dargs *args);
 void	ft_recup_code(t_dvm *vm, t_dargs *args);
 void	ft_fill_arene(t_dvm *vm);
+void	ft_init_vm(t_dvm *vm);
+void	ft_display_vm(t_dvm *vm);
 #endif
