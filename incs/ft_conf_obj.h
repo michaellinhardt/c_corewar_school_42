@@ -18,6 +18,8 @@
 */
 # define PROCDECALLAGEX -2
 # define PROCDECALLAGEY 3
+# define PROCX 24
+# define PROCY 16
 
 /*
 ** BLOC CYCLE MANAGEMENT

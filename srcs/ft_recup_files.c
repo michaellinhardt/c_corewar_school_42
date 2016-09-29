@@ -7,7 +7,7 @@ void	ft_recup_files(t_dvm *vm, t_dargs *args, char **argv, int argc)
 	char	*message;
 
 	i = 1;
-	if (argc > 5)
+	if (argc > MAX_PLAYERS + 1)
 		exit1(1, data(), "Too many champions mother Fucker");
 	else if (argc == 1)
 		exit1(1, data(), "Entre un champion a minima Enculee");

@@ -35,6 +35,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->i = i;
 	new->live = 0;
 	new->id = setid;
+	d->vm.nbr_proc++;
 	l2(-1, "PROC SETTINGS", "player attribution", player);
 	l2(-1, "PROC SETTINGS", "id processus", setid);
 	l2(-1, "PROC SETTINGS", "arene start value", i);
@@ -56,5 +57,6 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 	if (procdie && (target->n = procdie))
 		procdie->p = target;
 	target->p = (t_proc *)NULL;
+	d->vm.nbr_proc--;
 	return (1);
 }

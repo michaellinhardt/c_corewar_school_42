@@ -56,6 +56,7 @@ typedef struct		s_dvm
 	int				nbr_live;
 	int				max_checks;
 	int				nbr_players;
+	int				nbr_proc;
 }					t_dvm;
 
 #endif

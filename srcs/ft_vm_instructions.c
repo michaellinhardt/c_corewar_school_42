@@ -54,9 +54,13 @@ void	op_fork(t_dvm *v, t_proc *proc)
 void	instructions(t_dvm *v, t_proc *proc)
 {
 	v->graphic += 0;
-	if (v->arene[proc->i * 2] == '0' && v->arene[proc->i * 2 + 1] == '1')
+	if (v->arene[proc->i * 2] == '0' && v->arene[proc->i * 2 + 1] == '1'
+	&& v->arene[proc->i * 2 + 2] && v->arene[proc->i * 2 + 2] == 'F'
+	&& v->arene[proc->i * 2 + 3] && v->arene[proc->i * 2 + 3] == 'F')
 		op_live(v, proc);
-	else if (v->arene[proc->i * 2] == '0' && v->arene[proc->i * 2 + 1] == 'C')
+	else if (v->arene[proc->i * 2] == '0' && v->arene[proc->i * 2 + 1] == 'C'
+	&& v->arene[proc->i * 2 + 2] && v->arene[proc->i * 2 + 2] == '0'
+	&& v->arene[proc->i * 2 + 3] && v->arene[proc->i * 2 + 3] == '0')
 		op_fork(v, proc);
 	else
 	{
