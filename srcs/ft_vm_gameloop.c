@@ -15,10 +15,10 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	{
 		// tue le process ou passe sont live à 0
 		if (p->live < 1 && ++pdead
-		&& l2(-3, "checklive()", "kill process, id", p->id))
+		&& l2(-3, "checklive()", "kill process", p->id))
 			proc_kill(data(), p, data()->procdie);
 		else if ((palive += p->live) && !(p->live = 0))
-			l2(-3, "checklive()", "palive process, id", p->id);
+			l2(-3, "checklive()", "live process", p->id);
 		p = next;
 	}
 	l2(-1, "checklive()", "alive process count", palive);
@@ -51,5 +51,6 @@ int		gameloop(t_dvm *v)
 	if (++v->ctodiecount >= v->ctodie
 	&& !checklive(v, data()->proc, (t_proc *)NULL, 0, 0))
 		return (0);
+	processus_read(v, data()->proc);
 	return (1);
 }

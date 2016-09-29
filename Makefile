@@ -22,6 +22,7 @@ LIST 	= ft_corewar \
 			ft_mlx_scene_img \
 			ft_mlx_scene_intro \
 			ft_mlx_display \
+			ft_mlx_display_processus \
 			ft_mlx_display_arene \
 			ft_terminal_ascii \
 			ft_terminal_log \
@@ -29,6 +30,8 @@ LIST 	= ft_corewar \
 			ft_vm \
 			ft_recup_headers \
 			ft_vm_processus \
+			ft_vm_processus_read \
+			ft_vm_instructions \
 			ft_vm_gameloop \
 			ft_little_to_big \
 			ft_recup_code \

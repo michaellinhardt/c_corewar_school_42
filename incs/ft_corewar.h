@@ -45,6 +45,12 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie);
 /* FICHIER FT_GAMELOOP.C */
 int		gameloop(t_dvm *v);
 
+/* FICHIER FT_VM_PROCESSUS_READ.C */
+void	processus_read(t_dvm *v, t_proc *proc);
+
+/* FICHIER FT_VM_INSTRUCTIONS.C */
+void	instructions(t_dvm *v, t_proc *proc);
+
 /* Tools */
 // caca
 // ca c'est kdo bsx :)

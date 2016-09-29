@@ -14,6 +14,7 @@ typedef struct		s_proc
 	int				id;
 	int				player;
 	int				live;
+	int				wait;
 	int				i;
 	struct s_proc	*n;
 	struct s_proc	*p;

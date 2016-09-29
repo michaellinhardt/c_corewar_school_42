@@ -14,6 +14,12 @@
 # define VMPERLINE 64
 
 /*
+** POSITIONNEMENT DES PROCESSUS
+*/
+# define PROCDECALLAGEX -2
+# define PROCDECALLAGEY 3
+
+/*
 ** BLOC CYCLE MANAGEMENT
 ** bar de chargement
 */

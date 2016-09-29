@@ -34,7 +34,6 @@ static void ft_place_champion(char *arene, char *code, int p, t_dvm *vm)
 				vm->code_color[p + 1]);
 		++i;
 	}
-	ft_printf("\n\n");
 }
 
 void	ft_fill_arene(t_dvm *vm)

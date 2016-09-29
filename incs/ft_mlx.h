@@ -38,4 +38,7 @@ int		display(t_dmlx *m, t_dvm *v);
 /* FICHIER FT_MLX_DISPLAY_ARENE.C */
 void	display_arene(t_dmlx *m, t_dvm *v, int x, int y);
 
+/* FICHIER FT_MLX_DISPLAY_PROCESSUS.C */
+void	display_processus(t_dmlx *m, t_proc *proc);
+
 #endif

@@ -36,6 +36,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->live = 0;
 	new->id = setid;
 	l2(-1, "PROC SETTINGS", "player attribution", player);
+	l2(-1, "PROC SETTINGS", "id processus", setid);
 	l2(-1, "PROC SETTINGS", "arene start value", i);
 }
 
@@ -44,22 +45,16 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 */
 int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 {
-	// refais les lien de la liste proc
-	if (target->p && target->n
-	&& ((target->p)->n = target->n))
+	if (target->p)
+		(target->p)->n = target->n;
+	if (target->n)
 		(target->n)->p = target->p;
-	else if (target->p)
-		target->p = (t_proc *)NULL;
-	else if (target->n && (((target->n)->p = (t_proc *)NULL) || 1))
+	if (d->proc == target)
 		d->proc = target->n;
-	else
-		d->proc = (t_proc *)NULL;
 
-	// déplace le proc dans la liste morte
-	target->p = (t_proc *)NULL;
-	target->n = (t_proc *)NULL;
+	// déplace le maillon
 	if (procdie && (target->n = procdie))
 		procdie->p = target;
-	d->procdie = target;
+	target->p = (t_proc *)NULL;
 	return (1);
 }

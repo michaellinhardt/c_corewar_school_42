@@ -16,7 +16,6 @@ int		main(int argc, char **argv)
 	ft_recup_headers(&d->vm, &d->args);
 	ft_recup_code(&d->vm, &d->args);
 
-
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
 	&& d->vm.graphic)

@@ -22,7 +22,8 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (--player > -1)
 		if (v->p[player].playing && l2(11, "PLAYER", "joue", player))
-			proc_new(d, (t_proc *)NULL, player, player * (MEM_SIZE / 4));
+			proc_new(d, (t_proc *)NULL, player
+			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[player].playing)
 			l2(11, "PLAYER", "ne joue pas", player);
 	// Change la scene actuel pour afficher la vm

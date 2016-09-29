@@ -14,7 +14,7 @@
 */
 # define ARENE_CODE_COLOR_WHITE 0xCCCCCC
 # define ARENE_CODE_COLOR_P1 0x1eff00
-# define ARENE_CODE_COLOR_P2 0xff0202
+# define ARENE_CODE_COLOR_P2 0xf4532a
 # define ARENE_CODE_COLOR_P3 0x1fbdff
 # define ARENE_CODE_COLOR_P4 0xeaff00
 
@@ -67,8 +67,8 @@
 # define LOG_DISPLAY 1
 # define LOG_ALL 0
 # define LOG_DEBUG 1
-# define LOG_DEBUG_DETAILED 0
-# define LOG_DEBUG_CHECKLIVE 0
+# define LOG_DEBUG_DETAILED 1
+# define LOG_DEBUG_CHECKLIVE 1
 # define LOG_GENERAL 0
 # define LOG_KEY 0
 # define LOG_ITOW 0

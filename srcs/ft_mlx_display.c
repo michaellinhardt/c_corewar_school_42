@@ -41,7 +41,8 @@ int		display(t_dmlx *m, t_dvm *v)
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
+	display_processus(m, data()->proc);
 	display_arene(m, v, 0, 0);
-	l2(-2, "display()", "printing cycle", v->cycle);
+	//l2(-2, "display()", "printing cycle", v->cycle);
 	return (1);
 }
