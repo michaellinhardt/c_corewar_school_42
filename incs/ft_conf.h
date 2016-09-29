@@ -22,8 +22,8 @@
 **  DONNEE DE LA VM
 */
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 1
-# define CPERLOOP_INC 1
+# define CYCLE_PER_LOOP 3
+# define CPERLOOP_INC 2
 # define CPERLOOP_MAX 50
 # define ARENE_CODE_COLOR 0xCCCCCC
 
