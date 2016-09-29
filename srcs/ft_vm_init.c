@@ -33,23 +33,19 @@ void	vm_init(t_data *d, t_dvm *v)
 {
 	d->proc = (t_proc *)NULL;
 	d->procdie = (t_proc *)NULL;
-	ft_memset(v->arene, '0', SIZE_CHAR_ARENE);
 
-	// Debug pour forcer 4 joueurs ->
-	v->p[0].playing = 1; v->p[1].playing = 1; v->p[2].playing = 1; v->p[3].playing = 1;
-	// param dump qui sera récupéré depuis argv par la suite
-	v->dump = 0;
-
+	ft_memset(&v->arene, '0', SIZE_CHAR_ARENE);
+	ft_fill_arene(v);
 
 	// initialise les variable et les log
 	v->ctodie = CYCLE_TO_DIE;
 	v->cperloop = CYCLE_PER_LOOP;
+
 	vm_init_log();
 
 	vm_init_proc(d, v, MAX_PLAYERS);
 
 	d->mlx.scene = VM;
-
 
 /*
 	// debug..force le live sur tout les joueur

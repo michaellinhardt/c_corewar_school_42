@@ -13,6 +13,7 @@ void		ft_recup_code(t_dvm *vm, t_dargs *args)
 			exit1(1, data(), "Pb de read fdp");
 		if (ret != vm->p[i].header.prog_size)
 			exit1(1, data(), "Batard pas la bonne taille");
+		vm->p[i].playing = 1;
 		++i;
 	}
 }

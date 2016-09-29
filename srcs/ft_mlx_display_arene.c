@@ -16,7 +16,7 @@ void	display_arene(t_dmlx *m, t_dvm *v, int x, int y)
 		s[1] = v->arene[i + 1];
 		// insere le text
 		mlx_string_put(m->mlx, m->win, x * VMSPACEBLANK + VMSTARTX
-		, y * VMSPACELINE + VMSTARTY, ARENE_CODE_COLOR, s);
+		, y * VMSPACELINE + VMSTARTY, v->color[i / 2], s);
 		// insere la couleur de fond
 		// if (v->code[])
 		++x;

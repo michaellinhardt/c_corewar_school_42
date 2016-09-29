@@ -29,17 +29,26 @@ static void ft_place_champion(char *arene, char *code, int p, t_dvm *vm)
 
 	while (i < vm->p[p].header.prog_size)
 	{
-		ft_put_hex_arene(arene + i * 2, (unsigned char) * (code + i), 
+		ft_put_hex_arene(arene + i * 2, (unsigned char) * (code + i),
 				vm->color + i + ((p  * MEM_SIZE) / vm->nbr_players),
 				vm->code_color[p + 1]);
 		++i;
 	}
+	ft_printf("\n\n");
 }
 
 void	ft_fill_arene(t_dvm *vm)
 {
 	int	i;
 
+	vm->code_color[0] = ARENE_CODE_COLOR_WHITE;
+	vm->code_color[1] = ARENE_CODE_COLOR_P1;
+	vm->code_color[2] = ARENE_CODE_COLOR_P2;
+	vm->code_color[3] = ARENE_CODE_COLOR_P3;
+	vm->code_color[4] = ARENE_CODE_COLOR_P4;
+	i = 0;
+	while (i < MEM_SIZE)
+		vm->color[i++] = vm->code_color[0];
 	i = 0;
 	while (i < vm->nbr_players)
 	{
