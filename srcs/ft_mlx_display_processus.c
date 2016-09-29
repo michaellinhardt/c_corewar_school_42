@@ -12,12 +12,10 @@ void	display_processus(t_dmlx *m, t_proc *proc)
 
 	while ( proc )
 	{
-		x = proc->i % VMPERLINE;
-		y = proc->i / VMPERLINE;
+		x = (proc->i % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
+		y = (proc->i / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
 
-		itow(m->scene_img[2][proc->player + 6].img
-		, x * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX
-		, y * VMSPACELINE + VMSTARTY + PROCDECALLAGEY
+		itow(m->scene_img[2][proc->player + 6].img, x, y
 		, "processus displaying");
 
 		proc = proc->n;

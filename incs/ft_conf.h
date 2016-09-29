@@ -22,7 +22,7 @@
 **  DONNEE DE LA VM
 */
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 1
+# define CYCLE_PER_LOOP 10
 # define CPERLOOP_INC 10
 # define CPERLOOP_MAX 500
 # define ARENE_CODE_COLOR 0xCCCCCC
@@ -64,11 +64,11 @@
 /* AFFICHAGE OU NON DES LOG,
  * LOG_DISPLAY: autorise ou non les log
  * LOG_ALL: force tous les log à 1 */
-# define LOG_DISPLAY 1
+# define LOG_DISPLAY 0
 # define LOG_ALL 0
-# define LOG_DEBUG 1
-# define LOG_DEBUG_DETAILED 1
-# define LOG_DEBUG_CHECKLIVE 1
+# define LOG_DEBUG 0
+# define LOG_DEBUG_DETAILED 0
+# define LOG_DEBUG_CHECKLIVE 0
 # define LOG_GENERAL 0
 # define LOG_KEY 0
 # define LOG_ITOW 0

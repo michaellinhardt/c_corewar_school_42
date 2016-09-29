@@ -14,6 +14,7 @@ void	display_arene(t_dmlx *m, t_dvm *v, int x, int y)
 	{
 		s[0] = v->arene[i];
 		s[1] = v->arene[i + 1];
+		m->loop += 0;
 		mlx_string_put(m->mlx, m->win, x * VMSPACEBLANK + VMSTARTX
 		, y * VMSPACELINE + VMSTARTY, v->color[i / 2], s);
 		++x;
