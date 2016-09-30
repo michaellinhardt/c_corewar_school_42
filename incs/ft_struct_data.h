@@ -1,5 +1,8 @@
 #ifndef FT_STRUCT_DATA_H
 # define FT_STRUCT_DATA_H
+# include "ft_struct_mlx.h"
+# include "ft_struct_vm.h"
+# include "ft_struct_args.h"
 /*
  *	Header lié à la structure data
  */

@@ -1,5 +1,6 @@
 #ifndef FT_STRUCT_VM_H
 # define FT_STRUCT_VM_H
+# include "op.h"
 /*
  *	Header des données lié a la vm et gameloop
  */

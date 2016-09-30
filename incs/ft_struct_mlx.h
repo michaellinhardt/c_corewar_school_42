@@ -1,5 +1,6 @@
 #ifndef FT_STRUCT_MLX_H
 # define FT_STRUCT_MLX_H
+# include "ft_conf.h"
 /*
  *	Header des données lié à mlx
  */
