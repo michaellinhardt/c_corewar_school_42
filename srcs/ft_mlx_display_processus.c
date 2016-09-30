@@ -20,7 +20,6 @@ void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 
 	pproc = (int *)proc->str;
 	pimg = (int *)img->str;
-	proc->i = -1;
 	img->i = (y * WIN_X + x) - 1;
 	y = -1;
 	while (++y < PROCY)
@@ -45,8 +44,8 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 
 	while ( proc )
 	{
-		x = (proc->i % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
-		y = (proc->i / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
+		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
+		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
 		put_proc_img(img, &m->scene_img[2][proc->player + 6], x, y);
 		proc = proc->n;
 	}
