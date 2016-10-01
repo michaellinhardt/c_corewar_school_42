@@ -8,6 +8,32 @@
  /* VM_PROC
   * donné lié a la vm, au champion et a l'arene
   */
+
+
+typedef struct	s_dvm t_dvm;
+typedef struct	s_proc t_proc;
+
+// index de t_instructions => opcode (donc index 0 vide)
+typedef	struct		s_instructions
+{
+	char			name[6]; // le nom de l'instruction
+	short			nbr_args; // son nombre d'args
+	t_arg_type		types[MAX_ARGS_NUMBER];
+	int				cycles;
+	char			comment[37];			
+	int				flag_ocp; // si ocp pour decode
+	int				flag_a_definir;
+	// pointeur vers la fonctions d'instructions
+	void			(*f_instructions)(t_dvm *vm, struct s_instructions ins,
+			t_proc *proc);
+}					t_instructions;	
+
+typedef	struct		s_argument
+{
+	int				value;
+	char			type;
+}					t_argument;
+
 typedef struct		s_proc
 {
 	// l'état live -> -1 pour mort, 0 pour vivant, 1 pour à déjà fais sont live
@@ -19,6 +45,7 @@ typedef struct		s_proc
 	char			reg[REG_NUMBER][REG_SIZE];
 	int				*ireg;
 	char			carry;
+	t_argument		args[MAX_ARGS_NUMBER];
 	struct s_proc	*n;
 	struct s_proc	*p;
 }					t_proc;
@@ -45,6 +72,7 @@ typedef struct		s_player
 typedef struct		s_dvm
 {
 	t_player		p[MAX_PLAYERS];
+	t_instructions	instructions[17];
 	char			arene[SIZE_CHAR_ARENE];
 	int				color[MEM_SIZE];
 	int				code_color[5];
@@ -60,6 +88,10 @@ typedef struct		s_dvm
 	int				max_checks;
 	int				nbr_players;
 	int				nbr_proc;
+	t_proc				*proc;
+	t_proc				*procdie;
+
+	// Tableau de pointeur sur fonctions des instructions
 }					t_dvm;
 
 #endif

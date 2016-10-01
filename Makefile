@@ -37,6 +37,23 @@ LIST 	= ft_corewar \
 			ft_recup_code \
 			ft_fill_arene \
 			ft_recup_files \
+			ft_init_instructions \
+			ft_instructions_live \
+			ft_instructions_ld \
+			ft_instructions_st \
+			ft_instructions_add \
+			ft_instructions_sub \
+			ft_instructions_and \
+			ft_instructions_or \
+			ft_instructions_xor \
+			ft_instructions_zjmp \
+			ft_instructions_ldi \
+			ft_instructions_sti \
+			ft_instructions_fork \
+			ft_instructions_lld \
+			ft_instructions_lldi \
+			ft_instructions_lfork \
+			ft_instructions_aff \
 			ft_display_vm \
 			ft_free \
 			ft_exit \

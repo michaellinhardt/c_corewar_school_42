@@ -62,4 +62,25 @@ void	ft_recup_code(t_dvm *vm, t_dargs *args);
 void	ft_fill_arene(t_dvm *vm);
 void	ft_init_vm(t_dvm *vm);
 void	ft_display_vm(t_dvm *vm);
+void	ft_init_instructions(t_instructions *inst);
+/*
+ * Instructions
+ */
+
+void		ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_add(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_sub(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_or(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_zjmp(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc);
+void		ft_instructions_aff(t_dvm *vm, t_instructions inst, t_proc *proc);
 #endif

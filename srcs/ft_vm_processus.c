@@ -12,10 +12,10 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	// Récupére un proc mort si il existe, sinon le créer
 	// nb. c'est aussi ici qu'on détermine l'id associé au process avec setid
 	setid = 0;
-	if (d->procdie && (new = d->procdie)
-	&& (((setid = d->procdie->id) || 1))
-	&& ((d->procdie = d->procdie->n) || 1)
-	&& ((d->procdie && ((d->procdie->p = (t_proc *)NULL) || 1)) || 1))
+	if (d->vm.procdie && (new = d->vm.procdie)
+	&& (((setid = d->vm.procdie->id) || 1))
+	&& ((d->vm.procdie = d->vm.procdie->n) || 1)
+	&& ((d->vm.procdie && ((d->vm.procdie->p = (t_proc *)NULL) || 1)) || 1))
 		l2(12, "PROC RESURECT", "id", setid);
 	else if ((((setid = ++id) || 1)) && l2(12, "PROC MALLOC", "id", setid)
 	&& !(new) && !(new = (t_proc *)ft_memalloc(sizeof(t_proc))))
@@ -25,12 +25,12 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	ft_bzero(new, sizeof(new));
 	// positionne le processus dans la liste d->proc à l'endroit ou il devrait
 	// se trouver (avec les liens next et previous correspondant)
-	if (d->proc && (new->n = d->proc))
-		(d->proc)->p = new;
+	if (d->vm.proc && (new->n = d->vm.proc))
+		(d->vm.proc)->p = new;
 	else
 		new->n = (t_proc *)NULL;
 	new->p = (t_proc *)NULL;
-	d->proc = new;
+	d->vm.proc = new;
 
 	// régle les valeur du proc
 	new->ireg = (int *)new->reg;
@@ -53,8 +53,8 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 		(target->p)->n = target->n;
 	if (target->n)
 		(target->n)->p = target->p;
-	if (d->proc == target)
-		d->proc = target->n;
+	if (d->vm.proc == target)
+		d->vm.proc = target->n;
 
 	// déplace le maillon
 	if (procdie && (target->n = procdie))

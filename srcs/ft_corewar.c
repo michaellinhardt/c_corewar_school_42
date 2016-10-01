@@ -16,6 +16,31 @@ int		main(int argc, char **argv)
 	ft_recup_headers(&d->vm, &d->args);
 	ft_recup_code(&d->vm, &d->args);
 
+	ft_init_instructions(d->vm.instructions);
+
+	int i;
+	int j;
+
+	i = 1;
+	while (i < 17)
+	{
+
+		ft_printf("OP_CODE %d\n", i );
+		ft_printf("name : %s\n", d->vm.instructions[i].name);
+		ft_printf("nbr_args : %d\n", d->vm.instructions[i].nbr_args);
+		j = 0;
+		ft_printf("args : ");
+		while (j < d->vm.instructions[i].nbr_args)
+			ft_printf("%d , ", d->vm.instructions[i].types[j++]);
+		ft_printf("cycles : %d\n", d->vm.instructions[i].cycles);
+		ft_printf("comment : %s\n", d->vm.instructions[i].comment);
+		ft_printf("flag ocp : %d\n", d->vm.instructions[i].flag_ocp);
+		ft_printf("flag a definir : %d\n", d->vm.instructions[i].flag_a_definir);
+		d->vm.instructions[i].f_instructions(&d->vm, d->vm.instructions[i], 0);
+		ft_printf("\n----------------------------------\n");
+		++i;
+	}
+	/*
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
 	&& d->vm.graphic)
@@ -23,5 +48,6 @@ int		main(int argc, char **argv)
 	else
 		while (42)
 			loop_vm(d);
+			*/
 	return (0);
 }

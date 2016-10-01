@@ -25,8 +25,6 @@ typedef struct			s_data
 	struct s_drez		rez;
 	struct s_dvm		vm;
 	struct s_dargs		args;
-	t_proc				*proc;
-	t_proc				*procdie;
-}						t_data;
+	}						t_data;
 
 #endif

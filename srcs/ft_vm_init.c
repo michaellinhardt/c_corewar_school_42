@@ -32,8 +32,10 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 
 void	vm_init(t_data *d, t_dvm *v)
 {
+	/*
 	d->proc = (t_proc *)NULL;
 	d->procdie = (t_proc *)NULL;
+	*/
 
 	ft_memset(&v->arene, '0', SIZE_CHAR_ARENE);
 	ft_fill_arene(v);

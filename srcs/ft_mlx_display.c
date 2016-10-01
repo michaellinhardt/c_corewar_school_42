@@ -41,7 +41,7 @@ int		display(t_dmlx *m, t_dvm *v)
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
-	display_processus(m, data()->proc, &m->scene_img[2][10]);
+	display_processus(m, data()->vm.proc, &m->scene_img[2][10]);
 	display_arene(m, v, 0, 0);
 
 // DEBUG AFFICHE Nb PROC
