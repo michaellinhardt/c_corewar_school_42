@@ -15,7 +15,10 @@ typedef struct		s_proc
 	int				player;
 	int				live;
 	int				wait;
-	int				i;
+	int				pc;
+	char			reg[REG_NUMBER][REG_SIZE];
+	int				*ireg;
+	char			carry;
 	struct s_proc	*n;
 	struct s_proc	*p;
 }					t_proc;

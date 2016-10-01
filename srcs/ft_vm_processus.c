@@ -21,6 +21,8 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	&& !(new) && !(new = (t_proc *)ft_memalloc(sizeof(t_proc))))
 		exit1(1, data(), "Can't malloc struct s_proc");
 
+
+	ft_bzero(new, sizeof(new));
 	// positionne le processus dans la liste d->proc à l'endroit ou il devrait
 	// se trouver (avec les liens next et previous correspondant)
 	if (d->proc && (new->n = d->proc))
@@ -31,9 +33,10 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	d->proc = new;
 
 	// régle les valeur du proc
+	new->ireg = (int *)new->reg;
+	new->ireg[0] = player;
 	new->player = player;
-	new->i = i;
-	new->live = 0;
+	new->pc = i;
 	new->id = setid;
 	d->vm.nbr_proc++;
 	l2(-1, "PROC SETTINGS", "player attribution", player);
