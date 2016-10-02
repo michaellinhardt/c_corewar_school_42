@@ -22,7 +22,7 @@ typedef	struct		s_instructions
 	int				cycles;
 	char			comment[37];			
 	int				flag_ocp; // si ocp pour decode
-	int				flag_a_definir;
+	int				flag_size_ind;
 	// pointeur vers la fonctions d'instructions
 	void			(*f_instructions)(t_dvm *vm, struct s_instructions ins,
 			t_proc *proc);

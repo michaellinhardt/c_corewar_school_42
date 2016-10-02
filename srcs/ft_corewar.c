@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 		ft_printf("cycles : %d\n", d->vm.instructions[i].cycles);
 		ft_printf("comment : %s\n", d->vm.instructions[i].comment);
 		ft_printf("flag ocp : %d\n", d->vm.instructions[i].flag_ocp);
-		ft_printf("flag a definir : %d\n", d->vm.instructions[i].flag_a_definir);
+		ft_printf("flag a definir : %d\n", d->vm.instructions[i].flag_size_ind);
 		d->vm.instructions[i].f_instructions(&d->vm, d->vm.instructions[i], 0);
 		ft_printf("\n----------------------------------\n");
 		++i;
@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
 
 	oc_p =	84;
 	i = 0;
-	ft_decode_args(oc_p, argument);
+	ft_decode_args(104, argument);
 	while (i < MAX_ARGS_NUMBER)
 	{
 		if (argument[i].type == REG_CODE)
@@ -68,6 +68,21 @@ int		main(int argc, char **argv)
 	
 	vm_init(d, &d->vm);
 	ft_display_vm(&d->vm);
+
+
+	ft_decode_args(104, argument);
+	int ret = ft_fill_args(argument, &d->vm, 4, 1);
+
+	ft_putchar(*(d->vm.arene + 5));
+	ft_putchar('\n');
+
+	i = 0;
+	while (i < 4)
+	{
+		ft_printf("valeur arg : %d\n", argument[i].value);
+		++i;
+	}
+	ft_printf("ret :%d\n", ret);
 //
 //unsigned int u = ft_getchar(d->vm.arene + 28);
 //	ft_putnbr(u);
@@ -77,6 +92,7 @@ int		main(int argc, char **argv)
 	(void)arene;
 	(void)pc;
 
+	/*
 	while (pc < 4096)
 	{
 		arene[pc] = ft_getchar((d->vm.arene + pc * 2));
@@ -87,6 +103,7 @@ int		main(int argc, char **argv)
 		if (!(pc % 64))
 			ft_putchar('\n');
 	}
+	*/
 
 	/*
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()

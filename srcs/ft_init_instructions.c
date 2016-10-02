@@ -182,22 +182,22 @@ static void	ft_init_instructions_flags_a_definir(t_instructions *inst)
 	int i;
 
 	i = 1;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 1;
-	inst[i++].flag_a_definir = 1;
-	inst[i++].flag_a_definir = 1;
-	inst[i++].flag_a_definir = 1;
-	inst[i++].flag_a_definir = 0;
-	inst[i++].flag_a_definir = 1;
-	inst[i++].flag_a_definir = 1;
-	inst[i++].flag_a_definir = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 1;
+	inst[i++].flag_size_ind = 1;
+	inst[i++].flag_size_ind = 1;
+	inst[i++].flag_size_ind = 1;
+	inst[i++].flag_size_ind = 0;
+	inst[i++].flag_size_ind = 1;
+	inst[i++].flag_size_ind = 1;
+	inst[i++].flag_size_ind = 0;
 }
 
 static void	ft_init_instructions_fonctions(t_instructions *inst)
