@@ -54,6 +54,7 @@ LIST 	= ft_corewar \
 			ft_instructions_lldi \
 			ft_instructions_lfork \
 			ft_instructions_aff \
+			ft_decode_args \
 			ft_display_vm \
 			ft_free \
 			ft_exit \

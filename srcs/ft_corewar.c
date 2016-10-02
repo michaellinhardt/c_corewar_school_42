@@ -22,6 +22,7 @@ int		main(int argc, char **argv)
 	int j;
 
 	i = 1;
+
 	while (i < 17)
 	{
 
@@ -38,6 +39,28 @@ int		main(int argc, char **argv)
 		ft_printf("flag a definir : %d\n", d->vm.instructions[i].flag_a_definir);
 		d->vm.instructions[i].f_instructions(&d->vm, d->vm.instructions[i], 0);
 		ft_printf("\n----------------------------------\n");
+		++i;
+	}
+
+	t_argument argument[MAX_ARGS_NUMBER];
+	char	oc_p;
+
+	oc_p =	84;
+	i = 0;
+	ft_decode_args(oc_p, argument);
+	while (i < MAX_ARGS_NUMBER)
+	{
+		if (argument[i].type == REG_CODE)
+			ft_putendl("REG_CODE");
+		else if (argument[i].type == DIR_CODE)
+			ft_putendl("DIR CODE");
+		else if (argument[i].type == IND_CODE)
+			ft_putendl("IND CODE");
+		else 
+		{
+			ft_putnbr(argument[i].type);
+			ft_putendl("NULL");
+		}
 		++i;
 	}
 	/*
