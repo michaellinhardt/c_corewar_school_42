@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
 
 	oc_p =	84;
 	i = 0;
-	ft_decode_args(104, argument);
+	ft_decode_args(112, argument);
 	while (i < MAX_ARGS_NUMBER)
 	{
 		if (argument[i].type == REG_CODE)
@@ -70,11 +70,9 @@ int		main(int argc, char **argv)
 	ft_display_vm(&d->vm);
 
 
-	ft_decode_args(104, argument);
-	int ret = ft_fill_args(argument, &d->vm, 4, 1);
+	ft_decode_args(112, argument);
+	int ret = ft_fill_args(argument, &d->vm, 270, 0);
 
-	ft_putchar(*(d->vm.arene + 5));
-	ft_putchar('\n');
 
 	i = 0;
 	while (i < 4)
