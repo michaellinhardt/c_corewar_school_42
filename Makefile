@@ -54,6 +54,8 @@ LIST 	= ft_corewar \
 			ft_instructions_lldi \
 			ft_instructions_lfork \
 			ft_instructions_aff \
+			ft_fill_args \
+			ft_getchar \
 			ft_decode_args \
 			ft_display_vm \
 			ft_free \

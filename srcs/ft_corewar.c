@@ -63,6 +63,31 @@ int		main(int argc, char **argv)
 		}
 		++i;
 	}
+
+	int pc = 0;
+	
+	vm_init(d, &d->vm);
+	ft_display_vm(&d->vm);
+//
+//unsigned int u = ft_getchar(d->vm.arene + 28);
+//	ft_putnbr(u);
+
+	char arene[4097] = {0};
+
+	(void)arene;
+	(void)pc;
+
+	while (pc < 4096)
+	{
+		arene[pc] = ft_getchar((d->vm.arene + pc * 2));
+		int t = (unsigned char)arene[pc];
+		ft_printf("%X", t);
+		ft_putchar(' ');
+		pc++;
+		if (!(pc % 64))
+			ft_putchar('\n');
+	}
+
 	/*
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)

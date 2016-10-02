@@ -69,6 +69,8 @@ void	ft_init_instructions(t_instructions *inst);
 void	ft_decode_args(char oc_p, t_argument *arg);
 // ici on peuple les valeurs
 void	ft_fill_args(t_argument *arg, t_proc *proc, t_dvm *vm);
+
+char	ft_getchar(char	*arene);
 /*
  * Instructions
  */
