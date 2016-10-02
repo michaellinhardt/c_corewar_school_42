@@ -63,7 +63,7 @@ void	ft_fill_arene(t_dvm *vm);
 void	ft_init_vm(t_dvm *vm);
 void	ft_display_vm(t_dvm *vm);
 void	ft_init_instructions(t_instructions *inst);
-
+int		ft_get_instruction(t_instruction *inst);
 
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);

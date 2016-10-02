@@ -42,6 +42,7 @@ typedef struct		s_proc
 	int				live;
 	int				wait;
 	int				pc;
+	int				pc_turfu;
 	char			reg[REG_NUMBER][REG_SIZE];
 	int				*ireg;
 	char			carry;

@@ -42,12 +42,13 @@ int		main(int argc, char **argv)
 		++i;
 	}
 
+	/*
 	t_argument argument[MAX_ARGS_NUMBER];
 	char	oc_p;
 
 	oc_p =	84;
 	i = 0;
-	ft_decode_args(112, argument);
+	ft_decode_args(144, argument);
 	while (i < MAX_ARGS_NUMBER)
 	{
 		if (argument[i].type == REG_CODE)
@@ -69,9 +70,8 @@ int		main(int argc, char **argv)
 	vm_init(d, &d->vm);
 	ft_display_vm(&d->vm);
 
-
-	ft_decode_args(112, argument);
-	int ret = ft_fill_args(argument, &d->vm, 270, 0);
+	ft_decode_args(144, argument);
+	int ret = ft_fill_args(argument, &d->vm, 1174, 0);
 
 
 	i = 0;
@@ -89,6 +89,7 @@ int		main(int argc, char **argv)
 
 	(void)arene;
 	(void)pc;
+	*/
 
 	/*
 	while (pc < 4096)
@@ -103,7 +104,6 @@ int		main(int argc, char **argv)
 	}
 	*/
 
-	/*
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
 	&& d->vm.graphic)
@@ -111,6 +111,5 @@ int		main(int argc, char **argv)
 	else
 		while (42)
 			loop_vm(d);
-			*/
 	return (0);
 }
