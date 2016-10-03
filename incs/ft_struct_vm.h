@@ -39,6 +39,7 @@ typedef struct		s_proc
 	// l'état live -> -1 pour mort, 0 pour vivant, 1 pour à déjà fais sont live
 	int				id;
 	int				player;
+//	int				player_live;
 	int				live;
 	int				wait;
 	int				pc;
@@ -47,6 +48,7 @@ typedef struct		s_proc
 	int				*ireg;
 	char			carry;
 	t_argument		args[MAX_ARGS_NUMBER];
+	t_instructions	*inst; // instruction courante
 	struct s_proc	*n;
 	struct s_proc	*p;
 }					t_proc;
@@ -63,6 +65,8 @@ typedef struct		s_player
 	*/
 	char			code[CHAMP_MAX_SIZE]; // heu
 	int				playing;
+	int				total_live;
+	int				last_cycle_live;
 }					t_player;
 
 /*
@@ -87,6 +91,7 @@ typedef struct		s_dvm
 	int				ctodiecount;
 	int				nbr_live;
 	int				max_checks;
+	int				last_live;
 	int				nbr_players;
 	int				nbr_proc;
 	t_proc				*proc;

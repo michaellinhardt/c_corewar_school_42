@@ -37,7 +37,7 @@ int		main(int argc, char **argv)
 		ft_printf("comment : %s\n", d->vm.instructions[i].comment);
 		ft_printf("flag ocp : %d\n", d->vm.instructions[i].flag_ocp);
 		ft_printf("flag a definir : %d\n", d->vm.instructions[i].flag_size_ind);
-		d->vm.instructions[i].f_instructions(&d->vm, d->vm.instructions[i], 0);
+//		d->vm.instructions[i].f_instructions(&d->vm, d->vm.instructions[i], 0);
 		ft_printf("\n----------------------------------\n");
 		++i;
 	}
