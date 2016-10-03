@@ -13,6 +13,7 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 			vm->p[proc->args[0].value].total_live++;
 			vm->nbr_live++;
 			vm->last_live = proc->args[0].value;
+			proc->live++;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

@@ -48,6 +48,8 @@ void	vm_init(t_data *d, t_dvm *v)
 
 	vm_init_proc(d, v, MAX_PLAYERS);
 
+	ft_put_registre(d->vm.arene, 0xFF, 0);
+	ft_put_registre(d->vm.arene, 0xAAAAAAAA, 4096 * 2);
 	d->mlx.scene = VM;
 
 /*

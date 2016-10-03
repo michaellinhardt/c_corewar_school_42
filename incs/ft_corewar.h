@@ -73,6 +73,10 @@ void	ft_no_ocp(t_argument *args, t_arg_type *types);
 int		ft_fill_args(t_argument *arg, t_dvm *vm, int pc, int flag_size_ind);
 
 char	ft_getchar(char	*arene);
+int		ft_get_value_registre(t_proc *proc, int registre);
+int		ft_check_reg(int registre);
+int		ft_get_args(t_proc *proc);
+void	ft_put_registre(char *arene, unsigned int code, int pc);
 /*
  * Instructions
  */
