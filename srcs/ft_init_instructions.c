@@ -57,9 +57,9 @@ static void	ft_init_instructions_types_arg_zero(t_instructions *inst)
 	inst[i++].types[0] = T_REG | T_DIR | T_IND;
 	inst[i++].types[0] = T_REG | T_DIR | T_IND;
 	inst[i++].types[0] = T_DIR;
-	inst[i++].types[0] = T_REG | T_DIR | T_IND;
-	inst[i++].types[0] = T_REG;
 	inst[i++].types[0] = T_DIR;
+	inst[i++].types[0] = T_REG;
+	inst[i++].types[0] = T_REG;
 	inst[i++].types[0] = T_DIR | T_IND;
 	inst[i++].types[0] = T_REG | T_DIR | T_IND;
 	inst[i++].types[0] = T_DIR;

@@ -13,6 +13,7 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	l2(-1, "checklive()", "cycle to die is coming!", v->cycle);
 	while (p && ((next = p->n) || 1))
 	{
+		//l2(-3, "nbr live", "proc live", p->);
 		// tue le process ou passe sont live à 0
 		if (p->live < 1 && ++pdead
 		&& l2(-3, "checklive()", "kill process", p->id))

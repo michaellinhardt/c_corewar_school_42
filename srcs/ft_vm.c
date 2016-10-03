@@ -18,6 +18,7 @@ void	vm(t_dvm *v, int cperloop)
 		if (!gameloop(v))
 		{
 			// Ici la partie est terminé
+			ft_printf("Last Live MF : %d\n", v->last_live);
 			exit1(0, data(), "game over");
 		}
 		if (v->dump == v->cycle)
