@@ -56,10 +56,11 @@ static void	ft_init_instructions_types_arg_zero(t_instructions *inst)
 	inst[i++].types[0] = T_REG;
 	inst[i++].types[0] = T_REG | T_DIR | T_IND;
 	inst[i++].types[0] = T_REG | T_DIR | T_IND;
+	inst[i++].types[0] = T_REG | T_DIR | T_IND;
 	inst[i++].types[0] = T_DIR;
+	inst[i++].types[0] = T_REG | T_DIR | T_IND;
+	inst[i++].types[0] = T_REG;
 	inst[i++].types[0] = T_DIR;
-	inst[i++].types[0] = T_REG;
-	inst[i++].types[0] = T_REG;
 	inst[i++].types[0] = T_DIR | T_IND;
 	inst[i++].types[0] = T_REG | T_DIR | T_IND;
 	inst[i++].types[0] = T_DIR;
@@ -106,7 +107,7 @@ static void	ft_init_instructions_types_arg_deux(t_instructions *inst)
 	inst[i++].types[2] = T_REG;
 	inst[i++].types[2] = T_DIR | T_REG;
 	inst[i++].types[2] = 0;
-	inst[i++].types[2] = T_REG;
+	inst[i++].types[2] = 0;
 	inst[i++].types[2] = T_REG;
 }
 
