@@ -56,7 +56,7 @@ void	instructions(t_dvm *v, t_proc *proc);
 // ca c'est kdo bsx :)
 int		ft_little_to_big(int little);
 char	*ft_read_code_champ(int size);
-void	ft_recup_files(t_dvm *vm, t_dargs *args, char **argv, int argc);
+void	ft_recup_files(t_dvm *vm, t_dargs *args);
 void	ft_recup_headers(t_dvm *vm, t_dargs *args);
 void	ft_recup_code(t_dvm *vm, t_dargs *args);
 void	ft_fill_arene(t_dvm *vm);
@@ -65,6 +65,8 @@ void	ft_display_vm(t_dvm *vm);
 void	ft_init_instructions(t_instructions *inst);
 void	ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc);
 int		ft_check_value_args(t_argument *args, t_instructions *inst);
+int		ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc);
+int		ft_check_value_number(t_dargs *args, t_dvm *vm);
 
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);

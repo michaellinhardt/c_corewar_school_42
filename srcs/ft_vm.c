@@ -6,6 +6,7 @@
 void	vm_dump(t_dvm *v)
 {
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
+	ft_display_vm(v);
 	exit1(0, data(), "dump order");
 }
 
@@ -30,8 +31,11 @@ void	vm(t_dvm *v, int cperloop)
 				display(&(data()->mlx), v);
 			vm_dump(v);
 		}
+		v->cycle++;
 	}
 	// lance l'affichage si necessaire
 	if (v->graphic)
 		display(&(data()->mlx), v);
+	if (v->dump > v->cycle)
+			vm_dump(v);
 }

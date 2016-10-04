@@ -19,7 +19,6 @@ void	processus_read(t_dvm *v, t_proc *proc)
 			proc->inst->f_instructions(v, *proc->inst, proc);
 		}
 
-		ft_printf("nbr live :%d\n", proc->live);
 		proc->wait--;
 		proc = proc->n;
 	}

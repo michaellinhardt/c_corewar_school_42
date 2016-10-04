@@ -8,15 +8,48 @@ int		main(int argc, char **argv)
 	*argv += 0 * argc; // brain compilateur flag
 	/* lance les 4 premiers affichage dans le terminal, puis démarre mlx */
 	d->mlx.scene = SCENE_START;
-	d->vm.graphic = GRAPHIC_MODE;
+	d->vm.dump = -1;
 	d->vm.console = CONSOLE_LOG;
 
-	// parse options + champs;
-	ft_recup_files(&d->vm, &d->args, argv, argc);
-	ft_recup_headers(&d->vm, &d->args);
-	ft_recup_code(&d->vm, &d->args);
 
+	
+	d->args[0].player = -1;
+	d->args[1].player = -1;
+	d->args[2].player = -1;
+	d->args[3].player = -1;
+	// parse options + champs;
+	if (!(ft_recup_options(&d->vm, d->args, argv, argc)))
+	{
+		ft_printf("erreur ft_recup_options\n");
+		exit(1);
+
+	}
+	if (d->vm.nbr_players == 0)
+		return (0);
+	ft_printf("nbr joueurs %d\n:", d->vm.nbr_players);
+	if (!(ft_check_value_number(d->args, &d->vm)))
+	{
+		ft_printf("erreur ft_check_value_number\n");
+		exit(1);
+	}
+	int p ;
+
+	p = 0;
+
+	while (p < d->vm.nbr_players)
+	{
+		ft_printf("player: %d, file: %s\n", d->args[p].player, d->args[p].file);
+		++p;
+	}
+
+	ft_recup_files(&d->vm, d->args);
+	ft_recup_headers(&d->vm, d->args);
+	ft_recup_code(&d->vm, d->args);
+
+	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
 	ft_init_instructions(d->vm.instructions);
+
+
 
 	int i;
 	int j;
@@ -106,9 +139,10 @@ int		main(int argc, char **argv)
 	}
 	*/
 
+
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
-	&& d->vm.graphic)
+	&& d->vm.graphic && d->vm.dump == -1)
 		mlx_start(d, &d->mlx);
 	else
 		while (42)

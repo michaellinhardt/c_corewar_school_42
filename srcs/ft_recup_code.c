@@ -8,7 +8,7 @@ void		ft_recup_code(t_dvm *vm, t_dargs *args)
 	i = 0;
 	while (i < vm->nbr_players)
 	{
-		if ((ret = read(args->fd[i], vm->p[i].code, vm->p[i].header.prog_size))
+		if ((ret = read(args[i].fd, vm->p[i].code, vm->p[i].header.prog_size))
 				== -1)
 			exit1(1, data(), "Pb de read fdp");
 		if (ret != vm->p[i].header.prog_size)

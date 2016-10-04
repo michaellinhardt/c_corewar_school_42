@@ -48,7 +48,7 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 int		gameloop(t_dvm *v)
 {
 	// Début du cycle
-	++v->cycle;
+//	++v->cycle;
 	if (++v->ctodiecount >= v->ctodie
 	&& !checklive(v, data()->vm.proc, (t_proc *)NULL, 0, 0))
 		return (0);

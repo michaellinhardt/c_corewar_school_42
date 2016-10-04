@@ -7,7 +7,6 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)proc;
 	if (ft_check_value_args(proc->args, &inst))
 	{
-			ft_printf("WAAAAAAAAAAAAAZZZZZZZZZAAAAAAAAAAAAAAAAAHHHHHHHHHHH\n");
 		if (proc->args[0].value >= 0 && proc->args[0].value <= vm->nbr_players -1)
 		{
 			vm->p[proc->args[0].value].last_cycle_live = vm->cycle;
