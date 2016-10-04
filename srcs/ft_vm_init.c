@@ -22,7 +22,7 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (++player < MAX_PLAYERS)
 		if (v->p[player].playing && l2(11, "PLAYER", "joue", player))
-			proc_new(d, (t_proc *)NULL, player
+			proc_new(d, (t_proc *)NULL, player + 1
 			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[player].playing)
 			l2(11, "PLAYER", "ne joue pas", player);

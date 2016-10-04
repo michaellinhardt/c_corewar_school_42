@@ -16,6 +16,5 @@ void	ft_instructions_zjmp(t_dvm *vm, t_instructions inst, t_proc *proc)
 	}
 	else
 		proc->pc = proc->pc_turfu / 2;
-
 	ft_printf("instruction %s\n", inst.name);
 }

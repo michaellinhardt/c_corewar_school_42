@@ -52,10 +52,11 @@ int		main(int argc, char **argv)
 
 
 	int i;
-	int j;
+	//int j;
 
 	i = 1;
 
+	/*
 	while (i < 17)
 	{
 
@@ -76,6 +77,7 @@ int		main(int argc, char **argv)
 		++i;
 	}
 
+	*/
 
 	/*
 	t_argument argument[MAX_ARGS_NUMBER];

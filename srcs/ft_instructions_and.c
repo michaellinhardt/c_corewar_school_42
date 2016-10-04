@@ -13,7 +13,7 @@ void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 		if (ft_get_args(proc))
 		{
 			*(proc->ireg + registre - 1) = proc->args[0].value & proc->args[1].value;
-			proc->carry = 1;
+			proc->carry = !proc->carry;
 		}
 		else
 			proc->carry = 0;
