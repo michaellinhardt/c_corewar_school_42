@@ -5,6 +5,7 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 	t_proc *new;
 
 	(void)vm;
+	new = 0;
 	if (ft_check_value_args(proc->args, &inst))
 	{
 		if (ft_get_args(proc))

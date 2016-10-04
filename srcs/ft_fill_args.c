@@ -7,7 +7,7 @@ static int		ft_fill_args_reg(t_argument *arg, t_dvm *vm, int pc)
 	return (pc);
 }
 
-static int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc)
+int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc)
 {
 	int i;
 	int decal;

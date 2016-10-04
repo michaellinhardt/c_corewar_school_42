@@ -7,6 +7,7 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)vm;
 	(void)inst;
 	(void)proc;
+	new = 0;
 	if (ft_check_value_args(proc->args, &inst))
 	{
 		if (ft_get_args(proc))
