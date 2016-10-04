@@ -144,7 +144,7 @@ int		main(int argc, char **argv)
 
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
-	&& d->vm.graphic && d->vm.dump == -1)
+	&& d->vm.graphic )
 		mlx_start(d, &d->mlx);
 	else
 		while (42)

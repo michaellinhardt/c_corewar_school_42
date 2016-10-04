@@ -14,6 +14,7 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			*(proc->ireg + registre - 1) = proc->args[0].value ^ proc->args[1].value;
 			proc->carry = !proc->carry;
+			ft_printf("carry %d\n", proc->carry);
 		}
 		else
 			proc->carry = 0;

@@ -4,7 +4,7 @@
  ** Return 1 si instructions bonne, return 0 si false
  */
 
-void		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
+int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 {
 	char	opcode;
 
@@ -13,7 +13,7 @@ void		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 	if (opcode <= 0 || opcode > 16)
 	{
 		proc->inst = (void *)0;
-		return ;
+		return (0);
 	}
 	proc->inst = &inst[(int)opcode];
 	proc->wait = proc->inst->cycles;
@@ -27,4 +27,5 @@ void		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 		ft_no_ocp(proc->args, proc->inst->types);
 	proc->pc_turfu = ft_fill_args(proc->args, vm, proc->pc_turfu, 
 			proc->inst->flag_size_ind); 
+	return (1);
 }
