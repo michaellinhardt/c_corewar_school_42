@@ -50,7 +50,6 @@ int		main(int argc, char **argv)
 	ft_init_instructions(d->vm.instructions);
 
 
-
 	int i;
 	//int j;
 

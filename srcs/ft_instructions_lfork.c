@@ -15,6 +15,7 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			proc_new(data(), new, proc->player, 0);			
 			ft_memcpy(new, proc, sizeof(proc));
 			new->pc = (proc->pc + proc->args[0].value) % 4096;
+			proc->last = 15;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

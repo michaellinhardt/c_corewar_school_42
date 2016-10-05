@@ -64,7 +64,7 @@
 /* AFFICHAGE OU NON DES LOG,
  * LOG_DISPLAY: autorise ou non les log
  * LOG_ALL: force tous les log à 1 */
-# define LOG_DISPLAY 0
+# define LOG_DISPLAY 1
 # define LOG_ALL 0 
 # define LOG_DEBUG 0
 # define LOG_DEBUG_DETAILED 0
@@ -81,5 +81,6 @@
 # define LOG_MLX 0
 # define LOG_VM 0
 # define LOG_PROC 0
+# define LOG_INST 1
 
 #endif

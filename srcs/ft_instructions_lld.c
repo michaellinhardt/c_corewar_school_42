@@ -13,6 +13,7 @@ void	ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			*(proc->ireg + registre - 1) = proc->args[0].value;
 			proc->carry = !proc->carry;
+		proc->last = 3;
 		}
 		else
 			proc->carry = 0;

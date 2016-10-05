@@ -12,12 +12,15 @@ void	ft_instructions_zjmp(t_dvm *vm, t_instructions inst, t_proc *proc)
 		if (ft_get_args(proc))
 		{
 			proc->pc += (int)proc->args[0].value;
-			proc->carry = 0;
+			proc->last = 9;
+//			proc->carry = 0;
 		}
 		else
 			proc->pc = proc->pc_turfu / 2;
 	}
 	else
 		proc->pc = proc->pc_turfu / 2;
+
+	l1(13, "INSTRUCTION", "instruction zjmp");
 	//ft_printf("instruction %s\n", inst.name);
 }

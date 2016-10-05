@@ -14,6 +14,7 @@ void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			*(proc->ireg + registre - 1) = proc->args[0].value & proc->args[1].value;
 			proc->carry = !proc->carry;
+			proc->last = 6;
 		}
 		else
 			proc->carry = 0;
@@ -21,5 +22,6 @@ void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 	else
 		proc->carry = 0;
 	proc->pc = proc->pc_turfu / 2;
+	l1(13, "INSTRUCTION", "instruction and");
 	ft_printf("instruction %s\n", inst.name);
 }

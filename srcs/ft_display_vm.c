@@ -66,11 +66,13 @@ void	ft_display_vm(t_dvm *vm)
 			}
 			proc = proc->n;
 		}
-		if (!(i % 128))
+		if (!(i % 128) && !ok)
 		{
 			ft_putstr(WHITE);
 			ft_put_hex_compteur(i / 2);
 		}
+		else if (!(i % 128))
+			ft_put_hex_compteur(i / 2);
 		if (!(i % 2) && !ok)
 			ft_put_color(vm->color + i / 2);
 		ft_putchar(*(vm->arene + i));

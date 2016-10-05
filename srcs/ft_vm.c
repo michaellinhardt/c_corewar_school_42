@@ -7,6 +7,7 @@ void	vm_dump(t_dvm *v)
 {
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
 	ft_display_vm(v);
+	ft_printf("Nombre de proc : %d\n", v->nbr_proc);
 	exit1(0, data(), "dump order");
 }
 
@@ -33,11 +34,6 @@ void	vm(t_dvm *v, int cperloop)
 			vm_dump(v);
 		}
 		v->cycle++;
-		/*
-	++loop;
-	if (loop == 8000)
-		while(1);
-		*/
 	}
 	// lance l'affichage si necessaire
 	if (v->graphic)

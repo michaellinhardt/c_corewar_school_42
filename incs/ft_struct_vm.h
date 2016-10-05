@@ -47,6 +47,7 @@ typedef struct		s_proc
 	char			reg[REG_NUMBER][REG_SIZE];
 	int				*ireg;
 	char			carry;
+	char			last;
 	t_argument		args[MAX_ARGS_NUMBER];
 	t_instructions	*inst; // instruction courante
 	struct s_proc	*n;

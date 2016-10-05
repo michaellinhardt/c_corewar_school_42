@@ -17,10 +17,12 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			ft_memcpy(new, proc, sizeof(proc));
 			new->id = i;
 			new->pc = (proc->pc + proc->args[0].value % IDX_MOD);
+			proc->last = 12;
 		//	proc->carry = 1;
 		//	new->carry = 0;
 		}
 	}
+	l1(13, "INSTRUCTION", "instruction fork");
 	proc->pc = proc->pc_turfu / 2;
 	//ft_printf("instruction %s\n", inst.name);
 }

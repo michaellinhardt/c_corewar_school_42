@@ -18,6 +18,7 @@ wchar_t log_ico(char ico)
 	(ico == 10) ? (c = L'🎬') : 1;
 	(ico == 11) ? (c = L'🖥') : 1;
 	(ico == 12) ? (c = L'❤') : 1;
+	(ico == 13) ? (c = L'❤') : 1;
 	!(c) ? (c = L'➿') : 1;
 	return (c);
 }
@@ -39,7 +40,9 @@ int		log_bool(char ico)
 	|| (ico == 5 && !LOG_MOUSE) || (ico == 6 && !LOG_LOOP)
 	|| (ico == 7 && !LOG_FREE) || (ico == 8 && !LOG_XTOI)
 	|| (ico == 9 && !LOG_NEWI) || (ico == 10 && !LOG_MLX)
-	|| (ico == 11 && !LOG_VM) || (ico == 12 && !LOG_PROC))))
+	|| (ico == 11 && !LOG_VM) || (ico == 12 && !LOG_PROC)
+	|| (ico == 13 && !LOG_INST)
+	)))
 		return (0);
 	return (1);
 }

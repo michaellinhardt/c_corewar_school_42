@@ -10,13 +10,12 @@ void	processus_read(t_dvm *v, t_proc *begin)
 	
 	while ( proc )
 	{
-		/*
+		//ft_putnbr(v->cycle);
 		if (proc->id != 0)
 		{
 			proc = proc->n;
 			continue;
 		}
-		*/
 		if (!proc->wait)
 		{
 			proc->pc_turfu = proc->pc * 2;

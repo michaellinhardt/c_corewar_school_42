@@ -18,8 +18,10 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 					proc->args[1].value % IDX_MOD) * 2;
 			ft_fill_args_dir(&argument, vm, address);
 			*(proc->ireg + registre) = argument.value;
+			proc->last = 14;
 		}
 	}
+	l1(13, "INSTRUCTION", "instruction lldi");
 	proc->pc = proc->pc_turfu / 2;
 //	ft_printf("instruction %s\n", inst.name);
 
