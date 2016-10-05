@@ -14,6 +14,7 @@ void	vm(t_dvm *v, int cperloop)
 {
 	// gameloop() exécute  un cycle, on l'appel cperloop fois,
 	// selon la config du header ou des input clavier
+//	static int loop = 0;
 	while (--cperloop > -1)
 	{
 		if (!gameloop(v))
@@ -32,6 +33,11 @@ void	vm(t_dvm *v, int cperloop)
 			vm_dump(v);
 		}
 		v->cycle++;
+		/*
+	++loop;
+	if (loop == 8000)
+		while(1);
+		*/
 	}
 	// lance l'affichage si necessaire
 	if (v->graphic)

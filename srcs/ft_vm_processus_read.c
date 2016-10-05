@@ -3,9 +3,11 @@
 */
 #include "ft_corewar.h"
 
-void	processus_read(t_dvm *v, t_proc *proc)
+void	processus_read(t_dvm *v, t_proc *begin)
 {
+	t_proc *proc = begin;
 	v->graphic += 0;
+	
 	while ( proc )
 	{
 		/*
@@ -30,7 +32,6 @@ void	processus_read(t_dvm *v, t_proc *proc)
 			proc->inst->f_instructions(v, *proc->inst, proc);
 		}
 		proc->wait--;
-
 		proc = proc->n;
 	}
 }

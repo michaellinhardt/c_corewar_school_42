@@ -49,6 +49,9 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 */
 int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 {
+	(void)d;
+	(void)target;
+	(void)procdie;
 	if (target->p)
 		(target->p)->n = target->n;
 	if (target->n)
@@ -61,8 +64,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 	// déplace le maillon
 	if (procdie && (target->n = procdie))
 		procdie->p = target;
-	procdie = target;
-	ft_putendl("lollololo");
+	data()->vm.procdie = target;
 	target->p = (t_proc *)NULL;
 	d->vm.nbr_proc--;
 	return (1);
