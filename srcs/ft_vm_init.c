@@ -20,9 +20,9 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 	// i * (MEM_SIZE / 4) représente le début du premier processeur de ce joueur dans l'arene
 	// i est sont numéro (0-3) et MEM_SIZE / 4 la taille max par champion
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
-	while (--player > -1)
+	while (++player < MAX_PLAYERS)
 		if (v->p[player].playing && l2(11, "PLAYER", "joue", player))
-			proc_new(d, (t_proc *)NULL, player
+			proc_new(d, (t_proc *)NULL, player + 1
 			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[player].playing)
 			l2(11, "PLAYER", "ne joue pas", player);
@@ -43,10 +43,9 @@ void	vm_init(t_data *d, t_dvm *v)
 	// initialise les variable et les log
 	v->ctodie = CYCLE_TO_DIE;
 	v->cperloop = CYCLE_PER_LOOP;
-
 	vm_init_log();
 
-	vm_init_proc(d, v, MAX_PLAYERS);
+	vm_init_proc(d, v, -1);
 
 	d->mlx.scene = VM;
 

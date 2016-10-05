@@ -1,5 +1,5 @@
 # VAR COMP
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 CC		= gcc $(FLAGS)
 INCS 	= -I./incs -I./libft/includes
 LIBS	= ./libft
@@ -55,6 +55,7 @@ LIST 	= ft_corewar \
 			ft_instructions_lfork \
 			ft_instructions_aff \
 			ft_get_instructions \
+			ft_recup_options \
 			ft_put_registre \
 			ft_get_args \
 			ft_get_value_registre \

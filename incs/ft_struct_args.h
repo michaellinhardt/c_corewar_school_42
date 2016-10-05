@@ -6,8 +6,9 @@
 
 typedef struct		s_dargs
 {
-	char			*file[4];
-	int				fd[4];
+	char			*file;
+	int				fd;
+	int				player;
 }					t_dargs;
 
 #endif

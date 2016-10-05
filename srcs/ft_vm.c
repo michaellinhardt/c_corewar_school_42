@@ -6,6 +6,7 @@
 void	vm_dump(t_dvm *v)
 {
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
+	ft_display_vm(v);
 	exit1(0, data(), "dump order");
 }
 
@@ -13,6 +14,7 @@ void	vm(t_dvm *v, int cperloop)
 {
 	// gameloop() exécute  un cycle, on l'appel cperloop fois,
 	// selon la config du header ou des input clavier
+//	static int loop = 0;
 	while (--cperloop > -1)
 	{
 		if (!gameloop(v))
@@ -30,8 +32,16 @@ void	vm(t_dvm *v, int cperloop)
 				display(&(data()->mlx), v);
 			vm_dump(v);
 		}
+		v->cycle++;
+		/*
+	++loop;
+	if (loop == 8000)
+		while(1);
+		*/
 	}
 	// lance l'affichage si necessaire
 	if (v->graphic)
 		display(&(data()->mlx), v);
+	if (v->dump <= v->cycle && v->dump != -1)
+			vm_dump(v);
 }

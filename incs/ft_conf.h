@@ -24,7 +24,7 @@
 # define CHAMP_NAME_SIZE 2048
 # define CYCLE_PER_LOOP 3
 # define CPERLOOP_INC 2
-# define CPERLOOP_MAX 50
+# define CPERLOOP_MAX 100
 # define ARENE_CODE_COLOR 0xCCCCCC
 
 /* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
@@ -64,11 +64,11 @@
 /* AFFICHAGE OU NON DES LOG,
  * LOG_DISPLAY: autorise ou non les log
  * LOG_ALL: force tous les log à 1 */
-# define LOG_DISPLAY 1
+# define LOG_DISPLAY 0
 # define LOG_ALL 0 
-# define LOG_DEBUG 1
+# define LOG_DEBUG 0
 # define LOG_DEBUG_DETAILED 0
-# define LOG_DEBUG_CHECKLIVE 1
+# define LOG_DEBUG_CHECKLIVE 0
 # define LOG_GENERAL 0
 # define LOG_KEY 0
 # define LOG_ITOW 0

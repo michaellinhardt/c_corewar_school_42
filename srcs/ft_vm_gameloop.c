@@ -40,17 +40,21 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	// Debug, met tout les process vivant
 	next = data()->vm.proc;
 	if (v->ctodie > 0)
+	{
 		while (next && (next->live = 1))
 			next = next->n;
+	}
 	return (palive);
 }
 
 int		gameloop(t_dvm *v)
 {
+	int ret;
+	ret= 0;
 	// Début du cycle
-	++v->cycle;
+//	++v->cycle;
 	if (++v->ctodiecount >= v->ctodie
-	&& !checklive(v, data()->vm.proc, (t_proc *)NULL, 0, 0))
+	&& !(ret = checklive(v, data()->vm.proc, (t_proc *)NULL, 0, 0)))
 		return (0);
 	processus_read(v, data()->vm.proc);
 	return (1);

@@ -49,16 +49,29 @@ void	ft_put_color(int *color)
 void	ft_display_vm(t_dvm *vm)
 {
 	int i;
+	int ok;
+	t_proc *proc;
 
 	i = 0;
-	while (i< SIZE_CHAR_ARENE)
+	while (i < SIZE_CHAR_ARENE)
 	{
+		ok = 0;
+		proc = vm->proc;
+		while (proc)
+		{
+			if (proc->pc == i / 2 && !(i % 2))
+			{
+				ok = 1;
+				ft_putstr(CYAN);
+			}
+			proc = proc->n;
+		}
 		if (!(i % 128))
 		{
 			ft_putstr(WHITE);
 			ft_put_hex_compteur(i / 2);
 		}
-		if (!(i % 2))
+		if (!(i % 2) && !ok)
 			ft_put_color(vm->color + i / 2);
 		ft_putchar(*(vm->arene + i));
 		++i;
