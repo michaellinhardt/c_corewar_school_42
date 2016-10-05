@@ -17,22 +17,22 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 	if (m->input.mo_x >= BTNCTDPLUSX1 && m->input.mo_x <= BTNCTDPLUSX2
 	&& m->input.mo_y >= BTNCTDPLUSY1 && m->input.mo_y <= BTNCTDPLUSY2)
 		itow(m->scene_img[2][4].img, BTNCTDPLUS1X, BTNCTDPLUS1Y
-			, "btn_plus_over");
+			, "btn_less_over");
 	if (m->input.mo_x >= BTNCTDLESSX1 && m->input.mo_x <= BTNCTDLESSX2
 	&& m->input.mo_y >= BTNCTDLESSY1 && m->input.mo_y <= BTNCTDLESSY2)
 		itow(m->scene_img[2][5].img, BTNCTDLESS1X, BTNCTDLESS1Y
-			, "btn_less_over");
+			, "btn_plus_over");
 }
 
 void	display_cycle(t_dmlx *m, t_dvm *v)
 {
-	mlx_string_put(m->mlx, m->win, TEXTCYCLEX, TEXTCYCLEY, 0x33cc33
+	mlx_string_put(m->mlx, m->win, TEXTCYCLEX, TEXTCYCLEY, TXTCOLACTUAL
 		, ft_itoastatic(v->cycle));
-	mlx_string_put(m->mlx, m->win, TEXTCPERLOOPX, TEXTCPERLOOPY, 0x33cc33
+	mlx_string_put(m->mlx, m->win, TEXTCPERLOOPX, TEXTCPERLOOPY, TXTCOLCPERLOOP
 		, ft_itoastatic(v->cperloop));
-	mlx_string_put(m->mlx, m->win, TEXTCTODIECOUNTX, TEXTCTODIECOUNTY, 0xff0000
+	mlx_string_put(m->mlx, m->win, TEXTCTODIECOUNTX, TEXTCTODIECOUNTY, TXTCOLCTODIECOUNT
 		, ft_itoastatic(v->ctodiecount));
-	mlx_string_put(m->mlx, m->win, TEXTCTODIEX, TEXTCTODIEY, 0xff0000
+	mlx_string_put(m->mlx, m->win, TEXTCTODIEX, TEXTCTODIEY, TXTCOLCTODIE
 		, ft_itoastatic(v->ctodie));
 }
 
