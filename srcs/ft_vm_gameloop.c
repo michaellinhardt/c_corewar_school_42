@@ -42,7 +42,6 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	if (v->ctodie > 0)
 		while (next && (next->live = 1))
 			next = next->n;
-	ft_printf("palive %d\n", palive);
 	return (palive);
 }
 

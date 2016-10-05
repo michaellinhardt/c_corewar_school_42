@@ -56,9 +56,13 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 	if (d->vm.proc == target)
 		d->vm.proc = target->n;
 
+	target->n = 0;
+	target->p = 0;
 	// déplace le maillon
 	if (procdie && (target->n = procdie))
 		procdie->p = target;
+	procdie = target;
+	ft_putendl("lollololo");
 	target->p = (t_proc *)NULL;
 	d->vm.nbr_proc--;
 	return (1);

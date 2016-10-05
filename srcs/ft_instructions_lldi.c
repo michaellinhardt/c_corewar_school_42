@@ -21,6 +21,6 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;
-	ft_printf("instruction %s\n", inst.name);
+//	ft_printf("instruction %s\n", inst.name);
 
 }

@@ -37,7 +37,5 @@ void	vm(t_dvm *v, int cperloop)
 	if (v->graphic)
 		display(&(data()->mlx), v);
 	if (v->dump <= v->cycle && v->dump != -1)
-	{
 			vm_dump(v);
-	}
 }

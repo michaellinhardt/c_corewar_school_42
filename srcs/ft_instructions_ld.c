@@ -11,9 +11,16 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[1].value;
 		if (ft_get_args(proc))
 		{
-		//	*(proc->ireg + registre - 1) = proc->args[0].value % IDX_MOD;
-		*(proc->ireg + registre - 1) = proc->args[0].value ;
-			proc->carry = !proc->carry;
+			*(proc->ireg + registre - 1) = proc->args[0].value % IDX_MOD;
+				proc->carry = !proc->carry;
+			/*
+			if ((*(proc->ireg + registre - 1) = proc->args[0].value) > 0)
+				proc->carry = !proc->carry;
+				*/
+			/*
+			else
+				proc->carry = 0;
+				*/
 		}
 		else
 			proc->carry = 0;
@@ -21,5 +28,5 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	else
 		proc->carry = 0;
 	proc->pc = proc->pc_turfu / 2;
-	ft_printf("instruction %s\n", inst.name);
+//	ft_printf("instruction %s\n", inst.name);
 }
