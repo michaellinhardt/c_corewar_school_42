@@ -22,10 +22,10 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 		l1(1, f->d_name, "   loading xpm file");
 		m->scene_img[m->scene][ft_atoi(f->d_name)].img = mlx_xpmtostruct(m
 			, &m->scene_img[m->scene][ft_atoi(f->d_name)], file);
+		ft_strdel(&file);
 	}
 	closedir(dir);
 	ft_strdel(&folder);
-	ft_strdel(&file);
 	return (1);
 }
 
