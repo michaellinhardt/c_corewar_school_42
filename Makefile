@@ -22,6 +22,7 @@ LIST 	= ft_corewar \
 			ft_mlx_scene_img \
 			ft_mlx_scene_intro \
 			ft_mlx_display \
+			ft_mlx_display_cycle \
 			ft_mlx_display_processus \
 			ft_mlx_display_arene \
 			ft_terminal_ascii \
