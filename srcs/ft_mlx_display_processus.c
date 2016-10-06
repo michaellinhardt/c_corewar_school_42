@@ -3,7 +3,7 @@
 */
 #include "ft_corewar.h"
 
-void	reset_img(t_img *img)
+void	reset_img_proc(t_img *img)
 {
 	int		*ptr;
 
@@ -39,7 +39,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 	int		y;
 
 
-	reset_img(img);
+	reset_img_proc(img);
 
 
 	while ( proc )

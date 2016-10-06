@@ -23,15 +23,16 @@ void	vm(t_dvm *v, int cperloop)
 			if ((v->graphic && display(&(data()->mlx), v)) || 1)
 				vm_dump(v);
 		}
+/*
 		else if (data()->mlx.loop && v->graphic
 		&& l1(100, "(loop == 1)", "overide cperloop, call display()")
 		&& display(&(data()->mlx), v) && ++v->cycle)
 			break ;
-		else
-			v->cycle++;
+*/
+		v->cycle++;
 	}
 	// lance l'affichage si necessaire
-	if (!(data()->mlx.loop) && v->graphic)
+	if (!(data()->mlx.loop) && v->graphic && ft_printf("ici\n"))
 		display(&(data()->mlx), v);
 	if (v->dump <= v->cycle && v->dump != -1)
 			vm_dump(v);

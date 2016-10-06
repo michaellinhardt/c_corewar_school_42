@@ -42,7 +42,10 @@ typedef struct		s_img
 /*
 ** INDEX DES IMAGE DANS LA SCENE 2, CELLE LIé AU EFFETS
 */
-# define CPERLOOP_NUMBER 11
+# define CPERLOOP_NUMBER 12
+enum e_effect_id {
+	e_effect_cperloop
+};
 
 typedef struct		s_effect
 {
@@ -54,6 +57,10 @@ typedef struct		s_effect
 	int				looptodie_count;
 	char			inc_value;
 	char			start_cycle;
+	int				size_x;
+	int				size_y;
+	int				x;
+	int				y;
 }					t_effect;
 
 /* STRUCT POUR INFORMER DE L'ETAT ENFONCé OU NON D'UNE TOUCHE

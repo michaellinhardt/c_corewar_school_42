@@ -38,11 +38,13 @@ int		mouser_hook(int btn, int x, int y, t_data *d)
 	(btn == 2) ? d->mlx.input.mright = 0 : 0;
 	// getion des bouton + et - du bloc cycle
 	if (d->mlx.input.mo_x >= BTNCTDPLUSX1 && d->mlx.input.mo_x <= BTNCTDPLUSX2
-	&& d->mlx.input.mo_y >= BTNCTDPLUSY1 && d->mlx.input.mo_y <= BTNCTDPLUSY2)
+	&& d->mlx.input.mo_y >= BTNCTDPLUSY1 && d->mlx.input.mo_y <= BTNCTDPLUSY2
+	&& (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
 		d->vm.cperloop -=
 		(d->vm.cperloop - CPERLOOP_INC <= 0) ? 0 : CPERLOOP_INC;
 	if (d->mlx.input.mo_x >= BTNCTDLESSX1 && d->mlx.input.mo_x <= BTNCTDLESSX2
-	&& d->mlx.input.mo_y >= BTNCTDLESSY1 && d->mlx.input.mo_y <= BTNCTDLESSY2)
+	&& d->mlx.input.mo_y >= BTNCTDLESSY1 && d->mlx.input.mo_y <= BTNCTDLESSY2
+	&& (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
 	d->vm.cperloop +=
 		(d->vm.cperloop + CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
 	/* ENREGISTRE LA POSITION DE LA SOURIS QUAND ON CLIC */
