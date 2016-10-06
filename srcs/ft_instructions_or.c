@@ -12,8 +12,11 @@ void	ft_instructions_or(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[2].value;
 		if (ft_get_args(proc))
 		{
-			*(proc->ireg + registre - 1) = proc->args[0].value | proc->args[1].value;
-			proc->carry = 1;
+			if ((*(proc->ireg + registre - 1) 
+						= proc->args[0].value | proc->args[1].value))
+				proc->carry = 0;
+			else
+				proc->carry = 1;
 		//	proc->carry = !proc->carry;
 			proc->last = 7;
 		}

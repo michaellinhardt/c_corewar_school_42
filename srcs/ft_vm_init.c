@@ -12,7 +12,7 @@ void	vm_init_log(void)
 	l2(11, "VM_INIT", "Max Checks", MAX_CHECKS);
 	l2(11, "VM_INIT", "Cycle per loop", CYCLE_PER_LOOP);
 }
-
+#define ABS(x) x < 0 ? -x : x
 void	vm_init_proc(t_data *d, t_dvm *v, int player)
 {
 
@@ -22,10 +22,22 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (++player < MAX_PLAYERS)
 		if (v->p[player].playing && l2(11, "PLAYER", "joue", player))
-			proc_new(d, (t_proc *)NULL, player + 1
+			proc_new(d, (t_proc *)NULL, -(player + 1)
 			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[player].playing)
 			l2(11, "PLAYER", "ne joue pas", player);
+	/*
+	while (player > -MAX_PLAYERS)
+	{
+		if (v->p[ABS(player - 1)].playing && l2(11, "PLAYER", "joue", player))
+			proc_new(d, (t_proc *)NULL, player 
+			, (player * MEM_SIZE) / v->nbr_players);
+		else if (!v->p[ABS(player - 1)].playing)
+			l2(11, "PLAYER", "ne joue pas", player);
+		--player;
+	}
+	*/
+		
 	// Change la scene actuel pour afficher la vm
 
 }

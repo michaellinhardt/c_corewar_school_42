@@ -26,6 +26,8 @@ int		main(int argc, char **argv)
 	}
 	if (d->vm.nbr_players == 0)
 		return (0);
+
+
 	ft_printf("nbr joueurs %d\n:", d->vm.nbr_players);
 	if (!(ft_check_value_number(d->args, &d->vm)))
 	{

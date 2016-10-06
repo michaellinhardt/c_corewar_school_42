@@ -11,6 +11,12 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[1].value;
 		if (ft_get_args(proc))
 		{
+			/*
+			if (proc->args[1].value)
+				proc->carry = 1;
+			else
+				proc->carry = 0;
+				*/
 
 			*(proc->ireg + registre - 1) = proc->args[0].value % IDX_MOD;
 			proc->carry = 0;
