@@ -23,6 +23,10 @@ void	vm(t_dvm *v, int cperloop)
 			ft_printf("Last Live MF : %d\n", v->last_live);
 			exit1(0, data(), "game over");
 		}
+
+		if (v->graphic && data()->mlx.loop
+		&& l1(100, "(loop == 1)", "overide cperloop, call display()"))
+			display(&(data()->mlx), v);
 		if (v->dump == v->cycle)
 		{
 			// il serais bon dafficher un ecran special pour préciser

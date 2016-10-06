@@ -69,17 +69,19 @@
 # define LOG_DEBUG 0
 # define LOG_DEBUG_DETAILED 0
 # define LOG_DEBUG_CHECKLIVE 0
-# define LOG_GENERAL 0
+# define LOG_GENERAL 1
 # define LOG_KEY 0
 # define LOG_ITOW 0
 # define LOG_SCENE 0
 # define LOG_MOUSE 0
-# define LOG_LOOP 0
+# define LOG_LOOP 1
 # define LOG_FREE 0
 # define LOG_XTOI 1
 # define LOG_NEWI 0
 # define LOG_MLX 0
 # define LOG_VM 0
 # define LOG_PROC 0
+# define LOG_INST 0
+# define LOG_DISPLAY 1
 
 #endif
