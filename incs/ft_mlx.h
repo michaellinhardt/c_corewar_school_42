@@ -45,4 +45,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img);
 void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel);
 void	display_cycle(t_dmlx *m, t_dvm *v);
 
+/* FICHIER FT_MLX_DISPLAY_EFFECT.C */
+int		display_effect(t_dmlx *m, t_dvm *v);
+
 #endif
