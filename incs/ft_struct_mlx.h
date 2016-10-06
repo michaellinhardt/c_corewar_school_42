@@ -47,9 +47,13 @@ typedef struct		s_img
 typedef struct		s_effect
 {
 	char			id_effect;
+	char			id_max;
+	char			i;
 	struct s_img	*img;
 	int				looptodie;
+	int				looptodie_count;
 	char			inc_value;
+	char			start_cycle;
 }					t_effect;
 
 /* STRUCT POUR INFORMER DE L'ETAT ENFONCé OU NON D'UNE TOUCHE
@@ -88,6 +92,7 @@ typedef struct			s_dmlx
 	void				*mlx;
 	void				*win;
 	t_input				input;
+	t_effect			*effect;
 	char				loop;
 	char				loopstop;
 	enum scene			scene;

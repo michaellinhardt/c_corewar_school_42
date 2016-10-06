@@ -9,7 +9,7 @@ int		display(t_dmlx *m, t_dvm *v)
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
 	display_processus(m, data()->vm.proc, &m->scene_img[2][10]);
-	display_effect(m, v);
+	display_effect(m, v, effect_data(), -1);
 	display_arene(m, v, 0, 0);
 
 	l2(100, "display()", "printing cycle", v->cycle);

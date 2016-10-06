@@ -12,39 +12,26 @@ void	vm_dump(t_dvm *v)
 
 void	vm(t_dvm *v, int cperloop)
 {
-	// gameloop() exécute  un cycle, on l'appel cperloop fois,
-	// selon la config du header ou des input clavier
-//	static int loop = 0;
 	while (--cperloop > -1)
 	{
-		if (!gameloop(v))
-		{
-			// Ici la partie est terminé
-			ft_printf("Last Live MF : %d\n", v->last_live);
+		if (!gameloop(v)
+		&& l2(1, "LAST_LIVE", "(v->last_live) is the winner", v->last_live))
 			exit1(0, data(), "game over");
-		}
-
-		if (v->graphic && data()->mlx.loop
-		&& l1(100, "(loop == 1)", "overide cperloop, call display()"))
-			display(&(data()->mlx), v);
-		if (v->dump == v->cycle)
+		else if (v->dump == v->cycle
+		&& l2(1, "DUMP_ORDER", "(cycle) call vm_dump()", v->cycle))
 		{
-			// il serais bon dafficher un ecran special pour préciser
-			// que la parti s'arrete suite a un dump
-			// a paufiner plus tard ...
-			if (v->graphic)
-				display(&(data()->mlx), v);
-			vm_dump(v);
+			if ((v->graphic && display(&(data()->mlx), v)) || 1)
+				vm_dump(v);
 		}
-		v->cycle++;
-		/*
-	++loop;
-	if (loop == 8000)
-		while(1);
-		*/
+		else if (data()->mlx.loop && v->graphic
+		&& l1(100, "(loop == 1)", "overide cperloop, call display()")
+		&& display(&(data()->mlx), v) && ++v->cycle)
+			break ;
+		else
+			v->cycle++;
 	}
 	// lance l'affichage si necessaire
-	if (v->graphic)
+	if (!(data()->mlx.loop) && v->graphic)
 		display(&(data()->mlx), v);
 	if (v->dump <= v->cycle && v->dump != -1)
 			vm_dump(v);
