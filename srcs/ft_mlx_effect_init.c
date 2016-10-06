@@ -7,17 +7,17 @@
 t_effect	*effect_data(void)
 {
 	static t_effect	e[EFFECTS_MAX_SLOT];
-	static int		init = 0;
 
-	if (!init && ++init)
-		ft_bzero(&e, sizeof(e));
 	return (e);
 }
 
-void	effect_init(t_dmlx *m, t_dvm *v, t_effect *e)
+void	effect_init(t_dmlx *m, t_dvm *v, t_effect *e, int i)
 {
 	e = effect_data();
-	(void)m;
+	ft_bzero(e, sizeof(e));
+	while (++i < 1)
+		e[i].id_effect = i;
+	e[0].img = &m->scene_img[2][CPERLOOP_NUMBER];
+	l2(101, "EFFECT_INIT", "(scene_img id) CPERLOOP_NUMBER", CPERLOOP_NUMBER);
 	(void)v;
-	(void)e;
 }

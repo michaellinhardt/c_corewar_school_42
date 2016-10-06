@@ -88,5 +88,6 @@
 # define LOG_PROC 0
 # define LOG_INST 0
 # define LOG_DISPLAY 1
+# define LOG_EFFECT 1
 
 #endif

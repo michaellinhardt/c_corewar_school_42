@@ -40,8 +40,10 @@ typedef struct		s_img
 }					t_img;
 
 /*
-** STRUCT CONTENANT LES INFO DUN EFFET
+** INDEX DES IMAGE DANS LA SCENE 2, CELLE LIé AU EFFETS
 */
+# define CPERLOOP_NUMBER 11
+
 typedef struct		s_effect
 {
 	char			id_effect;
