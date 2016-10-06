@@ -142,7 +142,7 @@ int		main(int argc, char **argv)
 	}
 	*/
 
-
+	//d->vm.nbr_proc = d->vm.nbr_players;
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
 	&& d->vm.graphic )

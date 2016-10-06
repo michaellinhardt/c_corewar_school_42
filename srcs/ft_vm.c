@@ -5,9 +5,17 @@
 
 void	vm_dump(t_dvm *v)
 {
+	int i;
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
 	ft_display_vm(v);
 	ft_printf("Nombre de proc : %d\n", v->nbr_proc);
+	i = 0;
+	while(v->proc)
+	{
+		++i;
+		v->proc = v->proc->n;
+	}
+	ft_printf("TOTAL : %d\n", i);
 	exit1(0, data(), "dump order");
 }
 

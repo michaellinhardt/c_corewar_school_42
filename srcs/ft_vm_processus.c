@@ -32,12 +32,28 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->p = (t_proc *)NULL;
 	d->vm.proc = new;
 
+	// positionne par rapprot a l'id pour un ordre decroissant
+	
+	/*
+	t_proc *begin;
+	t_proc *tmp;
+
+	begin = d->vm.proc;
+	while (begin && begin->id < )
+	{
+		tmp = begin;
+		begin = begin->n;
+	}
+	*/
 	// régle les valeur du proc
+	//
 	new->ireg = (int *)new->reg;
 	new->ireg[0] = player;
 	new->player = player;
 	new->pc = i;
 	new->id = setid;
+//	ft_printf("new process :%d, cycle %d\n", new->id, d->vm.cycle);
+//	ft_putchar('\n');
 	d->vm.nbr_proc++;
 	l2(-1, "PROC SETTINGS", "player attribution", player);
 	l2(-1, "PROC SETTINGS", "id processus", setid);
@@ -49,6 +65,9 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 */
 int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 {
+//	ft_printf("kill process : %d, cycle : %d nbr live %d\n",
+//		   	target->id, d->vm.cycle,
+//			target->live);
 	(void)d;
 	(void)target;
 	(void)procdie;
