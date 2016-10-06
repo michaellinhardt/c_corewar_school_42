@@ -26,6 +26,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display_effect \
 			ft_mlx_display_processus \
 			ft_mlx_display_arene \
+			ft_mlx_effect_init \
 			ft_terminal_ascii \
 			ft_terminal_log \
 			ft_vm_init \

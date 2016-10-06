@@ -48,4 +48,7 @@ void	display_cycle(t_dmlx *m, t_dvm *v);
 /* FICHIER FT_MLX_DISPLAY_EFFECT.C */
 int		display_effect(t_dmlx *m, t_dvm *v);
 
+/* FICHIER FT_MLX_EFFECT_INIT.C */
+int		effect_init(t_dmlx *m, t_dvm *v);
+
 #endif
