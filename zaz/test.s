@@ -1,5 +1,6 @@
 .name "yolo"
 .comment "tets ld"
 
-ld:		ld %1000, r2
-		zjmp %1000
+l1:		and r1, %0, r1
+		sub r42, r1, r1
+		zjmp %:l1

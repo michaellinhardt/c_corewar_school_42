@@ -13,14 +13,11 @@ void	ft_instructions_or(t_dvm *vm, t_instructions inst, t_proc *proc)
 		if (ft_get_args(proc))
 		{
 			*(proc->ireg + registre - 1) = proc->args[0].value | proc->args[1].value;
-			proc->carry = !proc->carry;
+			proc->carry = 1;
+		//	proc->carry = !proc->carry;
 			proc->last = 7;
 		}
-		else
-			proc->carry = 0;
 	}
-	else
-		proc->carry = 0;
 	proc->pc = proc->pc_turfu / 2;
 	l1(13, "INSTRUCTION", "instruction or");
 //	ft_printf("instruction %s\n", inst.name);
