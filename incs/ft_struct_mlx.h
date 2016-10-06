@@ -39,6 +39,17 @@ typedef struct		s_img
 	int				i;
 }					t_img;
 
+/*
+** STRUCT CONTENANT LES INFO DUN EFFET
+*/
+typedef struct		s_effect
+{
+	char			id_effect;
+	struct s_img	*img;
+	int				looptodie;
+	char			inc_value;
+}					t_effect;
+
 /* STRUCT POUR INFORMER DE L'ETAT ENFONCé OU NON D'UNE TOUCHE
  * - si char <touche> = 0 -> touche laché, sinon elle est enfoncé
  * - mp_[x-y] pour la position d'un press, mo_[xy] pour mouseover */
