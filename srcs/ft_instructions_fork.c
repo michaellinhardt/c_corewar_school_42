@@ -16,6 +16,7 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			i = new->id;
 			ft_memcpy(new, proc, sizeof(proc));
 			ft_printf("[fork] proc.r2 = %d <-> new.r2 = %d\n", proc->ireg[1], new->ireg[1]);
+			ft_printf("[fork] proc.last = %d <-> new.last = %d\n", proc->last, new->last);
 			new->id = i;
 			new->pc = (proc->pc + proc->args[0].value % IDX_MOD);
 
