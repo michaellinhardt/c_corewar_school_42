@@ -8,7 +8,7 @@ ld	%33, r6			;carry = 0
 #While (r2 < 10)
 forks:
 add	r2, r3, r2		;increment r2 (carry = 0 car addition avec r3 qui vaut tjrs == 1)
-xor	r2, %5, r4		;if (r4 == 10) {carry = 0} (r2 ^ 15 vaudra 0 si r2 == 15)
+xor	r2, %5, r4		;if (r4 == 5) {carry = 0} (r2 ^ 15 vaudra 0 si r2 == 15)
 live2:
 	live 	%4
 zjmp	%:endwhile		;if (carry) (au premier passage, carry == 0)
