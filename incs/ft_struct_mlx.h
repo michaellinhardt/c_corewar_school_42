@@ -59,6 +59,7 @@ typedef struct		s_effect
 	char			start_cycle;
 	int				size_x;
 	int				size_y;
+	int				fade;
 	int				x;
 	int				y;
 }					t_effect;

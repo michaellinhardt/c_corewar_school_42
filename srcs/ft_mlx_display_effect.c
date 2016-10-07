@@ -20,21 +20,22 @@ void	put_effect_img(t_img *l, int id, int x, int y)
 	t_effect	*e;
 
 	e = effect_data();
-	ptre = (int *)&(e[id].img->str);
+	ptre = (int *)e[id].img->str;
 	ptrl = (int *)l->str;
 	l->i = (e[id].y * WIN_X + e[id].x) - 1;
-	ft_printf("printing %d start, img pos: %d (%d,%d)\n", e[id].id_effect, l->i, e[id].x, e[id].y);
+	// ft_printf("image position: %d,%d\n(e[id].y * WIN_X + e[id].x) - 1 = %d\n", e[id].x, e[id].y, l->i);
+	// exit (0);
 	while (++y < e[id].size_y)
 	{
 		x = -1;
 		while (++x < e[id].size_x)
 		{
-			ptrl[++(l->i)] = 0x00000000;
 			ptrl[++(l->i)] = ptre[y * e[id].size_x + x];
+			l->str[l->i * 4 + 3] = e[id].fade;
 		}
 		l->i = l->i - x + WIN_X;
 	}
-	ft_printf("printing %d ok\n", e[id].id_effect);
+	e[id].fade += e[id].inc_value;
 }
 
 void	display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i)
