@@ -11,6 +11,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 
 	// Récupére un proc mort si il existe, sinon le créer
 	// nb. c'est aussi ici qu'on détermine l'id associé au process avec setid
+	l1(-1, "PROC NEW", "*** NEW PROC ***");
 	setid = 0;
 	if (d->vm.procdie && (new = d->vm.procdie)
 	&& (((setid = d->vm.procdie->id) || 1))
@@ -33,7 +34,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	d->vm.proc = new;
 
 	// positionne par rapprot a l'id pour un ordre decroissant
-	
+
 	/*
 	t_proc *begin;
 	t_proc *tmp;
@@ -57,7 +58,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	d->vm.nbr_proc++;
 	l2(-1, "PROC SETTINGS", "player attribution", player);
 	l2(-1, "PROC SETTINGS", "id processus", setid);
-	l2(-1, "PROC SETTINGS", "arene start value", i);
+	l2(-1, "PROC SETTINGS", "cycle", data()->vm.cycle);
 }
 
 /*
@@ -68,6 +69,9 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 //	ft_printf("kill process : %d, cycle : %d nbr live %d\n",
 //		   	target->id, d->vm.cycle,
 //			target->live);
+	l1(-1, "PROC KILL", "*** KILL PROC ***");
+	l2(-1, "PROC SETTINGS", "id processus", target->id);
+	l2(-1, "PROC SETTINGS", "cycle", data()->vm.cycle);
 	(void)d;
 	(void)target;
 	(void)procdie;
