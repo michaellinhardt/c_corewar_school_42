@@ -53,6 +53,7 @@ void	vm_init(t_data *d, t_dvm *v)
 	ft_fill_arene(v);
 
 	// initialise les variable et les log
+//	v->cycle = -1;
 	v->ctodie = CYCLE_TO_DIE;
 	v->cperloop = CYCLE_PER_LOOP;
 	vm_init_log();

@@ -26,6 +26,8 @@ void	vm(t_dvm *v, int cperloop)
 		{
 			// Ici la partie est terminé
 			ft_printf("Last Live MF : %d\n", v->last_live);
+			if (v->dump != -1)
+				vm_dump(v);
 			exit1(0, data(), "game over");
 		}
 		if (v->dump == v->cycle)

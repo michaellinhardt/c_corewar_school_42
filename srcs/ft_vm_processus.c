@@ -54,6 +54,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->pc = i;
 	new->id = setid;
 	new->create_cycle = data()->vm.cycle;
+	//ft_printf("New Process id :%d\n", new->id);
 //	ft_printf("new process :%d, cycle %d\n", new->id, d->vm.cycle);
 //	ft_putchar('\n');
 	d->vm.nbr_proc++;
@@ -72,6 +73,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 //			target->live);
 	l2(-1, "PROC KILL", "id processus -> KILL", target->id);
 	l2(-1, "PROC KILL", "(create cycle)", target->create_cycle);
+	//ft_printf("New Process id :%d\n", target->id);
 	(void)d;
 	(void)target;
 	(void)procdie;

@@ -5,6 +5,7 @@ static t_proc *ft_create_child(t_proc *new, t_proc *father)
 	ft_memcpy(new->reg, father->reg, REG_NUMBER * REG_SIZE);
 	new->carry = father->carry;
 	new->pc = (father->pc + father->args[0].value % IDX_MOD);
+	new->live = father->live;
 	return (new);
 }
 
@@ -25,7 +26,8 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			proc_new(data(), new, proc->player, 0);
 			new = vm->proc;
 			ft_create_child(new, proc);
-//			ft_get_instruction(vm->instructions, vm, new);
+			new->pc_turfu = new->pc * 2;
+			ft_get_instruction(vm->instructions, vm, new);
 
 			/*
 			next = new->n;

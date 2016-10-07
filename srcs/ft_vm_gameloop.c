@@ -27,6 +27,7 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	v->ctodiecount = 0;
 
 	// décrémente le prochain cycle to die si nécessaire
+	/*
 	if (((++v->max_checks >= MAX_CHECKS
 	&& l2(11, "MAX_CHECKS LIMIT", "decrement c2die (MAX CHECKS)", (v->ctodie - CYCLE_DELTA)))
 	|| (v->nbr_live >= NBR_LIVE
@@ -36,21 +37,22 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 		v->ctodie = ((v->ctodie - CYCLE_DELTA) > 0)
 		? v->ctodie - CYCLE_DELTA : 0;
 
-	/*
+	v->nbr_live = 0;
+
+	ft_printf("waaaaaaaaaaaagghhhhhhhhhhhhhhhhhhhhhh\n");
+	*/
 	if (v->nbr_live >= NBR_LIVE)
 	{
-
 		v->max_checks = 0;
-		v->ctodie = v->ctodie - CYCLE_DELTA;
-		v->nbr_live = 0;
-
+		v->ctodie = v->ctodie - CYCLE_DELTA < 0 ? 0 : v->ctodie - CYCLE_DELTA;
 	}
 	else if (((++v->max_checks >= MAX_CHECKS)))
 	{
 		v->max_checks = 0;
-		v->ctodie = v->ctodie - CYCLE_DELTA;
-		v->nbr_live = 0;
+		v->ctodie = v->ctodie - CYCLE_DELTA < 0 ? 0 : v->ctodie - CYCLE_DELTA;
 	}
+		v->nbr_live = 0;
+	/*
 	// Debug, met tout les process vivant
 	next = data()->vm.proc;
 	if (v->ctodie > 0)

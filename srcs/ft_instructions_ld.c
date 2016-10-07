@@ -18,7 +18,11 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 0;
 				*/
 
-			*(proc->ireg + registre - 1) = proc->args[0].value % IDX_MOD;
+			if ((*(proc->ireg + registre - 1) = proc->args[0].value % IDX_MOD))
+				proc->carry = 0;
+			else
+				proc->carry = 1;
+			/*
 			proc->carry = 0;
 			if (proc->args[0].type == DIR_CODE)
 				proc->carry = 1;
@@ -34,6 +38,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 			else
 				proc->carry = 0;
 
+				*/
 
 			/*
 				if (proc->last == 2 )
