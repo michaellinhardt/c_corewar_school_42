@@ -12,7 +12,7 @@ void	ft_instructions_or(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[2].value;
 		if (ft_get_args(proc))
 		{
-			if ((*(proc->ireg + registre - 1) 
+			if ((*(proc->ireg + registre - 1)
 						= proc->args[0].value | proc->args[1].value))
 				proc->carry = 0;
 			else
@@ -22,6 +22,6 @@ void	ft_instructions_or(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;
-	l1(13, "INSTRUCTION", "instruction or");
+	l2(13, "INSTRUCTION", "instruction or", proc->id);
 //	ft_printf("instruction %s\n", inst.name);
 }

@@ -48,9 +48,6 @@ int		gameloop(t_dvm *v);
 /* FICHIER FT_VM_PROCESSUS_READ.C */
 void	processus_read(t_dvm *v, t_proc *proc);
 
-/* FICHIER FT_VM_INSTRUCTIONS.C */
-void	instructions(t_dvm *v, t_proc *proc);
-
 /* Tools */
 // caca
 // ca c'est kdo bsx :)
@@ -70,7 +67,7 @@ int		ft_check_value_number(t_dargs *args, t_dvm *vm);
 
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);
-void	ft_no_ocp(t_argument *args, t_arg_type *types);	
+void	ft_no_ocp(t_argument *args, t_arg_type *types);
 // ici on peuple les valeurs
 int		ft_fill_args(t_argument *arg, t_dvm *vm, int pc, int flag_size_ind);
 

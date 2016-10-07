@@ -14,11 +14,12 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 			vm->p[ABS(proc->args[0].value) - 1].total_live++;
 			vm->nbr_live++;
 			vm->last_live = proc->args[0].value;
+			vm->last_live_cycle = vm->cycle;
 			proc->live += 1;
 			proc->last = 1;
 //		}
 //	}
 	proc->pc = proc->pc_turfu / 2;
-	l1(13, "INSTRUCTION", "instruction live");
+	l2(13, "INSTRUCTION", "instruction live", proc->id);
 //	ft_printf("instruction %s\n", inst.name);
 }

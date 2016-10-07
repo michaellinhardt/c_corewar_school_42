@@ -18,7 +18,7 @@ void	ft_instructions_sub(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;
-	l1(13, "INSTRUCTION", "instruction sub");
+	l2(13, "INSTRUCTION", "instruction sub", proc->id);
 
 
 //	ft_printf("instruction %s\n", inst.name);

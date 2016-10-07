@@ -11,13 +11,13 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 	{
 		if (ft_get_args(proc))
 		{
-			proc_new(data(), new, proc->player, 0);			
+			proc_new(data(), new, proc->player, 0);
 			new = vm->proc;
 			i = new->id;
 			ft_memcpy(new, proc, sizeof(proc));
 			new->id = i;
 			new->pc = (proc->pc + proc->args[0].value % IDX_MOD);
-//			new->live = 1;
+			new->live = 1;
 			/*
 			if (!(ft_get_instruction(vm->instructions, vm, new)))
 			{
@@ -29,7 +29,7 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 		//	new->carry = 0;
 		}
 	}
-	l1(13, "INSTRUCTION", "instruction fork");
+	l2(13, "INSTRUCTION", "instruction fork", proc->id);
 	proc->pc = proc->pc_turfu / 2;
 	//ft_printf("instruction %s\n", inst.name);
 }

@@ -40,6 +40,7 @@ typedef struct		s_proc
 	int				id;
 	int				player;
 //	int				player_live;
+	int				create_cycle;
 	int				live;
 	int				wait;
 	int				pc;
@@ -93,10 +94,11 @@ typedef struct		s_dvm
 	int				nbr_live;
 	int				max_checks;
 	int				last_live;
+	int				last_live_cycle;
 	int				nbr_players;
 	int				nbr_proc;
-	t_proc				*proc;
-	t_proc				*procdie;
+	t_proc			*proc;
+	t_proc			*procdie;
 
 	// Tableau de pointeur sur fonctions des instructions
 }					t_dvm;

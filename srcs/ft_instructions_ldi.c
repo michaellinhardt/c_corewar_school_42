@@ -23,6 +23,6 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	else
 		proc->carry = 0;
 	proc->pc = proc->pc_turfu / 2;
-	l1(13, "INSTRUCTION", "instruction ldi");
+	l2(13, "INSTRUCTION", "instruction ldi", proc->id);
 ///	ft_printf("instruction %s\n", inst.name);
 }

@@ -28,12 +28,11 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 
 	// décrémente le prochain cycle to die si nécessaire
 	if (((++v->max_checks >= MAX_CHECKS
-	&& l2(11, "MAX_CHECKS LIMIT", "(new vaue) decrement c2die", (v->ctodie - CYCLE_DELTA)))
+	&& l2(11, "MAX_CHECKS LIMIT", "decrement c2die (MAX CHECKS)", (v->ctodie - CYCLE_DELTA)))
 	|| (v->nbr_live >= NBR_LIVE
-	&& l2(11, "NBR_LIVE LIMITS", "decrement c2die", (v->ctodie - CYCLE_DELTA))))
+	&& l2(11, "NBR_LIVE LIMITS", "decrement c2die (NBR LIVES)", (v->ctodie - CYCLE_DELTA))))
 	&& !(v->max_checks = 0)
-	&& !(v->nbr_live = 0)
-	&& l2(11, "MAX_CHECKS LIMIT", "(cycle) decrement c2die", (v->cycle)))
+	&& !(v->nbr_live = 0))
 		v->ctodie = ((v->ctodie - CYCLE_DELTA) > 0)
 		? v->ctodie - CYCLE_DELTA : 0;
 
