@@ -22,7 +22,8 @@ void	ft_instructions_add(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 1;
 			else
 				proc->carry = 0;
-
+			// if (proc->id == 0)
+			// 	ft_printf("add result: %d\n", *(proc->ireg + registre - 1));
 
 
 			proc->last = 4;

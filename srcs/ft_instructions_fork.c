@@ -20,7 +20,7 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 
 			// MIKA TEST
-			new->live = 1;
+			// new->live = 1;
 			new->last = 0;
 
 

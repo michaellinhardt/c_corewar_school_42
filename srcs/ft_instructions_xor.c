@@ -24,8 +24,8 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 1;
 			else
 				proc->carry = 0;
-
-
+			// if (proc->id == 0)
+			// 	ft_printf("xor result: %d\n", *(proc->ireg + registre - 1));
 
 
 			/*

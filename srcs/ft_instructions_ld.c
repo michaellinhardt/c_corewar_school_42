@@ -27,12 +27,12 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 
 
+
 			// MIKA TEST
 			if (*(proc->ireg + registre - 1) == 0)
 				proc->carry = 1;
 			else
 				proc->carry = 0;
-
 
 
 			/*
