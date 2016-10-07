@@ -71,9 +71,9 @@ int		gameloop(t_dvm *v)
 	// Début du cycle
 //	++v->cycle;
 	processus_read(v, data()->vm.proc);
+	v->ctodiecount++;
 	if (v->ctodiecount >= v->ctodie
 	&& !(ret = checklive(v, data()->vm.proc, (t_proc *)NULL, 0, 0)))
 		return (0);
-	v->ctodiecount++;
 	return (1);
 }

@@ -7,6 +7,7 @@ void	vm_dump(t_dvm *v)
 {
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
 	ft_display_vm(v);
+	ft_printf(" nbr cycles : : %d\n", v->cycle);
 	ft_printf("Nombre de proc : %d\n", v->nbr_proc);
 	ft_printf("Cycle to die : %d\n", v->ctodie);
 	ft_printf("Last live cycle : %d\n", v->last_live_cycle);
@@ -22,7 +23,8 @@ void	vm(t_dvm *v, int cperloop)
 //	static int loop = 0;
 	while (--cperloop > -1)
 	{
-		if (!gameloop(v))
+		v->cycle++;
+		if (!gameloop(v) || !v->proc)
 		{
 			// Ici la partie est terminé
 			ft_printf("Last Live MF : %d\n", v->last_live);
@@ -39,7 +41,6 @@ void	vm(t_dvm *v, int cperloop)
 				display(&(data()->mlx), v);
 			vm_dump(v);
 		}
-		v->cycle++;
 	}
 	// lance l'affichage si necessaire
 	if (v->graphic)

@@ -26,8 +26,8 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			proc_new(data(), new, proc->player, 0);
 			new = vm->proc;
 			ft_create_child(new, proc);
-			new->pc_turfu = new->pc * 2;
-			ft_get_instruction(vm->instructions, vm, new);
+//			new->pc_turfu = new->pc * 2;
+//			ft_get_instruction(vm->instructions, vm, new);
 
 			/*
 			next = new->n;
