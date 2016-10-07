@@ -6,7 +6,7 @@
 void	vm_dump(t_dvm *v)
 {
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
-	//ft_display_vm(v);
+	ft_display_vm(v);
 	ft_printf("Nombre de proc : %d\n", v->nbr_proc);
 	ft_printf("Cycle to die : %d\n", v->ctodie);
 	ft_printf("Last live cycle : %d\n", v->last_live_cycle);

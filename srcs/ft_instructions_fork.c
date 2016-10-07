@@ -1,12 +1,20 @@
 #include "ft_corewar.h"
 
+static t_proc *ft_create_child(t_proc *new, t_proc *father)
+{
+	ft_memcpy(new->reg, father->reg, REG_NUMBER * REG_SIZE);
+	new->carry = father->carry;
+	new->pc = (father->pc + father->args[0].value % IDX_MOD);
+	return (new);
+}
+
 void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 {
 	t_proc	*new;
-	t_proc	*next;
-	t_proc	*prev;
-	int		*ireg;
-	int		i;
+//	t_proc	*next;
+//	t_proc	*prev;
+//	int		*ireg;
+//	int		i;
 
 	(void)vm;
 	new = 0;
@@ -16,6 +24,10 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			proc_new(data(), new, proc->player, 0);
 			new = vm->proc;
+			ft_create_child(new, proc);
+//			ft_get_instruction(vm->instructions, vm, new);
+
+			/*
 			next = new->n;
 			prev = new->p;
 			ireg = (int *)new->reg;
@@ -30,11 +42,13 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 			new->id = i;
 			new->pc = (proc->pc + proc->args[0].value % IDX_MOD);
+			*/
 
 
 			// MIKA TEST
 			// new->live = 0;
-			new->last = 0;
+			//new->last = 0;
+
 
 
 

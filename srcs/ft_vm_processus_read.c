@@ -18,7 +18,9 @@ void	processus_read(t_dvm *v, t_proc *begin)
 			continue;
 		}
 		*/
-		if (!proc->wait)
+		if (proc->wait-- == 1)
+			proc->inst->f_instructions(v, *proc->inst, proc);
+		if (proc->wait <= 0)
 		{
 			proc->pc_turfu = proc->pc * 2;
 			if (!(ft_get_instruction(v->instructions, v, proc)))
@@ -27,12 +29,8 @@ void	processus_read(t_dvm *v, t_proc *begin)
 				proc = proc->n;
 				continue ;
 			}
+		//	proc->wait++;
 		}
-		else if (proc->wait == 1)
-		{
-			proc->inst->f_instructions(v, *proc->inst, proc);
-		}
-		proc->wait--;
 		proc = proc->n;
 	}
 }
