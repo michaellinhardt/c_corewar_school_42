@@ -25,6 +25,16 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 			else
 				proc->carry = 0;
 
+
+
+			// MIKA TEST
+			if (*(proc->ireg + registre - 1) == 0)
+				proc->carry = 1;
+			else
+				proc->carry = 0;
+
+
+
 			/*
 				if (proc->last == 2 )
 					proc->carry = 1;
@@ -33,11 +43,11 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->last = 2;
 				*/
 		}
-		else
-			proc->carry = 0;
+		// else
+		// 	proc->carry = 0;
 	}
-	else
-		proc->carry = 0;
+	// else
+	// 	proc->carry = 0;
 	l2(13, "INSTRUCTION", "instruction ld", proc->id);
 	proc->pc = proc->pc_turfu / 2;
 //	ft_printf("instruction %s\n", inst.name);

@@ -14,7 +14,18 @@ void	ft_instructions_add(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			*(proc->ireg + registre - 1) = proc->args[0].value + proc->args[1].value;
 			proc->carry = 0;
-		proc->last = 4;
+
+
+
+			// MIKA TESt
+			if (*(proc->ireg + registre - 1) == 0)
+				proc->carry = 1;
+			else
+				proc->carry = 0;
+
+
+
+			proc->last = 4;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

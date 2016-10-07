@@ -81,6 +81,6 @@
 # define LOG_MLX 0
 # define LOG_VM 1
 # define LOG_PROC 1
-# define LOG_INST 1
+# define LOG_INST 0
 
 #endif

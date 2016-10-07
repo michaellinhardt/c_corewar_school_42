@@ -17,7 +17,15 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			ft_memcpy(new, proc, sizeof(proc));
 			new->id = i;
 			new->pc = (proc->pc + proc->args[0].value % IDX_MOD);
+
+
+			// MIKA TEST
 			new->live = 1;
+			new->last = 0;
+
+
+
+
 			/*
 			if (!(ft_get_instruction(vm->instructions, vm, new)))
 			{

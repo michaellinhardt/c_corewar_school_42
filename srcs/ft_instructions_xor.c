@@ -17,6 +17,17 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 0;
 			else
 				proc->carry = 1;
+
+
+			// MIKA TESt
+			if (*(proc->ireg + registre - 1) == 0)
+				proc->carry = 1;
+			else
+				proc->carry = 0;
+
+
+
+
 			/*
 			if ((proc->args[0].value && proc->args[1].value) ||
 			   (!proc->args[0].value && !proc->args[1].value))
