@@ -15,6 +15,13 @@ int		mouseo_hook(int x, int y, t_data *d)
 
 int		keyr_hook(int key, t_data *d)
 {
+	(key == 126) ? d->mlx.input.up = 0 : 0;
+	if (key == 123)
+		d->vm.cperloop -= (d->vm.cperloop - CPERLOOP_INC <= 0) ? 0 : CPERLOOP_INC;
+	if (key == 124)
+		d->vm.cperloop += (d->vm.cperloop + CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
+	if (key == 125)
+		d->vm.pause_inc = 1;
 	if (key == 53)
 		exit1(0, d, "by pressing echap");
 	return (0);
@@ -22,6 +29,11 @@ int		keyr_hook(int key, t_data *d)
 
 int		keyp_hook(int key, t_data *d)
 {
+	(key == 126) ? d->mlx.input.up = 1 : 0;
+	if (key == 49 && d->vm.pause == 1)
+		d->vm.pause = 0;
+	else if (key == 49 && d->vm.pause == 0)
+		d->vm.pause = 1;
 	return (d->mlx.loop += 0 * key);
 }
 

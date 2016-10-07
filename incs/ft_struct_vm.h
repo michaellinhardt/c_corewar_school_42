@@ -87,6 +87,8 @@ typedef struct		s_dvm
 	char			console;
 	char			graphic;
 	int				dump;
+	char			pause;
+	char			pause_inc;
 	int				cycle;
 	int				cperloop;
 	int				ctodie;

@@ -23,6 +23,10 @@ void	vm(t_dvm *v, int cperloop)
 //	static int loop = 0;
 	while (--cperloop > -1)
 	{
+		if (v->graphic && v->pause && data()->mlx.input.up == 0
+		&& !(v->pause_inc))
+			break ;
+		v->pause_inc = 0;
 		v->cycle++;
 		if (!gameloop(v) || !v->proc)
 		{
