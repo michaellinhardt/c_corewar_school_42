@@ -5,17 +5,13 @@
 
 void	vm_dump(t_dvm *v)
 {
-	int i;
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
-	ft_display_vm(v);
+	//ft_display_vm(v);
 	ft_printf("Nombre de proc : %d\n", v->nbr_proc);
-	i = 0;
-	while(v->proc)
-	{
-		++i;
-		v->proc = v->proc->n;
-	}
-	ft_printf("TOTAL : %d\n", i);
+	ft_printf("Cycle to die : %d\n", v->ctodie);
+	ft_printf("Last live cycle : %d\n", v->last_live_cycle);
+	ft_printf("Live current period : %d\n", v->nbr_live);
+	exit (0);
 	exit1(0, data(), "dump order");
 }
 

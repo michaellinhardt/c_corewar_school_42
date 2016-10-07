@@ -20,7 +20,7 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 			proc->last = 3;
 		}
 	}
-	l1(13, "INSTRUCTION", "instruction st");
+	l2(13, "INSTRUCTION", "instruction st", proc->id);
 	proc->pc = proc->pc_turfu / 2;
 //	ft_printf("instruction %s\n", inst.name);
 }

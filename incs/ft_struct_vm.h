@@ -20,13 +20,13 @@ typedef	struct		s_instructions
 	short			nbr_args; // son nombre d'args
 	t_arg_type		types[MAX_ARGS_NUMBER];
 	int				cycles;
-	char			comment[37];			
+	char			comment[37];
 	int				flag_ocp; // si ocp pour decode
 	int				flag_size_ind;
 	// pointeur vers la fonctions d'instructions
 	void			(*f_instructions)(t_dvm *vm, struct s_instructions ins,
 			t_proc *proc);
-}					t_instructions;	
+}					t_instructions;
 
 typedef	struct		s_argument
 {
@@ -40,6 +40,7 @@ typedef struct		s_proc
 	int				id;
 	int				player;
 //	int				player_live;
+	int				create_cycle;
 	int				live;
 	int				wait;
 	int				pc;
@@ -93,10 +94,11 @@ typedef struct		s_dvm
 	int				nbr_live;
 	int				max_checks;
 	int				last_live;
+	int				last_live_cycle;
 	int				nbr_players;
 	int				nbr_proc;
-	t_proc				*proc;
-	t_proc				*procdie;
+	t_proc			*proc;
+	t_proc			*procdie;
 
 	// Tableau de pointeur sur fonctions des instructions
 }					t_dvm;

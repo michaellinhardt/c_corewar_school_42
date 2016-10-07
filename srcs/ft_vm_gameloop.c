@@ -22,17 +22,16 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 			l2(-3, "checklive()", "live process", p->id);
 		p = next;
 	}
-	l2(-1, "checklive()", "alive process count", palive);
+	l2(-1, "checklive()", "alive process count", v->nbr_proc);
 	l2(-1, "checklive()", "dead process count", pdead);
 	v->ctodiecount = 0;
-	v->nbr_live += palive;
 
 	// décrémente le prochain cycle to die si nécessaire
 	/*
 	if (((++v->max_checks >= MAX_CHECKS
-	&& l2(11, "MAX_CHECKS LIMIT", "decrement c2die", (v->ctodie - CYCLE_DELTA)))
+	&& l2(11, "MAX_CHECKS LIMIT", "decrement c2die (MAX CHECKS)", (v->ctodie - CYCLE_DELTA)))
 	|| (v->nbr_live >= NBR_LIVE
-	&& l2(11, "NBR_LIVE LIMITS", "decrement c2die", (v->ctodie - CYCLE_DELTA))))
+	&& l2(11, "NBR_LIVE LIMITS", "decrement c2die (NBR LIVES)", (v->ctodie - CYCLE_DELTA))))
 	&& !(v->max_checks = 0)
 	&& !(v->nbr_live = 0))
 		v->ctodie = ((v->ctodie - CYCLE_DELTA) > 0)
@@ -69,9 +68,10 @@ int		gameloop(t_dvm *v)
 	ret= 0;
 	// Début du cycle
 //	++v->cycle;
-	if (++v->ctodiecount >= v->ctodie
+	processus_read(v, data()->vm.proc);
+	if (v->ctodiecount >= v->ctodie
 	&& !(ret = checklive(v, data()->vm.proc, (t_proc *)NULL, 0, 0)))
 		return (0);
-	processus_read(v, data()->vm.proc);
+	v->ctodiecount++;
 	return (1);
 }

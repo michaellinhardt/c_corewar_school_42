@@ -14,14 +14,14 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[2].value;
 		if (ft_get_args(proc))
 		{
-			address = (proc->args[0].value % IDX_MOD + 
+			address = (proc->args[0].value % IDX_MOD +
 					proc->args[1].value % IDX_MOD) * 2;
 			ft_fill_args_dir(&argument, vm, address);
 			*(proc->ireg + registre) = argument.value;
 			proc->last = 14;
 		}
 	}
-	l1(13, "INSTRUCTION", "instruction lldi");
+	l2(13, "INSTRUCTION", "instruction lldi", proc->id);
 	proc->pc = proc->pc_turfu / 2;
 //	ft_printf("instruction %s\n", inst.name);
 

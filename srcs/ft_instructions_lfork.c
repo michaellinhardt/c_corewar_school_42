@@ -12,10 +12,11 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 	{
 		if (ft_get_args(proc))
 		{
-			proc_new(data(), new, proc->player, 0);			
+			proc_new(data(), new, proc->player, 0);
 			ft_memcpy(new, proc, sizeof(proc));
 			new->pc = (proc->pc + proc->args[0].value) % 4096;
 			proc->last = 15;
+			new->live = 1;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

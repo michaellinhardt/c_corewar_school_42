@@ -30,14 +30,14 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 	while (player > -MAX_PLAYERS)
 	{
 		if (v->p[ABS(player - 1)].playing && l2(11, "PLAYER", "joue", player))
-			proc_new(d, (t_proc *)NULL, player 
+			proc_new(d, (t_proc *)NULL, player
 			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[ABS(player - 1)].playing)
 			l2(11, "PLAYER", "ne joue pas", player);
 		--player;
 	}
 	*/
-		
+
 	// Change la scene actuel pour afficher la vm
 
 }
