@@ -76,7 +76,7 @@ int		ft_get_value_registre(t_proc *proc, int registre);
 int		ft_check_reg(int registre);
 int		ft_get_args(t_proc *proc);
 int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc);
-void	ft_put_registre(char *arene, unsigned int code, int pc);
+void	ft_put_registre(char *arene, unsigned int code, unsigned int pc);
 void	ft_put_color_size(int *color, unsigned int code_color, int pc, int size);
 /*
  * Instructions

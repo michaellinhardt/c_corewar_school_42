@@ -2,7 +2,7 @@
 
 static int		ft_fill_args_reg(t_argument *arg, t_dvm *vm, int pc)
 {
-	arg->value = ft_getchar(vm->arene + pc);
+	arg->value = (unsigned char)ft_getchar(vm->arene + pc);
 	pc = (pc + 2) % SIZE_CHAR_ARENE;
 	return (pc);
 }
@@ -16,7 +16,7 @@ int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc)
 	decal = 24;
 	while (i < 4)
 	{
-		arg->value |= ft_getchar(vm->arene + pc) << decal;
+		arg->value |= (unsigned char)ft_getchar(vm->arene + pc) << decal;
 		pc = (pc + 2) % SIZE_CHAR_ARENE;
 		decal -= 8;
 		++i;
