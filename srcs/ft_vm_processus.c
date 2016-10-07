@@ -69,9 +69,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 //	ft_printf("kill process : %d, cycle : %d nbr live %d\n",
 //		   	target->id, d->vm.cycle,
 //			target->live);
-	l1(-1, "PROC KILL", "*** KILL PROC ***");
-	l2(-1, "PROC SETTINGS", "id processus", target->id);
-	l2(-1, "PROC SETTINGS", "cycle", data()->vm.cycle);
+	l2(-1, "PROC SETTINGS", "id processus -> KILL", target->id);
 	(void)d;
 	(void)target;
 	(void)procdie;
