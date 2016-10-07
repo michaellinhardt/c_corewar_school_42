@@ -18,6 +18,7 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 			else
 				proc->carry = 1;
 
+			ft_printf("[%d] xor: %d \n", proc->id, *(proc->ireg + registre - 1));
 
 			// MIKA TESt
 			if (*(proc->ireg + registre - 1) == 0)
@@ -25,7 +26,7 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 			else
 				proc->carry = 0;
 			// if (proc->id == 0)
-			// 	ft_printf("xor result: %d\n", *(proc->ireg + registre - 1));
+				// ft_printf("xor result: %d\n", *(proc->ireg + registre - 1));
 
 
 			/*
