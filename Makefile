@@ -26,6 +26,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display_arene \
 			ft_terminal_ascii \
 			ft_terminal_log \
+			ft_convert_pc \
 			ft_vm_init \
 			ft_vm \
 			ft_recup_headers \

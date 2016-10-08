@@ -64,6 +64,7 @@ int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc);
 int		ft_check_value_args(t_argument *args, t_instructions *inst);
 int		ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc);
 int		ft_check_value_number(t_dargs *args, t_dvm *vm);
+int		ft_convert_pc(int pc);
 
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);
@@ -76,7 +77,7 @@ int		ft_get_value_registre(t_proc *proc, int registre);
 int		ft_check_reg(int registre);
 int		ft_get_args(t_proc *proc);
 int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc);
-void	ft_put_registre(char *arene, unsigned int code, unsigned int pc);
+void	ft_put_registre(char *arene, unsigned int code, int pc);
 void	ft_put_color_size(int *color, unsigned int code_color, int pc, int size);
 /*
  * Instructions

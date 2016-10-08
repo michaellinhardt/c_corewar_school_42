@@ -1,6 +1,6 @@
 #include "ft_corewar.h"
 
-void	ft_put_registre(char *arene, unsigned int code, unsigned int pc)
+void	ft_put_registre(char *arene, unsigned int code, int pc)
 {
 	unsigned int base;
 	unsigned int chiffre;

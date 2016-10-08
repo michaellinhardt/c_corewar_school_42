@@ -17,13 +17,13 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 			else
 				proc->carry = 0;
 				*/
-			ft_printf("ld : valeur a charger %u\n", proc->args[0].value);
+			//ft_printf("ld : valeur a charger %u\n", proc->args[0].value);
 
 			if ((*(proc->ireg + registre - 1) = proc->args[0].value ))
 				proc->carry = 0;
 			else
 				proc->carry = 1;
-			ft_printf("ld : WAZAH %u\n", ((*(proc->ireg +registre - 1))));
+		//	ft_printf("ld : WAZAH %u\n", ((*(proc->ireg +registre - 1))));
 			/*
 			proc->carry = 0;
 			if (proc->args[0].type == DIR_CODE)
