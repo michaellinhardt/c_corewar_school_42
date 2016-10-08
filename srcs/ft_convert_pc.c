@@ -13,6 +13,6 @@ int		ft_convert_pc(int pc)
 
 //	ft_printf("valeur de pc %d\n", pc);
 	pc = -(pc) ;
-	pc = MEM_SIZE - pc;
+	pc = MEM_SIZE - (pc % 4096);
 	return (pc);
 }

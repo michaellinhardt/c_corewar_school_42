@@ -43,11 +43,12 @@ void	processus_read(t_dvm *v, t_proc *begin)
 				proc = proc->n;
 				continue ;
 			}
+			proc->ok = 0;
+			proc->inst->f_instructions(v, *proc->inst, proc);
 		}
 		else if (proc->wait == 1)
 		{
 			proc->inst->f_instructions(v, *proc->inst, proc);
-
 		}
 			proc->wait--;
 		proc = proc->n;

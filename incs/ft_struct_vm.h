@@ -43,6 +43,7 @@ typedef struct		s_proc
 	int				create_cycle;
 	int				live;
 	int				wait;
+	int				ok;
 	int				pc;
 	int				pc_turfu;
 	char			reg[REG_NUMBER][REG_SIZE];

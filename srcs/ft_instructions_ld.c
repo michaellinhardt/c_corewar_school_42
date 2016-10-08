@@ -6,56 +6,33 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)vm;
 	(void)inst;
 	(void)proc;
-	if (ft_check_value_args(proc->args, &inst))
-	{
-		registre = proc->args[1].value;
-		if (ft_get_args(proc))
-		{
-			/*
-			if (proc->args[1].value)
-				proc->carry = 1;
-			else
-				proc->carry = 0;
-				*/
-			//ft_printf("ld : valeur a charger %u\n", proc->args[0].value);
-
-			if ((*(proc->ireg + registre - 1) = proc->args[0].value ))
-				proc->carry = 0;
-			else
-				proc->carry = 1;
-		//	ft_printf("ld : WAZAH %u\n", ((*(proc->ireg +registre - 1))));
-			/*
-			proc->carry = 0;
-			if (proc->args[0].type == DIR_CODE)
-				proc->carry = 1;
-			else
-				proc->carry = 0;
-
-
-
-
-			// MIKA TEST
-			if (*(proc->ireg + registre - 1) == 0)
-				proc->carry = 1;
-			else
-				proc->carry = 0;
-
-				*/
-
-			/*
-				if (proc->last == 2 )
-					proc->carry = 1;
-				else
-					proc->carry = 0;
-				proc->last = 2;
-				*/
-		}
-		// else
-		// 	proc->carry = 0;
-	}
-	// else
-	// 	proc->carry = 0;
 	l2(13, "INSTRUCTION", "instruction ld", proc->id);
-	proc->pc = proc->pc_turfu / 2;
-//	ft_printf("instruction %s\n", inst.name);
+
+	if (proc->wait == inst.cycles)
+	{
+		if (ft_check_value_args(proc->args, &inst))
+		{
+			registre = proc->args[1].value;
+			if (ft_get_args(proc))
+			{
+				proc->args[1].value = registre;
+				proc->ok = 1;
+			}
+		}
+	}
+	else
+	{
+		if (proc->ok)
+		{
+			if ((*(proc->ireg + proc->args[1].value - 1) = proc->args[0].value))
+				proc->carry = 0;
+			else
+				proc->carry = 1;
+		}
+		else
+			proc->carry = 0;
+		proc->pc = proc->pc_turfu / 2;
+	}
+	l2(13, "INSTRUCTION", "instruction ld", proc->id);
+	//	ft_printf("instruction %s\n", inst.name);
 }
