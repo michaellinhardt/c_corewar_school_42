@@ -46,7 +46,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 	{
 		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
-		put_proc_img(img, &m->scene_img[2][-proc->player + 6], x, y);
+		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
 		proc = proc->n;
 	}
 	itow(m->scene_img[2][10].img, 0, 0, "processus layer");

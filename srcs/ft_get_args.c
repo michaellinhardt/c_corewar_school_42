@@ -16,11 +16,7 @@ int		ft_get_args(t_proc *proc)
 				return (0);
 		}
 		else if (proc->args[i].type == IND_CODE)
-		{
 			proc->args[i].value = (proc->args[i].value + proc->pc);
-			ft_printf("valeur de pc dansget args %d\n", proc->pc);
-			//proc->args[i].value = (proc->args[i].value + proc->pc);
-		}
 		++i;
 	}
 	return (1);

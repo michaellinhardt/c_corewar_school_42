@@ -24,7 +24,6 @@ void	ft_put_color_size(int *color, unsigned int code_color, int pc, int size)
 	int i;
 
 	i = 0;
-
 	while (i < size)
 	{
 		*(color + (pc + i++) % 4096) = code_color;
