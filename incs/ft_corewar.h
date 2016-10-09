@@ -61,10 +61,12 @@ void	ft_init_vm(t_dvm *vm);
 void	ft_display_vm(t_dvm *vm);
 void	ft_init_instructions(t_instructions *inst);
 int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc);
-int		ft_check_value_args(t_argument *args, t_instructions *inst);
+int		ft_check_value_args(t_argument *args, t_instructions *inst,
+		t_dvm *vm, t_proc *proc);
 int		ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc);
 int		ft_check_value_number(t_dargs *args, t_dvm *vm);
 int		ft_convert_pc(int pc);
+void	ft_get_oc_p(t_dvm *vm, t_proc *proc);
 
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);

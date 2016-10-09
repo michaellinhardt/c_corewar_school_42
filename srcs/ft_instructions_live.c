@@ -8,7 +8,7 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)proc;
 
 	l2(13, "INSTRUCTION", "instruction live", proc->id);
-	if (ft_check_value_args(proc->args, &inst))
+		if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		if (proc->args[0].value <= -1 && proc->args[0].value >= -vm->nbr_players)
 		{

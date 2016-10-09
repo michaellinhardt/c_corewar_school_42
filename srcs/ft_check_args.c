@@ -1,10 +1,12 @@
 #include "ft_corewar.h"
 
-int		ft_check_value_args(t_argument *args, t_instructions *inst)
+int		ft_check_value_args(t_argument *args, t_instructions *inst, t_dvm *vm,
+		t_proc *proc)
 {
 	int i;
 
 	i = 0;
+	ft_get_oc_p(vm, proc);
 	while (i < MAX_ARGS_NUMBER)
 	{
 		if (args[i].type == REG_CODE && ((0x01 & inst->types[i]) != 0x01))

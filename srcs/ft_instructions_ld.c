@@ -8,14 +8,8 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)proc;
 	l2(13, "INSTRUCTION", "instruction ld", proc->id);
 
-	if (ft_check_value_args(proc->args, &inst))
+		if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
-		if (proc->id == 6)
-		{
-			ft_printf("valeur charger dans le registre :%d\n",
-					proc->args[0].value);
-		}
-		//	ft_printf("proc->id : %d\n", proc->id);
 		registre = proc->args[1].value;
 		if (ft_get_args(proc))
 		{
@@ -25,7 +19,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 1;
 		}
 	}
-proc->pc = proc->pc_turfu / 2;
-l2(13, "INSTRUCTION", "instruction ld", proc->id);
-//	ft_printf("instruction %s\n", inst.name);
+	proc->pc = proc->pc_turfu / 2;
+	l2(13, "INSTRUCTION", "instruction ld", proc->id);
+	//	ft_printf("instruction %s\n", inst.name);
 }

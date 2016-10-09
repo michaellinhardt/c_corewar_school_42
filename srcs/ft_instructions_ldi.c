@@ -6,7 +6,7 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	int address;
 	t_argument argument;
 
-		if (ft_check_value_args(proc->args, &inst))
+		if (ft_check_value_args(proc->args, &inst, vm, proc))
 		{
 			registre = proc->args[2].value;
 			if (ft_get_args(proc))

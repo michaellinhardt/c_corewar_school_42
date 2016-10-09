@@ -8,8 +8,7 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 
-	ft_putendl("lol");
-	if (ft_check_value_args(proc->args, &inst))
+	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		if (ft_get_args(proc))
 	 	{
