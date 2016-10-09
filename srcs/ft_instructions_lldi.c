@@ -10,8 +10,6 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 	registre = 0;
-	if (proc->wait == inst.cycles)
-	{
 	if (ft_check_value_args(proc->args, &inst))
 	{
 		registre = proc->args[2].value;
@@ -26,21 +24,7 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 			proc->last = 14;
 		}
 	}
-	}
-	else
-	{
-		if (proc->ok)
-		{
-			address = (proc->args[0].value % IDX_MOD +
-					proc->args[1].value % IDX_MOD) * 2;
-			ft_fill_args_dir(&argument, vm, address);
-			*(proc->ireg + registre) = argument.value;
-			proc->ok = 1;
-
-
-		}
 	proc->pc = proc->pc_turfu / 2;
-	}
 	l2(13, "INSTRUCTION", "instruction lldi", proc->id);
 //	ft_printf("instruction %s\n", inst.name);
 

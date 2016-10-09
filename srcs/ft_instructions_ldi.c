@@ -6,8 +6,6 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	int address;
 	t_argument argument;
 
-	if (proc->wait == inst.cycles)
-	{
 		if (ft_check_value_args(proc->args, &inst))
 		{
 			registre = proc->args[2].value;
@@ -25,13 +23,7 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 		else
 			proc->carry = 0;
-	}
-	else
-	{
-
-
 		proc->pc = proc->pc_turfu / 2;
-	}
 	l2(13, "INSTRUCTION", "instruction ldi", proc->id);
 	///	ft_printf("instruction %s\n", inst.name);
 }
