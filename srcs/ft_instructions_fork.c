@@ -21,6 +21,7 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			if (ft_get_args(proc))
 			{
+			ft_printf("P%5d | fork %d (%d)\n", proc->id + 1, proc->args[0].value, proc->args[0].value + proc->pc);
 			proc_new(data(), new, proc->player, 0);
 			new = vm->proc;
 			ft_create_child(new, proc);

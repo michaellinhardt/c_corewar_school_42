@@ -45,11 +45,13 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	{
 		v->max_checks = 0;
 		v->ctodie = v->ctodie - CYCLE_DELTA < 0 ? 0 : v->ctodie - CYCLE_DELTA;
+		ft_printf("Cycle to die is now %d\n", v->ctodie);
 	}
 	else if (((++v->max_checks >= MAX_CHECKS)))
 	{
 		v->max_checks = 0;
 		v->ctodie = v->ctodie - CYCLE_DELTA < 0 ? 0 : v->ctodie - CYCLE_DELTA;
+		ft_printf("Cycle to die is now %d\n", v->ctodie);
 	}
 		v->nbr_live = 0;
 	/*
@@ -70,6 +72,7 @@ int		gameloop(t_dvm *v)
 	ret= 0;
 	// Début du cycle
 //	++v->cycle;
+	ft_printf("It is now cycle %d\n", v->cycle);
 	processus_read(v, data()->vm.proc);
 	v->ctodiecount++;
 	if (v->ctodiecount >= v->ctodie

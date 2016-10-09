@@ -31,6 +31,8 @@ void	ft_put_hex_compteur(int i)
 #define BLUE "\033[0;34m"
 #define GREEN "\033[0;32m"
 #define CYAN "\033[0;36m"
+#define YELLOW "\033[0;33m"
+#define PURPLE "\033[0;35m"
 void	ft_put_color(int *color)
 {
 	if (*color == ARENE_CODE_COLOR_WHITE)
@@ -62,7 +64,7 @@ void	ft_display_vm(t_dvm *vm)
 			if (proc->pc == i / 2 && !(i % 2))
 			{
 				ok = 1;
-				ft_putstr(CYAN);
+				ft_putstr(YELLOW);
 			}
 			proc = proc->n;
 		}

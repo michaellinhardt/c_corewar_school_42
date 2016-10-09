@@ -10,9 +10,9 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 	l2(13, "INSTRUCTION", "instruction live", proc->id);
 		if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
+		ft_printf("P%5d | live %d\n", proc->id + 1, proc->args[0].value);
 		if (proc->args[0].value <= -1 && proc->args[0].value >= -vm->nbr_players)
 		{
-
 			vm->p[ABS(proc->args[0].value) - 1].last_cycle_live = vm->cycle;
 			vm->p[ABS(proc->args[0].value) - 1].total_live++;
 			vm->nbr_live++;

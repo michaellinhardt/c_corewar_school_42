@@ -4,15 +4,20 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 {
 	int convert1;
 	int convert2;
+	int registre;
+	int add;
 	(void)vm;
 	(void)inst;
 	(void)proc;
 
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
+		registre = proc->args[0].value;
 		if (ft_get_args(proc))
 	 	{
-
+			add = proc->args[1].value + proc->args[2].value;
+			ft_printf("P%5d | sti r%d %d %d\n", proc->id + 1, registre, proc->args[1].value, proc->args[2].value);
+			ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, add + proc->pc);
 			convert1 = ft_convert_pc(proc->args[1].value);
 			convert2 = ft_convert_pc(proc->args[2].value);
 
