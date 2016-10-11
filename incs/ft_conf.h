@@ -1,16 +1,31 @@
-#ifndef FT_MLX_CONF_H
-# define FT_MLX_CONF_H
+#ifndef FT_CONF_H
+# define FT_CONF_H
 /*
  *	Header pour les parametre réglable
  */
+# define GRAPHIC_MODE 0
+# define CONSOLE_LOG 0
 # define WIN_TITLE "Corewar"
-# define WIN_X 1792
-# define WIN_Y 1008
+# define WIN_X 1920
+# define WIN_Y 1200
+
+/*
+**  COULEUR DE LA VM
+*/
+# define ARENE_CODE_COLOR_WHITE 0xa6a6a6
+# define ARENE_CODE_COLOR_P1 0x1eff00
+# define ARENE_CODE_COLOR_P2 0xf4532a
+# define ARENE_CODE_COLOR_P3 0x1fbdff
+# define ARENE_CODE_COLOR_P4 0xeaff00
 
 /*
 **  DONNEE DE LA VM
 */
-# define VM_CHAMP_NAME_SIZE 2048
+# define CHAMP_NAME_SIZE 2048
+# define CYCLE_PER_LOOP 1
+# define CPERLOOP_INC 11
+# define CPERLOOP_MAX 101
+# define ARENE_CODE_COLOR 0xCCCCCC
 
 /* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
  * Cela évite de spam le processeur du PC pour rien */
@@ -24,7 +39,7 @@
 */
 # define SCENE_MAX 20
 # define SCENE_IMG_MAX 50
-# define SCENE_START INTRO
+# define SCENE_START VM_INIT
 
 /* DOSSIER DEPUIS LEQUEL SONT AUTOMATIQUEMENT IMPORTé LES GIFS */
 # define GIF_DIR "./gif/"
@@ -49,9 +64,12 @@
 /* AFFICHAGE OU NON DES LOG,
  * LOG_DISPLAY: autorise ou non les log
  * LOG_ALL: force tous les log à 1 */
-# define LOG_DISPLAY 1
+# define LOG_DISPLAY 0
 # define LOG_ALL 0
-# define LOG_GENERAL 1
+# define LOG_DEBUG 0
+# define LOG_DEBUG_DETAILED 0
+# define LOG_DEBUG_CHECKLIVE 0
+# define LOG_GENERAL 0
 # define LOG_KEY 0
 # define LOG_ITOW 0
 # define LOG_SCENE 0
@@ -61,5 +79,8 @@
 # define LOG_XTOI 0
 # define LOG_NEWI 0
 # define LOG_MLX 0
+# define LOG_VM 1
+# define LOG_PROC 0
+# define LOG_INST 1
 
 #endif

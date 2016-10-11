@@ -16,8 +16,14 @@ int		loop(char etat)
 		return (1);
 	else
 		m->loop = etat;
-	(etat == 1) ? l(6, "LOOP STATUS", "-> 1") : l(6, "LOOP STATUS", "-> 0");
+	(etat == 1) ? l1(6, "LOOP STATUS", "-> 1") : l1(6, "LOOP STATUS", "-> 0");
 	return (1);
+}
+
+/* FONCITON APPELLER EN BOUCLE SI PAS DE MLX */
+void	loop_vm(t_data *d)
+{
+	scene(d, &d->mlx, &d->mlx.input);
 }
 
 /* FONCITON APPELLER EN BOUCLE PAR MLX */
@@ -26,11 +32,11 @@ int		loop_hook(t_data *d)
 	t_dmlx *m;
 
 	m = &d->mlx;
+	scene_img(d, &d->mlx);
+	loop_vm(d);
 	if (USLEEP_BOOL && m->loop == 0 && !usleep(USLEEP_TIME))
 		return (0);
 	if (m->loopstop != 0 && --m->loopstop < 1)
 		loop(0);
-	scene_img(d, &d->mlx);
-	scene(d, &d->mlx, &d->mlx.input);
 	return (0);
 }

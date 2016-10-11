@@ -1,5 +1,5 @@
 # VAR COMP
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 CC		= gcc $(FLAGS)
 INCS 	= -I./incs -I./libft/includes
 LIBS	= ./libft
@@ -20,8 +20,50 @@ LIST 	= ft_corewar \
 			ft_mlx_img \
 			ft_mlx_scene \
 			ft_mlx_scene_img \
+			ft_mlx_scene_intro \
+			ft_mlx_display \
+			ft_mlx_display_processus \
+			ft_mlx_display_arene \
 			ft_terminal_ascii \
 			ft_terminal_log \
+			ft_convert_pc \
+			ft_vm_init \
+			ft_vm \
+			ft_recup_headers \
+			ft_vm_processus \
+			ft_vm_processus_read \
+			ft_vm_gameloop \
+			ft_little_to_big \
+			ft_recup_code \
+			ft_fill_arene \
+			ft_recup_files \
+			ft_init_instructions \
+			ft_instructions_live \
+			ft_instructions_ld \
+			ft_instructions_st \
+			ft_instructions_add \
+			ft_instructions_sub \
+			ft_instructions_and \
+			ft_instructions_or \
+			ft_instructions_xor \
+			ft_instructions_zjmp \
+			ft_instructions_ldi \
+			ft_instructions_sti \
+			ft_instructions_fork \
+			ft_instructions_lld \
+			ft_instructions_lldi \
+			ft_instructions_lfork \
+			ft_instructions_aff \
+			ft_get_instructions \
+			ft_recup_options \
+			ft_put_registre \
+			ft_get_args \
+			ft_get_value_registre \
+			ft_check_args \
+			ft_fill_args \
+			ft_getchar \
+			ft_decode_args \
+			ft_display_vm \
 			ft_free \
 			ft_exit \
 
@@ -65,7 +107,8 @@ fclean: clean2
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 #leaks: $(NAME) -leaks
-leaks: $(NAME) test
+leaks: re
+	./corewar
 
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)

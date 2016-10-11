@@ -3,20 +3,6 @@
  * Ce fichier charge les img lié à la scene actuel
  */
 
-void		scene_img_file_load(t_dmlx *m, t_scene_img *s
-									, char *file, int img_id)
-{
-	t_img	*new;
-	// place dans -> data->mlx->scene_img[m->scene].l[ft_atoi(f->d_name)]
-	// l'image chargé depuis le chemin "file" et le str de l'image sera donc:
-	// data->mlx->scene_img[m->scene].l[ft_atoi(f->d_name)]->str
-	// s correspond à un raccourci pour data->mlx->scene_img[20]
-	if (!(new = (t_img *)ft_memalloc(sizeof(t_img) * 1)))
-		exit1(1, data(), "Cant malloc the t_img struct.");
-	new->img = mlx_xpmtostruct(m, new, file);
-	s[m->scene].l[img_id] = new;
-}
-
 int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 {
 	char	*folder;
@@ -33,13 +19,13 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 		if (!ft_strstr(f->d_name, ".xpm"))
 			continue ;
 		ft_printf("%!%s/%s", &file, folder, f->d_name);
-		l(1, f->d_name, "   loading xpm file");
-		scene_img_file_load(m, m->scene_img
-			, file, ft_atoi(f->d_name));
+		l1(1, f->d_name, "   loading xpm file");
+		m->scene_img[m->scene][ft_atoi(f->d_name)].img = mlx_xpmtostruct(m
+			, &m->scene_img[m->scene][ft_atoi(f->d_name)], file);
+		ft_strdel(&file);
 	}
 	closedir(dir);
 	ft_strdel(&folder);
-	ft_strdel(&file);
 	return (1);
 }
 
@@ -54,7 +40,7 @@ void		scene_img_folder(t_dmlx *m, DIR *dir, struct dirent *f)
 	{
 		if (!ft_strstr(f->d_name, ".xpm"))
 			continue ;
-		else if (ft_atoi(f->d_name) == m->scene && l(1, f->d_name
+		else if (ft_atoi(f->d_name) == m->scene && l1(1, f->d_name
 			, "loading xpm from scene folder") && scene_img_file(m
 			, (DIR *)NULL, (struct dirent *)NULL, f->d_name))
 			break ;
