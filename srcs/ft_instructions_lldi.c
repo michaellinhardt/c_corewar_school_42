@@ -20,8 +20,6 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 					proc->args[1].value % IDX_MOD) * 2;
 			ft_fill_args_dir(&argument, vm, address);
 			*(proc->ireg + registre) = argument.value;
-			proc->ok = 1;
-			proc->last = 14;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

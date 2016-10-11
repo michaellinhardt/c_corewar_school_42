@@ -12,6 +12,8 @@ void	vm_dump(t_dvm *v)
 	ft_printf("Cycle to die : %d\n", v->ctodie);
 	ft_printf("Last live cycle : %d\n", v->last_live_cycle);
 	ft_printf("Live current period : %d\n", v->nbr_live);
+	ft_printf("Live current period player : %d\n", v->live_player);
+	ft_printf("max cheks : %d\n", v->max_checks);
 	exit (0);
 	exit1(0, data(), "dump order");
 }

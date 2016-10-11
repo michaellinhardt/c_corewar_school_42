@@ -18,8 +18,6 @@ void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 				else
 					proc->carry = 1;
 				//			proc->carry = !proc->carry;
-				proc->last = 6;
-				proc->ok = 1;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

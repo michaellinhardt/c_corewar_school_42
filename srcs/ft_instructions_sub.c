@@ -15,8 +15,6 @@ void	ft_instructions_sub(t_dvm *vm, t_instructions inst, t_proc *proc)
 			{
 				*(proc->ireg + registre - 1) = proc->args[0].value - proc->args[1].value;
 				proc->carry = 0;
-				proc->last = 5;
-				proc->ok = 1;
 			}
 		}
 		proc->pc = proc->pc_turfu / 2;

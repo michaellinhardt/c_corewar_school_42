@@ -34,11 +34,15 @@ int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 		return (0);
 	}
 	proc->inst = &inst[(int)opcode];
+	proc->inst->id = (int)opcode;
 	proc->wait = proc->inst->cycles;
-
-
-
-	
-
+	/*
+	if (opcode == 1)
+	{
+		ft_no_ocp(proc->args, proc->inst->types);
+	proc->pc_turfu = ft_fill_args(proc->args, vm, proc->pc_turfu, 
+			proc->inst->flag_size_ind); 
+	}
+	*/
 	return (1);
 }

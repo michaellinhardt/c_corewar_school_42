@@ -11,9 +11,11 @@ int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc)
 {
 	int i;
 	int decal;
+	int lol;
 
 	i = 0;
 	decal = 24;
+	lol = 0;
 	while (i < 4)
 	{
 		arg->value |= (unsigned char)ft_getchar(vm->arene + pc) << decal;

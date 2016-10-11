@@ -65,8 +65,31 @@ int		ft_check_value_number(t_dargs *args, t_dvm *vm)
 	return (1);
 }
 
+static void	ft_get_show(t_dvm *vm, int options)
+{
+	vm->options.lives = (options & 1) == 1;
+	vm->options.cycles = (options & 2) == 2;
+	vm->options.operations = (options & 4) == 4;
+	vm->options.deaths = (options & 8) == 8;
+	vm->options.movements = (options & 16) == 16;
+
+	/*
+	if (vm->options.lives)
+		ft_putendl("option lives");
+	if (vm->options.cycles)
+		ft_putendl("option cyles");
+	if (vm->options.operations)
+		ft_putendl("option operations");
+	if (vm->options.deaths)
+		ft_putendl("option deaths");
+	if (vm->options.movements)
+		ft_putendl("option movements");
+		*/
+}
+
 int 	ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 {
+	ft_bzero(&(vm->options), sizeof(t_options));
 	int i;
 
 	i = 1;
@@ -93,6 +116,12 @@ int 	ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 				++args;
 				vm->nbr_players++;
 			}
+		}
+		else if (!ft_strcmp(*(argv + i), "-v"))
+		{
+			if (i + 1 >= argc)
+				return (0);
+			ft_get_show(vm, ft_atoi(*(argv + ++i)));
 		}
 		else
 		{

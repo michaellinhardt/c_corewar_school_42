@@ -53,14 +53,17 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->player = player;
 	new->pc = i;
 	new->id = setid;
+	new->last_live = data()->vm.cycle;
 	new->create_cycle = data()->vm.cycle;
 	//ft_printf("New Process id :%d\n", new->id);
 //	ft_printf("new process :%d, cycle %d\n", new->id, d->vm.cycle);
 //	ft_putchar('\n');
 	d->vm.nbr_proc++;
+	/*
 	l2(-1, "PROC SETTINGS", "player attribution", player);
 	l2(-1, "PROC SETTINGS", "id processus", setid);
 	l2(-1, "PROC SETTINGS", "cycle", data()->vm.cycle);
+	*/
 }
 
 /*
@@ -68,29 +71,40 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 */
 int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 {
+	target->DIE_MF = 1;
+	if ((d)->vm.options.deaths)
+	ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+			target->id + 1, d->vm.cycle - target->last_live, d->vm.ctodie);
 //	ft_printf("kill process : %d, cycle : %d nbr live %d\n",
 //		   	target->id, d->vm.cycle,
 //			target->live);
+/*
 	l2(-1, "PROC KILL", "id processus -> KILL", target->id);
 	l2(-1, "PROC KILL", "(create cycle)", target->create_cycle);
+	*/
 	//ft_printf("New Process id :%d\n", target->id);
 	(void)d;
 	(void)target;
 	(void)procdie;
 	if (target->p)
-		(target->p)->n = target->n;
+		target->p->n = target->n;
+
 	if (target->n)
-		(target->n)->p = target->p;
+		target->n->p = target->p;
 	if (d->vm.proc == target)
 		d->vm.proc = target->n;
 
 	target->n = 0;
 	target->p = 0;
+	free (target);
+	target = 0;
 	// déplace le maillon
+	/*
 	if (procdie && (target->n = procdie))
 		procdie->p = target;
 	data()->vm.procdie = target;
 	target->p = (t_proc *)NULL;
+	*/
 	d->vm.nbr_proc--;
 	return (1);
 }

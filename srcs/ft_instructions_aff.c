@@ -10,7 +10,6 @@ void	ft_instructions_aff(t_dvm *vm, t_instructions inst, t_proc *proc)
 			if (ft_get_args(proc))
 			{
 				ft_putchar(proc->args[0].value % 256);
-				proc->last = 16;
 			}
 		}
 	proc->pc = proc->pc_turfu / 2;

@@ -18,8 +18,6 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 			else
 				proc->carry = 1;
 
-			proc->ok = 1;
-			proc->last = 8;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;

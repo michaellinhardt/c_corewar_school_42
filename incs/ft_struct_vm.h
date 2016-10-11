@@ -16,6 +16,7 @@ typedef struct	s_proc t_proc;
 // index de t_instructions => opcode (donc index 0 vide)
 typedef	struct		s_instructions
 {
+	int				id;
 	char			name[6]; // le nom de l'instruction
 	short			nbr_args; // son nombre d'args
 	t_arg_type		types[MAX_ARGS_NUMBER];
@@ -42,14 +43,15 @@ typedef struct		s_proc
 //	int				player_live;
 	int				create_cycle;
 	int				live;
+	int				last_live;
+	int				DIE_MF;
+	int				live_player;
 	int				wait;
-	int				ok;
 	int				pc;
 	int				pc_turfu;
 	char			reg[REG_NUMBER][REG_SIZE];
 	int				*ireg;
 	char			carry;
-	char			last;
 	t_argument		args[MAX_ARGS_NUMBER];
 	t_instructions	*inst; // instruction courante
 	struct s_proc	*n;
@@ -72,6 +74,14 @@ typedef struct		s_player
 	int				last_cycle_live;
 }					t_player;
 
+typedef struct		s_options
+{
+	char			lives:1;
+	char			cycles:1;
+	char			operations:1;
+	char			deaths:1;
+	char			movements:1;
+}					t_options;
 /*
 ** DATA_VM
 ** donné lié a la vm, au champion et a l'arene
@@ -81,6 +91,7 @@ typedef struct		s_dvm
 {
 	t_player		p[MAX_PLAYERS];
 	t_instructions	instructions[17];
+	t_options		options;
 	char			arene[SIZE_CHAR_ARENE];
 	int				color[MEM_SIZE];
 	int				code_color[5];
@@ -98,6 +109,7 @@ typedef struct		s_dvm
 	int				max_checks;
 	int				last_live;
 	int				last_live_cycle;
+	int				live_player;
 	int				nbr_players;
 	int				nbr_proc;
 	t_proc			*proc;

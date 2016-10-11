@@ -15,8 +15,6 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 				   ft_fill_args_dir(&argument, vm, address);
 				 *(proc->ireg + registre) = argument.value;
 				 proc->carry = !proc->carry;
-				 proc->last = 10;
-				proc->ok = 1;
 			}
 			else
 				proc->carry = 0;
