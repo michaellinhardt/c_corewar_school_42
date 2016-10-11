@@ -5,6 +5,7 @@
 
 void	processus_read(t_dvm *v, t_proc *begin)
 {
+//	int pc;
 	int opcode;
 	t_proc *proc = begin;
 	v->graphic += 0;
@@ -12,38 +13,38 @@ void	processus_read(t_dvm *v, t_proc *begin)
 
 	if (v->options.cycles)
 		ft_printf("It is now cycle %d\n", v->cycle);
-	while (proc)
+	while ( proc )
 	{
-		if (proc->wait < 0)
+		/*
+		ft_putnbr(proc->id);
+		ft_putchar('\n');
+		*/
+		if (!proc->wait)
 		{
 				proc->pc_turfu = proc->pc * 2;
-				ft_get_instruction(v->instructions, v, proc);
+				if (!(ft_get_instruction(v->instructions, v, proc)))
+				{
+					proc->pc = (proc->pc + 1) % 4096 ;
+					proc = proc->n;
+					continue ;
+				}
 		}
-		proc->wait--;
-		if (proc->wait == 0)
+		else if (proc->wait == 1)
 		{
-			if (proc->opc > 0 && proc->opc < 17)
+//			opcode = ft_getchar(v->arene + proc->pc * 2);
+			/*
+			if (opcode != proc->inst->id)
 			{
-				opcode = ft_getchar(v->arene + proc->pc * 2);
-				if (opcode != proc->opc)
-				{
-					proc->pc_turfu = proc->pc * 2;
-					ft_get_instruction(v->instructions, v, proc);
-					if (proc->inst)
-					{
-						proc->inst->f_instructions(v, *proc->inst, proc);
-						proc->wait = -1;
-					}
-				}
-				else
-				{
-					if (proc->inst)
-						proc->inst->f_instructions(v, *proc->inst, proc);
-				}
-		/*			proc->pc_turfu = proc->pc * 2;
-					ft_get_instruction(v->instructions, v, proc);
-			*///	}
+		//		ft_putendl("ok");
+			//	proc->wait = 0;
+//]				proc->pc = proc->pc_turfu / 2;
+			//	proc = proc->n;
+				//continue;
+				
 			}
+			pc = proc->pc;
+			*/
+			proc->inst->f_instructions(v, *proc->inst, proc);
 			/*
 			if (v->options.movements)
 			{
@@ -65,6 +66,21 @@ void	processus_read(t_dvm *v, t_proc *begin)
 			}
 			*/
 		}
+		/*
+		else
+		{
+			opcode = ft_getchar(v->arene + proc->pc * 2);
+			if (proc->inst->id != 1 &&  opcode != proc->inst->id)
+			{
+				ft_putendl("ok");
+		//		proc->wait = 0;
+		//		proc->pc = proc->pc_turfu / 2;
+			//	proc = proc->n;
+			//	continue;
+			}
+		}
+		*/
+		proc->wait--;
 		proc = proc->n;
 	}
 }
@@ -91,11 +107,12 @@ void	processus_read(t_dvm *v, t_proc *begin)
 				opcode = ft_getchar(v->arene + proc->pc * 2);
 				if (proc->inst->id != 1 &&  opcode != proc->inst->id)
 				{
-					proc->wait = 0;
+//					ft_putendl("ok");
+				//	proc->wait = 0;
 					//proc->pc = proc->pc_turfu / 2;
-					proc = proc->n;
-					proc->inst = 0;
-					continue;
+					//proc = proc->n;
+				//	proc->inst = 0;
+//					continue;
 				}
 				proc->inst->f_instructions(v, *proc->inst, proc);
 				proc->pc_turfu = proc->pc * 2;

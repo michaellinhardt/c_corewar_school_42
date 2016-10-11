@@ -8,8 +8,6 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)proc;
 	l2(13, "INSTRUCTION", "instruction ld", proc->id);
 
-	if (proc->ok)
-		return ;
 		if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[1].value;

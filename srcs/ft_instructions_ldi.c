@@ -6,8 +6,6 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	int address;
 	t_argument argument;
 
-	if (proc->ok)
-		return ;
 		if (ft_check_value_args(proc->args, &inst, vm, proc))
 		{
 			registre = proc->args[2].value;
@@ -15,8 +13,8 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 			{
 				  address = (proc->args[0].value + proc->args[1].value) * 2;
 				   ft_fill_args_dir(&argument, vm, address);
-				 *(proc->ireg + registre) = argument.value;
-				 proc->carry = !proc->carry;
+				   *(proc->ireg + registre) = argument.value;
+				   return ;
 			}
 			else
 				proc->carry = 0;
@@ -24,6 +22,6 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		else
 			proc->carry = 0;
 		proc->pc = proc->pc_turfu / 2;
-	l2(13, "INSTRUCTION", "instruction ldi", proc->id);
-	///	ft_printf("instruction %s\n", inst.name);
+		l2(13, "INSTRUCTION", "instruction ldi", proc->id);
+		///	ft_printf("instruction %s\n", inst.name);
 }

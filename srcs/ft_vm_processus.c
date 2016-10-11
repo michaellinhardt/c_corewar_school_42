@@ -52,7 +52,6 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->ireg[0] = player;
 	new->player = player;
 	new->pc = i;
-//	new->wait = -1;
 	new->id = setid;
 	new->last_live = data()->vm.cycle;
 	new->create_cycle = data()->vm.cycle;

@@ -8,8 +8,6 @@ void	ft_instructions_sub(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 
-	if (proc->ok)
-		return ;
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 		{
 			registre = proc->args[2].value;
@@ -19,7 +17,8 @@ void	ft_instructions_sub(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 0;
 			}
 		}
-		proc->pc = proc->pc_turfu / 2;
+		//proc->pc = proc->pc_turfu / 2;
+		proc->pc = proc->pc_turfu  / 2;
 	l2(13, "INSTRUCTION", "instruction sub", proc->id);
 
 

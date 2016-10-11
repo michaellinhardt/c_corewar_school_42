@@ -8,8 +8,6 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 	l2(13, "INSTRUCTION", "instruction live", proc->id);
 
-	if (proc->ok)
-		return ;
 	vm->nbr_live++;
 	proc->live += 1;
 	proc->last_live = vm->cycle;
@@ -34,8 +32,8 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 						proc->pc + 1 , 4);
 		}
 	}
-	//proc->pc = proc->pc_turfu / 2;
-	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+	proc->pc = proc->pc_turfu / 2;
+//	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 	l2(13, "INSTRUCTION", "instruction live", proc->id);
 //	ft_printf("instruction %s\n", inst.name);
 }

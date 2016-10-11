@@ -10,7 +10,6 @@ static t_proc *ft_create_lchild(t_proc *new, t_proc *father)
 	//data()->vm.nbr_live += father->live;
 	new->live_player = father->live_player;
 	//data()->vm.live_player += new->live_player;
-
 	return (new);
 }
 
@@ -25,13 +24,10 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)proc;
 	new = 0;
 
-	if (proc->ok)
-		return ;
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		if (ft_get_args(proc))
 		{
-//			opcode = ft_getchar(vm->arene + proc->pc * 2);
 			if (vm->options.operations)
 			{
 				ft_printf("P%5d | lfork %d (%d)\n", proc->id + 1, 
@@ -39,13 +35,9 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			}
 				proc_new(data(), new, proc->player, 0);
 				new = vm->proc;
-/*			if (opcode == inst.id)
-			{
-				proc->pc++;
-				return;
-			}
-			else
-*/				ft_create_lchild(new, proc);
+				ft_create_lchild(new, proc);
+				//proc->pc += 11;
+			//	proc->pc = proc->pc + 4;
 
 		}
 		/*
@@ -54,5 +46,9 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 		   */
 	}
 	proc->pc = (proc->pc_turfu) / 2;
+	/*
+	ft_putnbr(proc->pc);
+	ft_putchar('\n');
+	*/
 	//	ft_printf("instruction %s\n", inst.name);
 }

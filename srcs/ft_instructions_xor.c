@@ -7,8 +7,6 @@ void	ft_instructions_xor(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)vm;
 	(void)inst;
 	(void)proc;
-	if (proc->ok)
-		return ;
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[2].value;

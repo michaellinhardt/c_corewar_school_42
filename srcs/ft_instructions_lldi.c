@@ -10,8 +10,6 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 	registre = 0;
-	if (proc->ok)
-		return ;
 		if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[2].value;
