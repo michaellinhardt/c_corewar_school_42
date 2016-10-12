@@ -15,9 +15,8 @@ void	vm_init_log(void)
 
 void	vm_init_proc(t_data *d, t_dvm *v, int player)
 {
-
-	// Créer le premier proc de chaque player
-	// i * (MEM_SIZE / 4) représente le début du premier processeur de ce joueur dans l'arene
+	// Créer le premier proc de chaque play0......er
+	// i 0* 0(MEM_SIZE / 4) représente le début du premier processeur de ce joueur dans l'arene
 	// i est sont numéro (0-3) et MEM_SIZE / 4 la taille max par champion
 	// nb: c'est peut être pas le bon calcule, à vérifier avant merge
 	while (++player < MAX_PLAYERS)

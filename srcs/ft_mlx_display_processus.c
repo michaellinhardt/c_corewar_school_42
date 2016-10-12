@@ -5,8 +5,8 @@
 
 void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 {
-	int		*pproc;
-	int		*pimg;
+	int			*pproc;
+	int			*pimg;
 
 	pproc = (int *)proc->str;
 	pimg = (int *)img->str;
@@ -25,14 +25,22 @@ void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 
 void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 {
-	int		x;
-	int		y;
+	char		already[MEM_SIZE];
+	int			x;
+	int			y;
 
+	ft_bzero(already, sizeof(already));
 	while ( proc )
 	{
+		if (already[(proc->pc)])
+		{
+			proc = proc->n;
+			continue ;
+		}
 		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
 		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
+		already[(proc->pc)] = 1;
 		proc = proc->n;
 	}
 }
