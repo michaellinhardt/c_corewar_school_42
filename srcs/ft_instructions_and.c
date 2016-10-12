@@ -17,10 +17,7 @@ void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 					proc->carry = 0;
 				else
 					proc->carry = 1;
-				//			proc->carry = !proc->carry;
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;
-	l2(13, "INSTRUCTION", "instruction and", proc->id);
-	//ft_printf("instruction %s\n", inst.name);
 }

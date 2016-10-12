@@ -10,7 +10,7 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 	registre = 0;
-		if (ft_check_value_args(proc->args, &inst, vm, proc))
+	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[2].value;
 		if (ft_get_args(proc))
@@ -23,7 +23,4 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	proc->pc = proc->pc_turfu / 2;
-	l2(13, "INSTRUCTION", "instruction lldi", proc->id);
-//	ft_printf("instruction %s\n", inst.name);
-
 }

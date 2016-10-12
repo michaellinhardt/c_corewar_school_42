@@ -13,7 +13,4 @@ void	ft_instructions_aff(t_dvm *vm, t_instructions inst, t_proc *proc)
 			}
 		}
 	proc->pc = proc->pc_turfu / 2;
-	l2(13, "INSTRUCTION", "instruction aff", proc->id);
-
-	//	ft_printf("instruction %s\n", inst.name);
 }

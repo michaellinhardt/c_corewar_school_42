@@ -7,7 +7,7 @@ void	ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 
-		if (ft_check_value_args(proc->args, &inst, vm, proc))
+	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[1].value;
 		if (ft_get_args(proc))
@@ -21,6 +21,4 @@ void	ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	else
 		proc->carry = 0;
 	proc->pc = proc->pc_turfu / 2;
-
-	ft_printf("instruction %s\n", inst.name);
 }

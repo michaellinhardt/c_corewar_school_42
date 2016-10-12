@@ -1,15 +1,27 @@
 #include "ft_corewar.h"
 
-/*
- ** Return 1 si instructions bonne, return 0 si false
- */
+static int ft_get_pc_turfu(t_argument *arg, t_instructions inst, int pc)
+{
+	int i;
 
-#include <stdio.h>
+	i = 0;
+	while (i < inst.nbr_args)
+	{
+		if (arg[i].type == REG_CODE)
+			pc += 2;
+		else if (arg[i].type == DIR_CODE && !inst.flag_size_ind)
+			pc += 8;
+		else if (arg[i].type == IND_CODE || arg[i].type == DIR_CODE)
+			pc += 4;
+		++i;
+	}
+	return (pc);
 
-
+}	
 void		ft_get_oc_p(t_dvm *vm, t_proc *proc)
 {
 	char	oc_p;
+
 	if (proc->inst->flag_ocp)
 	{
 		oc_p = (unsigned char)ft_getchar(vm->arene + (proc->pc + 1) * 2);
@@ -18,8 +30,9 @@ void		ft_get_oc_p(t_dvm *vm, t_proc *proc)
 	}
 	else
 		ft_no_ocp(proc->args, proc->inst->types);
-	proc->pc_turfu = ft_fill_args(proc->args, vm, proc->pc_turfu, 
-			proc->inst->flag_size_ind); 
+	ft_fill_args(proc->args, vm, proc->pc_turfu, 
+			*proc->inst); 
+	proc->pc_turfu = ft_get_pc_turfu(proc->args, *proc->inst, proc->pc_turfu);
 }
 
 int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
@@ -36,13 +49,5 @@ int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 	proc->inst = &inst[(int)opcode];
 	proc->inst->id = (int)opcode;
 	proc->wait = proc->inst->cycles;
-	/*
-	if (opcode == 1)
-	{
-		ft_no_ocp(proc->args, proc->inst->types);
-	proc->pc_turfu = ft_fill_args(proc->args, vm, proc->pc_turfu, 
-			proc->inst->flag_size_ind); 
-	}
-	*/
 	return (1);
 }

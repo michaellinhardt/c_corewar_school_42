@@ -47,17 +47,19 @@ static int		ft_fill_args_ind(t_argument *arg, t_dvm *vm, int pc)
 }
 
 
-int		ft_fill_args(t_argument *arg,t_dvm *vm, int pc, int flag_size_ind)
+int		ft_fill_args(t_argument *arg,t_dvm *vm, int pc, t_instructions inst)
 {
 	int i;
+	int l;
 
 	i = 0;
+	l = pc;
 	while (i < MAX_ARGS_NUMBER)
 	{
 		arg[i].value = 0;
 		if (arg[i].type == REG_CODE)
 			pc = ft_fill_args_reg(&arg[i], vm, pc);
-		else if (arg[i].type == DIR_CODE && !flag_size_ind)
+		else if (arg[i].type == DIR_CODE && !inst.flag_size_ind)
 			pc = ft_fill_args_dir(&arg[i], vm, pc);
 		else if (arg[i].type == IND_CODE || arg[i].type == DIR_CODE)
 			pc = ft_fill_args_ind(&arg[i], vm, pc);

@@ -73,7 +73,7 @@ void	ft_get_oc_p(t_dvm *vm, t_proc *proc);
 void	ft_decode_args(char oc_p, t_argument *arg);
 void	ft_no_ocp(t_argument *args, t_arg_type *types);
 // ici on peuple les valeurs
-int		ft_fill_args(t_argument *arg, t_dvm *vm, int pc, int flag_size_ind);
+int		ft_fill_args(t_argument *arg, t_dvm *vm, int pc, t_instructions inst);
 
 char	ft_getchar(char	*arene);
 int		ft_get_value_registre(t_proc *proc, int registre);

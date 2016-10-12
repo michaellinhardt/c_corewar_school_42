@@ -13,8 +13,6 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 	convert = 0;
-	l2(13, "INSTRUCTION", "instruction st", proc->id);
-
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[1].value;
@@ -25,10 +23,10 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 		if (ft_get_args(proc))
 		{
-			if (proc->args[1].type == REG_CODE)
+			if (proc->args[1].type == REG_CODE && registre >= 1 && registre <= 16)
 			{
 				if (vm->options.operations)
-				ft_printf("P%5d | st r%d r%d\n", proc->id + 1, registre1, registre);
+					ft_printf("P%5d | st r%d r%d\n", proc->id + 1, registre1, registre);
 				*(proc->ireg + registre - 1) = proc->args[0].value;
 			}
 			else
@@ -42,9 +40,5 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 			}
 		}
 	}
-	//proc->pc = proc->pc_turfu / 2;
-	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
-
-	l2(13, "INSTRUCTION", "instruction st", proc->id);
-	//	ft_printf("instruction %s\n", inst.name);
+	proc->pc = (proc->pc_turfu / 2);
 }

@@ -18,20 +18,16 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 	(void)vm;
 	new = 0;
-	l2(13, "INSTRUCTION", "instruction fork", proc->id);
-//	ft_putendl("fourchette");
-		if (ft_check_value_args(proc->args, &inst, vm, proc))
+	if (ft_check_value_args(proc->args, &inst, vm, proc))
+	{
+		if (ft_get_args(proc))
 		{
-			if (ft_get_args(proc))
-			{
-				if (vm->options.operations)
-			ft_printf("P%5d | fork %d (%d)\n", proc->id + 1, proc->args[0].value, proc->args[0].value + proc->pc);
+			if (vm->options.operations)
+				ft_printf("P%5d | fork %d (%d)\n", proc->id + 1, proc->args[0].value, proc->args[0].value + proc->pc);
 			proc_new(data(), new, proc->player, 0);
 			new = vm->proc;
 			ft_create_child(new, proc);
-			}
 		}
-		proc->pc = proc->pc_turfu  / 2;
-	l2(13, "INSTRUCTION", "instruction fork", proc->id);
-	//ft_printf("instruction %s\n", inst.name);
+	}
+	proc->pc = proc->pc_turfu  / 2;
 }

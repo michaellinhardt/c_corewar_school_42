@@ -6,8 +6,6 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 
-	l2(13, "INSTRUCTION", "instruction live", proc->id);
-
 	vm->nbr_live++;
 	proc->live += 1;
 	proc->last_live = vm->cycle;
@@ -22,8 +20,8 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 				ft_printf("Player 1 %s is said to be alive\n", 
 						vm->p->header.prog_name);
 			}
-			vm->p[ABS(proc->args[0].value) - 1].last_cycle_live = vm->cycle;
-			vm->p[ABS(proc->args[0].value) - 1].total_live++;
+			vm->p[(ABS(proc->args[0].value)) - 1].last_cycle_live = vm->cycle;
+			vm->p[(ABS(proc->args[0].value)) - 1].total_live++;
 			proc->live_player++;
 			vm->last_live = proc->args[0].value;
 			vm->last_live_cycle = vm->cycle;
@@ -32,8 +30,5 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 						proc->pc + 1 , 4);
 		}
 	}
-	//proc->pc = proc->pc_turfu / 2;
-	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
-	l2(13, "INSTRUCTION", "instruction live", proc->id);
-//	ft_printf("instruction %s\n", inst.name);
+	proc->pc = (proc->pc_turfu / 2);
 }
