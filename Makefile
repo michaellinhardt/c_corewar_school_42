@@ -111,7 +111,7 @@ fclean: clean2
 
 #leaks: $(NAME) -leaks
 leaks: re
-	./corewar
+	./corewar ./zaz/zork.cor ./zaz/bee_gees.cor
 
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
