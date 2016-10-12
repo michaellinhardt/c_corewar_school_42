@@ -110,7 +110,7 @@ fclean: clean2
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 #leaks: $(NAME) -leaks
-leaks: re
+leaks: $(NAME)
 	./corewar ./zaz/zork.cor ./zaz/bee_gees.cor
 
 -leaks:
