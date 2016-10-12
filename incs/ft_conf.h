@@ -71,7 +71,7 @@
  * LOG_ALL: force tous les log à 1 */
 # define LOG_DISPLAY 1
 # define LOG_ALL 0
-# define LOG_DEBUG 0
+# define LOG_DEBUG 1
 # define LOG_DEBUG_DETAILED 0
 # define LOG_DEBUG_CHECKLIVE 0
 # define LOG_GENERAL 1

@@ -25,6 +25,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display_cycle \
 			ft_mlx_display_effect \
 			ft_mlx_display_processus \
+			ft_mlx_display_processus_count \
 			ft_mlx_display_arene \
 			ft_mlx_effect_init \
 			ft_terminal_ascii \
@@ -110,7 +111,7 @@ fclean: clean2
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 #leaks: $(NAME) -leaks
-leaks: $(NAME)
+leaks: re
 	./corewar ./zaz/zork.cor ./zaz/bee_gees.cor
 
 -leaks:

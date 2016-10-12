@@ -71,6 +71,8 @@ typedef struct		s_player
 	char			code[CHAMP_MAX_SIZE]; // heu
 	int				playing;
 	int				total_live;
+	int				total_proc_alive;
+	int				total_proc_dead;
 	int				last_cycle_live;
 }					t_player;
 

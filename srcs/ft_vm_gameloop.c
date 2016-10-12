@@ -38,10 +38,9 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	{
 		if (p->live < 1)
 		{
-
 			next = p->n;
 			++pdead;
-			proc_kill(data(), p, data()->vm.procdie);
+			proc_kill(data(), p, v->procdie);
 			if (next)
 			{
 				p = next;

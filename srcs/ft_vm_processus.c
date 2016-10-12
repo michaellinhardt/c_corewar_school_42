@@ -59,6 +59,10 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 //	ft_printf("new process :%d, cycle %d\n", new->id, d->vm.cycle);
 //	ft_putchar('\n');
 	d->vm.nbr_proc++;
+	// ft_printf("%d\n", player);
+	// ft_printf("%d\n", ABS(player));
+	d->vm.p[(ABS(player)) - 1].total_proc_alive++;
+	// ft_printf("%d\n", (ABS(player) - 1)); exit(0);
 	/*
 	l2(-1, "PROC SETTINGS", "player attribution", player);
 	l2(-1, "PROC SETTINGS", "id processus", setid);
@@ -93,7 +97,8 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 		target->n->p = target->p;
 	if (d->vm.proc == target)
 		d->vm.proc = target->n;
-
+	d->vm.p[(ABS(target->player)) - 1].total_proc_alive--;
+	d->vm.p[(ABS(target->player)) - 1].total_proc_dead--;
 	target->n = 0;
 	target->p = 0;
 	free (target);

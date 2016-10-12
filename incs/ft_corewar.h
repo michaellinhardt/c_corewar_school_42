@@ -20,7 +20,7 @@
 # include "ft_struct_args.h"
 # include "ft_struct_data.h"
 # include "ft_mlx.h"
-#define ABS(x) x < 0 ? -x : x
+# define ABS(x) x < 0 ? -x : x
 
 /* FICHIER FT_EXIT.C */
 int		exit1(int err, t_data *d, char *msg);

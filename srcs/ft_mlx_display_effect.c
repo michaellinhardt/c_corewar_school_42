@@ -3,16 +3,6 @@
 */
 #include "ft_corewar.h"
 
-void	reset_img_effect(t_img *img)
-{
-	int		*ptr;
-
-	img->i = -1;
-	ptr = (int *)img->str;
-	while (++img->i < WIN_X * WIN_Y)
-		ptr[img->i] = 0xFF000000;
-}
-
 void	put_effect_img(t_img *l, int id, int x, int y)
 {
 	int			*ptre;
@@ -45,7 +35,6 @@ void	display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i)
 	int		loopset;
 
 	loopset = 0;
-	reset_img_effect(&m->scene_img[2][11]);
 	while ((++i || 1) && i < e[i].id_max
 	&& l2(101, "effect()", "(effect_id)", e[i].id_effect))
 	{
@@ -65,7 +54,4 @@ void	display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i)
 				break ;
 		}
 	}
-	if (m->loop && loopset == 0)
-		loop(0);
-	itow(m->scene_img[2][11].img, 0, 0, "effect layer");
 }

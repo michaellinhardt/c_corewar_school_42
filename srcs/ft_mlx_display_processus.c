@@ -3,16 +3,6 @@
 */
 #include "ft_corewar.h"
 
-void	reset_img_proc(t_img *img)
-{
-	int		*ptr;
-
-	img->i = -1;
-	ptr = (int *)img->str;
-	while (++img->i < WIN_X * WIN_Y)
-		ptr[img->i] = 0xFF000000;
-}
-
 void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 {
 	int		*pproc;
@@ -38,10 +28,6 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 	int		x;
 	int		y;
 
-
-	reset_img_proc(img);
-
-
 	while ( proc )
 	{
 		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
@@ -49,5 +35,4 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
 		proc = proc->n;
 	}
-	itow(m->scene_img[2][10].img, 0, 0, "processus layer");
 }
