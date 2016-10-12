@@ -39,6 +39,31 @@ typedef struct		s_img
 	int				i;
 }					t_img;
 
+/*
+** INDEX DES IMAGE DANS LA SCENE 2, CELLE LIé AU EFFETS
+*/
+# define CPERLOOP_NUMBER 12
+enum e_effect_id {
+	e_effect_cperloop
+};
+
+typedef struct		s_effect
+{
+	char			id_effect;
+	char			id_max;
+	char			i;
+	struct s_img	*img;
+	int				looptodie;
+	int				looptodie_count;
+	char			inc_value;
+	char			start_cycle;
+	int				size_x;
+	int				size_y;
+	int				fade;
+	int				x;
+	int				y;
+}					t_effect;
+
 /* STRUCT POUR INFORMER DE L'ETAT ENFONCé OU NON D'UNE TOUCHE
  * - si char <touche> = 0 -> touche laché, sinon elle est enfoncé
  * - mp_[x-y] pour la position d'un press, mo_[xy] pour mouseover */
@@ -75,6 +100,7 @@ typedef struct			s_dmlx
 	void				*mlx;
 	void				*win;
 	t_input				input;
+	t_effect			*effect;
 	char				loop;
 	char				loopstop;
 	enum scene			scene;

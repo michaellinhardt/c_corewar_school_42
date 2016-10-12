@@ -3,7 +3,7 @@
 /*
  *	Header pour les parametre réglable
  */
-# define GRAPHIC_MODE 0
+# define GRAPHIC_MODE 1
 # define CONSOLE_LOG 0
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
@@ -41,6 +41,11 @@
 # define SCENE_IMG_MAX 50
 # define SCENE_START VM_INIT
 
+/*
+** CONF PROPRE AU EFFET
+*/
+# define EFFECTS_MAX_SLOT 20
+
 /* DOSSIER DEPUIS LEQUEL SONT AUTOMATIQUEMENT IMPORTé LES GIFS */
 # define GIF_DIR "./gif/"
 
@@ -64,23 +69,25 @@
 /* AFFICHAGE OU NON DES LOG,
  * LOG_DISPLAY: autorise ou non les log
  * LOG_ALL: force tous les log à 1 */
-# define LOG_DISPLAY 0
+# define LOG_DISPLAY 1
 # define LOG_ALL 0
 # define LOG_DEBUG 0
 # define LOG_DEBUG_DETAILED 0
 # define LOG_DEBUG_CHECKLIVE 0
-# define LOG_GENERAL 0
+# define LOG_GENERAL 1
 # define LOG_KEY 0
 # define LOG_ITOW 0
 # define LOG_SCENE 0
 # define LOG_MOUSE 0
-# define LOG_LOOP 0
+# define LOG_LOOP 1
 # define LOG_FREE 0
-# define LOG_XTOI 0
+# define LOG_XTOI 1
 # define LOG_NEWI 0
 # define LOG_MLX 0
 # define LOG_VM 1
 # define LOG_PROC 0
-# define LOG_INST 1
+# define LOG_INST 0
+# define LOG_DISPLAY 1
+# define LOG_EFFECT 1
 
 #endif
