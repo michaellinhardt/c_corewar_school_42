@@ -20,13 +20,13 @@ typedef	struct		s_instructions
 	short			nbr_args; // son nombre d'args
 	t_arg_type		types[MAX_ARGS_NUMBER];
 	int				cycles;
-	char			comment[37];			
+	char			comment[37];
 	int				flag_ocp; // si ocp pour decode
 	int				flag_size_ind;
 	// pointeur vers la fonctions d'instructions
 	void			(*f_instructions)(t_dvm *vm, struct s_instructions ins,
 			t_proc *proc);
-}					t_instructions;	
+}					t_instructions;
 
 typedef	struct		s_argument
 {
