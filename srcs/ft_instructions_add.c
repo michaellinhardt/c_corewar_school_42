@@ -21,7 +21,7 @@ void	ft_instructions_add(t_dvm *vm, t_instructions inst, t_proc *proc)
 					proc->carry = 1;
 			}
 		}
-		proc->pc = proc->pc_turfu / 2;
+		proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 		l2(13, "INSTRUCTION", "instruction add", proc->id);
 
 		//	ft_printf("instruction %s\n", inst.name);

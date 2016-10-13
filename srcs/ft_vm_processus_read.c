@@ -40,6 +40,11 @@ void	processus_read(t_dvm *v, t_proc *begin)
 			*/
 			pc = proc->pc;
 			proc->inst->f_instructions(v, *proc->inst, proc);
+			if (proc->pc >= MEM_SIZE || proc->pc < 0)
+			{
+				ft_printf("ici: %d\n", proc->inst->id);
+				exit(0);
+			}
 			/*
 			if (v->options.movements)
 			{
@@ -115,7 +120,7 @@ void	processus_read(t_dvm *v, t_proc *begin)
 					proc->pc = (proc->pc + 1) % 4096 ;
 					proc = proc->n;
 					continue ;
-				}	
+				}
 			}
 			else
 			{

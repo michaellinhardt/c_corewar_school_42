@@ -32,7 +32,7 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			opcode = ft_getchar(vm->arene + proc->pc * 2);
 			if (vm->options.operations)
 			{
-				ft_printf("P%5d | lfork %d (%d)\n", proc->id + 1, 
+				ft_printf("P%5d | lfork %d (%d)\n", proc->id + 1,
 						proc->args[0].value, proc->args[0].value + proc->pc);
 			}
 				proc_new(data(), new, proc->player, 0);
@@ -51,6 +51,6 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 		   proc->pc = (father->pc + father->args[0].value) % 4096;
 		   */
 	}
-	proc->pc = (proc->pc_turfu) / 2;
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 	//	ft_printf("instruction %s\n", inst.name);
 }

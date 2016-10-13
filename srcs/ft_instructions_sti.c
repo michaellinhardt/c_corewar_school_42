@@ -34,7 +34,7 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 					address / 2, 4);
 		}
 	}
-	proc->pc = proc->pc_turfu / 2;
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 	l2(13, "INSTRUCTION", "instruction sti", proc->id);
 	//	ft_printf("instruction %s\n", inst.name);
 }

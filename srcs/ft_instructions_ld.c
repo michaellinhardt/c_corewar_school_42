@@ -8,7 +8,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)proc;
 	l2(13, "INSTRUCTION", "instruction ld", proc->id);
 
-		if (ft_check_value_args(proc->args, &inst, vm, proc))
+	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[1].value;
 		if (ft_get_args(proc))
@@ -21,7 +21,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 1;
 		}
 	}
-	proc->pc = proc->pc_turfu / 2;
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 	l2(13, "INSTRUCTION", "instruction ld", proc->id);
 	//	ft_printf("instruction %s\n", inst.name);
 }

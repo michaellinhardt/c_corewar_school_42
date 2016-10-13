@@ -43,7 +43,7 @@ int		log_bool(char ico)
 	|| (ico == 7 && !LOG_FREE) || (ico == 8 && !LOG_XTOI)
 	|| (ico == 9 && !LOG_NEWI) || (ico == 10 && !LOG_MLX)
 	|| (ico == 11 && !LOG_VM) || (ico == 12 && !LOG_PROC)
-	|| (ico == 13 && !LOG_INST) || (ico == 100 && !LOG_DISPLAY)
+	|| (ico == 13 && !LOG_INST) || (ico == 100 && !LOG_DISPLAYING)
 	|| (ico == 101 && !LOG_EFFECT))))
 		return (0);
 	return (1);

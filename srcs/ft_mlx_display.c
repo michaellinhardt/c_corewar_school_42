@@ -27,16 +27,12 @@ int		display(t_dmlx *m, t_dvm *v)
 	reset_img(&m->scene_img[2][10]);
 	display_processus(m, v->proc, &m->scene_img[2][10]);
 	display_processus_count(m, v);
-	itow(m->scene_img[2][10].img, 0, 0, "processus layer");
+	if (v->nbr_proc)
+		display_bar_proc(m, v, &m->scene_img[2][10], 0);
+	itow(m->scene_img[2][10].img, 0, 0, "processus & bar layer");
 
 	display_arene(m, v, 0, 0);
 
 	l2(100, "display()", "printing cycle", v->cycle);
 	return (1);
-
-	// DEBUG AFFICHE Nb PROC
-	// mlx_string_put(m->mlx, m->win, TEXTCTODIEX - 130, TEXTCTODIEY + 100, 0xff0000
-	// 	, "PROC TOTAL: ");
-	// 	mlx_string_put(m->mlx, m->win, TEXTCTODIEX, TEXTCTODIEY + 100, 0xff0000
-	// 		, ft_itoastatic(v->nbr_proc));
 }

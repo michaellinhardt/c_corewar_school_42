@@ -101,7 +101,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 	d->vm.p[(ABS(target->player)) - 1].total_proc_dead--;
 	target->n = 0;
 	target->p = 0;
-	free (target);
+	free(target);
 	target = 0;
 	// déplace le maillon
 	/*

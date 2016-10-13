@@ -20,6 +20,12 @@ void	vm_dump(t_dvm *v)
 
 void	vm(t_dvm *v, int cperloop)
 {
+
+
+	// if (v->cycle > 21500)
+	// 	v->cperloop = 10;
+
+
 	while (--cperloop > -1)
 	{
 		if (v->graphic && v->pause && data()->mlx.input.up == 0

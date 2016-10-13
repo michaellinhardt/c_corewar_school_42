@@ -5,7 +5,6 @@
 
 void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 {
-	m->loop += v->graphic * 0;
 	cycle = ((double)v->ctodiecount / (double)v->ctodie) * 100;
 	itow(m->scene_img[2][3].img
 		, BARCTDLEFTX, BARCTDLEFTY, "bar_cycle_left");
@@ -26,12 +25,17 @@ void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
 
 void	display_cycle(t_dmlx *m, t_dvm *v)
 {
-	mlx_string_put(m->mlx, m->win, TEXTCYCLEX, TEXTCYCLEY, TXTCOLACTUAL
-		, ft_itoastatic(v->cycle));
-	mlx_string_put(m->mlx, m->win, TEXTCPERLOOPX, TEXTCPERLOOPY, TXTCOLCPERLOOP
-		, ft_itoastatic(v->cperloop));
-	mlx_string_put(m->mlx, m->win, TEXTCTODIECOUNTX, TEXTCTODIECOUNTY, TXTCOLCTODIECOUNT
-		, ft_itoastatic(v->ctodiecount));
+	char	txt[500];
+
+	mlx_string_put(m->mlx, m->win, TEXTCYCLEX - ((ft_strlen(ft_strcpy(txt
+	, ft_itoastatic(v->cycle))) / 2) * TXTDECALLAGEX)
+	, TEXTCYCLEY, TXTCOLACTUAL, txt);
+	mlx_string_put(m->mlx, m->win, TEXTCPERLOOPX - ((ft_strlen(ft_strcpy(txt
+	, ft_itoastatic(v->cperloop))) / 2) * TXTDECALLAGEX)
+	, TEXTCPERLOOPY, TXTCOLACTUAL, txt);
+	mlx_string_put(m->mlx, m->win, TEXTCTODIECOUNTX - ((ft_strlen(ft_strcpy(txt
+	, ft_itoastatic(v->ctodiecount))) / 2) * TXTDECALLAGEX)
+	, TEXTCTODIECOUNTY, TXTCOLACTUAL, txt);
 	mlx_string_put(m->mlx, m->win, TEXTCTODIEX, TEXTCTODIEY, TXTCOLCTODIE
 		, ft_itoastatic(v->ctodie));
 }
