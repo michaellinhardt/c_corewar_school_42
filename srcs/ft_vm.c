@@ -40,9 +40,6 @@ void	vm(t_dvm *v, int cperloop)
 		}
 		if (v->dump == v->cycle)
 		{
-			// il serais bon dafficher un ecran special pour préciser
-			// que la parti s'arrete suite a un dump
-			// a paufiner plus tard ...
 			if (v->graphic)
 				display(&(data()->mlx), v);
 			vm_dump(v);

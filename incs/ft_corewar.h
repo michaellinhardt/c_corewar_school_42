@@ -69,6 +69,9 @@ int		ft_check_value_number(t_dargs *args, t_dvm *vm);
 int		ft_convert_pc(int pc);
 void	ft_get_oc_p(t_dvm *vm, t_proc *proc);
 
+
+
+void	vm_dump(t_dvm *vm);
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);
 void	ft_no_ocp(t_argument *args, t_arg_type *types);

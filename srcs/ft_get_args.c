@@ -13,7 +13,9 @@ int		ft_get_args(t_proc *proc)
 			if (ft_check_reg(proc->args[i].value))
 				proc->args[i].value = ft_get_value_registre(proc, proc->args[i].value);
 			else
+			{
 				return (0);
+			}
 		}
 		else if (proc->args[i].type == IND_CODE)
 			proc->args[i].value = (proc->args[i].value + proc->pc);

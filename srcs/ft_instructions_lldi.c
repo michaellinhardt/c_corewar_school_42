@@ -22,5 +22,6 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 			*(proc->ireg + registre) = argument.value;
 		}
 	}
-	proc->pc = proc->pc_turfu / 2;
+	//proc->pc = proc->pc_turfu / 2;
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 }

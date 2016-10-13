@@ -63,6 +63,7 @@ int		ft_fill_args(t_argument *arg,t_dvm *vm, int pc, t_instructions inst)
 			pc = ft_fill_args_dir(&arg[i], vm, pc);
 		else if (arg[i].type == IND_CODE || arg[i].type == DIR_CODE)
 			pc = ft_fill_args_ind(&arg[i], vm, pc);
+		pc %= SIZE_CHAR_ARENE;
 		++i;
 	}
 	return (pc);

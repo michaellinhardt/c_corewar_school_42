@@ -2,7 +2,6 @@
 
 static t_proc *ft_create_lchild(t_proc *new, t_proc *father)
 {
-
 	ft_memcpy(new->reg, father->reg, REG_NUMBER * REG_SIZE);
 	new->carry = father->carry;
 	new->pc = (father->pc + father->args[0].value) % 4096;
@@ -34,15 +33,9 @@ void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			}
 				proc_new(data(), new, proc->player, 0);
 				new = vm->proc;
-			if (opcode == inst.id)
-			{
-				proc->pc++;
-				return;
-			}
-			else
 				ft_create_lchild(new, proc);
-
 		}
 	}
-	proc->pc = (proc->pc_turfu) / 2;
+	//proc->pc = (proc->pc_turfu) / 2;
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 }

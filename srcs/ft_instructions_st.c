@@ -18,10 +18,10 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[1].value;
 		registre1 = proc->args[0].value;
 		save = proc->args[1].value;
-		proc->args[1].value = (proc->args[1].value )% IDX_MOD;
-		convert = ft_convert_pc(proc->args[1].value);
 
-		if (ft_get_args(proc))
+		proc->args[1].value = (proc->args[1].value ) % IDX_MOD;
+		convert = ft_convert_pc(proc->args[1].value);
+		if (ft_get_args(proc) && proc->pc)
 		{
 			if (proc->args[1].type == REG_CODE && registre >= 1 && registre <= 16)
 			{
@@ -29,16 +29,24 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 					ft_printf("P%5d | st r%d r%d\n", proc->id + 1, registre1, registre);
 				*(proc->ireg + registre - 1) = proc->args[0].value;
 			}
-			else
-			{
 				if (vm->options.operations)
-				ft_printf("P%5d | st r%d %d\n", proc->id + 1, registre1, save);
+					ft_printf("P%5d | st r%d %d\n", proc->id + 1, registre1, save);
 				ft_put_registre(vm->arene, (unsigned int)proc->args[0].value,
-						(proc->pc + convert ) * 2);
+						((proc->pc + convert ) * 2) % SIZE_CHAR_ARENE);
 				ft_put_color_size(vm->color, ARENE_CODE_COLOR_P4,
 						proc->pc + convert , 4);
-			}
+
+				/*
+				if (vm->cycle > 26460)
+				{
+					ft_printf("valeur ecrite %x, pc : %d, proc id: %d, cycle: %d\n", 
+							(unsigned int)proc->args[0].value, (proc->pc + convert) % 4096, proc->id + 1, vm->cycle);
+
+
+				}
+				*/
 		}
 	}
-	proc->pc = (proc->pc_turfu / 2);
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+	//proc->pc = (proc->pc_turfu / 2);
 }

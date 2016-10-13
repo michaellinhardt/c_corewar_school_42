@@ -29,5 +29,6 @@ void	ft_instructions_fork(t_dvm *vm, t_instructions inst, t_proc *proc)
 			ft_create_child(new, proc);
 		}
 	}
-	proc->pc = proc->pc_turfu  / 2;
+	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+	//proc->pc = proc->pc_turfu  / 2;
 }
