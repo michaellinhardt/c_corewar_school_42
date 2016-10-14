@@ -114,6 +114,7 @@ typedef struct		s_dvm
 	int				live_player;
 	int				nbr_players;
 	int				nbr_proc;
+	int				nbr_proc_dead;
 	t_proc			*proc;
 	t_proc			*procdie;
 

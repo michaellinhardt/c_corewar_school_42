@@ -98,7 +98,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 	if (d->vm.proc == target)
 		d->vm.proc = target->n;
 	d->vm.p[(ABS(target->player)) - 1].total_proc_alive--;
-	d->vm.p[(ABS(target->player)) - 1].total_proc_dead--;
+	d->vm.p[(ABS(target->player)) - 1].total_proc_dead++;
 	target->n = 0;
 	target->p = 0;
 	free(target);
@@ -110,6 +110,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 	data()->vm.procdie = target;
 	target->p = (t_proc *)NULL;
 	*/
+	d->vm.nbr_proc_dead++;
 	d->vm.nbr_proc--;
 	return (1);
 }

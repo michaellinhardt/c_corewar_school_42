@@ -18,6 +18,7 @@ void	put_open_img(t_img *img, t_img *open, int x, int y)
 		while (++x < BAROPENX)
 		{
 			pimg[++(img->i)] = popen[y * BAROPENX + x];
+			img->str[img->i * 4 + 3] = BARALIVEPROCALPHA;
 		}
 		img->i = img->i - x + WIN_X;
 	}
@@ -38,6 +39,7 @@ void	put_close_img(t_img *img, t_img *open, int x, int y)
 		while (++x < BARCLOSEX)
 		{
 			pimg[++(img->i)] = popen[y * BARCLOSEX + x];
+			img->str[img->i * 4 + 3] = BARALIVEPROCALPHA;
 		}
 		img->i = img->i - x + WIN_X;
 	}
@@ -66,6 +68,7 @@ void	put_mid_img(t_dvm *v, t_img *img, int i, int posx)
 			while (++y < BAROPENY)
 			{
 				pimg[(img->i)] = pmid[y];
+				img->str[img->i * 4 + 3] = BARALIVEPROCALPHA;
 				img->i = img->i + WIN_X;
 			}
 		}
