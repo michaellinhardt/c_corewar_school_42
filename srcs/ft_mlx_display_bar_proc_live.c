@@ -3,6 +3,24 @@
 */
 #include "ft_corewar.h"
 
+void	put_last_live_img(t_img *img, t_img *last, int x, int y)
+{
+	int			*plast;
+	int			*pimg;
+
+	plast = (int *)last->str;
+	pimg = (int *)img->str;
+	img->i = (y * WIN_X + x) - 1;
+	y = -1;
+	while (++y < LASTLIVEDISPLAYSIZEY)
+	{
+		x = -1;
+		while (++x < LASTLIVEDISPLAYSIZEX)
+			pimg[++(img->i)] = plast[y * LASTLIVEDISPLAYSIZEX + x];
+		img->i = img->i - x + WIN_X;
+	}
+}
+
 void	put_open_img_3(t_img *img, t_img *open, int x, int y)
 {
 	int			*popen;
@@ -80,6 +98,7 @@ void	display_bar_proc_live(t_dmlx *m, t_dvm *v, t_img *img, int i)
 {
 	int		popen;
 	int		pclose;
+	int		lastlivex;
 
 	i = -1;
 	popen = -1;
@@ -92,4 +111,15 @@ void	display_bar_proc_live(t_dmlx *m, t_dvm *v, t_img *img, int i)
 	put_mid_img_3(v, img, -1, -1);
 	put_close_img_3(img, &m->scene_img[2][BARIMGID + (pclose * 3) + 2]
 	, BARPROCALIVEX + BARPROCALIVESIZE, BARPROCALIVEY + BARPROCLIVEINCY);
+	lastlivex = (ABS(v->last_live));
+	if (lastlivex == 1)
+		lastlivex = LASTLIVEDISPLAYP1X;
+	else if (lastlivex == 2)
+		lastlivex = LASTLIVEDISPLAYP2X;
+	else if (lastlivex == 3)
+		lastlivex = LASTLIVEDISPLAYP3X;
+	else
+		lastlivex = LASTLIVEDISPLAYP4X;
+	put_last_live_img(img, &m->scene_img[2][25]
+	, lastlivex, LASTLIVEDISLAYY);
 }
