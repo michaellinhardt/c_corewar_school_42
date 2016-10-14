@@ -40,7 +40,7 @@ void		ft_get_oc_p(t_dvm *vm, t_proc *proc)
 	else
 		ft_no_ocp(proc->args, proc->inst->types);
 	ft_fill_args(proc->args, vm, proc->pc_turfu % SIZE_CHAR_ARENE, 
-			*proc->inst); 
+			proc); 
 	proc->pc_turfu = ft_get_pc_turfu(proc->args, *proc->inst, proc->pc_turfu);
 }
 

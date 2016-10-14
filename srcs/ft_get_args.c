@@ -17,6 +17,13 @@ int		ft_get_args(t_proc *proc)
 				return (0);
 			}
 		}
+		else if (proc->args[i].type == IND_CODE && proc->inst->id != 13 && 
+				proc->inst->id != 14)
+		{
+			proc->args[i].value = (proc->args[i].value ) % IDX_MOD;
+			proc->args[i].value = ft_convert_pc(proc->args[i].value);
+			proc->args[i].value = (proc->args[i].value + proc->pc);
+		}
 		else if (proc->args[i].type == IND_CODE)
 			proc->args[i].value = (proc->args[i].value + proc->pc);
 		++i;
