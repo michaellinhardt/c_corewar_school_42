@@ -54,6 +54,9 @@ void		display_bar_proc(t_dmlx *m, t_dvm *v, t_img *img, int i);
 /* FICHIER FT_MLX_DISPLAY_BAR_PROC.C */
 void		display_bar_proc_dead(t_dmlx *m, t_dvm *v, t_img *img, int i);
 
+/* FICHIER FT_MLX_DISPLAY_BAR_PROC.C */
+void		display_bar_proc_live(t_dmlx *m, t_dvm *v, t_img *img, int i);
+
 /* FICHIER FT_MLX_DISPLAY_EFFECT.C */
 void		display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i);
 

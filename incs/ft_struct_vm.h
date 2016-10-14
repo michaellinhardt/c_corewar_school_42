@@ -109,6 +109,7 @@ typedef struct		s_dvm
 	int				ctodiecount;
 	int				nbr_live;
 	int				max_checks;
+	int				total_live;
 	int				last_live;
 	int				last_live_cycle;
 	int				live_player;

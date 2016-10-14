@@ -24,6 +24,7 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 			}
 			vm->p[(ABS(proc->args[0].value)) - 1].last_cycle_live = vm->cycle;
 			vm->p[(ABS(proc->args[0].value)) - 1].total_live++;
+			vm->total_live++;
 			proc->live_player++;
 			vm->last_live = proc->args[0].value;
 			vm->last_live_cycle = vm->cycle;

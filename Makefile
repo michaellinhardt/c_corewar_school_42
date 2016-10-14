@@ -26,6 +26,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display_effect \
 			ft_mlx_display_processus \
 			ft_mlx_display_processus_count \
+			ft_mlx_display_bar_proc_live \
 			ft_mlx_display_bar_proc_dead \
 			ft_mlx_display_bar_proc \
 			ft_mlx_display_arene \
