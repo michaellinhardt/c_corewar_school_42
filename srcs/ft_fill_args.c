@@ -54,7 +54,7 @@ int		ft_fill_args(t_argument *arg,t_dvm *vm, int pc, t_instructions inst)
 
 	i = 0;
 	l = pc;
-	while (i < MAX_ARGS_NUMBER)
+	while (i < inst.nbr_args)
 	{
 		arg[i].value = 0;
 		if (arg[i].type == REG_CODE)

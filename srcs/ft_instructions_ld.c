@@ -11,6 +11,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 	{
 		registre = proc->args[1].value;
 
+		/*
 		int i = 0;
 		if (vm->cycle == 26469)
 		{
@@ -22,6 +23,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 				++i;
 			}
 		}
+		*/
 		if (ft_get_args(proc))
 		{
 			if (vm->options.operations)

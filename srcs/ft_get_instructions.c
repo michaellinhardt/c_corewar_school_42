@@ -15,16 +15,24 @@ static int ft_get_pc_turfu(t_argument *arg, t_instructions inst, int pc)
 			pc += 4;
 		++i;
 	}
-	return (pc);
+	return (pc % SIZE_CHAR_ARENE);
 
 }	
 void		ft_get_oc_p(t_dvm *vm, t_proc *proc)
 {
-	char	oc_p;
+	unsigned char	oc_p;
 
 	if (proc->inst->flag_ocp)
 	{
-		oc_p = (unsigned char)ft_getchar(vm->arene + (proc->pc + 1) * 2);
+		oc_p = (unsigned char)ft_getchar(vm->arene + ((proc->pc + 1) * 2)
+				% SIZE_CHAR_ARENE);
+		/*
+		if (vm->cycle == 26469 && proc->id == 1127)
+		{
+			ft_printf("valeur de l'ocp a %d\n", oc_p);
+
+		}
+		*/
 		ft_decode_args(oc_p, proc->args);
 		proc->pc_turfu += 2;
 	}

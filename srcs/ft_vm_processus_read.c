@@ -52,12 +52,14 @@ void	processus_read(t_dvm *v, t_proc *begin)
 		else if (proc->wait == 1)
 		{
 			pc = proc->pc;
+			/*
 			if (v->cycle == 26469)
 			{
 				ft_printf("proc id %d instruction %s\n", proc->id + 1, proc->inst->name);
 			}
+			*/
 			proc->inst->f_instructions(v, *proc->inst, proc);
-		//	if (v->cycle == 26404 && v->options.movements && proc->inst->id != 9)
+			//if (v->cycle == 26469	&& v->options.movements && proc->inst->id != 9)
 			if (v->options.movements && proc->inst->id != 9)
 				ft_affadv(v, proc, pc);
 			proc->wait = 0;
