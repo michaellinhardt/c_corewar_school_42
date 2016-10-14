@@ -7,6 +7,8 @@ static t_proc *ft_create_child(t_proc *new, t_proc *father)
 	new->pc = (father->pc + father->args[0].value % IDX_MOD);
 	new->live = father->live;
 	new->live_player = father->live_player;
+	new->last_live = father->last_live;
+
 ///	data()->vm.live_player += new->live_player;
 	
 	return (new);

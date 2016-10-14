@@ -14,6 +14,7 @@ static int ft_get_pc_turfu(t_argument *arg, t_instructions inst, int pc)
 		else if (arg[i].type == IND_CODE || arg[i].type == DIR_CODE)
 			pc += 4;
 		++i;
+		pc %= SIZE_CHAR_ARENE;
 	}
 	return (pc % SIZE_CHAR_ARENE);
 
@@ -47,7 +48,7 @@ int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 {
 	char	opcode;
 
-	opcode = ft_getchar(vm->arene + proc->pc * 2);
+	opcode = ft_getchar(vm->arene + (proc->pc * 2) % SIZE_CHAR_ARENE);
 	proc->pc_turfu += 2;
 	if (opcode <= 0 || opcode > 16)
 	{

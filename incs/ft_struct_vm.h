@@ -44,7 +44,6 @@ typedef struct		s_proc
 	int				create_cycle;
 	int				live;
 	int				last_live;
-	int				DIE_MF;
 	int				live_player;
 	int				wait;
 	int				pc;
