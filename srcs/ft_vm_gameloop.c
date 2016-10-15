@@ -10,10 +10,7 @@
 */
 int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 {
-
-
 	(void)next;
-
 	while (p)
 	{
 		if (p->live < 1)
@@ -40,18 +37,18 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	v->ctodiecount = 0;
 
 
-		v->max_checks++;
+	v->max_checks++;
 	if (v->nbr_live >= NBR_LIVE)
 	{
 		v->max_checks = 0;
-		v->ctodie = v->ctodie - CYCLE_DELTA < 0 ? 0 : v->ctodie - CYCLE_DELTA;
+		v->ctodie = v->ctodie - CYCLE_DELTA;
 		if (v->options.cycles)
 			ft_printf("Cycle to die is now %d\n", v->ctodie);
 	}
 	else if (((v->max_checks >= MAX_CHECKS)))
 	{
 		v->max_checks = 0;
-		v->ctodie = v->ctodie - CYCLE_DELTA < 0 ? 0 : v->ctodie - CYCLE_DELTA;
+		v->ctodie = v->ctodie - CYCLE_DELTA;
 		if (v->options.cycles)
 			ft_printf("Cycle to die is now %d\n", v->ctodie);
 	}
