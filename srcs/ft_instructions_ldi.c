@@ -15,7 +15,7 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 			{
 				add = proc->args[0].value + proc->args[1].value;
 				ft_printf("P%5d | ldi %d %d r%d\n", proc->id + 1, proc->args[0].value, proc->args[1].value, registre);
-				ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", proc->args[0].value, proc->args[1].value, add, (add + proc->pc) % MEM_SIZE);
+				ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", proc->args[0].value, proc->args[1].value, add, (add + proc->pc));
 			}
 			address = (proc->args[0].value + proc->args[1].value);
 			address %= IDX_MOD;

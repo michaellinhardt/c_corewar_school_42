@@ -2,8 +2,6 @@
 
 void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 {
-	int convert1;
-	int convert2;
 	int registre;
 	int add;
 	(void)vm;
@@ -21,16 +19,13 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 			if (vm->options.operations)
 			{
 				ft_printf("P%5d | sti r%d %d %d\n", proc->id + 1, registre, proc->args[1].value, proc->args[2].value);
-				ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, (add % IDX_MOD + proc->pc) % MEM_SIZE);
+				ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, (add % IDX_MOD + proc->pc));
 			}
-			convert1 = ft_convert_pc(proc->args[1].value);
-			convert2 = ft_convert_pc(proc->args[2].value);
 
 			int address;
-			if (proc->args[1].type == IND_CODE)
-				address = (convert1 + convert2 ) * 2;
-			else
-				address = (convert1 + convert2 + proc->pc) * 2;
+			address = add % IDX_MOD + proc->pc;
+			address = ft_convert_pc(address);
+			address *= 2;
 			ft_put_registre(vm->arene, proc->args[0].value , address % SIZE_CHAR_ARENE);
 			ft_put_color_size(vm->color, ARENE_CODE_COLOR_P2,
 					address / 2, 4);

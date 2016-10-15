@@ -20,8 +20,9 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 
 			if (vm->options.lives)
 			{
-				ft_printf("Player 1 (%s) is said to be alive\n", 
-						vm->p->header.prog_name);
+				ft_printf("Player %d (%s) is said to be alive\n",
+						ABS(proc->args[0].value),
+						vm->p[(ABS(proc->args[0].value)) -1].header.prog_name);
 			}
 			if (vm->ctodie > 0)
 			{

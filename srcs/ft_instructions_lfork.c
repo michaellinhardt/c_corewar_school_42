@@ -6,7 +6,8 @@ static t_proc *ft_create_lchild(t_proc *new, t_proc *father)
 	new->carry = father->carry;
 //	new->pc = (father->pc + father->args[0].value) % 4096;
 //	father->args[0].value  = ft_convert_pc(father->args[0].value);
-	new->pc = (father->pc + father->args[0].value) % 4096;
+	new->pc = (father->pc + father->args[0].value);
+	new->pc = ft_convert_pc(new->pc);
 	new->live = father->live;
 	new->live_player = father->live_player;
 	new->last_live = father->last_live;

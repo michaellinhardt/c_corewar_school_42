@@ -2,6 +2,6 @@
 int main()
 {
 
-	printf("%u\n", -791621168);
+	printf("%u\n", -2);
 	return (0);
 }

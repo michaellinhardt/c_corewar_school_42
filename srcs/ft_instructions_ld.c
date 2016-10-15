@@ -13,9 +13,7 @@ void	ft_instructions_ld(t_dvm *vm, t_instructions inst, t_proc *proc)
 		if (ft_get_args(proc))
 		{
 			if (proc->args[0].type == IND_CODE)
-			{
 				proc->args[0].value = ft_get_indirect(proc->args[0].value, vm);
-			}
 			if (vm->options.operations)
 				ft_printf("P%5d | ld %d r%d\n", proc->id + 1, 
 						proc->args[0].value, registre);
