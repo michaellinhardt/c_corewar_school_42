@@ -13,19 +13,16 @@ void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 	(void)inst;
 	(void)proc;
 	convert = 0;
+
+
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		registre = proc->args[1].value;
 		registre1 = proc->args[0].value;
 		save = proc->args[1].value;
-
-
-
 		proc->args[1].value = (proc->args[1].value ) % IDX_MOD;
 		convert = ft_convert_pc(proc->args[1].value);
-
-
-		if (ft_get_args(proc) && proc->pc)
+		if (ft_get_args(proc))
 		{
 			if (proc->args[1].type == REG_CODE && registre >= 1 && registre <= 16)
 			{

@@ -69,6 +69,8 @@ int		ft_check_value_number(t_dargs *args, t_dvm *vm);
 int		ft_convert_pc(int pc);
 void	ft_get_oc_p(t_dvm *vm, t_proc *proc);
 
+int		ft_get_indirect(int pc, t_dvm *vm);
+
 
 
 void	vm_dump(t_dvm *vm);

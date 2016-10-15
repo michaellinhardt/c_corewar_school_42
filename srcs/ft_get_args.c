@@ -11,11 +11,11 @@ int		ft_get_args(t_proc *proc)
 		if (proc->args[i].type == REG_CODE)
 		{
 			if (ft_check_reg(proc->args[i].value))
-				proc->args[i].value = ft_get_value_registre(proc, proc->args[i].value);
-			else
 			{
-				return (0);
+				proc->args[i].value = ft_get_value_registre(proc, proc->args[i].value);
 			}
+			else
+				return (0);
 		}
 		else if (proc->args[i].type == IND_CODE && proc->inst->id != 13 && 
 				proc->inst->id != 14)

@@ -24,6 +24,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display \
 			ft_check_value_number \
 			ft_mlx_display_processus \
+			ft_get_indirect \
 			ft_mlx_display_arene \
 			ft_terminal_ascii \
 			ft_terminal_log \

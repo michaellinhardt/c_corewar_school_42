@@ -1,4 +1,113 @@
 .name "test"
-.comment "FDP"
+.comment "FDP indirect"
 
-live:	live %1
+
+#champion pour definir les modulos
+live:  live %666
+	   ld 1024, r2
+	   st r2, 50	
+	   live %112
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %0
+	   live %1
+	   live %2
+	   live %3
+	   live %4
+	   live %5
+	   live %6
+	   live %8
+	   live %10
+	   live %16
+	   live %18
+	   live %17
+	   live %23
+	   live %37
+	   live %11
+	   live %12
+	   live %13
+	   live %20
+	   live %41
+	   live %71
+	   live %61
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   live %-1
+	   ldi %:live , %10, r5
+	   st r5, 4 
+

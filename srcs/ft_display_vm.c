@@ -54,8 +54,19 @@ void	ft_display_vm_papy(t_dvm *vm)
 	int i;
 
 	i = 0;
+	t_proc *proc;
 	while (i < SIZE_CHAR_ARENE)
 	{
+	proc = vm->proc;
+		while (proc)
+		{
+			if (proc->id == 3 && proc->pc == i / 2)
+			{
+	   			ft_putstr(YELLOW);
+				break;
+			}
+			proc = proc->n;
+		}
 		if (!(i % 128))
 			ft_put_hex_compteur(i / 2);
 		if (*(vm->arene + i) >= 65)
@@ -67,6 +78,7 @@ void	ft_display_vm_papy(t_dvm *vm)
 			ft_putchar(' ');
 		if (!(i % 128))
 			ft_putchar('\n');
+		ft_putstr(WHITE);
 	}
 
 

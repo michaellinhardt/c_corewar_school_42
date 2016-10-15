@@ -60,7 +60,7 @@ void	processus_read(t_dvm *v, t_proc *begin)
 			*/
 			proc->inst->f_instructions(v, *proc->inst, proc);
 			//if (v->cycle == 26469	&& v->options.movements && proc->inst->id != 9)
-			if (v->options.movements && proc->inst->id != 9)
+			if (v->options.movements && (proc->inst->id != 9 || proc->carry == 0))
 				ft_affadv(v, proc, pc);
 			proc->wait = 0;
 	//		proc->inst = 0;
