@@ -17,13 +17,12 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 			if (proc->args[1].type == IND_CODE)
 				proc->args[1].type %= IDX_MOD;
-			add = proc->args[1].value + proc->args[2].value;
+			add = (proc->args[1].value + proc->args[2].value);
 			if (vm->options.operations)
 			{
 				ft_printf("P%5d | sti r%d %d %d\n", proc->id + 1, registre, proc->args[1].value, proc->args[2].value);
-				ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, add + proc->pc);
+				ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, (add % IDX_MOD + proc->pc) % MEM_SIZE);
 			}
-
 			convert1 = ft_convert_pc(proc->args[1].value);
 			convert2 = ft_convert_pc(proc->args[2].value);
 

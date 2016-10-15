@@ -4,7 +4,8 @@ static t_proc *ft_create_child(t_proc *new, t_proc *father)
 {
 	ft_memcpy(new->reg, father->reg, REG_NUMBER * REG_SIZE);
 	new->carry = father->carry;
-	new->pc = (father->pc + father->args[0].value % IDX_MOD);
+//	father->args[0].value  = ft_convert_pc(father->args[0].value % IDX_MOD);
+	new->pc = (father->pc + father->args[0].value % IDX_MOD) % 4096;
 	new->live = father->live;
 	new->live_player = father->live_player;
 	new->last_live = father->last_live;

@@ -4,7 +4,6 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 {
 	int registre;
 	int address;
-	t_argument argument;
 
 	(void)vm;
 	(void)inst;
@@ -15,9 +14,9 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[2].value;
 		if (ft_get_args(proc))
 		{
-			address = (proc->args[0].value + proc->args[1].value) * 2;
-			ft_fill_args_dir(&argument, vm, address);
-			if (!(*(proc->ireg + registre - 1) = argument.value))
+			address = (proc->args[0].value + proc->args[1].value);
+			address += proc->pc;
+			if (!(*(proc->ireg + registre - 1) = ft_get_indirect(address, vm)))
 				proc->carry = 1;
 			else
 				proc->carry = 0;

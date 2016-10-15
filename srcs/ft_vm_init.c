@@ -56,7 +56,7 @@ void	vm_init(t_data *d, t_dvm *v)
 //	v->cycle = -1;
 	v->ctodie = CYCLE_TO_DIE;
 	v->cperloop = CYCLE_PER_LOOP;
-	v->max_checks = 1;
+	v->max_checks = 0;
 	vm_init_log();
 	vm_init_proc(d, v, -1);
 	d->mlx.scene = VM;

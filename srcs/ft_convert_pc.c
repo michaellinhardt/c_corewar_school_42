@@ -18,5 +18,7 @@ int		ft_convert_pc(int pc)
 		pc = -(pc) ;
 		pc = MEM_SIZE - pc;
 	}
+	if (pc < 0)
+		ft_putendl("lololololololo0lolololololol");
 	return (pc);
 }

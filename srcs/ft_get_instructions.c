@@ -50,6 +50,7 @@ int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc)
 
 	opcode = ft_getchar(vm->arene + (proc->pc * 2) % SIZE_CHAR_ARENE);
 	proc->pc_turfu += 2;
+	proc->pc_turfu %= SIZE_CHAR_ARENE;
 	if (opcode <= 0 || opcode > 16)
 	{
 		proc->inst = (void *)0;

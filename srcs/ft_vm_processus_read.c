@@ -39,6 +39,14 @@ void	processus_read(t_dvm *v, t_proc *begin)
 		ft_printf("It is now cycle %d\n", v->cycle);
 	while ( proc )
 	{
+			if (proc->pc < 0 )
+			{
+				if (proc->inst)
+					ft_printf("proc id %d instruction %s, proc->pc %d\n", proc->id + 1, proc->inst->name,
+						proc->pc);
+				else
+					ft_printf("proc id, %d\n", proc->id + 1);
+			}
 		if (proc->wait <= 0)
 		{
 				proc->pc_turfu = proc->pc * 2;
@@ -52,12 +60,6 @@ void	processus_read(t_dvm *v, t_proc *begin)
 		else if (proc->wait == 1)
 		{
 			pc = proc->pc;
-			/*
-			if (v->cycle == 26469)
-			{
-				ft_printf("proc id %d instruction %s\n", proc->id + 1, proc->inst->name);
-			}
-			*/
 			proc->inst->f_instructions(v, *proc->inst, proc);
 			//if (v->cycle == 26469	&& v->options.movements && proc->inst->id != 9)
 			if (v->options.movements && (proc->inst->id != 9 || proc->carry == 0))
