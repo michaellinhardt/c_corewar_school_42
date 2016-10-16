@@ -1,5 +1,5 @@
 # VAR COMP
-FLAGS	= -Wall -Wextra -Werror -g
+FLAGS	= -Wall -Wextra -Werror
 CC		= gcc $(FLAGS)
 INCS 	= -I./incs -I./libft/includes
 LIBS	= ./libft

@@ -2,6 +2,6 @@
 int main()
 {
 
-	printf("%u\n", -28670);
+	printf("%u\n", 28670);
 	return (0);
 }

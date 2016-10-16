@@ -11,9 +11,13 @@ static void	ft_affadv(const t_dvm *vm, t_proc *proc, int pc)
 
 	i = 0; 
 	j = ((proc->pc - pc));
-	j = ft_convert_pc(j);
+	j = ft_convert_pc(j) ;
 	pc = ft_convert_pc(pc);
+	if (pc >= MEM_SIZE)
+		pc %= MEM_SIZE;
 	k = pc + j;
+	if (k >= MEM_SIZE)
+		k %= MEM_SIZE;
 	if (pc)
 		ft_printf("ADV %d (%#06x -> %#06x) ",  j, pc , k);
 	else
