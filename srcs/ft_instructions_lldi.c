@@ -22,5 +22,7 @@ void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 				proc->carry = 0;
 		}
 	}
-	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
+	  	proc->pc %= MEM_SIZE;
+	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 }

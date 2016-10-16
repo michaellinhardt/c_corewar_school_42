@@ -31,6 +31,8 @@ void	ft_instructions_zjmp(t_dvm *vm, t_instructions inst, t_proc *proc)
 //	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 	//		proc->pc = proc->pc_turfu / 2;
 	}
-	proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
+	  	proc->pc %= MEM_SIZE;
+	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
 	//	proc->pc = proc->pc_turfu / 2;
 }

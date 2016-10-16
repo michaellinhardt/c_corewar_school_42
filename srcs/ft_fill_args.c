@@ -1,13 +1,13 @@
 #include "ft_corewar.h"
 
-static int		ft_fill_args_reg(t_argument *arg, t_dvm *vm, int pc)
+static int		ft_fill_args_reg(t_argument *arg, const t_dvm *vm, int pc)
 {
 	arg->value = (unsigned char)ft_getchar(vm->arene + pc);
 	pc = (pc + 2) % SIZE_CHAR_ARENE;
 	return (pc);
 }
 
-int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc)
+int		ft_fill_args_dir(t_argument *arg, const t_dvm *vm, int pc)
 {
 	int i;
 	int decal;
@@ -24,7 +24,7 @@ int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc)
 	return (pc);
 }
 
-static int		ft_fill_args_ind(t_argument *arg, t_dvm *vm, int pc)
+static int		ft_fill_args_ind(t_argument *arg, const t_dvm *vm, int pc)
 {
 	int i;
 	int decal;
@@ -38,15 +38,15 @@ static int		ft_fill_args_ind(t_argument *arg, t_dvm *vm, int pc)
 		decal -= 8;
 		++i;
 	}
-
 	arg->value = (short)arg->value;
 	return (pc);
 }
 
 
-int		ft_fill_args(t_argument *arg,t_dvm *vm, int pc, t_proc *proc)
+int		ft_fill_args(t_argument *arg,const t_dvm *vm, int pc, const t_proc *proc)
 {
 	int i;
+
 
 	i = 0;
 	while (i < proc->inst->nbr_args)
@@ -58,7 +58,8 @@ int		ft_fill_args(t_argument *arg,t_dvm *vm, int pc, t_proc *proc)
 			pc = ft_fill_args_dir(&arg[i], vm, pc % SIZE_CHAR_ARENE);
 		else if (arg[i].type == IND_CODE || arg[i].type == DIR_CODE)
 				pc = ft_fill_args_ind(&arg[i], vm, pc);
-		pc %= SIZE_CHAR_ARENE;
+		if (pc >= SIZE_CHAR_ARENE)
+			pc %= SIZE_CHAR_ARENE;
 		++i;
 	}
 	return (pc);

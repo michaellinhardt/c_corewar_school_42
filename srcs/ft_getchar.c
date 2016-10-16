@@ -1,6 +1,6 @@
 #include "ft_corewar.h"
 
-char	ft_getchar(char *arene)
+char	ft_getchar(const char *arene)
 {
 	unsigned char ret;
 

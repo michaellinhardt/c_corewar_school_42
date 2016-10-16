@@ -61,13 +61,13 @@ void	ft_fill_arene(t_dvm *vm);
 void	ft_init_vm(t_dvm *vm);
 void	ft_display_vm(t_dvm *vm);
 void	ft_init_instructions(t_instructions *inst);
-int		ft_get_instruction(t_instructions *inst, t_dvm *vm, t_proc *proc);
-int		ft_check_value_args(t_argument *args, t_instructions *inst,
+int		ft_get_instruction(t_instructions *inst,const t_dvm *vm, t_proc *proc);
+int		ft_check_value_args(const t_argument *args, const t_instructions *inst,
 		t_dvm *vm, t_proc *proc);
 int		ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc);
 int		ft_check_value_number(t_dargs *args, t_dvm *vm);
 int		ft_convert_pc(int pc);
-void	ft_get_oc_p(t_dvm *vm, t_proc *proc);
+void	ft_get_oc_p(const t_dvm *vm, t_proc *proc);
 
 int		ft_get_indirect(int pc, t_dvm *vm);
 
@@ -78,13 +78,13 @@ void	vm_dump(t_dvm *vm);
 void	ft_decode_args(char oc_p, t_argument *arg);
 void	ft_no_ocp(t_argument *args, t_arg_type *types);
 // ici on peuple les valeurs
-int		ft_fill_args(t_argument *arg, t_dvm *vm, int pc, t_proc *proc);
+int		ft_fill_args(t_argument *arg, const t_dvm *vm, int pc, const t_proc *proc);
 
-char	ft_getchar(char	*arene);
+char	ft_getchar(const char	*arene);
 int		ft_get_value_registre(t_proc *proc, int registre);
 int		ft_check_reg(int registre);
 int		ft_get_args(t_proc *proc);
-int		ft_fill_args_dir(t_argument *arg, t_dvm *vm, int pc);
+int		ft_fill_args_dir(t_argument *arg, const t_dvm *vm, int pc);
 void	ft_put_registre(char *arene, unsigned int code, int pc);
 void	ft_put_color_size(int *color, unsigned int code_color, int pc, int size);
 /*

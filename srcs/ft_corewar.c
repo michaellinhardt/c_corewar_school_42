@@ -51,7 +51,6 @@ int		main(int argc, char **argv)
 	ft_recup_options_players(d, argv, argc);
 	ft_get_init_players(d);
 	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
-
 	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
 		&& ascii(ASC_LOG)
 	&& d->vm.graphic )
