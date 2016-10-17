@@ -1,6 +1,6 @@
 #include "ft_corewar.h"
 
-wchar_t log_ico(char ico)
+wchar_t		log_ico(char ico)
 {
 	wchar_t		c;
 
@@ -23,7 +23,7 @@ wchar_t log_ico(char ico)
 	return (c);
 }
 
-int		log_bool(char ico)
+int			log_bool(char ico)
 {
 	if (LOG_DEBUG && ((ico == -1
 	|| (LOG_DEBUG_DETAILED && ico == -2))
@@ -41,17 +41,15 @@ int		log_bool(char ico)
 	|| (ico == 7 && !LOG_FREE) || (ico == 8 && !LOG_XTOI)
 	|| (ico == 9 && !LOG_NEWI) || (ico == 10 && !LOG_MLX)
 	|| (ico == 11 && !LOG_VM) || (ico == 12 && !LOG_PROC)
-	|| (ico == 13 && !LOG_INST)
-	)))
+	|| (ico == 13 && !LOG_INST))))
 		return (0);
 	return (1);
 }
 
-int		l1(char ico, char *name, char *info)
+int			l1(char ico, char *name, char *info)
 {
 	t_data		*d;
 
-	/* AFFICHE LE LOG qUE SI NECESSAIRE SELON LA CONFIG DU HEADER */
 	if (!data()->vm.console || !log_bool(ico))
 		return (1);
 	d = data();
@@ -59,24 +57,26 @@ int		l1(char ico, char *name, char *info)
 		ft_printf(" %C %s %21s %s %48s %s (%d)\n", log_ico(ico), LINE_BLUE, name
 		, LINE_GREEN2, info, LINE_YEL, data()->vm.cycle);
 	else
-		ft_printf(" %C %s %21s %s \e[90m%46s %s (%d)\n", log_ico(ico), LINE_BLUE, name
+		ft_printf(" %C %s %21s %s \e[90m%46s %s (%d)\n",
+				log_ico(ico), LINE_BLUE, name
 		, LINE_GREEN2, info, LINE_YEL, data()->vm.cycle);
 	return (1);
 }
 
-int		l2(char ico, char *name, char *info, int val1)
+int			l2(char ico, char *name, char *info, int val1)
 {
 	t_data		*d;
 
-	/* AFFICHE LE LOG qUE SI NECESSAIRE SELON LA CONFIG DU HEADER */
 	if (!data()->vm.console || !log_bool(ico))
 		return (1);
 	d = data();
 	if (ico != -2 && ico != -3)
-		ft_printf(" %C %s %21s %s %9d \e[90m-> \e[35m%-35s\e[93m %s (%d)\n", log_ico(ico), LINE_BLUE, name
+		ft_printf(" %C %s %21s %s %9d \e[90m-> \e[35m%-35s\e[93m %s (%d)\n",
+				log_ico(ico), LINE_BLUE, name
 		, LINE_GREEN2, val1, info, LINE_YEL, data()->vm.cycle);
 	else
-		ft_printf(" %C %s %21s %s \e[90m%9d -> %-35s\e[93m %s (%d)\n", log_ico(ico), LINE_BLUE, name
+		ft_printf(" %C %s %21s %s \e[90m%9d -> %-35s\e[93m %s (%d)\n",
+				log_ico(ico), LINE_BLUE, name
 		, LINE_GREEN2, val1, info, LINE_YEL, data()->vm.cycle);
 	return (1);
 }

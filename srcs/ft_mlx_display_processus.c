@@ -1,6 +1,3 @@
-/*
-** GENERE L'AFFICHAGE DES PROCESSUS
-*/
 #include "ft_corewar.h"
 
 void	reset_img(t_img *img)
@@ -38,11 +35,8 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 	int		x;
 	int		y;
 
-
 	reset_img(img);
-
-
-	while ( proc )
+	while (proc)
 	{
 		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;

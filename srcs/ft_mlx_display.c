@@ -1,6 +1,3 @@
-/*
-** GENERE L'AFFICHAGE
-*/
 #include "ft_corewar.h"
 
 void	display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel)
@@ -43,14 +40,10 @@ int		display(t_dmlx *m, t_dvm *v)
 	display_ctodie_bar(m, v, 0.0, 0);
 	display_processus(m, data()->vm.proc, &m->scene_img[2][10]);
 	display_arene(m, v, 0, 0);
-
-// DEBUG AFFICHE Nb PROC
-mlx_string_put(m->mlx, m->win, TEXTCTODIEX - 130, TEXTCTODIEY + 100, 0xff0000
+	mlx_string_put(m->mlx, m->win,
+			TEXTCTODIEX - 130, TEXTCTODIEY + 100, 0xff0000
 	, "PROC TOTAL: ");
 	mlx_string_put(m->mlx, m->win, TEXTCTODIEX, TEXTCTODIEY + 100, 0xff0000
 		, ft_itoastatic(v->nbr_proc));
-
-
-	//l2(-2, "display()", "printing cycle", v->cycle);
 	return (1);
 }

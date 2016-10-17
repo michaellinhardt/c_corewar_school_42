@@ -1,16 +1,10 @@
 #include "ft_corewar.h"
-/*
- * Ce fichier charge les img lié à la scene actuel
- */
 
 int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 {
 	char	*folder;
 	char	*file;
 
-	// lit le dossier d'image de cette adresse: ./xpm/scene_<name>.xpm
-	// <name> est arbitraire, c'est le numéro précédant le _ et le .xpm
-	// qui importe pour la détection du dossier
 	ft_printf("%!./xpm/%s", &folder, path);
 	if (!(dir = opendir(folder)))
 		exit1(1, data(), "Cant open xpm sub dir.");
@@ -31,9 +25,6 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 
 void		scene_img_folder(t_dmlx *m, DIR *dir, struct dirent *f)
 {
-	// parcour le dossier ./xpm
-	// celui ci contiens les dossier de chaque scene, eux même contenant
-	// les .xpm de chaque scene
 	if (!(dir = opendir("./xpm")))
 		exit1(1, data(), "Cant open xpm dir.");
 	while ((f = readdir(dir)))
@@ -48,9 +39,6 @@ void		scene_img_folder(t_dmlx *m, DIR *dir, struct dirent *f)
 	closedir(dir);
 }
 
-/*
- * Cette fonction pilote le chargement des image lié à la scene en cours
- */
 void		scene_img(t_data *d, t_dmlx *m)
 {
 	d->mlx.loop += 0;

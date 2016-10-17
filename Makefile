@@ -32,6 +32,7 @@ LIST 	= ft_corewar \
 			ft_vm_init \
 			ft_vm \
 			ft_recup_headers \
+			ft_display_vm_papy \
 			ft_vm_processus \
 			ft_vm_processus_read \
 			ft_vm_gameloop \
@@ -40,6 +41,8 @@ LIST 	= ft_corewar \
 			ft_fill_arene \
 			ft_recup_files \
 			ft_init_instructions \
+			ft_init_instructions_end \
+			ft_init_instructions_suite \
 			ft_instructions_live \
 			ft_instructions_ld \
 			ft_instructions_st \

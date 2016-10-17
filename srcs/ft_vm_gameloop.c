@@ -1,31 +1,23 @@
-/*
-** GESTION DE LA GAMELOOP
-*/
 #include "ft_corewar.h"
 
-/*
-** Vérifie quel processus dois moourir, et appel la fonction proc_kill si besoin
-** p est la liste des proc vivant dans data()->vm->proc
-** reset le décompte de la prochaien vérif à la fin (v->ctodiecount = 0)
-*/
-int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
+static void		ft_kill_dead_process(t_proc *p)
 {
-	(void)next;
+	t_proc	*next;
+
+	next = 0;
 	while (p)
 	{
 		if (p->live < 1)
 		{
-
 			next = p->n;
-			++pdead;
-			proc_kill(data(), p, data()->vm.procdie);
+			proc_kill(data(), p);
 			if (next)
 			{
 				p = next;
 				continue;
 			}
 			else
-				break;
+				break ;
 		}
 		if (p)
 		{
@@ -34,9 +26,14 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 		}
 		p = p->n;
 	}
+}
+
+static int		ft_checklive(t_dvm *v, t_proc *p)
+{
+	int palive;
+
+	ft_kill_dead_process(p);
 	v->ctodiecount = 0;
-
-
 	v->max_checks++;
 	if (v->nbr_live >= NBR_LIVE)
 	{
@@ -58,18 +55,15 @@ int		checklive(t_dvm *v, t_proc *p, t_proc *next, int palive, int pdead)
 	return (palive);
 }
 
-int		gameloop(t_dvm *v)
+int				gameloop(t_dvm *v)
 {
 	int ret;
-	ret= 0;
 
-	// Début du cycle
-	//	++v->cycle;
-	//	ft_printf("It is now cycle %d\n", v->cycle);
+	ret = 0;
 	processus_read(v, v->proc);
 	++(v->ctodiecount);
 	if (v->ctodiecount >= v->ctodie
-			&& !(ret = checklive(v, v->proc, (t_proc *)NULL, 0, 0)))
+			&& !(ret = ft_checklive(v, v->proc)))
 		return (0);
 	return (1);
 }

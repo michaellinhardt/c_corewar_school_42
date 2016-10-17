@@ -1,8 +1,5 @@
 #include "ft_corewar.h"
 
-/*
-** AFFICHAGE AU FUR ET A MESURE DES FREE EFFECTUé
-*/
 int		free_ascii(int ico, char *type, char *info)
 {
 	wchar_t		uni;
@@ -20,15 +17,11 @@ int		free_ascii(int ico, char *type, char *info)
 	return (1);
 }
 
-/*
-** FONCTION QUI FREE TOUTE LA LISTE DES IMG CHARGé EN MEMOIRE PAR MLX
-** Cette fonction log egalement l'action dans le terminal
-*/
 void	free_img(t_img *img, t_dmlx *m, int i, int j)
 {
-	while( ++i < SCENE_MAX )
+	while (++i < SCENE_MAX)
 		if (m->img_isload[i] == 1 && (j = -1))
-			while( ++j < SCENE_IMG_MAX)
+			while (++j < SCENE_IMG_MAX)
 				if ((img = &m->scene_img[i][j]) && img->img)
 				{
 					if (data()->vm.console)
@@ -40,10 +33,6 @@ void	free_img(t_img *img, t_dmlx *m, int i, int j)
 				}
 }
 
-/*
-** FONCTION QUI FREE TOUTE LA LISTE DES PROCESSUS CRéer
-** Cette fonction log egalement l'action dans le terminal
-*/
 void	free_proc(t_proc *lst, t_proc *destroy, int wich)
 {
 	int		i;
@@ -66,13 +55,10 @@ void	free_proc(t_proc *lst, t_proc *destroy, int wich)
 		, LINE_GREEN, i, " ", LINE_GREEN);
 }
 
-/* FONCTION APPELLER QUAND ON FERME LE PROGRAMME
- * basiquement .. elles lance tous les free et le log en terminal */
 void	free_data(t_data *d)
 {
 	ascii(ASC_FREEDATA);
 	get_next_line(-10, NULL);
 	free_img((t_img *)NULL, &d->mlx, -1, -1);
 	free_proc(d->vm.proc, (t_proc *)NULL, 1);
-	free_proc(d->vm.procdie, (t_proc *)NULL, 2);
 }

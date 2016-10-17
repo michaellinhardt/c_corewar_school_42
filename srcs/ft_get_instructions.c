@@ -1,6 +1,6 @@
 #include "ft_corewar.h"
 
-static int ft_get_pc_turfu(t_argument *arg, t_instructions *inst, int pc)
+static int	ft_get_pc_turfu(t_argument *arg, t_instructions *inst, int pc)
 {
 	int i;
 
@@ -17,8 +17,7 @@ static int ft_get_pc_turfu(t_argument *arg, t_instructions *inst, int pc)
 		pc %= SIZE_CHAR_ARENE;
 	}
 	return (pc % SIZE_CHAR_ARENE);
-
-}	
+}
 
 void		ft_get_oc_p(const t_dvm *vm, t_proc *proc)
 {
@@ -33,15 +32,17 @@ void		ft_get_oc_p(const t_dvm *vm, t_proc *proc)
 	}
 	else
 		ft_no_ocp(proc->args, proc->inst->types);
-	ft_fill_args(proc->args, vm, proc->pc_turfu % SIZE_CHAR_ARENE, 
-			proc); 
+	ft_fill_args(proc->args, vm, proc->pc_turfu % SIZE_CHAR_ARENE,
+			proc);
 	proc->pc_turfu = ft_get_pc_turfu(proc->args, proc->inst, proc->pc_turfu);
 }
 
-int		ft_get_instruction(t_instructions *inst, const t_dvm *vm, t_proc *proc)
+int			ft_get_instruction(t_instructions *inst,
+		const t_dvm *vm, t_proc *proc)
 {
 	char	opcode;
 
+	proc->pc_turfu = proc->pc * 2;
 	opcode = ft_getchar(vm->arene + (proc->pc * 2) % SIZE_CHAR_ARENE);
 	proc->pc_turfu += 2;
 	if (proc->pc_turfu >= SIZE_CHAR_ARENE)

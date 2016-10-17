@@ -41,7 +41,7 @@ void	vm(t_dvm *v, int cperloop);
 
 /* FICHIER FT_VM_PROCESSUS.C */
 void	proc_new(t_data *d, t_proc *new, int player, int i);
-int		proc_kill(t_data *d, t_proc *target, t_proc *procdie);
+int		proc_kill(t_data *d, t_proc *target);
 
 /* FICHIER FT_GAMELOOP.C */
 int		gameloop(t_dvm *v);
@@ -60,7 +60,6 @@ void	ft_recup_code(t_dvm *vm, t_dargs *args);
 void	ft_fill_arene(t_dvm *vm);
 void	ft_init_vm(t_dvm *vm);
 void	ft_display_vm(t_dvm *vm);
-void	ft_init_instructions(t_instructions *inst);
 int		ft_get_instruction(t_instructions *inst,const t_dvm *vm, t_proc *proc);
 int		ft_check_value_args(const t_argument *args, const t_instructions *inst,
 		t_dvm *vm, t_proc *proc);
@@ -73,10 +72,10 @@ int		ft_get_indirect(int pc, t_dvm *vm, t_proc *proc);
 
 
 
-void	vm_dump(t_dvm *vm);
 // ici on vas peupler le types des arguemnts
 void	ft_decode_args(char oc_p, t_argument *arg);
 void	ft_no_ocp(t_argument *args, t_arg_type *types);
+void	ft_put_hex_compteur(int i);
 // ici on peuple les valeurs
 int		ft_fill_args(t_argument *arg, const t_dvm *vm, int pc, const t_proc *proc);
 
@@ -88,6 +87,16 @@ int		ft_fill_args_dir(t_argument *arg, const t_dvm *vm, int pc);
 int		ft_fill_args_ind(t_argument *arg, const t_dvm *vm, int pc);
 void	ft_put_registre(char *arene, unsigned int code, int pc);
 void	ft_put_color_size(int *color, unsigned int code_color, int pc, int size);
+
+
+
+void	ft_init_instructions(t_instructions *inst);
+void	ft_init_instructions_types_arg_un(t_instructions *inst);
+void	ft_init_instructions_types_arg_zero(t_instructions *inst);
+void	ft_init_instructions_nbr_args(t_instructions *inst);
+void	ft_init_instructions_name(t_instructions *inst);
+void	ft_init_instructions_types_arg_deux(t_instructions *inst);
+void	ft_init_instructions_cycles(t_instructions *inst);
 /*
  * Instructions
  */

@@ -1,6 +1,3 @@
-/*
-** GESTION DES PROCESSUS
-*/
 #include "ft_corewar.h"
 
 void	proc_new(t_data *d, t_proc *new, int player, int i)
@@ -8,10 +5,8 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	static int	id = 0;
 
 	++id;
-	if (!(new = (t_proc *) ft_memalloc(sizeof(t_proc))))
+	if (!(new = (t_proc *)ft_memalloc(sizeof(t_proc))))
 		exit1(1, data(), "Can't malloc struct s_proc");
-
-
 	if (d->vm.proc && (new->n = d->vm.proc))
 		(d->vm.proc)->p = new;
 	else
@@ -28,25 +23,20 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	d->vm.nbr_proc++;
 }
 
-/*
-** FONCTION QUI TUE LES PROCESS ET LES PLACE DAnS LA LISTE MORTE
-*/
-int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
+int		proc_kill(t_data *d, t_proc *target)
 {
 	if ((d)->vm.options.deaths)
-	ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-			target->id, d->vm.cycle - target->last_live, d->vm.ctodie);
-	(void)procdie;
+		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+				target->id, d->vm.cycle - target->last_live, d->vm.ctodie);
 	if (target->p)
 		target->p->n = target->n;
 	if (target->n)
 		target->n->p = target->p;
 	if (d->vm.proc == target)
 		d->vm.proc = target->n;
-
 	target->n = 0;
 	target->p = 0;
-	free (target);
+	free(target);
 	target = 0;
 	d->vm.nbr_proc--;
 	return (1);

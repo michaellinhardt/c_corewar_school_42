@@ -1,48 +1,57 @@
 #include "ft_corewar.h"
 
-#include <stdio.h>
-
-void	ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
+static void	ft_log_st_reg(t_dvm *vm, t_proc *proc, int registre1, int registre)
 {
-	int registre;
-	int registre1;
-	int convert;
+	if (vm->options.operations)
+	{
+		if (proc->id < 10000)
+			ft_printf("P%5d | st r%d r%d\n", proc->id, registre1, registre);
+		else if (proc->id < 100000)
+			ft_printf("P%6d | st r%d r%d\n", proc->id, registre1, registre);
+		else
+			ft_printf("P%7d | st r%d r%d\n", proc->id, registre1, registre);
+	}
+}
 
-	convert = 0;
+static void	ft_log_st(t_dvm *vm, t_proc *proc, int registre1, int registre)
+{
+	if (vm->options.operations)
+	{
+		if (proc->id < 10000)
+			ft_printf("P%5d | st r%d %d\n", proc->id, registre1, registre);
+		else
+			ft_printf("P%6d | st r%d %d\n", proc->id, registre1, registre);
+	}
+}
+
+static void	ft_init_st(int *tab, t_proc *proc)
+{
+	tab[0] = proc->args[1].value;
+	tab[1] = proc->args[0].value;
+	proc->args[1].value = (proc->args[1].value) % IDX_MOD;
+	tab[2] = ft_convert_pc(proc->args[1].value);
+}
+
+void		ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
+{
+	int	tab[3];
+
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
-		registre = proc->args[1].value;
-		registre1 = proc->args[0].value;
-		proc->args[1].value = (proc->args[1].value ) % IDX_MOD;
-		convert = ft_convert_pc(proc->args[1].value);
+		ft_init_st(tab, proc);
 		if (ft_get_args(proc))
 		{
-			if (proc->args[1].type == REG_CODE && registre > 0 && registre <= 16)
+			if (proc->args[1].type == REG_CODE && tab[0] > 0 && tab[0] <= 16)
 			{
-				if (vm->options.operations)
-				{
-					if (proc->id < 10000)
-						ft_printf("P%5d | st r%d r%d\n", proc->id, registre1, registre);
-					else if (proc->id < 100000)
-						ft_printf("P%6d | st r%d r%d\n", proc->id, registre1, registre);
-					else
-						ft_printf("P%7d | st r%d r%d\n", proc->id, registre1, registre);
-				}
-				*(proc->ireg + --registre) = proc->args[0].value;
+				ft_log_st_reg(vm, proc, tab[1], tab[0]);
 			}
 			else
 			{
-				if (vm->options.operations)
-				{
-					if (proc->id < 10000)
-						ft_printf("P%5d | st r%d %d\n", proc->id, registre1, registre);
-					else
-						ft_printf("P%6d | st r%d %d\n", proc->id, registre1, registre);
-				}
+				ft_log_st(vm, proc, tab[1], tab[0]);
 				ft_put_registre(vm->arene, (unsigned int)proc->args[0].value,
-						((proc->pc + convert ) * 2) % SIZE_CHAR_ARENE);
+						((proc->pc + tab[2]) * 2) % SIZE_CHAR_ARENE);
 				ft_put_color_size(vm->color, ARENE_CODE_COLOR_P4,
-						proc->pc + convert , 4);
+						proc->pc + tab[2], 4);
 			}
 		}
 	}

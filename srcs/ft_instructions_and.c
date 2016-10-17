@@ -1,6 +1,22 @@
 #include "ft_corewar.h"
 
-void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
+static void	ft_log_and(t_dvm *vm, t_proc *proc, int registre)
+{
+	if (vm->options.operations)
+	{
+		if (proc->id < 10000)
+			ft_printf("P%5d | and %d %d r%d\n", proc->id,
+					proc->args[0].value, proc->args[1].value, registre);
+		else if (proc->id < 100000)
+			ft_printf("P%6d | and %d %d r%d\n", proc->id,
+					proc->args[0].value, proc->args[1].value, registre);
+		else
+			ft_printf("P%7d | and %d %d r%d\n", proc->id,
+					proc->args[0].value, proc->args[1].value, registre);
+	}
+}
+
+void		ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 {
 	int registre;
 
@@ -9,23 +25,14 @@ void	ft_instructions_and(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[2].value;
 		if (ft_get_args(proc))
 		{
-			if (vm->options.operations)
-			{
-				if (proc->id < 10000)
-					ft_printf("P%5d | and %d %d r%d\n", proc->id, proc->args[0].value, proc->args[1].value, registre);
-				else if (proc->id < 100000)
-					ft_printf("P%6d | and %d %d r%d\n", proc->id, proc->args[0].value, proc->args[1].value, registre);
-				else
-					ft_printf("P%7d | and %d %d r%d\n", proc->id, proc->args[0].value, proc->args[1].value, registre);
-			}
-			if ((*(proc->ireg + --registre) =
+			ft_log_and(vm, proc, registre);
+			if ((*(proc->ireg + registre - 1) =
 						proc->args[0].value & proc->args[1].value))
 				proc->carry = 0;
 			else
 				proc->carry = 1;
 		}
 	}
-
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
 		proc->pc %= MEM_SIZE;
 }

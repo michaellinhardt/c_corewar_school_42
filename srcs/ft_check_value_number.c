@@ -1,33 +1,34 @@
 #include "ft_corewar.h"
 
-int		ft_check_value_number(t_dargs *args, t_dvm *vm)
+static int	ft_check_doublons(t_dvm *vm, t_dargs *args, int *nbr)
 {
 	int i;
 	int j;
-	int nbr[4];
 
-	nbr[0] = 1;
-	nbr[1] = 2;
-	nbr[2] = 3;
-	nbr[3] = 4;
 	i = 0;
-	// verif pas de doublons
 	while (i < vm->nbr_players)
 	{
 		if (args[i].player != -1)
-		{	
+		{
 			j = i + 1;
 			while (j < vm->nbr_players)
 			{
 				if (args[i].player == args[j].player)
-						return (0);
+					return (0);
 				++j;
 			}
-			nbr[args[i].player - 1] = -1;	
+			nbr[args[i].player - 1] = -1;
 		}
 		++i;
 	}
-	// attributions des nums manquants
+	return (1);
+}
+
+static void	ft_create_number(t_dargs *args, t_dvm *vm, int *nbr)
+{
+	int i;
+	int j;
+
 	i = 0;
 	while (i < vm->nbr_players)
 	{
@@ -43,13 +44,27 @@ int		ft_check_value_number(t_dargs *args, t_dvm *vm)
 					break ;
 				}
 				++j;
-			}	
+			}
 		}
 		++i;
 	}
-	// verif pas de doublons"
-	i = 0;
-	while (i < vm->nbr_players)
+}
+
+int			ft_check_value_number(t_dargs *args, t_dvm *vm)
+{
+	int i;
+	int j;
+	int nbr[4];
+
+	nbr[0] = 1;
+	nbr[1] = 2;
+	nbr[2] = 3;
+	nbr[3] = 4;
+	i = -1;
+	if (!ft_check_doublons(vm, args, nbr))
+		return (0);
+	ft_create_number(args, vm, nbr);
+	while (++i < vm->nbr_players)
 	{
 		j = i + 1;
 		if (nbr[i] != -1)
@@ -60,9 +75,6 @@ int		ft_check_value_number(t_dargs *args, t_dvm *vm)
 				return (0);
 			++j;
 		}
-		++i;
 	}
 	return (1);
 }
-
-

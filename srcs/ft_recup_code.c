@@ -2,7 +2,7 @@
 
 void		ft_recup_code(t_dvm *vm, t_dargs *args)
 {
-	int i;
+	int		i;
 	ssize_t ret;
 
 	i = 0;

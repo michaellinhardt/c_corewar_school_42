@@ -3,7 +3,7 @@
 */
 #include "ft_corewar.h"
 
-void	vm_dump(t_dvm *v)
+static void	vm_dump(t_dvm *v)
 {
 	l2(12, "BYE BYE", "dump cycle", v->cycle);
 	ft_display_vm(v);
@@ -14,26 +14,31 @@ void	vm_dump(t_dvm *v)
 	ft_printf("Live current period : %d\n", v->nbr_live);
 	ft_printf("Live current period player : %d\n", v->live_player);
 	ft_printf("max cheks : %d\n", v->max_checks);
-	exit (0);
+	exit(0);
 	exit1(0, data(), "dump order");
 }
 
-void	vm(t_dvm *v, int cperloop)
+static void	ft_display_graphic(t_dvm *v)
 {
-	// gameloop() exécute  un cycle, on l'appel cperloop fois,
-	// selon la config du header ou des input clavier
+	if (v->graphic)
+		display(&(data()->mlx), v);
+	if (v->dump <= v->cycle && v->dump != -1)
+		vm_dump(v);
+}
+
+void		vm(t_dvm *v, int cperloop)
+{
 	while (--cperloop > -1)
 	{
 		if (v->graphic && v->pause && data()->mlx.input.up == 0
-		&& !(v->pause_inc))
+				&& !(v->pause_inc))
 			break ;
 		v->pause_inc = 0;
 		v->cycle++;
 		if (!gameloop(v) || !v->proc)
 		{
-			// Ici la partie est terminé
 			ft_printf("Contestant %d, \"%s\", has won !\n", ABS(v->last_live),
-						v->p[(ABS(v->last_live)) -1].header.prog_name);
+					v->p[(ABS(v->last_live)) - 1].header.prog_name);
 			if (v->dump != -1)
 				vm_dump(v);
 			exit1(0, data(), "game over");
@@ -45,9 +50,5 @@ void	vm(t_dvm *v, int cperloop)
 			vm_dump(v);
 		}
 	}
-	// lance l'affichage si necessaire
-	if (v->graphic)
-		display(&(data()->mlx), v);
-	if (v->dump <= v->cycle && v->dump != -1)
-			vm_dump(v);
+	ft_display_graphic(v);
 }

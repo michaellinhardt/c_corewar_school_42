@@ -111,9 +111,6 @@ typedef struct		s_dvm
 	int				nbr_players;
 	int				nbr_proc;
 	t_proc			*proc;
-	t_proc			*procdie;
-
-	// Tableau de pointeur sur fonctions des instructions
 }					t_dvm;
 
 #endif

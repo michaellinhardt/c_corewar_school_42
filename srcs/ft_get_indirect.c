@@ -3,7 +3,7 @@
 int		ft_get_indirect(int pc, t_dvm *vm, t_proc *proc)
 {
 	t_argument arg;
-	
+
 	arg.value = 0;
 	pc = ft_convert_pc(pc);
 	if (proc->inst->id == 0x0D)
