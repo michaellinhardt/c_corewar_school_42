@@ -24,7 +24,7 @@ int		ft_fill_args_dir(t_argument *arg, const t_dvm *vm, int pc)
 	return (pc);
 }
 
-static int		ft_fill_args_ind(t_argument *arg, const t_dvm *vm, int pc)
+int		ft_fill_args_ind(t_argument *arg, const t_dvm *vm, int pc)
 {
 	int i;
 	int decal;

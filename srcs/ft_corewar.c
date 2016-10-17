@@ -2,8 +2,6 @@
 
 static void	ft_recup_options_players(t_data *d, char **argv, int argc)
 {
-	int p ;
-
 	d->args[0].player = -1;
 	d->args[1].player = -1;
 	d->args[2].player = -1;
@@ -15,27 +13,30 @@ static void	ft_recup_options_players(t_data *d, char **argv, int argc)
 	}
 	if (d->vm.nbr_players == 0)
 		exit(1);
-	ft_printf("nbr joueurs %d\n:", d->vm.nbr_players);
 	if (!(ft_check_value_number(d->args, &d->vm)))
 	{
 		ft_printf("erreur ft_check_value_number\n");
 		exit(1);
 	}
 	/*affichage des players a retirer apres ???*/
-	p = 0;
-	while (p < d->vm.nbr_players)
-	{
-		ft_printf("player: %d, file: %s\n", d->args[p].player, d->args[p].file);
-		++p;
-	}
 }
 
 static void	ft_get_init_players(t_data *d)
 {
+	int		p;
+	p = 0;
+	ft_printf("Introducing contestants...\n");
 	ft_recup_files(&d->vm, d->args);
 	ft_recup_headers(&d->vm, d->args);
 	ft_recup_code(&d->vm, d->args);
 	ft_init_instructions(d->vm.instructions);
+	while (p < d->vm.nbr_players)
+	{
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+		ABS(d->args[p].player), d->vm.p[p].header.prog_size, d->vm.p[p].header.prog_name,
+		d->vm.p[p].header.comment);
+		++p;
+	}
 }
 
 int		main(int argc, char **argv)

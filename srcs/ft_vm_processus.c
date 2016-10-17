@@ -5,28 +5,13 @@
 
 void	proc_new(t_data *d, t_proc *new, int player, int i)
 {
-	// FONCTION QUI RECUPERE UN PROCESSUS MORT OU EN CREER UN NOUVEAU
-	static int	id = -1;
+	static int	id = 0;
 
-	// Récupére un proc mort si il existe, sinon le créer
-	// nb. c'est aussi ici qu'on détermine l'id associé au process avec setid
-	//l1(-1, "PROC NEW", "*** NEW PROC ***");
-	/*
-	if (d->vm.procdie && (new = d->vm.procdie)
-	&& (((setid = d->vm.procdie->id) || 1))
-	&& ((d->vm.procdie = d->vm.procdie->n) || 1)
-	&& ((d->vm.procdie && ((d->vm.procdie->p = (t_proc *)NULL) || 1)) || 1))
-		l2(-1, "PROC RESURECT", "id", setid);
-	else if ((((setid = ++id) || 1)) && l2(-1, "PROC MALLOC", "id", setid)
-	&& !(new) && !(new = (t_proc *)ft_memalloc(sizeof(t_proc))))
-		exit1(1, data(), "Can't malloc struct s_proc");
-		*/
 	++id;
 	if (!(new = (t_proc *) ft_memalloc(sizeof(t_proc))))
 		exit1(1, data(), "Can't malloc struct s_proc");
 
 
-//	ft_bzero(new, sizeof(new));
 	if (d->vm.proc && (new->n = d->vm.proc))
 		(d->vm.proc)->p = new;
 	else
@@ -50,7 +35,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 {
 	if ((d)->vm.options.deaths)
 	ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-			target->id + 1, d->vm.cycle - target->last_live, d->vm.ctodie);
+			target->id, d->vm.cycle - target->last_live, d->vm.ctodie);
 	(void)procdie;
 	if (target->p)
 		target->p->n = target->n;

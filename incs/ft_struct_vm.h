@@ -40,7 +40,6 @@ typedef struct		s_proc
 	// l'état live -> -1 pour mort, 0 pour vivant, 1 pour à déjà fais sont live
 	int				id;
 	int				player;
-//	int				player_live;
 	int				create_cycle;
 	int				live;
 	int				last_live;

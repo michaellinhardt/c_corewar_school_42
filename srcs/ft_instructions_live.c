@@ -14,10 +14,16 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 	if (ft_check_value_args(proc->args, &inst, vm, proc))
 	{
 		if (vm->options.operations)
-			ft_printf("P%5d | live %d\n", proc->id + 1, proc->args[0].value);
+		{
+			if (proc->id < 10000)
+				ft_printf("P%5d | live %d\n", proc->id, proc->args[0].value);
+			else if (proc->id < 100000)
+				ft_printf("P%6d | live %d\n", proc->id, proc->args[0].value);
+			else
+				ft_printf("P%7d | live %d\n", proc->id, proc->args[0].value);
+		}
 		if (proc->args[0].value <= -1 && proc->args[0].value >= -vm->nbr_players)
 		{
-
 			if (vm->options.lives)
 			{
 				ft_printf("Player %d (%s) is said to be alive\n",
@@ -38,6 +44,5 @@ void	ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
-	  	proc->pc %= MEM_SIZE;
-	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+		proc->pc %= MEM_SIZE;
 }

@@ -26,13 +26,6 @@ void	ft_put_hex_compteur(int i)
 	ft_putstr(" : ");
 }
 
-#define RED "\033[0;31m"
-#define WHITE "\033[1;37m"
-#define BLUE "\033[0;34m"
-#define GREEN "\033[0;32m"
-#define CYAN "\033[0;36m"
-#define YELLOW "\033[0;33m"
-#define PURPLE "\033[0;35m"
 void	ft_put_color(int *color)
 {
 	if (*color == ARENE_CODE_COLOR_WHITE)
@@ -86,8 +79,7 @@ void	ft_display_vm_papy(t_dvm *vm)
 
 void	ft_display_vm(t_dvm *vm)
 {
-	ft_display_vm_papy(vm);
-	/*
+//	ft_display_vm_papy(vm);
 	   int i;
 	   int ok;
 	   t_proc *proc;
@@ -122,5 +114,4 @@ void	ft_display_vm(t_dvm *vm)
 	   if (!(i % 128))
 	   ft_putchar('\n');
 	   }
-	   */
 }

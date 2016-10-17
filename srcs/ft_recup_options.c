@@ -47,7 +47,7 @@ int 	ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 		}
 		else
 		{
-			ft_printf("argument : %s\n", *(argv + i));
+//			ft_printf("argument : %s\n", *(argv + i));
 			args->file = *(argv + i);
 			++args;
 			vm->nbr_players++;

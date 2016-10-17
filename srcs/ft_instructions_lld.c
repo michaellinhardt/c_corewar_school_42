@@ -13,10 +13,19 @@ void	ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc)
 		if (ft_get_args(proc))
 		{
 			if (proc->args[0].type == IND_CODE)
-				proc->args[0].value = ft_get_indirect(proc->args[0].value, vm);
+				proc->args[0].value = ft_get_indirect(proc->args[0].value, vm, proc);
 			if (vm->options.operations)
-				ft_printf("P%5d | lld %d r%d\n", proc->id + 1, 
+			{
+				if (proc->id < 10000)
+					ft_printf("P%5d | lld %d r%d\n", proc->id,
 						proc->args[0].value, registre);
+				else if (proc->id < 100000)
+					ft_printf("P%6d | lld %d r%d\n", proc->id,
+						proc->args[0].value, registre);
+				else
+					ft_printf("P%7d | lld %d r%d\n", proc->id,
+						proc->args[0].value, registre);
+			}
 			if ((*(proc->ireg + --registre) = proc->args[0].value))
 				proc->carry = 0;
 			else
@@ -24,6 +33,5 @@ void	ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
-	  	proc->pc %= MEM_SIZE;
-	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+		proc->pc %= MEM_SIZE;
 }

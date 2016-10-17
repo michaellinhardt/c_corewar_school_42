@@ -17,6 +17,14 @@
 # define ARENE_CODE_COLOR_P2 0xf4532a
 # define ARENE_CODE_COLOR_P3 0x1fbdff
 # define ARENE_CODE_COLOR_P4 0xeaff00
+# define RED "\033[0;31m"
+# define WHITE "\033[1;37m"
+# define BLUE "\033[0;34m"
+# define GREEN "\033[0;32m"
+# define CYAN "\033[0;36m"
+# define YELLOW "\033[0;33m"
+# define PURPLE "\033[0;35m"
+# define NEUTRE "\033[0;m"
 
 /*
 **  DONNEE DE LA VM
