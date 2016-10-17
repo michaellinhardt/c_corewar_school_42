@@ -1,14 +1,8 @@
-#ifndef FT_TERMINAL_H
-# define FT_TERMINAL_H
-/*
- *	Header lié à la gestion du terminal & log
- */
+#ifndef FT_TERMINAL_LOG_H
+# define FT_TERMINAL_LOG_H
 
-/* ft_terminal_ascii.c */
 int			ascii(char *path);
 int			ascii_init(void);
-
-/* FICHIER FT_TERMINAL_LOG.C */
 int			l1(char ico, char *name, char *info);
 int			l2(char ico, char *name, char *info, int val1);
 

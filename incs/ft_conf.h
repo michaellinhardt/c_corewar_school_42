@@ -1,8 +1,8 @@
 #ifndef FT_CONF_H
 # define FT_CONF_H
 /*
- *	Header pour les parametre réglable
- */
+**	Header pour les parametre réglable
+*/
 # define GRAPHIC_MODE 0
 # define CONSOLE_LOG 0
 # define WIN_TITLE "Corewar"
@@ -29,14 +29,17 @@
 /*
 **  DONNEE DE LA VM
 */
+# define SIZE_CHAR_ARENE (MEM_SIZE * 2)
 # define CHAMP_NAME_SIZE 2048
 # define CYCLE_PER_LOOP 1
 # define CPERLOOP_INC 11
 # define CPERLOOP_MAX 202
 # define ARENE_CODE_COLOR 0xCCCCCC
 
-/* GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
- * Cela évite de spam le processeur du PC pour rien */
+/*
+** GESTION DU TEMPS D'ARRET DE LA BOUCLE SI RIEN N'EST A AFFICHER
+** Cela évite de spam le processeur du PC pour RIEN
+*/
 # define USLEEP_TIME 20000
 # define USLEEP_BOOL 1
 
@@ -49,10 +52,11 @@
 # define SCENE_IMG_MAX 50
 # define SCENE_START VM_INIT
 
-/* DOSSIER DEPUIS LEQUEL SONT AUTOMATIQUEMENT IMPORTé LES GIFS */
+/*
+** DOSSIER DEPUIS LEQUEL SONT AUTOMATIQUEMENT IMPORTé LES GIFS
+*/
 # define GIF_DIR "./gif/"
 
-// # define ASC_USAGE "./ascii/help"
 # define ASC_LOGO "./ascii/logo"
 # define ASC_INIT "./ascii/init"
 # define ASC_LOG "./ascii/log"
@@ -60,7 +64,10 @@
 # define ASC_EXIT_0 "./ascii/exit0"
 # define ASC_EXIT_1 "./ascii/exit1"
 
-/* CHAINE DE CARACTER POUR LES BOX DU TERMINAL */
+/*
+** CHAINE DE CARACTER POUR LES BOX DU TERMINAL
+*/
+
 # define TERMINAL_COLOR "\e[93m"
 # define LINE_GREY "\e[93m║\e[90m"
 # define LINE_GREEN "\e[93m║\e[92m"
@@ -69,9 +76,11 @@
 # define LINE_MAG "\e[93m║\e[35m"
 # define LINE_YEL "\e[93m║"
 
-/* AFFICHAGE OU NON DES LOG,
- * LOG_DISPLAY: autorise ou non les log
- * LOG_ALL: force tous les log à 1 */
+/*
+** AFFICHAGE OU NON DES LOG,
+** LOG_DISPLAY: autorise ou non les log
+** LOG_ALL: force tous les log à 1
+*/
 # define LOG_DISPLAY 0
 # define LOG_ALL 0
 # define LOG_DEBUG 0

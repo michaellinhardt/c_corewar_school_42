@@ -23,7 +23,7 @@ static int	ft_get_number_player(int *i, char **argv, t_dargs **args, t_dvm *vm)
 static void	ft_skip_bitchies(t_dargs **args, char **argv, t_dvm *vm, int i)
 {
 	(*args)->file = *(argv + i);
-	++args;
+	++*args;
 	vm->nbr_players++;
 }
 
@@ -55,7 +55,7 @@ static int	ft_check_options(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 
 int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 {
-	int tab[2];
+	int		tab[2];
 
 	tab[0] = 1;
 	tab[1] = argc;
@@ -68,7 +68,7 @@ int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 			return (0);
 		if (vm->nbr_players > 4)
 			return (0);
-		++(tab[0]);
+		(tab[0])++;
 	}
 	return (1);
 }

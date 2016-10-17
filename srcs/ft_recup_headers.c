@@ -20,7 +20,7 @@ void		ft_recup_headers(t_dvm *vm, t_dargs *args)
 	while (i < vm->nbr_players)
 	{
 		if ((read(args[i].fd, (void *)&vm->p[i].header,
-						sizeof(header_t))) == -1)
+						sizeof(t_header))) == -1)
 			exit1(1, data(), "Pb de read fdp");
 		if ((vm->p[i].header.magic = ft_little_to_big(vm->p[i].header.magic))
 				!= COREWAR_EXEC_MAGIC)

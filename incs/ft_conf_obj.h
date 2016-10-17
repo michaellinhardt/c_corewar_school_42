@@ -58,5 +58,4 @@
 # define TEXTCTODIEX 1788
 # define TEXTCTODIEY 231
 
-
 #endif
