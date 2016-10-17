@@ -6,7 +6,7 @@
 void	proc_new(t_data *d, t_proc *new, int player, int i)
 {
 	// FONCTION QUI RECUPERE UN PROCESSUS MORT OU EN CREER UN NOUVEAU
-	static int	id = -1;
+	static int	id = 0;
 
 	// Récupére un proc mort si il existe, sinon le créer
 	// nb. c'est aussi ici qu'on détermine l'id associé au process avec setid
@@ -50,7 +50,7 @@ int		proc_kill(t_data *d, t_proc *target, t_proc *procdie)
 {
 	if ((d)->vm.options.deaths)
 	ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-			target->id + 1, d->vm.cycle - target->last_live, d->vm.ctodie);
+			target->id, d->vm.cycle - target->last_live, d->vm.ctodie);
 	(void)procdie;
 	if (target->p)
 		target->p->n = target->n;

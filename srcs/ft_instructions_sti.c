@@ -17,11 +17,16 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 			if (proc->args[1].type == IND_CODE)
 				proc->args[1].type %= IDX_MOD;
 			add = (proc->args[1].value + proc->args[2].value);
-			address = add % IDX_MOD + proc->pc;
+			address = add % IDX_MOD + proc->pc % MEM_SIZE;
 			if (vm->options.operations)
 			{
-				ft_printf("P%5d | sti r%d %d %d\n", proc->id + 1, registre, proc->args[1].value, proc->args[2].value);
-				ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, (address));
+				if (proc->id < 10000)
+					ft_printf("P%5d | sti r%d %d %d\n", proc->id, registre, proc->args[1].value, proc->args[2].value);
+				else if (proc->id < 100000)
+					ft_printf("P%6d | sti r%d %d %d\n", proc->id, registre, proc->args[1].value, proc->args[2].value);
+				else
+					ft_printf("P%7d | sti r%d %d %d\n", proc->id, registre, proc->args[1].value, proc->args[2].value);
+				ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", proc->args[1].value, proc->args[2].value, add, address);
 			}
 			address = ft_convert_pc(address);
 			address *= 2;
@@ -30,8 +35,6 @@ void	ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 					address / 2, 4);
 		}
 	}
-	//proc->pc = proc->pc_turfu / 2;
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
-	  	proc->pc %= MEM_SIZE;
-	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+		proc->pc %= MEM_SIZE;
 }

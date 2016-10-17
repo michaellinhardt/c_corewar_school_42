@@ -22,7 +22,6 @@ void	vm(t_dvm *v, int cperloop)
 {
 	// gameloop() exécute  un cycle, on l'appel cperloop fois,
 	// selon la config du header ou des input clavier
-//	static int loop = 0;
 	while (--cperloop > -1)
 	{
 		if (v->graphic && v->pause && data()->mlx.input.up == 0
@@ -33,7 +32,8 @@ void	vm(t_dvm *v, int cperloop)
 		if (!gameloop(v) || !v->proc)
 		{
 			// Ici la partie est terminé
-			ft_printf("Last Live MF : %d\n", v->last_live);
+			ft_printf("Contestant %d, \"%s\", has won !\n", ABS(v->last_live),
+						v->p[(ABS(v->last_live)) -1].header.prog_name);
 			if (v->dump != -1)
 				vm_dump(v);
 			exit1(0, data(), "game over");

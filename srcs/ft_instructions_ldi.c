@@ -13,21 +13,23 @@ void	ft_instructions_ldi(t_dvm *vm, t_instructions inst, t_proc *proc)
 		{
 				address = (proc->args[0].value + proc->args[1].value);
 				result = address % 512;
-				result += proc->pc;
-				ft_printf("resultat modulo %d\n", result);
+				result += proc->pc % MEM_SIZE;
 			if (vm->options.operations)
 			{
-				ft_printf("P%5d | ldi %d %d r%d\n", proc->id + 1, proc->args[0].value, proc->args[1].value, registre);
-				ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", proc->args[0].value, proc->args[1].value, address, 
+				if (proc->id < 10000)
+					ft_printf("P%5d | ldi %d %d r%d\n", proc->id, proc->args[0].value, proc->args[1].value, registre);
+				else if (proc->id < 100000)
+					ft_printf("P%6d | ldi %d %d r%d\n", proc->id, proc->args[0].value, proc->args[1].value, registre);
+				else
+					ft_printf("P%7d | ldi %d %d r%d\n", proc->id, proc->args[0].value, proc->args[1].value, registre);
+				ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", proc->args[0].value, proc->args[1].value, address,
 						result);
-				ft_printf("pc %d\n", proc->pc);
 			}
 			address %= IDX_MOD;
 			address += proc->pc;
-			*(proc->ireg + registre - 1) = ft_get_indirect(address, vm);
+			*(proc->ireg + --registre) = ft_get_indirect(address, vm);
 		}
 	}
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
-	  	proc->pc %= MEM_SIZE;
-	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+		proc->pc %= MEM_SIZE;
 }

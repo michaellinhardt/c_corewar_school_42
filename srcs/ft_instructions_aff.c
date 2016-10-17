@@ -10,6 +10,5 @@ void	ft_instructions_aff(t_dvm *vm, t_instructions inst, t_proc *proc)
 		}
 	}
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)
-	  	proc->pc %= MEM_SIZE;
-	//proc->pc = (proc->pc_turfu / 2) % MEM_SIZE;
+		proc->pc %= MEM_SIZE;
 }
