@@ -1,9 +1,10 @@
 #ifndef FT_CONF_H
 # define FT_CONF_H
+
 /*
 **	Header pour les parametre réglable
 */
-# define GRAPHIC_MODE 0
+# define GRAPHIC_MODE 1
 # define CONSOLE_LOG 0
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
@@ -31,9 +32,9 @@
 */
 # define SIZE_CHAR_ARENE (MEM_SIZE * 2)
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 1
-# define CPERLOOP_INC 11
-# define CPERLOOP_MAX 202
+# define CYCLE_PER_LOOP 10
+# define CPERLOOP_INC 10
+# define CPERLOOP_MAX 200
 # define ARENE_CODE_COLOR 0xCCCCCC
 
 /*
@@ -51,12 +52,13 @@
 # define SCENE_MAX 20
 # define SCENE_IMG_MAX 50
 # define SCENE_START VM_INIT
+# define EFFECTS_MAX_SLOT 20
 
 /*
 ** DOSSIER DEPUIS LEQUEL SONT AUTOMATIQUEMENT IMPORTé LES GIFS
+** ET CHEMINS DES FICHIERS ASCII
 */
 # define GIF_DIR "./gif/"
-
 # define ASC_LOGO "./ascii/logo"
 # define ASC_INIT "./ascii/init"
 # define ASC_LOG "./ascii/log"
@@ -67,7 +69,6 @@
 /*
 ** CHAINE DE CARACTER POUR LES BOX DU TERMINAL
 */
-
 # define TERMINAL_COLOR "\e[93m"
 # define LINE_GREY "\e[93m║\e[90m"
 # define LINE_GREEN "\e[93m║\e[92m"
@@ -81,7 +82,7 @@
 ** LOG_DISPLAY: autorise ou non les log
 ** LOG_ALL: force tous les log à 1
 */
-# define LOG_DISPLAY 0
+# define LOG_DISPLAY 1
 # define LOG_ALL 0
 # define LOG_DEBUG 0
 # define LOG_DEBUG_DETAILED 0
@@ -96,8 +97,10 @@
 # define LOG_XTOI 0
 # define LOG_NEWI 0
 # define LOG_MLX 0
-# define LOG_VM 1
+# define LOG_VM 0
 # define LOG_PROC 0
-# define LOG_INST 1
+# define LOG_INST 0
+# define LOG_DISPLAYING 0
+# define LOG_EFFECT 0
 
 #endif

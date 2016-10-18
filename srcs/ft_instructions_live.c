@@ -31,6 +31,7 @@ static void	ft_execute_studio(t_dvm *vm, t_proc *proc)
 	vm->last_live = proc->args[0].value;
 	vm->last_live_cycle = vm->cycle;
 	vm->live_player++;
+	vm->total_live++;
 }
 
 void		ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)

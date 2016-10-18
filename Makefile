@@ -23,9 +23,16 @@ LIST 	= ft_corewar \
 			ft_mlx_scene_intro \
 			ft_mlx_display \
 			ft_check_value_number \
-			ft_mlx_display_processus \
 			ft_get_indirect \
+			ft_mlx_display_cycle \
+			ft_mlx_display_effect \
+			ft_mlx_display_processus \
+			ft_mlx_display_processus_count \
+			ft_mlx_display_bar_proc_live \
+			ft_mlx_display_bar_proc_dead \
+			ft_mlx_display_bar_proc \
 			ft_mlx_display_arene \
+			ft_mlx_effect_init \
 			ft_terminal_ascii \
 			ft_terminal_log \
 			ft_convert_pc \
@@ -113,7 +120,7 @@ fclean: clean2
 
 #leaks: $(NAME) -leaks
 leaks: re
-	./corewar
+	./corewar ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor
 
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)

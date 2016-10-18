@@ -12,7 +12,7 @@ void	vm_init_log(void)
 void	vm_init_proc(t_data *d, t_dvm *v, int player)
 {
 	while (++player < MAX_PLAYERS)
-		if (v->p[player].playing && l2(11, "PLAYER", "joue", player))
+		if (v->p[player].playing && l2(11, "PLAYER", "joue", -(player + 1)))
 			proc_new(d, (t_proc *)NULL, -(player + 1)
 			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[player].playing)

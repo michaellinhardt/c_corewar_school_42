@@ -21,6 +21,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	new->last_live = data()->vm.cycle;
 	new->create_cycle = data()->vm.cycle;
 	d->vm.nbr_proc++;
+	d->vm.p[(ABS(player)) - 1].total_proc_alive++;
 }
 
 int		proc_kill(t_data *d, t_proc *target)
@@ -34,10 +35,13 @@ int		proc_kill(t_data *d, t_proc *target)
 		target->n->p = target->p;
 	if (d->vm.proc == target)
 		d->vm.proc = target->n;
+	d->vm.p[(ABS(target->player)) - 1].total_proc_alive--;
+	d->vm.p[(ABS(target->player)) - 1].total_proc_dead++;
 	target->n = 0;
 	target->p = 0;
 	free(target);
 	target = 0;
+	d->vm.nbr_proc_dead++;
 	d->vm.nbr_proc--;
 	return (1);
 }

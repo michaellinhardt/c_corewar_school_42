@@ -10,7 +10,7 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 		exit1(1, data(), "Cant open xpm sub dir.");
 	while ((f = readdir(dir)))
 	{
-		if (!ft_strstr(f->d_name, ".xpm"))
+		if (!ft_isdigit(f->d_name[0]) || !ft_strstr(f->d_name, ".xpm"))
 			continue ;
 		ft_printf("%!%s/%s", &file, folder, f->d_name);
 		l1(1, f->d_name, "   loading xpm file");

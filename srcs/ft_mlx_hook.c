@@ -10,12 +10,12 @@ int		mouseo_hook(int x, int y, t_data *d)
 int		keyr_hook(int key, t_data *d)
 {
 	(key == 126) ? d->mlx.input.up = 0 : 0;
-	if (key == 123)
+	if (key == 123 && (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
 		d->vm.cperloop -=
 			(d->vm.cperloop - CPERLOOP_INC <= 0) ? 0 : CPERLOOP_INC;
-	if (key == 124)
-		d->vm.cperloop +=
-			(d->vm.cperloop + CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
+	if (key == 124 && (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
+		d->vm.cperloop += (d->vm.cperloop
+			+ CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
 	if (key == 125)
 		d->vm.pause_inc = 1;
 	if (key == 53)
@@ -45,13 +45,15 @@ int		mouser_hook(int btn, int x, int y, t_data *d)
 	(btn == 1) ? d->mlx.input.mleft = 0 : 0;
 	(btn == 2) ? d->mlx.input.mright = 0 : 0;
 	if (d->mlx.input.mo_x >= BTNCTDPLUSX1 && d->mlx.input.mo_x <= BTNCTDPLUSX2
-	&& d->mlx.input.mo_y >= BTNCTDPLUSY1 && d->mlx.input.mo_y <= BTNCTDPLUSY2)
+	&& d->mlx.input.mo_y >= BTNCTDPLUSY1 && d->mlx.input.mo_y <= BTNCTDPLUSY2
+	&& (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
 		d->vm.cperloop -=
 		(d->vm.cperloop - CPERLOOP_INC <= 0) ? 0 : CPERLOOP_INC;
 	if (d->mlx.input.mo_x >= BTNCTDLESSX1 && d->mlx.input.mo_x <= BTNCTDLESSX2
-	&& d->mlx.input.mo_y >= BTNCTDLESSY1 && d->mlx.input.mo_y <= BTNCTDLESSY2)
-		d->vm.cperloop +=
-			(d->vm.cperloop + CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
+	&& d->mlx.input.mo_y >= BTNCTDLESSY1 && d->mlx.input.mo_y <= BTNCTDLESSY2
+	&& (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
+	d->vm.cperloop +=
+		(d->vm.cperloop + CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
 	d->mlx.input.mr_x = x;
 	d->mlx.input.mr_y = y;
 	return (btn += 0);

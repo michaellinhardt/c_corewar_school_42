@@ -11,11 +11,6 @@ enum	e_coord {
 	MENU
 };
 
-typedef struct		s_mo
-{
-	int				area[4];
-}					t_mo;
-
 typedef struct		s_img
 {
 	void			*img;
@@ -25,6 +20,28 @@ typedef struct		s_img
 	int				end;
 	int				i;
 }					t_img;
+
+# define CPERLOOP_NUMBER 12
+enum e_effect_id {
+	e_effect_cperloop
+};
+
+typedef struct		s_effect
+{
+	char			id_effect;
+	char			id_max;
+	char			i;
+	struct s_img	*img;
+	int				looptodie;
+	int				looptodie_count;
+	char			inc_value;
+	char			start_cycle;
+	int				size_x;
+	int				size_y;
+	int				fade;
+	int				x;
+	int				y;
+}					t_effect;
 
 typedef struct		s_input
 {
@@ -46,12 +63,13 @@ typedef struct		s_dmlx
 	void			*mlx;
 	void			*win;
 	t_input			input;
+	t_effect		*effect;
 	char			loop;
 	char			loopstop;
-	enum e_scene	scene;
+	enum scene		scene;
 	char			img_isload[SCENE_MAX];
 	t_img			scene_img[SCENE_MAX][SCENE_IMG_MAX];
-	enum e_coord	coord;
+	enum coord		coord;
 }					t_dmlx;
 
 #endif

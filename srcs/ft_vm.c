@@ -43,7 +43,7 @@ void		vm(t_dvm *v, int cperloop)
 				vm_dump(v);
 			exit1(0, data(), "game over");
 		}
-		if (v->dump == v->cycle)
+		else if (v->dump == v->cycle)
 		{
 			if (v->graphic)
 				display(&(data()->mlx), v);

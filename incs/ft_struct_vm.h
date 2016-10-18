@@ -42,6 +42,8 @@ typedef struct		s_player
 	char			code[CHAMP_MAX_SIZE];
 	int				playing;
 	int				total_live;
+	int				total_proc_alive;
+	int				total_proc_dead;
 	int				last_cycle_live;
 }					t_player;
 
@@ -74,11 +76,13 @@ typedef struct		s_dvm
 	int				ctodiecount;
 	int				nbr_live;
 	int				max_checks;
+	int				total_live;
 	int				last_live;
 	int				last_live_cycle;
 	int				live_player;
 	int				nbr_players;
 	int				nbr_proc;
+	int				nbr_proc_dead;
 	t_proc			*proc;
 }					t_dvm;
 #endif
