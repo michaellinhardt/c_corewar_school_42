@@ -5,7 +5,7 @@
 **	Header pour les parametre réglable
 */
 # define GRAPHIC_MODE 1
-# define CONSOLE_LOG 1
+# define CONSOLE_LOG 0
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
 # define WIN_Y 1200
@@ -32,7 +32,7 @@
 */
 # define SIZE_CHAR_ARENE (MEM_SIZE * 2)
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 200
+# define CYCLE_PER_LOOP 50
 # define CPERLOOP_INC 10
 # define CPERLOOP_MAX 200
 # define ARENE_CODE_COLOR 0xCCCCCC
