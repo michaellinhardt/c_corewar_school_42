@@ -7,11 +7,11 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 	++id;
 	if (!(new = (t_proc *)ft_memalloc(sizeof(t_proc))))
 		exit1(1, data(), "Can't malloc struct s_proc");
+	new->p = (t_proc *)NULL;
 	if (d->vm.proc && (new->n = d->vm.proc))
 		(d->vm.proc)->p = new;
 	else
 		new->n = (t_proc *)NULL;
-	new->p = (t_proc *)NULL;
 	d->vm.proc = new;
 	new->ireg = (int *)new->reg;
 	new->ireg[0] = player;
