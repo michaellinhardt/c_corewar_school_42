@@ -2,7 +2,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-void		ft_lexer(t_lexer *lexer)
+int		ft_lexer(t_lexer *lexer)
 {
 	int		i;
 	t_token *token;
@@ -10,11 +10,13 @@ void		ft_lexer(t_lexer *lexer)
 	while (1)
 	{
 		i = -1;
-		while (i < NBR_TOKEN)
+		if (!(token = ft_new_token(lexer)))
+			return (0);
+		while (++i < NBR_TOKEN)
 		{
-
+			if (lexer->f_tokens[i](lexer, token))
+				break ;
 		}
-
-
 	}
+	return (1);
 }
