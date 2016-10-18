@@ -3,7 +3,7 @@
 */
 #include "ft_corewar.h"
 
-void	put_open_img_2(t_img *img, t_img *open, int x, int y)
+static void	put_open_img_2(t_img *img, t_img *open, int x, int y)
 {
 	int			*popen;
 	int			*pimg;
@@ -24,7 +24,7 @@ void	put_open_img_2(t_img *img, t_img *open, int x, int y)
 	}
 }
 
-void	put_close_img_2(t_img *img, t_img *open, int x, int y)
+static void	put_close_img_2(t_img *img, t_img *open, int x, int y)
 {
 	int			*popen;
 	int			*pimg;
@@ -45,7 +45,14 @@ void	put_close_img_2(t_img *img, t_img *open, int x, int y)
 	}
 }
 
-void	put_mid_img_2(t_dvm *v, t_img *img, int i, int posx)
+static void	ft_put_bardeadprocalpha(t_img *img, int *pimg, int *pmid, int y)
+{
+	pimg[(img->i)] = pmid[y];
+	img->str[img->i * 4 + 3] = BARDEADPROCALPHA;
+	img->i = img->i + WIN_X;
+}
+
+void		put_mid_img_2(t_dvm *v, t_img *img, int i, int posx)
 {
 	int			*pmid;
 	int			*pimg;
@@ -65,18 +72,14 @@ void	put_mid_img_2(t_dvm *v, t_img *img, int i, int posx)
 		{
 			y = -1;
 			img->i = ((BARPROCALIVEY + BARPROCDEADINCY) * WIN_X)
-			+ BARPROCALIVEX + BAROPENX + posx;
+				+ BARPROCALIVEX + BAROPENX + posx;
 			while (++y < BAROPENY)
-			{
-				pimg[(img->i)] = pmid[y];
-				img->str[img->i * 4 + 3] = BARDEADPROCALPHA;
-				img->i = img->i + WIN_X;
-			}
+				ft_put_bardeadprocalpha(img, pimg, pmid, y);
 		}
 	}
 }
 
-void	display_bar_proc_dead(t_dmlx *m, t_dvm *v, t_img *img, int i)
+void		display_bar_proc_dead(t_dmlx *m, t_dvm *v, t_img *img, int i)
 {
 	int		popen;
 	int		pclose;
@@ -88,8 +91,9 @@ void	display_bar_proc_dead(t_dmlx *m, t_dvm *v, t_img *img, int i)
 		if (v->p[i].total_proc_dead > 0 && ((pclose = i) + 1) && popen == -1)
 			popen = i;
 	put_open_img_2(img, &m->scene_img[2][BARIMGID + (popen * 3)]
-	, BARPROCALIVEX, BARPROCALIVEY + BARPROCDEADINCY);
+			, BARPROCALIVEX, BARPROCALIVEY + BARPROCDEADINCY);
 	put_mid_img_2(v, img, -1, -1);
 	put_close_img_2(img, &m->scene_img[2][BARIMGID + (pclose * 3) + 2]
-	, BARPROCALIVEX + BARPROCALIVESIZE, BARPROCALIVEY + BARPROCDEADINCY);
+			, BARPROCALIVEX + BARPROCALIVESIZE,
+			BARPROCALIVEY + BARPROCDEADINCY);
 }

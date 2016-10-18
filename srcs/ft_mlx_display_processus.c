@@ -27,7 +27,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 	int			y;
 
 	ft_bzero(already, sizeof(already));
-	while ( proc )
+	while (proc)
 	{
 		if (already[(proc->pc)])
 		{

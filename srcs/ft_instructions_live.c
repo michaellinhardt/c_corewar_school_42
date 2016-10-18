@@ -51,8 +51,8 @@ void		ft_instructions_live(t_dvm *vm, t_instructions inst, t_proc *proc)
 			ft_that_what_she_said(vm, proc);
 			if (vm->ctodie > 0)
 				ft_execute_studio(vm, proc);
-			ft_put_color_size(vm->color, vm->code_color[(ABS(proc->player)) + 4],
-					proc->pc + 1, 4);
+			ft_put_color_size(vm->color,
+					vm->code_color[(ABS(proc->player)) + 4], proc->pc + 1, 4);
 		}
 	}
 	if ((proc->pc = (proc->pc_turfu / 2)) >= MEM_SIZE)

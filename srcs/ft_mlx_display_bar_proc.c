@@ -3,7 +3,7 @@
 */
 #include "ft_corewar.h"
 
-void	put_open_img(t_img *img, t_img *open, int x, int y)
+static void	put_open_img(t_img *img, t_img *open, int x, int y)
 {
 	int			*popen;
 	int			*pimg;
@@ -24,7 +24,7 @@ void	put_open_img(t_img *img, t_img *open, int x, int y)
 	}
 }
 
-void	put_close_img(t_img *img, t_img *open, int x, int y)
+static void	put_close_img(t_img *img, t_img *open, int x, int y)
 {
 	int			*popen;
 	int			*pimg;
@@ -45,7 +45,7 @@ void	put_close_img(t_img *img, t_img *open, int x, int y)
 	}
 }
 
-void	put_mid_img(t_dvm *v, t_img *img, int i, int posx)
+static void	put_mid_img(t_dvm *v, t_img *img, int i, int posx)
 {
 	int			*pmid;
 	int			*pimg;
@@ -61,9 +61,8 @@ void	put_mid_img(t_dvm *v, t_img *img, int i, int posx)
 		pmid = (int *)data()->mlx.scene_img[2][BARIMGID + (i * 3) + 1].str;
 		percent = ((double)v->p[i].total_proc_alive / (double)v->nbr_proc);
 		nbr = ((double)BARPROCALIVESIZE) * percent;
-		while (--nbr > -2 && ++posx <= BARPROCALIVESIZE)
+		while (--nbr > -2 && ++posx <= BARPROCALIVESIZE && (y = -1))
 		{
-			y = -1;
 			img->i = (BARPROCALIVEY * WIN_X) + BARPROCALIVEX + BAROPENX + posx;
 			while (++y < BAROPENY)
 			{
@@ -75,7 +74,7 @@ void	put_mid_img(t_dvm *v, t_img *img, int i, int posx)
 	}
 }
 
-void	display_bar_proc(t_dmlx *m, t_dvm *v, t_img *img, int i)
+void		display_bar_proc(t_dmlx *m, t_dvm *v, t_img *img, int i)
 {
 	int		popen;
 	int		pclose;

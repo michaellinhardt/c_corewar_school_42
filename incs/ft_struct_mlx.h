@@ -1,5 +1,6 @@
 #ifndef FT_STRUCT_MLX_H
 # define FT_STRUCT_MLX_H
+# define CPERLOOP_NUMBER 12
 
 enum	e_scene {
 	INTRO,
@@ -17,8 +18,7 @@ typedef struct		s_img
 	int				i;
 }					t_img;
 
-# define CPERLOOP_NUMBER 12
-enum e_effect_id {
+enum	e_effect_id {
 	e_effect_cperloop
 };
 

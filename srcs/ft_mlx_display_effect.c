@@ -13,8 +13,6 @@ void	put_effect_img(t_img *l, int id, int x, int y)
 	ptre = (int *)e[id].img->str;
 	ptrl = (int *)l->str;
 	l->i = (e[id].y * WIN_X + e[id].x) - 1;
-	// ft_printf("image position: %d,%d\n(e[id].y * WIN_X + e[id].x) - 1 = %d\n", e[id].x, e[id].y, l->i);
-	// exit (0);
 	while (++y < e[id].size_y)
 	{
 		x = -1;
@@ -30,10 +28,9 @@ void	put_effect_img(t_img *l, int id, int x, int y)
 
 void	display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i)
 {
-	(void)m;
-	(void)v;
 	int		loopset;
 
+	(void)v;
 	loopset = 0;
 	while ((++i || 1) && i < e[i].id_max
 	&& l2(101, "effect()", "(effect_id)", e[i].id_effect))

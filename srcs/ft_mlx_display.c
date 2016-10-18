@@ -13,14 +13,11 @@ void	reset_img(t_img *img)
 int		display(t_dmlx *m, t_dvm *v)
 {
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
-
 	reset_img(&m->scene_img[2][11]);
 	display_effect(m, v, effect_data(), -1);
 	itow(m->scene_img[2][11].img, 0, 0, "effect layer");
-
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
-
 	reset_img(&m->scene_img[2][10]);
 	display_processus(m, v->proc, &m->scene_img[2][10]);
 	display_processus_count(m, v);
@@ -31,9 +28,7 @@ int		display(t_dmlx *m, t_dvm *v)
 	if (v->total_live)
 		display_bar_proc_live(m, v, &m->scene_img[2][10], 0);
 	itow(m->scene_img[2][10].img, 0, 0, "processus & bar layer");
-
 	display_arene(m, v, 0, 0);
-
 	l2(100, "display()", "printing cycle", v->cycle);
 	return (1);
 }

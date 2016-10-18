@@ -49,6 +49,7 @@ LIST 	= ft_corewar \
 			ft_recup_files \
 			ft_init_instructions \
 			ft_init_instructions_end \
+			ft_mlx_put_mid_img_3 \
 			ft_init_instructions_suite \
 			ft_instructions_live \
 			ft_instructions_ld \
