@@ -29,15 +29,22 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 	ft_bzero(already, sizeof(already));
 	while ( proc )
 	{
+		ft_printf("START: %d\n", proc->pc);
 		if (already[(proc->pc)])
 		{
+			ft_printf("CONDITION START\n", proc->pc);
 			proc = proc->n;
 			continue ;
 		}
-		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
-		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
-		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
-		already[(proc->pc)] = 1;
+		(void)x;
+		(void)y;
+		(void)m;
+		(void)img;
+		// x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
+		// y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
+		// put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
+		// already[(proc->pc)] = 1;
 		proc = proc->n;
+		ft_printf("END\n", proc->pc);
 	}
 }
