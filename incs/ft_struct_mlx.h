@@ -7,10 +7,6 @@ enum	e_scene {
 	VM
 };
 
-enum	e_coord {
-	MENU
-};
-
 typedef struct		s_img
 {
 	void			*img;
@@ -66,10 +62,9 @@ typedef struct		s_dmlx
 	t_effect		*effect;
 	char			loop;
 	char			loopstop;
-	enum scene		scene;
+	enum e_scene	scene;
 	char			img_isload[SCENE_MAX];
 	t_img			scene_img[SCENE_MAX][SCENE_IMG_MAX];
-	enum coord		coord;
 }					t_dmlx;
 
 #endif
