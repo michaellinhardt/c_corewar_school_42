@@ -22,6 +22,8 @@ static t_proc	*ft_create_child(t_proc *new, t_proc *father, int new_pc)
 	new->carry = father->carry;
 	new->pc = new_pc;
 	new->pc = ft_convert_pc(new->pc);
+	if (new->pc >= MEM_SIZE)
+		new->pc %= MEM_SIZE;
 	new->live = father->live;
 	new->live_player = father->live_player;
 	new->last_live = father->last_live;

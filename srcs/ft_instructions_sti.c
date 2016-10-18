@@ -43,7 +43,7 @@ void		ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 			address *= 2;
 			ft_put_registre(vm->arene, proc->args[0].value,
 					address % SIZE_CHAR_ARENE);
-			ft_put_color_size(vm->color, ARENE_CODE_COLOR_P2,
+			ft_put_color_size(vm->color, vm->code_color[ABS(proc->player)],
 					address / 2, 4);
 		}
 	}

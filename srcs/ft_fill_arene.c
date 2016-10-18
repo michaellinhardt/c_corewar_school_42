@@ -44,6 +44,10 @@ void		ft_fill_arene(t_dvm *vm)
 	vm->code_color[2] = ARENE_CODE_COLOR_P2;
 	vm->code_color[3] = ARENE_CODE_COLOR_P3;
 	vm->code_color[4] = ARENE_CODE_COLOR_P4;
+	vm->code_color[5] = ARENE_CODE_COLOR_P1_LIVE;
+	vm->code_color[6] = ARENE_CODE_COLOR_P2_LIVE;
+	vm->code_color[7] = ARENE_CODE_COLOR_P3_LIVE;
+	vm->code_color[8] = ARENE_CODE_COLOR_P4_LIVE;
 	i = 0;
 	while (i < MEM_SIZE)
 		vm->color[i++] = vm->code_color[0];

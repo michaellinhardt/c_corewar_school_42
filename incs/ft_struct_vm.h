@@ -63,7 +63,7 @@ typedef struct		s_dvm
 	t_options		options;
 	char			arene[8192];
 	int				color[MEM_SIZE];
-	int				code_color[5];
+	int				code_color[9];
 	char			code[MEM_SIZE];
 	char			console;
 	char			graphic;

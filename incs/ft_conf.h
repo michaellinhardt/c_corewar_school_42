@@ -14,10 +14,14 @@
 **  COULEUR DE LA VM
 */
 # define ARENE_CODE_COLOR_WHITE 0xa6a6a6
-# define ARENE_CODE_COLOR_P1 0x1eff00
-# define ARENE_CODE_COLOR_P2 0xf4532a
-# define ARENE_CODE_COLOR_P3 0x1fbdff
-# define ARENE_CODE_COLOR_P4 0xeaff00
+# define ARENE_CODE_COLOR_P1_LIVE 0x00ff66
+# define ARENE_CODE_COLOR_P1 0x00cc00
+# define ARENE_CODE_COLOR_P2_LIVE 0xf4532a
+# define ARENE_CODE_COLOR_P2 0xff0000
+# define ARENE_CODE_COLOR_P3_LIVE 0x1fbdff
+# define ARENE_CODE_COLOR_P3 0x6600ff
+# define ARENE_CODE_COLOR_P4_LIVE 0xeaff00
+# define ARENE_CODE_COLOR_P4 0xffcc33
 # define RED "\033[0;31m"
 # define WHITE "\033[1;37m"
 # define BLUE "\033[0;34m"
