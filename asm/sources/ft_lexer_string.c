@@ -3,6 +3,7 @@
 #include "ft_asm.h"
 
 #include "libft.h"
+
 static int ft_lexer_read_string(t_lexer *lexer, t_token *token, int size)
 {
 	char 	c;
@@ -12,6 +13,8 @@ static int ft_lexer_read_string(t_lexer *lexer, t_token *token, int size)
 	i = 0;
 	while ((ret = read(lexer->fd, &c, 1)))
 	{
+		if (c == '\n')
+			lexer->y++;
 		if (c == '"')
 			break ;
 		if (ret == -1)
@@ -19,14 +22,17 @@ static int ft_lexer_read_string(t_lexer *lexer, t_token *token, int size)
 		++i;
 	}
 	if (c != '"')
-		return (0); // a faire une erreur 
+		return (DB_QUOTES);
 	else
 	{
 		if ((ret = lseek(lexer->fd, -(size + i + 1),
 				   	SEEK_CUR)) == -1)
 			return (0);
 		if (lexer->line)
+		{
 			free(lexer->line);
+			lexer->line = 0;
+		}
 		if (!(lexer->line = ft_memalloc(sizeof(char) * (size + i + 2))))
 			return (0);
 		if (read(lexer->fd, lexer->line, size + i + 1) == -1)

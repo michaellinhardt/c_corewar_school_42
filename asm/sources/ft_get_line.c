@@ -9,6 +9,7 @@ char	*ft_get_line(int fd, t_lexer *lexer)
 
 	lexer->line = 0;
 	lexer->offset = 0;
+	lexer->y++;
 	while ((ret = read(fd, &c, 1)))
 	{
 		if (ret == -1)

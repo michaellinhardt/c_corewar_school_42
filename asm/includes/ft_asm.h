@@ -20,6 +20,8 @@ int			ft_lexer(t_lexer *lexer);
 void		ft_get_value(t_lexer *lexer, t_token *token, int size);
 
 
+void		ft_free_tokens(t_token *token);
+void		ft_lexer_error(t_lexer *lexer, int erreur);
 
 /*
 **	Display

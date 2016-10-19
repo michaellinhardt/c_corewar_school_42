@@ -2,6 +2,7 @@
 # define FT_STRUCT_ASM_H
 # include "op.h"
 
+# define DB_QUOTES -1
 enum	e_token{
 	NONE,
 	COMMAND_NAME, 
@@ -40,6 +41,7 @@ struct				s_lexer
 	int				head; // l'endroir tou on est dans le fichier
 	int				offset; // le decalage dans la fonction
 	int				size_line;
+	int				y;
 	char			*line;
 	char			*focus;
 	int				size;

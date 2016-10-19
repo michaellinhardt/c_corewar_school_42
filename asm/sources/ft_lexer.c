@@ -1,12 +1,11 @@
 #include "ft_asm.h"
 #include <unistd.h>
 #include <stdlib.h>
-
 #include "libft.h"
 int		ft_lexer(t_lexer *lexer)
 {
 	int		i;
-	static int test = 0;
+	int		ret;
 	t_token *token;
 
 	while (1)
@@ -27,8 +26,15 @@ int		ft_lexer(t_lexer *lexer)
 			return (0);
 		while (++i < NBR_TOKEN)
 		{
-			if (lexer->f_tokens[i](lexer, token))
+			if ((ret = lexer->f_tokens[i](lexer, token)) != 0)
+			{
+				if (ret < 0)
+				{
+					ft_lexer_error(lexer, ret);
+					return (0);
+				}
 				break ;
+			}
 		}
 		if (i >= NBR_TOKEN || token->token == END)
 			break ;
@@ -37,7 +43,6 @@ int		ft_lexer(t_lexer *lexer)
 		if (test == 55)
 		break; // pour les tests
 		*/
-		++test;
 	}
 	ft_display_tokenisation(lexer->begin);
 	return (1);
