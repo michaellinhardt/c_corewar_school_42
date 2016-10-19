@@ -8,7 +8,7 @@ char	*ft_get_line(int fd, t_lexer *lexer)
 	int		ret;
 
 	lexer->line = 0;
-	lexer->offset = lexer->head;
+	lexer->offset = 0;
 	while ((ret = read(fd, &c, 1)))
 	{
 		if (ret == -1)
@@ -17,15 +17,14 @@ char	*ft_get_line(int fd, t_lexer *lexer)
 		if (c == '\n')
 			break ;
 	}
-	lexer->size_line = lexer->offset - lexer->head;
+	lexer->size_line = lexer->offset;
 	if (!lexer->size_line)
 		return (0);
 	if (!(lexer->line = ft_memalloc(sizeof(char) * (lexer->size_line + 1))))
 		return (0);
-	if (lseek(fd, lexer->head, SEEK_SET) == - 1)
+	if ((ret = lseek(fd, -(lexer->offset), SEEK_CUR)) == - 1)
 		return (0);
 	if (read(lexer->fd, lexer->line, lexer->size_line) == -1)
 		return (0);
-	lexer->head = lexer->offset;
 	return (lexer->line);
 }

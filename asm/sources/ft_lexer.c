@@ -22,7 +22,6 @@ int		ft_lexer(t_lexer *lexer)
 			if (!ft_get_line(lexer->fd, lexer))
 				break ;
 			lexer->focus = lexer->line;
-			ft_putstr(lexer->focus);
 		}
 		if (!(token = ft_new_token(lexer)))
 			return (0);
@@ -38,7 +37,7 @@ int		ft_lexer(t_lexer *lexer)
 		ft_putstr(lexer->focus);
 		*/
 				test++;
-		if (test == 10)
+		if (test == 15)
 		break; // pour les tests
 	}
 	ft_display_tokenisation(lexer->begin);

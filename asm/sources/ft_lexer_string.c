@@ -31,7 +31,6 @@ static int ft_lexer_read_string(t_lexer *lexer, t_token *token, int size)
 			return (0);
 		if (read(lexer->fd, lexer->line, size + i + 1) == -1)
 			return (0);
-		ft_print_memory(lexer->line, size + i + 2);
 		lexer->head = ret + size + i + 1;
 		lexer->focus = lexer->line;
 		ft_get_value(lexer, token, size + i + 1);
@@ -52,9 +51,9 @@ int		ft_lexer_string(t_lexer *lexer, t_token *token)
 		++size;
 	if (!*(lexer->focus + size))
 		return (ft_lexer_read_string(lexer, token, size));	
-	ft_get_value(lexer, token, size);
-	lexer->focus += size;
+	ft_get_value(lexer, token, size + 1);
+	lexer->focus += size + 1;
 	token->token = STRING;
-	lexer->size_line -= size;
+	lexer->size_line -= size + 1;
 	return (1);
 }
