@@ -39,6 +39,7 @@ int			ft_lexer_label(t_lexer *lexer, t_token *token);
 int			ft_lexer_direct(t_lexer *lexer, t_token *token);
 int			ft_lexer_instruction(t_lexer *lexer, t_token *token);
 int			ft_lexer_indirect(t_lexer *lexer, t_token *token);
+int			ft_lexer_indirect_label(t_lexer *lexer, t_token *token);
 int			ft_lexer_direct_label(t_lexer *lexer, t_token *token);
 int			ft_lexer_register(t_lexer *lexer, t_token *token);
 int			ft_lexer_endline(t_lexer *lexer, t_token *token);

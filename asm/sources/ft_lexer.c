@@ -19,7 +19,7 @@ int		ft_lexer(t_lexer *lexer)
 				free(lexer->line);
 				lexer->line = 0;
 			}
-			if (!ft_get_line(lexer->fd, lexer))
+			if (!(lexer->line = ft_get_line(lexer->fd, lexer)))
 				break ;
 			lexer->focus = lexer->line;
 		}
@@ -28,17 +28,16 @@ int		ft_lexer(t_lexer *lexer)
 		while (++i < NBR_TOKEN)
 		{
 			if (lexer->f_tokens[i](lexer, token))
-			{
 				break ;
-			}
 		}
+		if (i >= NBR_TOKEN || token->token == END)
+			break ;
 		/*
-		if (lexer->focus)
-		ft_putstr(lexer->focus);
-		*/
 				test++;
-		if (test == 15)
+		if (test == 55)
 		break; // pour les tests
+		*/
+		++test;
 	}
 	ft_display_tokenisation(lexer->begin);
 	return (1);

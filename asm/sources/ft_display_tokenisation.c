@@ -32,6 +32,8 @@ static void	ft_display_type_token(int token)
 		ft_putstr("ENDLINE");
 	else if (token == END)
 		ft_putstr("END");
+	else if (token == INDIRECT_LABEL)
+		ft_putstr("INDIRECT_LABEL");
 	ft_putchar(']');
 }
 

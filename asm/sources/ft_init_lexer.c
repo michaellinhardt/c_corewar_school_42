@@ -37,5 +37,5 @@ void		ft_init_lexer(t_lexer *lexer)
 	lexer->f_tokens[REGISTER] = ft_lexer_register;
 	lexer->f_tokens[ENDLINE] = ft_lexer_endline;
 	lexer->f_tokens[END] = ft_lexer_end;
-	ft_memcpy(lexer->labels, "abcdefghijklmnopqrstuvwxyz_0123456789", 37);
+	lexer->f_tokens[INDIRECT_LABEL] = ft_lexer_indirect_label;
 }

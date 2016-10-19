@@ -13,9 +13,10 @@ enum	e_token{
 	LABEL,
 	REGISTER,
 	INSTRUCTION,
-	INDIRECT,
 	DIRECT_LABEL,
+	INDIRECT_LABEL,
 	DIRECT,
+	INDIRECT,
 	ENDLINE,
 	END,
 	NBR_TOKEN
@@ -41,7 +42,6 @@ struct				s_lexer
 	int				size_line;
 	char			*line;
 	char			*focus;
-	char			labels[38];
 	int				size;
 	int				fd; // fd du fichier
 	int				(*f_tokens[NBR_TOKEN])(t_lexer *lexer, t_token *token);
