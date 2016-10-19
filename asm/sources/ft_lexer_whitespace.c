@@ -1,3 +1,4 @@
+#include "libft.h"
 #include "ft_asm.h"
 
 int		ft_lexer_whitespace(t_lexer *lexer, t_token *token)
@@ -5,7 +6,8 @@ int		ft_lexer_whitespace(t_lexer *lexer, t_token *token)
 	int size;
 
 	size = 0;
-	while (*(lexer->focus + size) == ' ')
+	while (ft_isspace(*(lexer->focus + size)) && 
+			*(lexer->focus + size) != '\n')
 		++size;
 	if (size)
 	{

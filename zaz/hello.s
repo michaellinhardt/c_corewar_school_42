@@ -3,6 +3,6 @@
 
 .comment "tets ld"
 
-l1:		or r2, r2, r2
-		zjmp %:l1
+r2		:l1 r2a, r2	, r2
+		1caca 1caca74183074547564
 

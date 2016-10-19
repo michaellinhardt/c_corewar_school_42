@@ -18,6 +18,7 @@
 # define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
+# define TERM_CHAR 				"#:%,\n"
 # define REG_NUMBER				16
 # define CYCLE_TO_DIE			1536
 # define CYCLE_DELTA			50

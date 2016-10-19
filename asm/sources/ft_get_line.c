@@ -6,7 +6,6 @@ char	*ft_get_line(int fd, t_lexer *lexer)
 {
 	char	c;
 	int		ret;
-	char	*d;
 
 	lexer->line = 0;
 	lexer->offset = lexer->head;
