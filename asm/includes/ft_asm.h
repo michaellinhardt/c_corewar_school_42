@@ -8,6 +8,7 @@
 */
 int			ft_open_file(char **argv);
 int			ft_get_size_file(int fd);
+char		*ft_get_line(int fd, t_lexer *lexer);
 
 
 /*
@@ -16,11 +17,14 @@ int			ft_get_size_file(int fd);
 t_token		*ft_new_token(t_lexer *lexer);
 void		ft_init_lexer(t_lexer *lexer);
 int			ft_lexer(t_lexer *lexer);
+void		ft_get_value(t_lexer *lexer, t_token *token, int size);
+
 
 
 /*
 **	Display
 */
+void		ft_display_tokenisation(t_token *token);
 
 /*
 **			Tokenisation

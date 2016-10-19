@@ -20,6 +20,7 @@ t_token		*ft_new_token(t_lexer *lexer)
 	return (new);
 }
 
+
 void		ft_init_lexer(t_lexer *lexer)
 {
 	lexer->f_tokens[COMMAND_NAME] = ft_lexer_command_name;
@@ -36,4 +37,5 @@ void		ft_init_lexer(t_lexer *lexer)
 	lexer->f_tokens[REGISTER] = ft_lexer_register;
 	lexer->f_tokens[ENDLINE] = ft_lexer_endline;
 	lexer->f_tokens[END] = ft_lexer_end;
+	ft_memcpy(lexer->labels, "abcdefghijklmnopqrstuvwxyz_0123456789", 37);
 }

@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/18 19:08:38 by abary            ###   ########.fr        #
+#    Updated: 2016/10/19 13:56:44 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = main.c  ft_lexer.c ft_open_file.c ft_get_size_file.c\
 	  ft_lexer_comment.c ft_lexer_string.c ft_lexer_whitespace.c\
 	  ft_lexer_separator.c ft_lexer_label.c ft_lexer_direct.c\
 	  ft_lexer_instruction.c ft_lexer_indirect.c ft_lexer_direct_label.c\
-	  ft_lexer_register.c ft_lexer_endline.c ft_lexer_end.c
+	  ft_lexer_register.c ft_lexer_endline.c ft_lexer_end.c ft_get_line.c\
+	  ft_lexer_value.c
 
 SRCS = $(addprefix sources/,$(SRC))\
 

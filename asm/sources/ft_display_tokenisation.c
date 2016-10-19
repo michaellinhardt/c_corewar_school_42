@@ -8,6 +8,10 @@ static void	ft_display_type_token(int token)
 		ft_putstr("COMMAND_COMMENT");
 	else if (token == COMMAND_NAME)
 		ft_putstr("COMMAND_COMMENT");
+	else if (token == STRING)
+		ft_putstr("STRING");
+	else if (token == WHITESPACE)
+		ft_putstr("WHITESPACE");
 	ft_putchar(']');
 }
 

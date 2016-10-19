@@ -1,4 +1,6 @@
-.name "yolooooooo"
+.name "yo&&&&&&lo"
+
+
 .comment "tets ld"
 
 l1:		or r2, r2, r2
