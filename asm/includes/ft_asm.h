@@ -27,6 +27,8 @@ void		ft_lexer_error(t_lexer *lexer, int erreur);
 **	Display
 */
 void		ft_display_tokenisation(t_token *token);
+void		ft_display_type_token(int token);
+void		ft_display_parse_tree(t_parse_tree *tree);
 
 /*
 **			Tokenisation
@@ -46,4 +48,18 @@ int			ft_lexer_direct_label(t_lexer *lexer, t_token *token);
 int			ft_lexer_register(t_lexer *lexer, t_token *token);
 int			ft_lexer_endline(t_lexer *lexer, t_token *token);
 int			ft_lexer_end(t_lexer *lexer, t_token *token);
+
+/*
+**	Parser
+*/
+
+void		ft_parser(t_token *token, t_parser *parser);
+
+
+/*
+** Parse tree
+*/
+
+void		ft_add_node(t_parse_tree *tree, t_parse_tree *leaf);
+t_parse_tree *ft_create_leaf(t_parse_tree *tree, t_token *token);
 #endif

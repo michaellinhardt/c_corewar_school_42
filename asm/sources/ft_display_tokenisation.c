@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "ft_asm.h"
 
-static void	ft_display_type_token(int token)
+ void	ft_display_type_token(int token)
 {
 	ft_putchar('[');
 	if (token == COMMAND_COMMENT)

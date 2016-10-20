@@ -23,8 +23,17 @@ enum	e_token{
 	NBR_TOKEN
 };	
 
+enum	e_sate {
+	PRETRE,
+		DEBUT,
+		SHIFT,
+		REDUCE
+};
+
 typedef struct s_token t_token;
 typedef struct s_lexer t_lexer;
+typedef struct s_parser t_parser;
+typedef struct s_parse_tree t_parse_tree;
 
 struct				s_token
 {
@@ -47,5 +56,24 @@ struct				s_lexer
 	int				size;
 	int				fd; // fd du fichier
 	int				(*f_tokens[NBR_TOKEN])(t_lexer *lexer, t_token *token);
+};
+
+struct				s_parse_tree
+{
+	t_token			*token;
+	int				nbr_fils;
+	t_parse_tree	**fils;
+	// le pointeur sur fonction pour l'action a effectuer
+};
+
+struct					s_parser
+{
+		char			*code;
+		int				size;
+		int				size_fonction;
+		t_token			*focus_shft;
+		t_token			*focus_reduce;
+		t_parse_tree	*begin;
+		t_parse_tree	*actual;
 };
 #endif
