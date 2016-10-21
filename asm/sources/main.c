@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 	lexer.size = ft_get_size_file(lexer.fd);
 	if (lexer.size == -1)
 		return (0);
-	ft_lexer(&lexer);
-	ft_parser(lexer->begin, parser);
+	if (ft_lexer(&lexer))
+		ft_parser(lexer.begin, &parser);
 	return (0);
 }

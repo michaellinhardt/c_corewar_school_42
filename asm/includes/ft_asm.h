@@ -53,13 +53,16 @@ int			ft_lexer_end(t_lexer *lexer, t_token *token);
 **	Parser
 */
 
-void		ft_parser(t_token *token, t_parser *parser);
+int			ft_parser(t_token *token, t_parser *parser);
 
+
+int			ft_parser_shift(t_parser *parser);
+int			ft_parser_reduce(t_parser *parser);
 
 /*
 ** Parse tree
 */
 
 void		ft_add_node(t_parse_tree *tree, t_parse_tree *leaf);
-t_parse_tree *ft_create_leaf(t_parse_tree *tree, t_token *token);
+t_parse_tree *ft_create_leaf(t_token *token);
 #endif

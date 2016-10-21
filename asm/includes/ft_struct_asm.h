@@ -23,12 +23,6 @@ enum	e_token{
 	NBR_TOKEN
 };	
 
-enum	e_sate {
-	PRETRE,
-		DEBUT,
-		SHIFT,
-		REDUCE
-};
 
 typedef struct s_token t_token;
 typedef struct s_lexer t_lexer;
@@ -62,8 +56,17 @@ struct				s_parse_tree
 {
 	t_token			*token;
 	int				nbr_fils;
+	int				term;
 	t_parse_tree	**fils;
 	// le pointeur sur fonction pour l'action a effectuer
+};
+
+typedef struct s_pile_tree t_pile_tree;
+
+struct				s_pile_tree
+{
+	s_parse_tree	*tree;
+	t_pile_tree		*next;
 };
 
 struct					s_parser
@@ -71,9 +74,10 @@ struct					s_parser
 		char			*code;
 		int				size;
 		int				size_fonction;
-		t_token			*focus_shft;
-		t_token			*focus_reduce;
-		t_parse_tree	*begin;
-		t_parse_tree	*actual;
+		t_token			*focus;
+		t_parse_tree	*tree_header;
+		t_parse_tree	*tree_code;
+		t_pile_tree		*debut_pile;
+		t_pile_tree		*focus_pile;
 };
 #endif

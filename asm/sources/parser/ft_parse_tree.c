@@ -8,7 +8,7 @@ void	ft_add_node(t_parse_tree *tree, t_parse_tree *leaf)
 	tree->fils[tree->nbr_fils - 1] = leaf;
 }
 
-t_parse_tree	*ft_create_leaf(t_parse_tree *tree, t_token *token)
+t_parse_tree	*ft_create_leaf(t_token *token)
 {
 	t_parse_tree *leaf;
 
