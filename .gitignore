@@ -10,7 +10,6 @@
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
 *.txt
@@ -34,3 +33,7 @@ zaz/*.txt
 # Debug files
 *.dSYM/
 *.su
+.DS*
+._*
+*.cor
+corewar
