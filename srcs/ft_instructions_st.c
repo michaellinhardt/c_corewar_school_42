@@ -41,6 +41,7 @@ void		ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 		ft_init_st(tab, proc);
 		if (ft_get_args(proc))
 		{
+			log_inst(proc->player, proc->id, "ST");
 			if (proc->args[1].type == REG_CODE && tab[0] > 0 && tab[0] <= 16)
 			{
 				ft_log_st_reg(vm, proc, tab[1], tab[0]);

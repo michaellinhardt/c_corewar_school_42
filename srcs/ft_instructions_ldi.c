@@ -2,6 +2,7 @@
 
 static void	ft_log_ldi(t_dvm *vm, t_proc *proc, int *tab)
 {
+	log_inst(proc->player, proc->id, "LDI");
 	if (vm->options.operations)
 	{
 		if (proc->id < 10000)

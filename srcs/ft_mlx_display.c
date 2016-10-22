@@ -12,6 +12,7 @@ void	reset_img(t_img *img)
 
 int		display(t_dmlx *m, t_dvm *v)
 {
+	l2(100, "DISPLAYING", "build and print screen..", v->cycle);
 	itow(m->scene_img[2][0].img, 0, 0, "vm background");
 	reset_img(&m->scene_img[2][11]);
 	display_effect(m, v, effect_data(), -1);
@@ -29,6 +30,6 @@ int		display(t_dmlx *m, t_dvm *v)
 		display_bar_proc_live(m, v, &m->scene_img[2][10], 0);
 	itow(m->scene_img[2][10].img, 0, 0, "processus & bar layer");
 	display_arene(m, v, 0, 0);
-	l2(100, "display()", "printing cycle", v->cycle);
+	l2(-2, "display()", "printing cycle", v->cycle);
 	return (1);
 }

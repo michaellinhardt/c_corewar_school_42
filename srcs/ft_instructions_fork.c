@@ -2,6 +2,7 @@
 
 static void		ft_log_fork(t_dvm *vm, t_proc *proc, int new_pc)
 {
+	log_inst(proc->player, proc->id, "FORK");
 	if (vm->options.operations)
 	{
 		if (proc->id < 10000)

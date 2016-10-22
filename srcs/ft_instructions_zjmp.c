@@ -32,6 +32,7 @@ void		ft_instructions_zjmp(t_dvm *vm, t_instructions inst, t_proc *proc)
 	{
 		if (ft_get_args(proc))
 		{
+			log_inst(proc->player, proc->id, "ZJMP");
 			if (proc->carry)
 			{
 				ft_log_zjmp_ok(vm, proc);

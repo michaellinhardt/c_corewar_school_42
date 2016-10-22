@@ -34,6 +34,7 @@ void		ft_instructions_sti(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre = proc->args[0].value;
 		if (ft_get_args(proc))
 		{
+			log_inst(proc->player, proc->id, "STI");
 			if (proc->args[1].type == IND_CODE)
 				proc->args[1].type %= IDX_MOD;
 			add = (proc->args[1].value + proc->args[2].value);

@@ -27,6 +27,7 @@ void		ft_instructions_sub(t_dvm *vm, t_instructions inst, t_proc *proc)
 		registre[2] = proc->args[1].value;
 		if (ft_get_args(proc))
 		{
+			log_inst(proc->player, proc->id, "SUB");
 			ft_log_sub(vm, proc, registre);
 			if (!(*(proc->ireg + --(registre[0])) =
 						proc->args[0].value - proc->args[1].value))

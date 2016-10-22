@@ -16,7 +16,7 @@ void	vm_init_proc(t_data *d, t_dvm *v, int player)
 			proc_new(d, (t_proc *)NULL, -(player + 1)
 			, (player * MEM_SIZE) / v->nbr_players);
 		else if (!v->p[player].playing)
-			l2(11, "PLAYER", "ne joue pas", player);
+			l2(11, "PLAYER", "ne joue pas", -(player + 1));
 }
 
 void	vm_init(t_data *d, t_dvm *v)

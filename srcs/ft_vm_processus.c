@@ -1,5 +1,16 @@
 #include "ft_corewar.h"
 
+void	proc_log(int player, int id, char *title)
+{
+	char *msg;
+
+	if (!data()->vm.console)
+		return ;
+	ft_printf("%!for player: %d            proc id: %d", &msg, player, id);
+	l1(12, title, msg);
+	ft_strdel(&msg);
+}
+
 void	proc_new(t_data *d, t_proc *new, int player, int i)
 {
 	static int	id = 0;
@@ -12,6 +23,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 		(d->vm.proc)->p = new;
 	else
 		new->n = (t_proc *)NULL;
+	proc_log(player, id, "NEW PROC");
 	d->vm.proc = new;
 	new->ireg = (int *)new->reg;
 	new->ireg[0] = player;
@@ -26,6 +38,7 @@ void	proc_new(t_data *d, t_proc *new, int player, int i)
 
 int		proc_kill(t_data *d, t_proc *target)
 {
+	proc_log(target->player, target->id, "KILL PROC");
 	if ((d)->vm.options.deaths)
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 				target->id, d->vm.cycle - target->last_live, d->vm.ctodie);

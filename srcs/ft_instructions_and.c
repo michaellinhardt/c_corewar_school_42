@@ -2,6 +2,7 @@
 
 static void	ft_log_and(t_dvm *vm, t_proc *proc, int registre)
 {
+	log_inst(proc->player, proc->id, "AND");
 	if (vm->options.operations)
 	{
 		if (proc->id < 10000)

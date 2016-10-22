@@ -24,6 +24,8 @@ int		exit1(int err, t_data *d, char *msg)
 	else
 		ascii(ASC_EXIT_0);
 	exitascii(d, err, msg);
+	if (!d->vm.console && err)
+		ft_printf("%s\n", msg);
 	exit(err);
 	return (1);
 }

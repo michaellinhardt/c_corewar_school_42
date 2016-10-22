@@ -32,6 +32,7 @@ static int		ft_checklive(t_dvm *v, t_proc *p)
 {
 	int palive;
 
+	l2(11, "CYCLE TO DIE", "cycle to die is comming..", v->cycle);
 	ft_kill_dead_process(p);
 	v->ctodiecount = 0;
 	v->max_checks++;

@@ -33,7 +33,7 @@ void	display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i)
 	(void)v;
 	loopset = 0;
 	while ((++i || 1) && i < e[i].id_max
-	&& l2(101, "effect()", "(effect_id)", e[i].id_effect))
+	&& l2(-2, "effect()", "(effect_id)", e[i].id_effect))
 	{
 		if ((e[i].start_cycle && e[i].looptodie == 0 && !(e[i].start_cycle = 0)
 		&& l2(101, "EFFECT_START", "(id_effect) start", e[i].id_effect)

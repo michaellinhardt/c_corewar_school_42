@@ -2,6 +2,7 @@
 
 static void	ft_log_add(t_dvm *vm, t_proc *proc, int *registre)
 {
+	log_inst(proc->player, proc->id, "ADD");
 	if (vm->options.operations)
 	{
 		if (proc->id < 10000)

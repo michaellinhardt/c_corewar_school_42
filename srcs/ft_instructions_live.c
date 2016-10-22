@@ -2,6 +2,7 @@
 
 static void	ft_log_live(t_dvm *vm, t_proc *proc)
 {
+	log_inst(proc->player, proc->id, "LIVE");
 	if (vm->options.operations)
 	{
 		if (proc->id < 10000)
