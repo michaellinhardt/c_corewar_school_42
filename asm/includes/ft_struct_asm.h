@@ -70,6 +70,7 @@ struct				s_pile_tree
 {
 	t_parse_tree	*tree;
 	t_pile_tree		*next;
+	t_pile_tree		*prev;
 };
 
 struct					s_parser
@@ -81,6 +82,7 @@ struct					s_parser
 		t_parse_tree	*tree_header;
 		t_parse_tree	*tree_code;
 		t_pile_tree		*debut_pile;
+		t_pile_tree		*end_pile;
 		t_pile_tree		*focus_pile;
 };
 #endif

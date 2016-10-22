@@ -31,6 +31,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 		else
 		{
+			ft_printf("error\n");
 			//print error
 			return (0);
 		}
@@ -39,6 +40,23 @@ static int	ft_parse_code(t_parser *parser)
 		if (test == 6)
 			break;
 	}
+
+
+	ft_putendl("WAAAAAAAAAAAAAAGGGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHH");
+	t_pile_tree *pile;
+
+	pile = parser->debut_pile;
+
+	while (pile)
+	{
+		if (pile->tree)
+		{
+		ft_display_parse_tree(pile->tree);
+		}
+		ft_putendl("----------------");
+		pile = pile->next;
+	}
+
 	return (1);
 }
 

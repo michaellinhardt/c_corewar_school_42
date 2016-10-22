@@ -61,6 +61,7 @@ int			ft_parser_reduce(t_parser *parser);
 
 void		ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf);
 void		ft_add_tree_shift(t_parser *parser);
+void		ft_add_parent_tree(t_pile_tree *tree, t_parser *parser);
 /*
 ** Parse tree
 */
