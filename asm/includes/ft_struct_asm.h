@@ -52,11 +52,14 @@ struct				s_lexer
 	int				(*f_tokens[NBR_TOKEN])(t_lexer *lexer, t_token *token);
 };
 
+// le truc final
+//
 struct				s_parse_tree
 {
 	t_token			*token;
 	int				nbr_fils;
 	int				term;
+	int				rule;
 	t_parse_tree	**fils;
 	// le pointeur sur fonction pour l'action a effectuer
 };
@@ -65,7 +68,7 @@ typedef struct s_pile_tree t_pile_tree;
 
 struct				s_pile_tree
 {
-	s_parse_tree	*tree;
+	t_parse_tree	*tree;
 	t_pile_tree		*next;
 };
 

@@ -2,29 +2,43 @@
 #include "ft_asm.h"
 
 // on parse d'abord l'header
-static int 	ft_parser_header(t_parser *parser)
-{
-	int ret;
 
-	ret = 1;
+static int	ft_parse_code(t_parser *parser)
+{
+	int action;
+	static int test = 0;
+
+	(void)parser;
+	action = 1;
+
+
+
 	while (1)
 	{
-		if (ret == 1)
-			ret = ft_parser_shift(parser);
-		if (ret == 2)
-			ret = ft_parser_reduce(parser);
-		if (ret != 1 && ret != 2)
-			return (ret);
+
+		if (action == 1)
+		{
+			action = ft_parser_shift(parser);
+		}
+		else if (action == 2)
+		{
+			action = ft_parser_reduce(parser);
+		}
+		else if (action == 3)
+		{
+
+				// accept
+		}
+		else
+		{
+			//print error
+			return (0);
+		}
+
+		++test;
+		if (test == 6)
+			break;
 	}
-	return (ret);
-}
-
-static int	ft_parse_code(t_token **token, t_parser *parser)
-{
-
-	(void)token;
-	(void)parser;
-
 	return (1);
 }
 
@@ -36,7 +50,5 @@ int		ft_parser(t_token *token, t_parser *parser)
 	parser->focus = token; // shift
 	ft_putendl("debut parser");
 
-	if (ft_parser_header(parser))
-		return (ft_parse_code(&parser->focus, parser));
-	return (0);
+	return (ft_parse_code(parser));
 }

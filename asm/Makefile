@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/21 18:50:37 by abary            ###   ########.fr        #
+#    Updated: 2016/10/22 18:22:20 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRC_LEXER = ft_lexer.c ft_lexer_register.c ft_lexer_endline.c ft_lexer_end.c\
 	ft_lexer_value.c ft_lexer_indirect_label.c  ft_lexer_error.c
 
 SRC_PARSER = ft_parser.c ft_parse_tree.c ft_parser_shift.c\
-			ft_parser_reduce.c
+			ft_parser_reduce.c ft_parser_pile_tree.c
 
 SRCS = $(addprefix sources/,$(SRC))\
 	   $(addprefix sources/lexer/,$(SRC_LEXER))\
