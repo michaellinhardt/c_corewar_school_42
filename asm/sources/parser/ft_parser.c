@@ -37,7 +37,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 6)
+		if (test == 12)
 			break;
 	}
 
@@ -51,7 +51,7 @@ static int	ft_parse_code(t_parser *parser)
 	{
 		if (pile->tree)
 		{
-		ft_display_parse_tree(pile->tree);
+			ft_display_parse_tree(pile->tree);
 		}
 		ft_putendl("----------------");
 		pile = pile->next;

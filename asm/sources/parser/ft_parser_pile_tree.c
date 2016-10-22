@@ -20,8 +20,10 @@ void		ft_create_new_pile_tree(t_parser *parser)
 	else
 	{
 		parser->focus_pile = ft_new_pile_tree();
-		parser->end_pile->next = parser->focus_pile;
 		parser->focus_pile->prev = parser->end_pile;
+		parser->end_pile->next = parser->focus_pile;
+		parser->end_pile = parser->focus_pile;
+		ft_putendl("yolo");
 	}
 }
 
@@ -45,17 +47,15 @@ void		ft_add_tree_shift(t_parser *parser)
 #include <stdlib.h>
 void	ft_free_elem_pile(t_pile_tree *pile, t_parser *parser)
 {
+	if (pile == parser->debut_pile)
+		parser->debut_pile = parser->debut_pile->next;
+	if (pile == parser->end_pile)
+		parser->end_pile = parser->end_pile->prev;
 
 	if (pile->prev)
 		pile->prev->next = pile->next;
 	if (pile->next)
 		pile->next->prev = pile->prev;
-	if (pile ==  parser->debut_pile)
-		parser->debut_pile = pile->next;
-	if (pile == parser->end_pile)
-		parser->end_pile = parser->end_pile->prev;
-	pile->prev = 0;
-	pile->next = 0;
 	free(pile);
 }
 
