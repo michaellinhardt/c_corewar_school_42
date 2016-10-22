@@ -25,17 +25,19 @@ static void	ft_get_init_players(t_data *d)
 	int		p;
 
 	p = 0;
-	ft_printf("Introducing contestants...\n");
+	if (!d->vm.console)
+		ft_printf("Introducing contestants...\n");
 	ft_recup_files(&d->vm, d->args);
 	ft_recup_headers(&d->vm, d->args);
 	ft_recup_code(&d->vm, d->args);
 	ft_init_instructions(d->vm.instructions);
 	while (p < d->vm.nbr_players)
 	{
-		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
-		ABS(d->args[p].player), d->vm.p[p].header.prog_size,
-		d->vm.p[p].header.prog_name,
-		d->vm.p[p].header.comment);
+		if (!d->vm.console)
+			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+				ABS(d->args[p].player), d->vm.p[p].header.prog_size,
+				d->vm.p[p].header.prog_name,
+				d->vm.p[p].header.comment);
 		++p;
 	}
 }

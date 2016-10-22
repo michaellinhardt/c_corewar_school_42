@@ -37,11 +37,9 @@ void		vm(t_dvm *v, int cperloop)
 		v->cycle++;
 		if (!gameloop(v) || !v->proc)
 		{
-			ft_printf("Contestant %d, \"%s\", has won !\n", ABS(v->last_live),
-					v->p[(ABS(v->last_live)) - 1].header.prog_name);
 			if (v->dump != -1)
 				vm_dump(v);
-			exit1(0, data(), "game over");
+			exit3(0, data(), ABS(v->last_live));
 		}
 		else if (v->dump == v->cycle)
 		{
