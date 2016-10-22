@@ -44,11 +44,12 @@ static void	ft_exit_champ_size(char *file)
 
 void		ft_recup_headers(t_dvm *vm, t_dargs *args)
 {
-	int i;
+	int 	i;
 
 	i = 0;
 	while (i < vm->nbr_players)
 	{
+		l1(1, "READ", args[i].file);
 		if ((read(args[i].fd, (void *)&vm->p[i].header,
 						sizeof(t_header))) == -1)
 			ft_exit_read(args[i].file);
