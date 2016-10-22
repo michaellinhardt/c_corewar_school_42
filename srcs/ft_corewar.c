@@ -50,12 +50,12 @@ int			main(int argc, char **argv)
 	d->mlx.scene = SCENE_START;
 	d->vm.dump = -1;
 	d->vm.console = CONSOLE_LOG;
+	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
+	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init())
+		ascii(ASC_LOG);
 	ft_recup_options_players(d, argv, argc);
 	ft_get_init_players(d);
-	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
-	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init()
-		&& ascii(ASC_LOG)
-	&& d->vm.graphic)
+	if (d->vm.graphic)
 		mlx_start(d, &d->mlx);
 	else
 		while (42)
