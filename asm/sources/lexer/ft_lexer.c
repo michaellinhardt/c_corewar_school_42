@@ -44,6 +44,12 @@ int		ft_lexer(t_lexer *lexer)
 		break; // pour les tests
 		*/
 	}
+	if (lexer->line)
+	{
+
+				free(lexer->line);
+				lexer->line = 0;
+	}
 	ft_display_tokenisation(lexer->begin);
 	return (1);
 }

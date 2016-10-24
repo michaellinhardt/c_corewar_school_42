@@ -88,8 +88,6 @@ int		ft_parser_reduce(t_parser *parser)
 
 		
 		}
-		//		ft_display_parse_tree(pile->tree);
-		//		ft_putendl("----------------");
 		pile = pile->next;
 	}
 	if  (!parser->memory.header && parser->memory.ccomment

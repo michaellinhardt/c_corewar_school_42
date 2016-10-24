@@ -49,8 +49,6 @@ int		ft_parser_accept(t_parser *parser)
 				parser->focus_pile = 0;
 				return (1);
 			}
-
-
 		begin = begin->next;
 	}
 	return (1);
