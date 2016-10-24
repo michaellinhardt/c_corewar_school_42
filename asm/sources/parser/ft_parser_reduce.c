@@ -43,8 +43,9 @@ static int ft_check_rule_name(t_parse_tree *tree)
 
 static int	ft_check_endline(t_pile_tree *pile, t_parse_tree *tree, t_parser *parser)
 {
-	if (tree->token->token == ENDLINE)
+	if (tree->token->token == ENDLINE && !pile->value)
 	{
+	// eviter la multiplication des '\n'
 		ft_putendl("reduction end");
 		ft_add_parent_tree(pile, parser);
 		return (1);
@@ -57,13 +58,25 @@ int		ft_parser_reduce(t_parser *parser)
 	t_pile_tree *pile;
 
 	pile = parser->focus_pile;
-
 	while (pile)
 	{
 		if (pile->tree)
 		{
 			if (ft_check_rule_name(pile->tree))
 			{
+				pile->value = MINI_NAME;
+				if (parser->memory.name)
+					return (0);
+				parser->memory.name = 1;
+				parser->focus_pile = 0;
+				return (1);
+			}
+			if (ft_check_rule_ccomment(pile->tree))
+			{
+				pile->value = MINI_COMMENT;
+				if (parser->memory.ccomment)
+					return (0);
+				parser->memory.ccomment = 1;
 				parser->focus_pile = 0;
 				return (1);
 			}
@@ -72,22 +85,18 @@ int		ft_parser_reduce(t_parser *parser)
 				parser->focus_pile = 0;
 				return (1);
 			}
-			if (ft_check_rule_ccomment(pile->tree))
-			{
-				parser->focus_pile = 0;
-				return (1);
-			}
+
+		
 		}
-		ft_display_parse_tree(pile->tree);
-		ft_putendl("----------------");
+		//		ft_display_parse_tree(pile->tree);
+		//		ft_putendl("----------------");
 		pile = pile->next;
 	}
-	// on checck la pile pour monter l'arbre
-	pile = parser->debut_pile;
-	while (pile)
+	if  (!parser->memory.header && parser->memory.ccomment
+			&& parser->memory.name)
 	{
-		pile = pile->next;
+		ft_putendl("mouhahahahhaha");
+		return (3);
 	}
-	ft_putendl("!!!!!!!!!!!!!!!!!!!!!!!!");
 	return (1);
 }

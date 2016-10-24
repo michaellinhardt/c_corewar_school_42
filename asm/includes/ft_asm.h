@@ -22,6 +22,7 @@ void		ft_get_value(t_lexer *lexer, t_token *token, int size);
 
 void		ft_free_tokens(t_token *token);
 void		ft_lexer_error(t_lexer *lexer, int erreur);
+void		ft_free_elem_pile(t_pile_tree *tree, t_parser *parser);
 
 /*
 **	Display
@@ -58,6 +59,7 @@ int			ft_parser(t_token *token, t_parser *parser);
 
 int			ft_parser_shift(t_parser *parser);
 int			ft_parser_reduce(t_parser *parser);
+int			ft_parser_accept(t_parser *parser);
 
 void		ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf);
 void		ft_add_tree_shift(t_parser *parser);

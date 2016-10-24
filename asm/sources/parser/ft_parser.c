@@ -27,6 +27,7 @@ static int	ft_parse_code(t_parser *parser)
 		else if (action == 3)
 		{
 
+			action = ft_parser_accept(parser);
 				// accept
 		}
 		else
@@ -37,7 +38,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 12)
+		if (test == 18)
 			break;
 	}
 
@@ -57,6 +58,7 @@ static int	ft_parse_code(t_parser *parser)
 		pile = pile->next;
 	}
 
+	while(1);
 	return (1);
 }
 

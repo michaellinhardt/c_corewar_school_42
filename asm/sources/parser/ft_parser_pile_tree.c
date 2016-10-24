@@ -63,6 +63,10 @@ void	ft_add_parent_tree(t_pile_tree *pile, t_parser *parser)
 {
 	if (pile->prev)
 	{
+		if (pile->prev->value == MINI_NAME)
+			pile->value = CMD_NAME;
+		else if (pile->prev->value == MINI_COMMENT)
+			pile->value = CMD_COMMENT;
 		ft_add_leaf(pile->tree, pile->prev->tree);
 		ft_free_elem_pile(pile->prev, parser);
 	}

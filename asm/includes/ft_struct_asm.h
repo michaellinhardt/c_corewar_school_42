@@ -66,11 +66,23 @@ struct				s_parse_tree
 
 typedef struct s_pile_tree t_pile_tree;
 
+enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER};
+
 struct				s_pile_tree
 {
+	int				value;
 	t_parse_tree	*tree;
 	t_pile_tree		*next;
 	t_pile_tree		*prev;
+};
+
+typedef struct		s_memory t_memory;
+
+struct					s_memory
+{
+	unsigned int		name:1;
+	unsigned int		ccomment:1;	
+	unsigned int		header:1;
 };
 
 struct					s_parser
@@ -78,6 +90,7 @@ struct					s_parser
 		char			*code;
 		int				size;
 		int				size_fonction;
+		t_memory		memory;
 		t_token			*focus;
 		t_parse_tree	*tree_header;
 		t_parse_tree	*tree_code;

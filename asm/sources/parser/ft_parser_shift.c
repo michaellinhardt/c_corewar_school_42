@@ -12,7 +12,7 @@ int		ft_parser_shift(t_parser *parser)
 		parser->focus = parser->focus->next;
 		return (1);
 	}
-	if (parser->focus->token == COMMAND_NAME)
+	else if (parser->focus->token == COMMAND_NAME)
 	{
 		ft_add_tree_shift(parser);
 		parser->focus = parser->focus->next;
@@ -30,7 +30,7 @@ int		ft_parser_shift(t_parser *parser)
 		parser->focus = parser->focus->next;
 		return (2);
 	}
-	if (parser->focus->token == COMMAND_COMMENT)
+	else if (parser->focus->token == COMMAND_COMMENT)
 	{
 		ft_add_tree_shift(parser);
 		parser->focus = parser->focus->next;

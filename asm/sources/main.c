@@ -16,6 +16,7 @@ int		main(int argc, char **argv)
 
 	ft_bzero(&lexer, sizeof(t_lexer));
 	ft_bzero(&parser, sizeof(t_parser));
+	ft_bzero(&parser.memory, sizeof(t_memory));
 	ft_init_lexer(&lexer);
 	if (argc == 1)
 		return (0);

@@ -6,9 +6,9 @@ void	ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf)
 {
 	tree->fils = (t_parse_tree **)realloc(tree->fils, sizeof(t_parse_tree) * ++tree->nbr_fils);
 	/// on ajoute lelement a gauche
-	ft_memmove(tree->fils + sizeof(tree->fils), tree->fils, sizeof(tree->fils) * tree->nbr_fils - 1);
-	tree->fils[0] = leaf;
-//	tree->fils[tree->nbr_fils - 1] = leaf;
+	//ft_memmove(tree->fils + sizeof(tree->fils), tree->fils, sizeof(tree->fils) * tree->nbr_fils - 1);
+//	tree->fils[0] = leaf;
+	tree->fils[tree->nbr_fils - 1] = leaf;
 }
 
 t_parse_tree	*ft_create_leaf(t_token *token)
