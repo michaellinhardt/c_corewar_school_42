@@ -66,6 +66,7 @@ typedef struct		s_dvm
 	int				code_color[9];
 	char			code[MEM_SIZE];
 	char			console;
+	char			consolee;
 	char			graphic;
 	int				dump;
 	char			pause;

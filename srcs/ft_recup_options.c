@@ -25,7 +25,7 @@ static void	ft_check_options2(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 	if (!ft_strcmp(*(argv + tab[0]), "-g"))
 		vm->graphic = 1;
 	else if (!ft_strcmp(*(argv + tab[0]), "-l"))
-		vm->console = 1;
+		vm->consolee = 1;
 	else if (!ft_strcmp(*(argv + tab[0]), "-h"))
 		ft_display_help();
 	else
@@ -77,5 +77,8 @@ int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 			exit1(1, data(), "To many players or bad options");
 		(tab[0])++;
 	}
+	if (vm->consolee && !vm->console && (vm->console = 1) && ascii(ASC_LOGO)
+	&& ascii(ASC_INIT) && ascii_init())
+		ascii(ASC_LOG);
 	return (1);
 }
