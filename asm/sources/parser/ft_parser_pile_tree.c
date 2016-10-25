@@ -45,6 +45,7 @@ void		ft_add_tree_shift(t_parser *parser)
 }
 
 #include <stdlib.h>
+
 void	ft_free_elem_pile(t_pile_tree *pile, t_parser *parser)
 {
 	if (pile == parser->debut_pile)
