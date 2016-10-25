@@ -89,6 +89,19 @@ int			ft_check_name_instructions(char *instructions, t_instructions *inst);
 void		ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf);
 void		ft_add_tree_shift(t_parser *parser);
 void		ft_add_parent_tree(t_pile_tree *tree, t_parser *parser);
+
+/*
+**			shifts
+*/
+
+int			ft_shift_no_focus(t_parser *parser);
+int			ft_shift_whitespaces(t_parser *parser);
+int			ft_shift_command_name(t_parser *parser);
+int			ft_shift_string(t_parser *parser);
+int			ft_shift_endline(t_parser *parser);
+int			ft_shift_command_comment(t_parser *parser);
+int			ft_shift_label(t_parser *parser);
+int			ft_shift_instruction(t_parser *parser);
 /*
 ** Parse tree
 */

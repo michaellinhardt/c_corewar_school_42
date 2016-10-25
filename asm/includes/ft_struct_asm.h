@@ -104,12 +104,15 @@ struct					s_memory
 };
 
 #define NBR_REDUCE 4
+#define NBR_SHIFT 8
+
 struct					s_parser
 {
 	char			*code;
 	int				size;
 	int				size_fonction;
 	int				(*f_reduce[NBR_REDUCE])(t_parser *parser, t_pile_tree *pile);
+	int				(*f_shift[NBR_SHIFT])(t_parser *parser);
 	t_instructions	inst[17];
 	t_memory		memory;
 	t_token			*focus;

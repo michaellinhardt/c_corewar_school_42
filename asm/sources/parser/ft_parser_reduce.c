@@ -24,45 +24,12 @@ int		ft_parser_reduce(t_parser *parser)
 				if (ret == -1)
 					return (ERREUR);
 			}
-			/*
-			if (ft_check_rule_name(pile->tree))
-			{
-				pile->value = MINI_NAME;
-				if (parser->memory.name)
-					return (0);
-				parser->memory.name = 1;
-				parser->focus_pile = 0;
-				return (1);
-			}
-			if (ft_check_rule_ccomment(pile->tree))
-			{
-				pile->value = MINI_COMMENT;
-				if (parser->memory.ccomment)
-					return (0);
-				parser->memory.ccomment = 1;
-				parser->focus_pile = 0;
-				return (SHIFT);
-			}
-			if (ft_check_endline(pile, pile->tree, parser))
-			{
-				parser->focus_pile = 0;
-				return (SHIFT);
-			}
-			if (ft_check_instruction(pile->tree, parser->inst))
-			{
-				parser->focus_pile = 0;
-				return (SHIFT);
-			}
-			*/
 		}
 		pile = pile->next;
 	}
 	//a  ajouter dans une fonction
 	if  (!parser->memory.header && parser->memory.ccomment
 			&& parser->memory.name)
-	{
-		ft_putendl("mouhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkahahahhaha");
-		return (3);
-	}
+		return (ACCEPT);
 	return (1);
 }

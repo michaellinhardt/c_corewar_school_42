@@ -65,7 +65,6 @@ void	ft_add_parent_tree(t_pile_tree *pile, t_parser *parser)
 	{
 		if (pile->prev->value == MINI_NAME)
 		{
-			ft_putendl("WAAAAAAAAAAAAGHHHHHHHHHHHHHH");
 			parser->memory.name = 1;
 			pile->value = CMD_NAME;
 		}

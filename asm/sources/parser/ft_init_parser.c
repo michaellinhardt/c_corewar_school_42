@@ -5,11 +5,19 @@ void	ft_init_parser(t_parser *parser)
 {
 	ft_bzero((void *)parser, sizeof(t_parser));
 	ft_bzero((void *)&(parser->memory), sizeof(t_memory));
-	ft_putendl("lalallalalalallalallalalalalalallalalalalalalala");
 	ft_init_instructions(parser->inst);
 	parser->f_reduce[0] = ft_rule_name;
 	parser->f_reduce[1] = ft_rule_ccomment;
 	parser->f_reduce[2] = ft_rule_endline;
 	parser->f_reduce[3] = ft_rule_instruction;
 
+
+	parser->f_shift[0] = ft_shift_no_focus;
+	parser->f_shift[1] = ft_shift_whitespaces;
+	parser->f_shift[2] = ft_shift_command_name;
+	parser->f_shift[3] = ft_shift_string;
+	parser->f_shift[4] = ft_shift_endline;
+	parser->f_shift[5] = ft_shift_command_comment;
+	parser->f_shift[6] = ft_shift_label;
+	parser->f_shift[7] = ft_shift_instruction;
 }

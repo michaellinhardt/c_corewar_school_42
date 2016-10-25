@@ -28,13 +28,6 @@ int		ft_rule_ccomment(t_parser *parser, t_pile_tree *pile)
 	ret = ft_check_rule_ccomment(pile->tree);
 	if (ret == 1)
 	{
-		/*
-		pile->value = MINI_COMMENT;
-		if (parser->memory.ccomment)
-			return (-1);
-		parser->memory.ccomment = 1;
-		parser->focus_pile = 0;
-		*/
 		pile->value = MINI_COMMENT;
 		parser->focus_pile = 0;
 		return (SHIFT);

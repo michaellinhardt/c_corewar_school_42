@@ -1,66 +1,24 @@
 #include "ft_asm.h"
-
 #include "libft.h"
-// on ignore les espaces;
+
 int		ft_parser_shift(t_parser *parser)
 {
-	// on ajoute des noeuds
-	if (!parser->focus)
-		return (ERREUR);
-	if (parser->focus->token == WHITESPACE)
-	{
-		parser->focus = parser->focus->next;
-		return (SHIFT);
-	}
-	else if (parser->focus->token == COMMAND_NAME)
-	{
-		ft_add_tree_shift(parser);
-		parser->focus = parser->focus->next;
-		 return (SHIFT);
-	}
-	else if (parser->focus->token == STRING)
-	{
-		ft_add_tree_shift(parser);
-		parser->focus = parser->focus->next;
-		 return (REDUCE);
-	}
-	else if (parser->focus->token == ENDLINE)
-	{
-		/*
-		** Ignorer les '\n' au debut et les '\n' multiples
-		*/
+	int i;
+	int ret;
 
-		if (!parser->debut_pile || (parser->end_pile->tree && 
-					parser->end_pile->tree->token->token == ENDLINE))
+	i = 0;
+	ret = 0;
+	while (i < NBR_SHIFT)
+	{
+		ret = parser->f_shift[i](parser);
+		if (ret == -1)
 		{
-			parser->focus = parser->focus->next;
-			 return (SHIFT);
-
+			ft_putendl("erreur shift");
+			return (ret);
 		}
-		ft_add_tree_shift(parser);
-		parser->focus = parser->focus->next;
-		 return (REDUCE);
+		if (ret > 0)
+			return (ret);
+		++i;
 	}
-	else if (parser->focus->token == COMMAND_COMMENT)
-	{
-		ft_add_tree_shift(parser);
-		parser->focus = parser->focus->next;
-		 return (SHIFT);
-	}
-	else if (parser->focus->token == LABEL)
-	{
-		/*
-		**	a voir apres
-		*/
-		ft_add_tree_shift(parser);
-		parser->focus = parser->focus->next;
-		 return (REDUCE);
-	}
-	else if (parser->focus->token == INSTRUCTION)
-	{
-		ft_add_tree_shift(parser);
-		parser->focus = parser->focus->next;
-		 return (REDUCE);
-	}
-	 return (REDUCE);
+	return (ret);
 }

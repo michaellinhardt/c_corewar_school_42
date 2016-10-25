@@ -39,7 +39,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 16)
+		if (test == 13)
 			break;
 	}
 

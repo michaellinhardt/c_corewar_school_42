@@ -29,14 +29,6 @@ int		ft_rule_name(t_parser *parser, t_pile_tree *pile)
 	ret = ft_check_rule_name(pile->tree);
 	if (ret == 1)
 	{
-		/*
-		pile->value = MINI_NAME;
-		if (parser->memory.name)
-			return (-1);
-		parser->memory.name = 1;
-		parser->focus_pile = 0;
-		return (SHIFT);
-		*/
 		pile->value = MINI_NAME;
 		parser->focus_pile = 0;
 		return (SHIFT);
