@@ -38,7 +38,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 18)
+		if (test == 25)
 			break;
 	}
 

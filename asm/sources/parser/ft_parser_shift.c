@@ -26,6 +26,17 @@ int		ft_parser_shift(t_parser *parser)
 	}
 	else if (parser->focus->token == ENDLINE)
 	{
+		/*
+		** Ignorer les '\n' au debut et les '\n' multiples
+		*/
+
+		if (!parser->debut_pile || (parser->end_pile->tree && 
+					parser->end_pile->tree->token->token == ENDLINE))
+		{
+			parser->focus = parser->focus->next;
+			return (1);
+
+		}
 		ft_add_tree_shift(parser);
 		parser->focus = parser->focus->next;
 		return (2);
