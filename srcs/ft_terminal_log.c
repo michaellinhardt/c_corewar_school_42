@@ -57,8 +57,8 @@ int			l1(char ico, char *name, char *info)
 		return (1);
 	d = data();
 	if (ico != -2 && ico != -3)
-		ft_printf(" %C %s %21s %s %-48s %s (%d)\n", log_ico(ico), LINE_BLUE, name
-		, LINE_GREEN2, info, LINE_YEL, data()->vm.cycle);
+		ft_printf(" %C %s %21s %s %-48s %s (%d)\n", log_ico(ico), LINE_BLUE
+		, name, LINE_GREEN2, info, LINE_YEL, data()->vm.cycle);
 	else
 		ft_printf(" %C %s %21s %s \e[90m%-46s %s (%d)\n",
 				log_ico(ico), LINE_BLUE, name
