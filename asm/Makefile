@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/24 19:50:16 by abary            ###   ########.fr        #
+#    Updated: 2016/10/25 17:23:02 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ CFLAGS = -I$(INC_DIR) -I $(INC_LIB_DIR)
 
 SRC = main.c  ft_open_file.c ft_get_size_file.c\
 	  ft_init_lexer.c ft_display_tokenisation.c\
-	  ft_get_line.c ft_free.c
+	  ft_get_line.c ft_free.c ft_init_instructions.c\
+	  ft_init_instructions_end.c ft_init_instructions_suite.c
 
 SRC_LEXER = ft_lexer.c ft_lexer_register.c ft_lexer_endline.c ft_lexer_end.c\
 	ft_lexer_separator.c ft_lexer_label.c ft_lexer_direct.c\
@@ -36,7 +37,9 @@ SRC_LEXER = ft_lexer.c ft_lexer_register.c ft_lexer_endline.c ft_lexer_end.c\
 
 SRC_PARSER = ft_parser.c ft_parse_tree.c ft_parser_shift.c\
 			ft_parser_reduce.c ft_parser_pile_tree.c\
-			ft_parser_accept.c
+			ft_parser_accept.c ft_check_name_instructions.c ft_init_parser.c\
+			ft_parser_rule_endline.c ft_parser_rule_instruction.c \
+			ft_parser_rule_name.c ft_parser_rule_ccomment.c
 
 SRCS = $(addprefix sources/,$(SRC))\
 	   $(addprefix sources/lexer/,$(SRC_LEXER))\

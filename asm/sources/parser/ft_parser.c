@@ -16,15 +16,15 @@ static int	ft_parse_code(t_parser *parser)
 	while (1)
 	{
 
-		if (action == 1)
+		if (action == SHIFT)
 		{
 			action = ft_parser_shift(parser);
 		}
-		else if (action == 2)
+		else if (action == REDUCE)
 		{
 			action = ft_parser_reduce(parser);
 		}
-		else if (action == 3)
+		else if (action == ACCEPT)
 		{
 
 			action = ft_parser_accept(parser);
@@ -34,16 +34,17 @@ static int	ft_parse_code(t_parser *parser)
 		{
 			ft_printf("error\n");
 			//print error
+			break ;
 			return (0);
 		}
 
 		++test;
-		if (test == 25)
+		if (test == 16)
 			break;
 	}
 
 
-	ft_putendl("WAAAAAAAAAAAAAAGGGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHH");
+	ft_putendl("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	t_pile_tree *pile;
 
 	pile = parser->debut_pile;

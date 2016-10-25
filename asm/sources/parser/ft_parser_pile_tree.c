@@ -23,7 +23,6 @@ void		ft_create_new_pile_tree(t_parser *parser)
 		parser->focus_pile->prev = parser->end_pile;
 		parser->end_pile->next = parser->focus_pile;
 		parser->end_pile = parser->focus_pile;
-		ft_putendl("yolo");
 	}
 }
 
@@ -65,9 +64,16 @@ void	ft_add_parent_tree(t_pile_tree *pile, t_parser *parser)
 	if (pile->prev)
 	{
 		if (pile->prev->value == MINI_NAME)
+		{
+			ft_putendl("WAAAAAAAAAAAAGHHHHHHHHHHHHHH");
+			parser->memory.name = 1;
 			pile->value = CMD_NAME;
+		}
 		else if (pile->prev->value == MINI_COMMENT)
+		{
+			parser->memory.ccomment = 1;
 			pile->value = CMD_COMMENT;
+		}
 		ft_add_leaf(pile->tree, pile->prev->tree);
 		ft_free_elem_pile(pile->prev, parser);
 	}

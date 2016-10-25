@@ -2,6 +2,7 @@
 # define FT_ASM_H
 
 #include "ft_struct_asm.h"
+# define NBR_INST 17
 
 /*
 ** Recuperation des infos du (des) fichiers
@@ -11,6 +12,16 @@ int			ft_get_size_file(int fd);
 char		*ft_get_line(int fd, t_lexer *lexer);
 
 
+/*
+** Instructions
+*/
+
+void		ft_init_instructions(t_instructions *inst);
+void		ft_init_instructions_name(t_instructions *inst);
+void		ft_init_instructions_nbr_args(t_instructions *inst);
+void		ft_init_instructions_types_arg_zero(t_instructions *inst);
+void		ft_init_instructions_types_arg_un(t_instructions *inst);
+void		ft_init_instructions_types_arg_deux(t_instructions *inst);
 /*
 ** Lexer
 */
@@ -55,12 +66,26 @@ int			ft_lexer_end(t_lexer *lexer, t_token *token);
 */
 
 int			ft_parser(t_token *token, t_parser *parser);
-
+void		ft_init_parser(t_parser *parser);
 
 int			ft_parser_shift(t_parser *parser);
 int			ft_parser_reduce(t_parser *parser);
 int			ft_parser_accept(t_parser *parser);
 
+
+/*
+**			rules
+*/
+int			ft_rule_name(t_parser *parser, t_pile_tree *pile);
+int			ft_rule_ccomment(t_parser *parser, t_pile_tree *pile);
+int			ft_rule_endline(t_parser *parser, t_pile_tree *pile);
+int			ft_rule_instruction(t_parser *parser, t_pile_tree *pile);
+
+/*
+**			checks
+*/
+
+int			ft_check_name_instructions(char *instructions, t_instructions *inst);
 void		ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf);
 void		ft_add_tree_shift(t_parser *parser);
 void		ft_add_parent_tree(t_pile_tree *tree, t_parser *parser);

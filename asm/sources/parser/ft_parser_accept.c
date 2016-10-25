@@ -9,6 +9,7 @@ static int	ft_check_header(t_pile_tree *pile, t_parser *parser)
 	if (!(parser->memory.header) && (parser->memory.ccomment) &&
 			parser->memory.name)
 	{
+		ft_putendl("reduction  header");
 		if (pile->value == CMD_NAME)
 		{
 			if (!pile->next || pile->next->value != CMD_COMMENT)
