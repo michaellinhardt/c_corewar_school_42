@@ -69,6 +69,7 @@ LIST 	= ft_corewar \
 			ft_instructions_aff \
 			ft_get_instructions \
 			ft_recup_options \
+			ft_display_help \
 			ft_put_registre \
 			ft_get_args \
 			ft_get_value_registre \

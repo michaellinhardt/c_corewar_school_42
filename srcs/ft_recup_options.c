@@ -20,14 +20,23 @@ static int	ft_get_number_player(int *i, char **argv, t_dargs **args, t_dvm *vm)
 	return (1);
 }
 
-static void	ft_skip_bitchies(t_dargs **args, char **argv, t_dvm *vm, int i)
+static void	ft_check_options2(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 {
-	(*args)->file = *(argv + i);
-	++*args;
-	vm->nbr_players++;
+	if (!ft_strcmp(*(argv + tab[0]), "-g"))
+		vm->graphic = 1;
+	else if (!ft_strcmp(*(argv + tab[0]), "-l"))
+		vm->console = 1;
+	else if (!ft_strcmp(*(argv + tab[0]), "-h"))
+		ft_display_help();
+	else
+	{
+		(*args)->file = *(argv + tab[0]);
+		++*args;
+		vm->nbr_players++;
+	}
 }
 
-static int	ft_check_options(t_dvm *vm, int *tab, t_dargs **args, char **argv)
+static void	ft_check_options(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 {
 	if (!ft_strcmp(*(argv + tab[0]), "-dump"))
 	{
@@ -49,8 +58,7 @@ static int	ft_check_options(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 		ft_get_show(vm, ft_atoi(*(argv + ++(tab[0]))));
 	}
 	else
-		ft_skip_bitchies(args, argv, vm, tab[0]);
-	return (1);
+		ft_check_options2(vm, tab, args, argv);
 }
 
 int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
@@ -64,8 +72,7 @@ int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 		return (0);
 	while (tab[0] < argc)
 	{
-		if (!(ft_check_options(vm, tab, &args, argv)))
-			return (0);
+		ft_check_options(vm, tab, &args, argv);
 		if (vm->nbr_players > 4)
 			exit1(1, data(), "To many players or bad options");
 		(tab[0])++;

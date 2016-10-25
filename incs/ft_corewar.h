@@ -83,4 +83,5 @@ void	ft_instructions_lld(t_dvm *vm, t_instructions inst, t_proc *proc);
 void	ft_instructions_lldi(t_dvm *vm, t_instructions inst, t_proc *proc);
 void	ft_instructions_lfork(t_dvm *vm, t_instructions inst, t_proc *proc);
 void	ft_instructions_aff(t_dvm *vm, t_instructions inst, t_proc *proc);
+void	ft_display_help(void);
 #endif
