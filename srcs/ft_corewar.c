@@ -7,17 +7,11 @@ static void	ft_recup_options_players(t_data *d, char **argv, int argc)
 	d->args[2].player = -1;
 	d->args[3].player = -1;
 	if (!(ft_recup_options(&d->vm, d->args, argv, argc)))
-	{
-		ft_printf("erreur ft_recup_options\n");
-		exit(1);
-	}
+		exit1(1, d, "Missing options");
 	if (d->vm.nbr_players == 0)
-		exit(1);
+		exit1(1, d, "Missing options");
 	if (!(ft_check_value_number(d->args, &d->vm)))
-	{
-		ft_printf("erreur ft_check_value_number\n");
-		exit(1);
-	}
+		exit1(1, d, "Two players with same number");
 }
 
 static void	ft_get_init_players(t_data *d)
