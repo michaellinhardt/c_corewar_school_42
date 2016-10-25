@@ -24,4 +24,6 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_shift[7] = ft_shift_instruction;
 	parser->f_shift[8] = ft_shift_register;
 	parser->f_shift[9] = ft_shift_separator_char;
+	parser->f_shift[10] = ft_shift_direct_label;
+	parser->f_shift[11] = ft_shift_direct;
 }

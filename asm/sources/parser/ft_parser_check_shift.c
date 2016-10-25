@@ -123,3 +123,37 @@ int		ft_shift_separator_char(t_parser *parser)
 	}
 	return (0);
 }
+
+int		ft_shift_direct_label(t_parser *parser)
+{
+	if (parser->focus->token == DIRECT_LABEL)
+	{
+		if (parser->focus_pile)
+		{
+			ft_putendl("erreur shift direct label");
+			return (-1);
+		}
+		ft_add_tree_shift(parser);
+		parser->focus_pile->value = ARG;
+		parser->focus = parser->focus->next;
+		return (REDUCE);
+	}
+	return (0);
+}
+
+int		ft_shift_direct(t_parser *parser)
+{
+	if (parser->focus->token == DIRECT_LABEL)
+	{
+		if (parser->focus_pile)
+		{
+			ft_putendl("erreur shift direct");
+			return (-1);
+		}
+		ft_add_tree_shift(parser);
+		parser->focus_pile->value = ARG;
+		parser->focus = parser->focus->next;
+		return (REDUCE);
+	}
+	return (0);
+}

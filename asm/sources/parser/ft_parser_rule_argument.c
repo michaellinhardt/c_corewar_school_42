@@ -23,6 +23,7 @@ int		ft_rule_argument(t_parser *parser, t_pile_tree *pile)
 	ret = ft_check_argument(pile);
 	if (ret == 1)
 	{
+		parser->memory.arg = 1;
 		parser->focus_pile = 0;
 		return (SHIFT);
 	}

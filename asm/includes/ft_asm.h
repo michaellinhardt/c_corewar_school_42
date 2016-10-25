@@ -106,6 +106,8 @@ int			ft_shift_label(t_parser *parser);
 int			ft_shift_instruction(t_parser *parser);
 int			ft_shift_register(t_parser *parser);
 int			ft_shift_separator_char(t_parser *pasrer);
+int			ft_shift_direct_label(t_parser *pasrer);
+int			ft_shift_direct(t_parser *pasrer);
 /*
 ** Parse tree
 */

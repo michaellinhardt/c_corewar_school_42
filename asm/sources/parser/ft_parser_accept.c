@@ -2,6 +2,10 @@
 #include "ft_asm.h"
 #include <stdlib.h>
 
+
+/*
+** faire tableau de pointeurs sur fonctiosn comme shift et reduce
+*/
 static int	ft_check_header(t_pile_tree *pile, t_parser *parser)
 {
 	t_parse_tree *tree;
@@ -51,9 +55,25 @@ int		ft_parser_accept(t_parser *parser)
 				parser->memory.header = 1;
 				begin->value = HEADER;
 				parser->focus_pile = 0;
-				return (1);
+				return (SHIFT);
 			}
+			// il faut check pour virgules et tout le bordel
+			if (ft_check_separator_char(begin , parser))
+			{
+				// la regle n'est pas finis 
+				return (ACCEPT);
+			}
+			// apres faut checker pour les '\n'
+			//
+
+
+			// pour finir on check pour linstruction
+			//
+			//
+
+			// en en epilogue on check pour le LABEL
+			// ca fait une sorte de lecture de droite a gauche de nos regles
 		begin = begin->next;
 	}
-	return (1);
+	return (SHIFT);
 }

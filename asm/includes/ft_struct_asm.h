@@ -3,7 +3,7 @@
 # include "op.h"
 
 # define NBR_REDUCE 6
-# define NBR_SHIFT 10
+# define NBR_SHIFT 12
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,
@@ -104,6 +104,7 @@ struct					s_memory
 	unsigned int		name:1;
 	unsigned int		ccomment:1;	
 	unsigned int		header:1;
+	unsigned int		arg:1;
 };
 
 
