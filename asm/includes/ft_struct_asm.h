@@ -2,6 +2,8 @@
 # define FT_STRUCT_ASM_H
 # include "op.h"
 
+# define NBR_REDUCE 6
+# define NBR_SHIFT 10
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,
@@ -67,7 +69,8 @@ struct				s_parse_tree
 typedef struct s_pile_tree t_pile_tree;
 typedef struct s_instructions t_instructions;
 
-enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER};
+enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER,
+				INST, ARG, VIRGULE};
 enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT};
 
 struct				s_pile_tree
@@ -103,8 +106,6 @@ struct					s_memory
 	unsigned int		header:1;
 };
 
-#define NBR_REDUCE 4
-#define NBR_SHIFT 8
 
 struct					s_parser
 {

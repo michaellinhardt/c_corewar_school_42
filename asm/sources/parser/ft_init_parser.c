@@ -10,6 +10,8 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_reduce[1] = ft_rule_ccomment;
 	parser->f_reduce[2] = ft_rule_endline;
 	parser->f_reduce[3] = ft_rule_instruction;
+	parser->f_reduce[4] = ft_rule_separator_char;
+	parser->f_reduce[5] = ft_rule_argument;
 
 
 	parser->f_shift[0] = ft_shift_no_focus;
@@ -20,4 +22,6 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_shift[5] = ft_shift_command_comment;
 	parser->f_shift[6] = ft_shift_label;
 	parser->f_shift[7] = ft_shift_instruction;
+	parser->f_shift[8] = ft_shift_register;
+	parser->f_shift[9] = ft_shift_separator_char;
 }

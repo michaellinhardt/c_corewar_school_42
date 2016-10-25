@@ -80,6 +80,8 @@ int			ft_rule_name(t_parser *parser, t_pile_tree *pile);
 int			ft_rule_ccomment(t_parser *parser, t_pile_tree *pile);
 int			ft_rule_endline(t_parser *parser, t_pile_tree *pile);
 int			ft_rule_instruction(t_parser *parser, t_pile_tree *pile);
+int			ft_rule_separator_char(t_parser *parser, t_pile_tree *pile);
+int			ft_rule_argument(t_parser *parser, t_pile_tree *tree);
 
 /*
 **			checks
@@ -102,6 +104,8 @@ int			ft_shift_endline(t_parser *parser);
 int			ft_shift_command_comment(t_parser *parser);
 int			ft_shift_label(t_parser *parser);
 int			ft_shift_instruction(t_parser *parser);
+int			ft_shift_register(t_parser *parser);
+int			ft_shift_separator_char(t_parser *pasrer);
 /*
 ** Parse tree
 */

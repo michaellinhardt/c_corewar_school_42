@@ -32,15 +32,19 @@ static int	ft_parse_code(t_parser *parser)
 		}
 		else
 		{
-			ft_printf("error\n");
+			ft_printf("error while 1\n");
 			//print error
 			break ;
 			return (0);
 		}
 
 		++test;
-		if (test == 14)
+		if (test == 20)
+		{
+			
+		//	ft_putnbr(parser->focus->token);
 			break;
+		}
 	}
 
 
