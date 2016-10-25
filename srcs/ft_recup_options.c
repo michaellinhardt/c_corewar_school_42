@@ -32,20 +32,20 @@ static int	ft_check_options(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 	if (!ft_strcmp(*(argv + tab[0]), "-dump"))
 	{
 		if (tab[0] + 1 >= tab[1])
-			return (0);
+			exit1(1, data(), "Missing dump value");
 		vm->dump = ft_atoi(*(argv + ++(tab[0])));
 	}
 	else if (!ft_strcmp(*(argv + tab[0]), "-n"))
 	{
 		if (tab[0] + 2 >= tab[1])
-			return (0);
+			exit1(1, data(), "Missing player number value or file with -n");
 		else if (!(ft_get_number_player(&tab[0], argv, args, vm)))
-			return (0);
+			exit1(1, data(), "Player number can only be beetwin 1 and 4");
 	}
 	else if (!ft_strcmp(*(argv + tab[0]), "-v"))
 	{
 		if (tab[0] + 1 >= tab[1])
-			return (0);
+			exit1(1, data(), "Missing verbose value with -v");
 		ft_get_show(vm, ft_atoi(*(argv + ++(tab[0]))));
 	}
 	else
@@ -67,7 +67,7 @@ int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 		if (!(ft_check_options(vm, tab, &args, argv)))
 			return (0);
 		if (vm->nbr_players > 4)
-			return (0);
+			exit1(1, data(), "To many players or bad options");
 		(tab[0])++;
 	}
 	return (1);
