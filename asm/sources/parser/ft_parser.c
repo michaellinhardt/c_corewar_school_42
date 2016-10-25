@@ -39,16 +39,14 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 13)
+		if (test == 14)
 			break;
 	}
 
 
 	ft_putendl("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	t_pile_tree *pile;
-
 	pile = parser->debut_pile;
-
 	while (pile)
 	{
 		if (pile->tree)

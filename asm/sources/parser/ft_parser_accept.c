@@ -26,6 +26,12 @@ static int	ft_check_header(t_pile_tree *pile, t_parser *parser)
 		{
 			if (!pile->next || pile->next->value != CMD_NAME)
 				return (-1);
+			ft_add_leaf(pile->next->tree, pile->tree->fils[0]);
+			tree = pile->tree;
+			pile->tree = pile->tree->fils[0];
+			free (tree->fils);
+			free (tree);
+			ft_free_elem_pile(pile, parser);
 			return (1);
 		}
 	}
