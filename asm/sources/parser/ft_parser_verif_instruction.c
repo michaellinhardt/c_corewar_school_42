@@ -21,10 +21,11 @@ static int	ft_check_type_arg(t_token *token , int nbr_arg, t_instructions inst)
 		if ((inst.types[nbr_arg] & T_IND) == T_IND)
 			return (1);
 	}
+	ft_putendl("erreur verrif types arguments");
 	return (0);
 }
 
-static int 	ft_verif_args(t_parse_tree *args, int id, t_instructions *inst, 
+static int 	ft_verif_args(t_parse_tree *args, t_instructions inst, 
 		int *nbr)
 {
 
@@ -36,14 +37,14 @@ static int 	ft_verif_args(t_parse_tree *args, int id, t_instructions *inst,
 
 		if (args->token->value)
 		{
-			if (!ft_check_type_arg(args->token, *nbr, inst[i]))
+			if (!ft_check_type_arg(args->token, *nbr, inst))
 				return (0);
 			*nbr += 1;
 			ft_putendl(args->token->value);
 		}
 		while (i >= 0)
 		{
-			ft_verif_args(args->fils[i], id, inst, nbr);
+			ft_verif_args(args->fils[i], inst, nbr);
 			--i;
 		}
 	}
@@ -63,7 +64,12 @@ int			ft_verif_instruction(t_pile_tree *pile, t_pile_tree *next,
 		return (0);
 	}
 	ft_putendl("^^^^^^^^^^^^^^^^^^^^^^^^");
-	if (!ft_verif_args(next->tree, i, inst, &j))
+	if (!ft_verif_args(next->tree, *(inst + i), &j))
 		return (0);
+	if (j != (*(inst + i)).nbr_args)
+	{
+		ft_putendl("chai pas");
+		return (0);
+	}
 	return (1);
 }
