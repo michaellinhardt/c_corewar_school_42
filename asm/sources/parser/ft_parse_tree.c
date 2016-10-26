@@ -27,8 +27,10 @@ t_parse_tree	*ft_create_leaf(t_token *token)
 	leaf = (t_parse_tree *)ft_memalloc(sizeof(t_parse_tree));
 	leaf->token = token;
 	// a voir
+	/*
 	if (token->token == COMMAND_NAME || token->token == COMMAND_COMMENT)
 		leaf->term = 1;
+		*/
 	return (leaf);
 }
 

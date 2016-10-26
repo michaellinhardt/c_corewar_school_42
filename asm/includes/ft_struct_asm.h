@@ -4,7 +4,7 @@
 
 # define NBR_REDUCE 6
 # define NBR_SHIFT 12
-# define NBR_ACCEPT 6
+# define NBR_ACCEPT 7
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,
@@ -61,8 +61,9 @@ struct				s_parse_tree
 {
 	t_token			*token;
 	int				nbr_fils;
-	int				term;
-	int				rule;
+	int				id_instruction;
+//	int				term;
+//	int				rule;
 	t_parse_tree	**fils;
 	// le pointeur sur fonction pour l'action a effectuer
 };
@@ -72,12 +73,12 @@ typedef struct s_instructions t_instructions;
 
 enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER,
 				INST, ARG, VIRGULE};
-enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT};
+enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT, LAST_ARG};
 
 struct				s_pile_tree
 {
 	int				value;
-	t_instructions	*inst;
+//	t_instructions	*inst;
 	t_parse_tree	*tree;
 	t_pile_tree		*next;
 	t_pile_tree		*prev;
@@ -127,6 +128,6 @@ struct					s_parser
 	t_pile_tree		*debut_pile;
 	t_pile_tree		*end_pile;
 	t_pile_tree		*focus_pile;
-
 };
+
 #endif

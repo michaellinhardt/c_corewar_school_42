@@ -93,6 +93,7 @@ int			ft_accept_name(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_comment(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_argument(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_instruction(t_parser *parser, t_pile_tree *pile);
+int			ft_accept_separator_char(t_parser *parser, t_pile_tree *tree);
 /*
 **			checks
 */
@@ -101,6 +102,8 @@ int			ft_check_name_instructions(char *instructions, t_instructions *inst);
 void		ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf);
 void		ft_add_tree_shift(t_parser *parser);
 void		ft_add_parent_tree(t_pile_tree *tree, t_parser *parser);
+int			ft_verif_instruction(t_pile_tree *pile, t_pile_tree *next,
+		t_instructions *inst);
 
 /*
 **			shifts
