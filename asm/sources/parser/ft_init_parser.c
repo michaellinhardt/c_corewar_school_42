@@ -34,8 +34,6 @@ void	ft_init_parser(t_parser *parser)
 
 
 
-
-
 	parser->f_accept[0] = ft_accept_argument;
 	parser->f_accept[1] = ft_accept_instruction;
 	parser->f_accept[2] = ft_accept_separator_char;

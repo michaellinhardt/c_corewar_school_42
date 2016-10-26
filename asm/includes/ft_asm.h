@@ -72,6 +72,7 @@ int			ft_parser_shift(t_parser *parser);
 int			ft_parser_reduce(t_parser *parser);
 int			ft_parser_accept(t_parser *parser);
 
+void		ft_free_pointeur_tab_fils(t_parse_tree *tree);
 
 /*
 **			rules

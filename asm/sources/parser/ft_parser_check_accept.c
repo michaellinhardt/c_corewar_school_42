@@ -130,6 +130,27 @@ int	ft_accept_separator_char(t_parser *parser, t_pile_tree *pile)
 	return (0);
 }
 
+static void	ft_complete_instruction(t_parse_tree *inst, t_parse_tree *args)
+{
+
+	if (args)
+	{
+		int i;
+
+		i = args->nbr_fils - 1;
+
+		if (args->token->value)
+			ft_add_leaf(inst, args);
+		while (i >= 0)
+		{
+			ft_complete_instruction(inst, args->fils[i]);
+			i--;
+		}
+
+	}
+
+}
+
 int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 {
 	if (pile->value == INST)
@@ -142,9 +163,11 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 		{
 			if (ft_verif_instruction(pile, pile->next,parser->inst))
 			{
-
 				ft_putendl("accept INSTRUCTION");
-
+				ft_complete_instruction(pile->tree, pile->next->tree);
+				pile->value = CPL_INST;
+				ft_free_pointeur_tab_fils(pile->next->tree);
+				ft_free_elem_pile(pile->next, parser);
 			}
 			else
 			{

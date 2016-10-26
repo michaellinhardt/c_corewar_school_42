@@ -4,7 +4,7 @@
 	 quiwegfyuqwevfefqwef
 	 qwfqvwefyygqwfv qwpeygfqvwefork"
 .comment "I'M ALIIIIVE"
-sti r1, %:live, r1
+sti r1, %:live, r2
 and r1, %0, r1
 live:	live %1
 		zjmp %:live
