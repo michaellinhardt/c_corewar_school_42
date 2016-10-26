@@ -7,6 +7,7 @@ int		ft_lexer(t_lexer *lexer)
 	int		i;
 	int		ret;
 	t_token *token;
+//	static int test = 0;
 
 	while (1)
 	{
@@ -40,9 +41,9 @@ int		ft_lexer(t_lexer *lexer)
 			break ;
 		/*
 				test++;
-		if (test == 55)
-		break; // pour les tests
-		*/
+		if (test == 17)
+			break; // pour les tests
+			*/
 	}
 	if (lexer->line)
 	{
