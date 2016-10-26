@@ -65,12 +65,12 @@ void	ft_add_parent_tree(t_pile_tree *pile, t_parser *parser)
 	{
 		if (pile->prev->value == MINI_NAME)
 		{
-			parser->memory.name = 1;
+//			parser->memory.name = 1;
 			pile->value = CMD_NAME;
 		}
 		else if (pile->prev->value == MINI_COMMENT)
 		{
-			parser->memory.ccomment = 1;
+//			parser->memory.ccomment = 1;
 			pile->value = CMD_COMMENT;
 		}
 		ft_add_leaf(pile->tree, pile->prev->tree);

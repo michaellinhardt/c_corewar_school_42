@@ -16,8 +16,8 @@ int		ft_parser_reduce(t_parser *parser)
 			while ( i < NBR_REDUCE)
 			{
 				ret = parser->f_reduce[i++](parser, pile);
-				if (ret == 1)
-					break;
+				if (ret > 0)
+					return (ret);
 				if (ret == -1)
 					return (ERREUR);
 			}
@@ -25,8 +25,11 @@ int		ft_parser_reduce(t_parser *parser)
 		pile = pile->next;
 	}
 	//a  ajouter dans une fonction
+	// normalement c'est uselless
+	/*
 	if  (!parser->memory.header && parser->memory.ccomment
 			&& parser->memory.name)
 		return (ACCEPT);
+		*/
 	return (1);
 }

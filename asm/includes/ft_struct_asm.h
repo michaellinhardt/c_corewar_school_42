@@ -4,6 +4,7 @@
 
 # define NBR_REDUCE 6
 # define NBR_SHIFT 12
+# define NBR_ACCEPT 6
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,
@@ -97,6 +98,7 @@ struct          s_instructions
 	int						flag_size_ind;
 };
 
+/*
 typedef struct		s_memory t_memory;
 
 struct					s_memory
@@ -107,6 +109,7 @@ struct					s_memory
 	unsigned int		arg:1;
 };
 
+*/
 
 struct					s_parser
 {
@@ -115,8 +118,9 @@ struct					s_parser
 	int				size_fonction;
 	int				(*f_reduce[NBR_REDUCE])(t_parser *parser, t_pile_tree *pile);
 	int				(*f_shift[NBR_SHIFT])(t_parser *parser);
+	int				(*f_accept[NBR_ACCEPT])(t_parser *parser, t_pile_tree *tree);
 	t_instructions	inst[17];
-	t_memory		memory;
+//	t_memory		memory;
 	t_token			*focus;
 	t_parse_tree	*tree_header;
 	t_parse_tree	*tree_code;

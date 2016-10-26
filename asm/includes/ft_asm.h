@@ -84,6 +84,16 @@ int			ft_rule_separator_char(t_parser *parser, t_pile_tree *pile);
 int			ft_rule_argument(t_parser *parser, t_pile_tree *tree);
 
 /*
+**			accept rules
+*/
+
+int			ft_accept_header(t_parser *parser, t_pile_tree *pile);
+int			ft_accept_label(t_parser *parser, t_pile_tree *pile);
+int			ft_accept_name(t_parser *parser, t_pile_tree *pile);
+int			ft_accept_comment(t_parser *parser, t_pile_tree *pile);
+int			ft_accept_argument(t_parser *parser, t_pile_tree *pile);
+int			ft_accept_instruction(t_parser *parser, t_pile_tree *pile);
+/*
 **			checks
 */
 
