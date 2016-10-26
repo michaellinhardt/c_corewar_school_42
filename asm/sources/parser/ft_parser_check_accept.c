@@ -8,17 +8,14 @@
 
 int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 {
-	if (pile->value == MINI_NAME || pile->value == MINI_COMMENT)
+		t_parse_tree *tree;
+	if (pile->next && (pile->value == CMD_NAME || pile->value == CMD_COMMENT))
 	{
-	/*
-	t_parse_tree *tree;
-
-	{
-		ft_putendl("reduction  header");
 		if (pile->value == CMD_NAME)
 		{
 			if (!pile->next || pile->next->value != CMD_COMMENT)
-				return (-1);
+				return (0);
+			ft_putendl("reduction  header");
 			ft_add_leaf(pile->tree, pile->next->tree->fils[0]);
 			tree = pile->next->tree;
 			pile->next->tree = pile->next->tree->fils[0];
@@ -30,7 +27,8 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 		else if (pile->value == CMD_COMMENT)
 		{
 			if (!pile->next || pile->next->value != CMD_NAME)
-				return (-1);
+				return (0);
+			ft_putendl("reduction  header");
 			ft_add_leaf(pile->next->tree, pile->tree->fils[0]);
 			tree = pile->tree;
 			pile->tree = pile->tree->fils[0];
@@ -39,8 +37,6 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 			ft_free_elem_pile(pile, parser);
 			return (1);
 		}
-	}
-	*/
 	}
 	return (0);
 }
@@ -62,6 +58,7 @@ int	ft_accept_name(t_parser *parser, t_pile_tree *pile)
 		}
 		ft_putendl("accept mini name");
 		ft_add_leaf(pile->next->tree, pile->tree);
+		pile->next->value = CMD_NAME;
 		ft_free_elem_pile(pile, parser);
 		return (SHIFT);
 	}
@@ -72,12 +69,15 @@ int	ft_accept_comment(t_parser *parser, t_pile_tree *pile)
 {
 	if (pile->value == MINI_COMMENT)
 	{
+		ft_putendl("accept mini comment");
 		if (!pile->next && pile->next->value != ENDLINE)
 		{
 			ft_putendl("erreur mini comment");
 			return (-1);
 		}
-		ft_putendl("accept mini comment");
+		pile->next->value = CMD_COMMENT;
+		ft_add_leaf(pile->next->tree, pile->tree);
+		ft_free_elem_pile(pile, parser);
 		return (SHIFT);
 	// add parent + free elem pile
 	}

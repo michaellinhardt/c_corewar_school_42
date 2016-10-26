@@ -24,8 +24,15 @@ int		ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
 	ret = ft_check_separator_char(pile->tree);
 	if (ret)
 	{
-		ft_add_parent_tree(pile, parser);
-		pile->value = VIRGULE;
+		if (!pile->prev || pile->prev->value != ARG)
+		{
+			ft_putendl("erreur reduce SEPARATOR char");
+			return (-1);
+		}
+		ft_add_leaf(pile->tree, pile->prev->tree);
+		ft_free_elem_pile(pile->prev, parser);
+		//ft_add_parent_tree(pile, parser);
+		pile->value = SEPARATOR_CHAR;
 		parser->focus_pile = 0;
 		return (SHIFT);
 	}

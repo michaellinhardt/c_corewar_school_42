@@ -17,7 +17,7 @@ int		ft_parser_accept(t_parser *parser)
 			if (ret > 0)
 			{
 				// tant qu'on a des accept on continue de reduire
-				return (ret);
+				return (ACCEPT);
 			}
 			if (ret == -1)
 			{
@@ -53,5 +53,5 @@ int		ft_parser_accept(t_parser *parser)
 			// ca fait une sorte de lecture de droite a gauche de nos regles
 		begin = begin->next;
 	}
-	return (0);
+	return (SHIFT);
 }

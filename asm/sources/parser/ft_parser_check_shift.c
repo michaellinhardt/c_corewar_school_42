@@ -143,7 +143,7 @@ int		ft_shift_direct_label(t_parser *parser)
 
 int		ft_shift_direct(t_parser *parser)
 {
-	if (parser->focus->token == DIRECT_LABEL)
+	if (parser->focus->token == DIRECT)
 	{
 		if (parser->focus_pile)
 		{
