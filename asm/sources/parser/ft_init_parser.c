@@ -15,6 +15,7 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_reduce[3] = ft_rule_instruction;
 	parser->f_reduce[4] = ft_rule_separator_char;
 	parser->f_reduce[5] = ft_rule_argument;
+	parser->f_reduce[6] = ft_rule_end;
 
 
 	parser->f_shift[0] = ft_shift_no_focus;
@@ -30,6 +31,7 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_shift[10] = ft_shift_direct_label;
 	parser->f_shift[11] = ft_shift_direct;
 	parser->f_shift[12] = ft_shift_indirect;
+	parser->f_shift[13] = ft_shift_end;
 
 
 
@@ -39,6 +41,7 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_accept[2] = ft_accept_separator_char;
 	parser->f_accept[3] = ft_accept_label;
 	parser->f_accept[4] = ft_accept_name;
-	parser->f_accept[5] = ft_accept_comment;
-	parser->f_accept[6] = ft_accept_header;
+	parser->f_accept[5] = ft_accept_end;
+	parser->f_accept[6] = ft_accept_comment;
+	parser->f_accept[7] = ft_accept_header;
 }

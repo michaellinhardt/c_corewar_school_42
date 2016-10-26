@@ -39,7 +39,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 42)
+		if (test == 6)
 		{
 			
 		//	ft_putnbr(parser->focus->token);

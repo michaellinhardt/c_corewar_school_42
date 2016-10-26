@@ -174,3 +174,20 @@ int		ft_shift_indirect(t_parser *parser)
 	}
 	return (0);
 }
+
+int		ft_shift_end(t_parser *parser)
+{
+	if (parser->focus->token == END)
+	{
+		if (parser->focus_pile)
+		{
+			ft_putendl("erreur shift end");
+			return (-1);
+		}
+		ft_add_tree_shift(parser);
+		parser->focus_pile->value = END;
+		parser->focus = parser->focus->next;
+		return (REDUCE);
+	}
+	return (0);
+}

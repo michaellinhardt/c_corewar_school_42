@@ -2,9 +2,9 @@
 # define FT_STRUCT_ASM_H
 # include "op.h"
 
-# define NBR_REDUCE 6
-# define NBR_SHIFT 13
-# define NBR_ACCEPT 7
+# define NBR_REDUCE 7
+# define NBR_SHIFT 14
+# define NBR_ACCEPT 8
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,

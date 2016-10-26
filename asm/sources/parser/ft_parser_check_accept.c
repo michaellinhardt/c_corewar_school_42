@@ -188,3 +188,9 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 	}
 	return (0);
 }
+
+int			ft_accept_end(t_parser *parser, t_pile_tree *pile)
+{
+
+	return (0);
+}
