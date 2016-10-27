@@ -52,6 +52,7 @@ unsigned char	*ft_compile_indirect(t_parse_tree *tree, unsigned char *code,
 	ft_putendl(tree->token->value);
 	return (0);
 }
+#include <stdlib.h>
 unsigned char	*ft_compile_instruction(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile)
 {
@@ -70,13 +71,25 @@ unsigned char	*ft_compile_instruction(t_parse_tree *tree, unsigned char *code,
 		inst[size++] = ft_set_oc_p(tree->id_instruction, tree);
 	while (i < tree->nbr_fils)
 	{
-			compile->f_compile[tree->fils[i]->token->token]
-				(tree->fils[i], code_arg, compile); 
-			ft_memcpy(inst + size, code_arg , compile->size);
-			size += compile->size;
-			 ++i;
+		compile->f_compile[tree->fils[i]->token->token]
+			(tree->fils[i], code_arg, compile); 
+		ft_memcpy(inst + size, code_arg , compile->size);
+		size += compile->size;
+		++i;
 	}
 	ft_print_memory(&inst, size);
+	if (!compile->code)
+	{
+		compile->code = ft_memalloc(sizeof(unsigned char) * size);		
+		ft_memcpy(compile->code, inst, size);
+	}
+	else
+	{
+		compile->code  = realloc(compile->code, sizeof(unsigned char) *
+				(size + compile->total_size));
+		ft_memcpy(compile->code + compile->total_size, inst, size);
+	}
+	compile->total_size += size;
 	return (0);
 }
 unsigned char	*ft_compile_indirect_label(t_parse_tree *tree, unsigned char *code,
@@ -91,6 +104,8 @@ unsigned char	*ft_compile_direct(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile)
 {
 	unsigned int nbr;
+	unsigned int i;
+	unsigned int decal;
 
 	nbr = ft_atoi(tree->token->value + 1);
 	if (compile->actual_inst->flag_size_ind)
@@ -99,10 +114,17 @@ unsigned char	*ft_compile_direct(t_parse_tree *tree, unsigned char *code,
 		compile->size = 2;
 	}
 	else
-	{
 		compile->size = 4;
-	}
 	ft_putnbr(nbr);
+	ft_putchar('\n');
+	i = 0;
+	decal = (compile->size - 1) * 8;
+	while (i < compile->size)
+	{
+		*(code + i) = nbr >> decal;
+		decal -= 8;
+		++i;
+	}
 	return (0);
 }
 unsigned char	*ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
@@ -123,12 +145,12 @@ int			ft_compile(t_parse_tree *tree, t_compile *compile, unsigned char *code)
 
 	if (tree)
 	{
-		 i = 0;
-		 while (i < tree->nbr_fils)
-		 {
+		i = 0;
+		while (i < tree->nbr_fils)
+		{
 			compile->f_compile[tree->fils[i]->token->token](tree->fils[i], code, compile); 
-			 ++i;
-		 }
+			++i;
+		}
 	}
 	return (1);
 }

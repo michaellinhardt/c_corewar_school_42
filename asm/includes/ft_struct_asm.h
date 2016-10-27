@@ -55,6 +55,7 @@ struct	s_compile{
 	t_header		header;
 	unsigned char	*code;
 	unsigned int	size;
+	unsigned int	total_size;
 	t_instructions	inst[17];
 	t_instructions	*actual_inst;
 	int				flag_size_ind; // c'est pas direct ?
