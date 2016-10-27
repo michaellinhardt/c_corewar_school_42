@@ -21,13 +21,6 @@ void	bloc_fadeout(t_img *i)
 		&& (i->str[i->i + 3] += BLOC_FADE) > fade)
 			i->str[i->i + 3] = fade;
 	}
-		// {
-		// 	i->str[i->i + 3] += BLOC_FADE;
-		// 	if (i->str[i->i + 3] > 255)
-		// 		i->str[i->i + 3] = 255;
-		// }
-		// else
-		// 	ft_printf("good\n");
 }
 
 int		display(t_dmlx *m, t_dvm *v)
