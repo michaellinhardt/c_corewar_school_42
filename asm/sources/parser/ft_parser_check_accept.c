@@ -216,14 +216,23 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 			return (0);
 		if (pile->prev->value == INST)
 		{
-			ft_putendl("youpi");
-
+			if (ft_verif_instruction(pile->prev, pile, parser->inst))
+			{
+				ft_complete_instruction(pile->prev->tree, pile->tree);
+				pile->prev->value = CPL_INST;
+				ft_free_pointeur_tab_fils(pile->tree);
+				ft_free_elem_pile(pile, parser);
+				ft_putendl("youpi");
+			}
+			else
+			{
+				ft_putendl("erreur accept: instruction invalide");
+			}
 			return (0);
 		}
 		else
 		{
-
-				ft_putendl("erreur accept instruction");
+			ft_putendl("erreur accept instruction");
 			return (-1);
 		}
 		/*
