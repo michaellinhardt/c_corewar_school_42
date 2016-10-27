@@ -268,8 +268,9 @@ int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
 			free(pile->tree->fils);
 			free(pile->tree);
 			ft_free_elem_pile(pile, parser);
+			pile->prev->value = FIN_INST;
 			ft_putendl("accept instruction multiples");
-			return (-1);
+			return (1);
 		}
 	}
 	return (0);

@@ -165,4 +165,6 @@ unsigned char	*ft_compile_direct(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile);
 unsigned char	*ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile);
+unsigned char	*ft_compile_endline(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
 #endif

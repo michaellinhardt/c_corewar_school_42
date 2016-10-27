@@ -45,6 +45,25 @@ unsigned char	*ft_compile_register(t_parse_tree *tree, unsigned char *code,
 		*code = (*registre - 48) + *code * 10;
 	return (0);
 }
+
+unsigned char	*ft_compile_endline(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile)
+{
+	int i;
+
+	if (tree)
+	{
+		i = 0;
+		while (i < tree->nbr_fils)
+		{
+			ft_putendl("lol");
+			compile->f_compile[tree->fils[i]->token->token](tree->fils[i], code, compile); 
+			++i;
+		}
+	}
+	return (0);
+}
+
 unsigned char	*ft_compile_indirect(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile)
 {
@@ -148,6 +167,7 @@ int			ft_compile(t_parse_tree *tree, t_compile *compile, unsigned char *code)
 		i = 0;
 		while (i < tree->nbr_fils)
 		{
+			ft_putendl("lol");
 			compile->f_compile[tree->fils[i]->token->token](tree->fils[i], code, compile); 
 			++i;
 		}

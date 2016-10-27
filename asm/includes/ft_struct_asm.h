@@ -59,7 +59,7 @@ struct	s_compile{
 	t_instructions	inst[17];
 	t_instructions	*actual_inst;
 	int				flag_size_ind; // c'est pas direct ?
-	unsigned char	*(*f_compile[ENDLINE])(t_parse_tree *tree, unsigned char
+	unsigned char	*(*f_compile[ENDLINE + 1])(t_parse_tree *tree, unsigned char
 			*code, t_compile *compile);
 };
 

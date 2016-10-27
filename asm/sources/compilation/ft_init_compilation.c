@@ -16,5 +16,6 @@ void	ft_init_compilation(t_compile *compile)
 	compile->f_compile[DIRECT_LABEL] = ft_compile_direct_label;
 	compile->f_compile[INDIRECT_LABEL] = ft_compile_indirect_label;
 	compile->f_compile[DIRECT] = ft_compile_direct;
+	compile->f_compile[ENDLINE] = ft_compile_endline;
 
 }
