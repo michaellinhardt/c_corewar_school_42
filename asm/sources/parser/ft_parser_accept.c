@@ -15,11 +15,10 @@ int		ft_parser_accept(t_parser *parser)
 		i = 0;
 		while (i < NBR_ACCEPT)
 		{
-			prev = end->prev;
 			ret = parser->f_accept[i](parser, end);
 			if (ret > 0)
 			{
-				end = prev;
+				end = parser->end_pile;
 				continue ;
 				// tant qu'on a des accept on continue de reduire
 				//return (ACCEPT);

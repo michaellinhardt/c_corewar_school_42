@@ -39,7 +39,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 7)
+		if (test == 14)
 		{
 		//	ft_putnbr(parser->focus->token);
 			break;
@@ -59,7 +59,6 @@ static int	ft_parse_code(t_parser *parser)
 		ft_putendl("----------------");
 		pile = pile->next;
 	}
-
 	return (1);
 }
 
