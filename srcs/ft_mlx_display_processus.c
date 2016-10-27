@@ -20,16 +20,16 @@ void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 	}
 }
 
-void	display_bloc(t_dmlx *m, t_proc *proc, t_img *img)
+void	display_bloc(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 {
+	ft_printf("proc_id %d ¶ status %d ¶ wait: %d, turfu: %d\n", proc->id, proc->mlx_status, proc->wait, proc->pc_turfu);
 	(void)m;
 	(void)proc;
 	(void)img;
-
-	exit1(1, data(), "build bloc");
+	(void)bloc;
 }
 
-void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
+void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 {
 	char		already[MEM_SIZE];
 	int			x;
@@ -47,7 +47,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
 		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
 		already[(proc->pc)] = 1;
-		display_bloc(m, proc, img);
+		display_bloc(m, proc, img, bloc);
 		proc = proc->n;
 	}
 }

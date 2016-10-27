@@ -21,6 +21,7 @@ typedef struct		s_proc
 	int				id;
 	int				player;
 	int				create_cycle;
+	int				mlx_status;
 	int				live;
 	int				last_live;
 	int				live_player;

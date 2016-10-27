@@ -10,6 +10,15 @@ void	reset_img(t_img *img)
 		ptr[img->i] = 0xFF000000;
 }
 
+void	bloc_fadeout(t_img *img)
+{
+	img->i = -4;
+	while ((img->i += 4) < (WIN_Y * (WIN_X * 4)) + WIN_X * 4)
+		if ((img->str[img->i + 3] + 0) != 255)
+			img->str[img->i + 3] = (img->str[img->i + 3] + BLOC_FADE) >= 255 ?
+			255 : (img->str[img->i + 3] + BLOC_FADE);
+}
+
 int		display(t_dmlx *m, t_dvm *v)
 {
 	l2(100, "DISPLAYING", "build and print screen..", v->cycle);
@@ -20,7 +29,8 @@ int		display(t_dmlx *m, t_dvm *v)
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
 	reset_img(&m->scene_img[2][10]);
-	display_processus(m, v->proc, &m->scene_img[2][10]);
+	bloc_fadeout(&m->scene_img[2][26]);
+	display_processus(m, v->proc, &m->scene_img[2][10], &m->scene_img[2][26]);
 	display_processus_count(m, v);
 	if (v->nbr_proc)
 		display_bar_proc(m, v, &m->scene_img[2][10], 0);
@@ -29,6 +39,7 @@ int		display(t_dmlx *m, t_dvm *v)
 	if (v->total_live)
 		display_bar_proc_live(m, v, &m->scene_img[2][10], 0);
 	itow(m->scene_img[2][10].img, 0, 0, "processus & bar layer");
+	itow(m->scene_img[2][26].img, 0, 0, "processus bloc");
 	display_arene(m, v, 0, 0);
 	l2(-2, "display()", "printing cycle", v->cycle);
 	return (1);

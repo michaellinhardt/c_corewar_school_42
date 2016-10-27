@@ -64,6 +64,7 @@ void			processus_read(t_dvm *v, t_proc *begin)
 			if (!(ft_get_instruction(v->instructions, v, proc)))
 			{
 				proc->pc = (proc->pc + 1) % MEM_SIZE;
+				proc->mlx_status = -1;
 				proc = proc->n;
 				continue ;
 			}
