@@ -44,4 +44,5 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_accept[5] = ft_accept_comment;
 	parser->f_accept[6] = ft_accept_name;
 	parser->f_accept[7] = ft_accept_header;
+	parser->f_accept[8] = ft_accept_code_header;
 }

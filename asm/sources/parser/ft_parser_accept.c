@@ -16,18 +16,20 @@ int		ft_parser_accept(t_parser *parser)
 		while (i < NBR_ACCEPT)
 		{
 			ret = parser->f_accept[i](parser, end);
-			if (ret > 0)
+			if (ret == 1)
 			{
 				end = parser->end_pile;
 				continue ;
 				// tant qu'on a des accept on continue de reduire
 				//return (ACCEPT);
 			}
-			if (ret == -1)
+			else if (ret == -1)
 			{
 					ft_putendl("Error accept");
 					return (0);
 			}
+			else if (ret == CODE_ACCEPT)
+				return CODE_ACCEPT;
 			++i;
 		}
 		/*

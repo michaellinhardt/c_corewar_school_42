@@ -40,7 +40,6 @@ static int 	ft_verif_args(t_parse_tree *args, t_instructions inst,
 			if (!ft_check_type_arg(args->token, *nbr, inst))
 				return (0);
 			*nbr += 1;
-			ft_putendl(args->token->value);
 		}
 		while (i >= 0)
 		{
@@ -63,7 +62,6 @@ int			ft_verif_instruction(t_pile_tree *pile, t_pile_tree *next,
 		ft_putendl("Wrong instruction");
 		return (0);
 	}
-	ft_putendl("^^^^^^^^^^^^^^^^^^^^^^^^");
 	if (!ft_verif_args(next->tree, *(inst + i), &j))
 		return (0);
 	if (j != (*(inst + i)).nbr_args)

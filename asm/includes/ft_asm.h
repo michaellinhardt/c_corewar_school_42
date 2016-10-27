@@ -97,6 +97,7 @@ int			ft_accept_argument(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_instruction(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_separator_char(t_parser *parser, t_pile_tree *tree);
 int			ft_accept_end(t_parser *parser, t_pile_tree *tree);
+int			ft_accept_code_header(t_parser *parser, t_pile_tree *tree);
 /*
 **			checks
 */

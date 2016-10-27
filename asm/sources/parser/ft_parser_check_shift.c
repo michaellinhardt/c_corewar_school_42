@@ -185,7 +185,6 @@ int		ft_shift_end(t_parser *parser)
 			return (-1);
 		}
 		ft_add_tree_shift(parser);
-		parser->focus_pile->value = END;
 		parser->focus = parser->focus->next;
 		return (REDUCE);
 	}

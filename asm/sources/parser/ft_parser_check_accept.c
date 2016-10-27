@@ -222,7 +222,6 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 				pile->prev->value = CPL_INST;
 				ft_free_pointeur_tab_fils(pile->tree);
 				ft_free_elem_pile(pile, parser);
-				ft_putendl("youpi");
 			}
 			else
 			{
@@ -235,22 +234,48 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 			ft_putendl("erreur accept instruction");
 			return (-1);
 		}
-		/*
-		   if (ft_verif_instruction(pile, pile->next,parser->inst))
-		   {
-		   ft_putendl("accept INSTRUCTION");
-		   ft_complete_instruction(pile->tree, pile->next->tree);
-		   pile->value = CPL_INST;
-		   ft_free_pointeur_tab_fils(pile->next->tree);
-		   ft_free_elem_pile(pile->next, parser);
-		   }
-		   */
 	}
+	return (0);
+}
+
+int			ft_accept_code_header(t_parser *parser, t_pile_tree *pile)
+{
+	//reduction final
+	if (pile->value == FIN_INST)
+	{
+		if (pile->prev->value != HEADER)
+			return (0);
+		ft_putendl("reduction final");
+		ft_add_leaf(pile->prev->tree, pile->tree);
+		ft_free_elem_pile(pile, parser);
+		return (CODE_ACCEPT);
+	}
+	return (0);
+}
+// concatete +sieurs instrctuions a l'affile
+int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
+{
+
 	return (0);
 }
 
 int			ft_accept_end(t_parser *parser, t_pile_tree *pile)
 {
-
+	if (pile->value == FIN)
+	{
+		if (pile->prev->value == CPL_INST)
+		{
+			ft_putendl("accept fin instruction");
+			pile->prev->value = FIN_INST;
+			ft_free_elem_pile(pile, parser);
+			return (1);
+		}
+		// ajouter condion poour label finis
+		else 
+		{
+			ft_putendl("erreur accept end");
+			return (-1);
+		}
+	}
 	return (0);
 }

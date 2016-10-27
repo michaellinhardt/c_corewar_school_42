@@ -34,11 +34,3 @@ int		ft_rule_ccomment(t_parser *parser, t_pile_tree *pile)
 	}
 	return (ret);
 }
-
-
-int		ft_rule_end(t_parser *parser, t_pile_tree *pile)
-{
-
-
-	return (0);
-}

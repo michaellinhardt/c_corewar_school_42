@@ -30,6 +30,11 @@ static int	ft_parse_code(t_parser *parser)
 			action = ft_parser_accept(parser);
 				// accept
 		}
+		else if (action == CODE_ACCEPT)
+		{
+			ft_putendl("fin parser");
+			break;
+		}
 		else
 		{
 			ft_printf("error while 1\n");
@@ -39,14 +44,12 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 32)
+		if (test == 36)
 		{
 		//	ft_putnbr(parser->focus->token);
 			break;
 		}
 	}
-
-
 	if (!parser->end_pile)
 		ft_printf("y a un soucis\n");
 	ft_putendl("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
