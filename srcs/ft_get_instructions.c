@@ -55,6 +55,5 @@ int			ft_get_instruction(t_instructions *inst,
 	proc->inst = &inst[(int)opcode];
 	proc->inst->id = (int)opcode;
 	proc->wait = proc->inst->cycles;
-	proc->mlx_status = proc->pc_turfu;
 	return (1);
 }
