@@ -47,6 +47,8 @@ static int	ft_parse_code(t_parser *parser)
 	}
 
 
+	if (!parser->end_pile)
+		ft_printf("y a un soucis\n");
 	ft_putendl("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 	t_pile_tree *pile;
 	pile = parser->debut_pile;
