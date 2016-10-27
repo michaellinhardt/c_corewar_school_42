@@ -20,6 +20,15 @@ void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 	}
 }
 
+void	display_bloc(t_dmlx *m, t_proc *proc, t_img *img)
+{
+	(void)m;
+	(void)proc;
+	(void)img;
+
+	exit1(1, data(), "build bloc");
+}
+
 void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 {
 	char		already[MEM_SIZE];
@@ -38,6 +47,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img)
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
 		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
 		already[(proc->pc)] = 1;
+		display_bloc(m, proc, img);
 		proc = proc->n;
 	}
 }

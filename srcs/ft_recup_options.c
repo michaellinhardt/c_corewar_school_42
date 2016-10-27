@@ -24,6 +24,8 @@ static void	ft_check_options2(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 {
 	if (!ft_strcmp(*(argv + tab[0]), "-g"))
 		vm->graphic = 1;
+	else if (!ft_strcmp(*(argv + tab[0]), "-p"))
+		vm->pause = 1;
 	else if (!ft_strcmp(*(argv + tab[0]), "-l"))
 		vm->consolee = 1;
 	else if (!ft_strcmp(*(argv + tab[0]), "-h"))
