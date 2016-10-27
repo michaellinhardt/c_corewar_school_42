@@ -220,8 +220,13 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 			{
 				ft_complete_instruction(pile->prev->tree, pile->tree);
 				pile->prev->value = CPL_INST;
-				ft_free_pointeur_tab_fils(pile->tree);
+				ft_free_arguments(pile->tree);
+				pile->tree->fils = 0;
+				pile->tree->nbr_fils = 0;
+				ft_add_leaf(pile->tree, pile->prev->tree);
+				pile->prev->tree = pile->tree;
 				ft_free_elem_pile(pile, parser);
+				return (1);
 			}
 			else
 			{
@@ -255,7 +260,18 @@ int			ft_accept_code_header(t_parser *parser, t_pile_tree *pile)
 // concatete +sieurs instrctuions a l'affile
 int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
 {
-
+	if (pile->value == FIN_INST)
+	{
+		if (pile->prev->value == CPL_INST)
+		{
+			ft_add_leaf(pile->prev->tree, pile->tree->fils[0]);
+			free(pile->tree->fils);
+			free(pile->tree);
+			ft_free_elem_pile(pile, parser);
+			ft_putendl("accept instruction multiples");
+			return (-1);
+		}
+	}
 	return (0);
 }
 

@@ -4,7 +4,7 @@
 
 # define NBR_REDUCE 7
 # define NBR_SHIFT 14
-# define NBR_ACCEPT 9
+# define NBR_ACCEPT 10
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,

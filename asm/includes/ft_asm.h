@@ -73,6 +73,7 @@ int			ft_parser_reduce(t_parser *parser);
 int			ft_parser_accept(t_parser *parser);
 
 void		ft_free_pointeur_tab_fils(t_parse_tree *tree);
+void		ft_free_arguments(t_parse_tree *tree);
 
 /*
 **			rules
@@ -98,6 +99,7 @@ int			ft_accept_instruction(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_separator_char(t_parser *parser, t_pile_tree *tree);
 int			ft_accept_end(t_parser *parser, t_pile_tree *tree);
 int			ft_accept_code_header(t_parser *parser, t_pile_tree *tree);
+int			ft_accept_end_inst(t_parser *parser, t_pile_tree *tree);
 /*
 **			checks
 */
