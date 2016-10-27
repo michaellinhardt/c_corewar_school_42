@@ -49,18 +49,29 @@ int	ft_accept_label(t_parser *parser, t_pile_tree *pile)
 
 int	ft_accept_name(t_parser *parser, t_pile_tree *pile)
 {
-	if (pile->value == MINI_NAME)
+	if (pile->value == ENDLINE)
 	{
-		if (!pile->next && pile->next->value != ENDLINE)
+		if (!pile->prev)
 		{
 			ft_putendl("erreur mini name");
 			return (-1);
 		}
+		if (pile->prev->value == MINI_NAME)
+		{
+			ft_putendl("accept mini name");
+			ft_add_leaf(pile->tree, pile->prev->tree);
+			pile->prev->tree = pile->tree;
+			pile->prev->value = CMD_NAME;
+			ft_free_elem_pile(pile, parser);
+			return (1);
+		}
+		/*
 		ft_putendl("accept mini name");
 		ft_add_leaf(pile->next->tree, pile->tree);
 		pile->next->value = CMD_NAME;
 		ft_free_elem_pile(pile, parser);
 		return (SHIFT);
+		*/
 	}
 	return (0);
 }

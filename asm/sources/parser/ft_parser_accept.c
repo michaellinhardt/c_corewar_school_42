@@ -6,19 +6,23 @@ int		ft_parser_accept(t_parser *parser)
 	int ret;
 	int	i;
 	// refaire a partir de la fin
-	t_pile_tree *begin;
+	t_pile_tree *end;
+	t_pile_tree *prev;
 
-	begin = parser->debut_pile;
-	while (begin)
+	end = parser->end_pile;
+	while (end)
 	{
 		i = 0;
 		while (i < NBR_ACCEPT)
 		{
-			ret = parser->f_accept[i](parser, begin);
+			prev = end->prev;
+			ret = parser->f_accept[i](parser, end);
 			if (ret > 0)
 			{
+				end = prev;
+				continue ;
 				// tant qu'on a des accept on continue de reduire
-				return (ACCEPT);
+				//return (ACCEPT);
 			}
 			if (ret == -1)
 			{
@@ -52,7 +56,8 @@ int		ft_parser_accept(t_parser *parser)
 
 			// en en epilogue on check pour le LABEL
 			// ca fait une sorte de lecture de droite a gauche de nos regles
-		begin = begin->next;
+//		begin = begin->next;
+	end = end->prev;
 	}
 	return (SHIFT);
 }
