@@ -93,7 +93,7 @@ C_BLUE	= "\033[34;1m"
 all: $(NAME)
 
 $(NAME): $(OBJ)
-#@make -C $(LIBS)
+	@make -C $(LIBS)
 	$(CC) $(OBJ) -o $@ $(FLAGS) $(INCS) $(LIBFT) $(LIBMLX)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
@@ -106,7 +106,7 @@ test: $(NAME)
 	@./$(NAME)
 
 clean:
-#@make clean -C $(LIBS)
+	@make clean -C $(LIBS)
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
@@ -116,12 +116,12 @@ clean2:
 
 fclean: clean2
 	@/bin/rm -rf *.dSYM
-#@make fclean -C $(LIBS)
+	@make fclean -C $(LIBS)
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 #leaks: $(NAME) -leaks
-leaks: re
+leaks: $(NAME)
 	./corewar ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor
 
 -leaks:
