@@ -69,5 +69,6 @@ int			ft_verif_instruction(t_pile_tree *pile, t_pile_tree *next,
 		ft_putendl("chai pas");
 		return (0);
 	}
+	pile->tree->id_instruction = i;
 	return (1);
 }

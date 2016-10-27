@@ -27,10 +27,40 @@ enum	e_token{
 };	
 
 
+typedef struct s_pile_tree t_pile_tree;
+typedef struct s_instructions t_instructions;
 typedef struct s_token t_token;
 typedef struct s_lexer t_lexer;
 typedef struct s_parser t_parser;
 typedef struct s_parse_tree t_parse_tree;
+typedef struct s_compile t_compile;
+/*
+typedef unsigned char * (*f_compilation[ENDLINE])(t_parse_tree *tree, unsigned 
+		char *code, t_compile *compile);
+		*/
+struct          s_instructions
+{
+	int						id;
+	char					name[6];
+	short					nbr_args;
+	t_arg_type				types[MAX_ARGS_NUMBER];
+	int						flag_ocp;
+	int						flag_size_ind;
+};
+
+
+
+
+struct	s_compile{
+	t_header		header;
+	unsigned char	*code;
+	unsigned int	size;
+	t_instructions	inst[17];
+	t_instructions	*actual_inst;
+	int				flag_size_ind; // c'est pas direct ?
+	unsigned char	*(*f_compile[ENDLINE])(t_parse_tree *tree, unsigned char
+			*code, t_compile *compile);
+};
 
 struct				s_token
 {
@@ -68,8 +98,6 @@ struct				s_parse_tree
 	// le pointeur sur fonction pour l'action a effectuer
 };
 
-typedef struct s_pile_tree t_pile_tree;
-typedef struct s_instructions t_instructions;
 
 enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER,
 				INST, ARG, VIRGULE, LAST_ARG, CPL_INST, FIN_INST, FIN};
@@ -89,29 +117,6 @@ typedef char            t_arg_type;
 typedef struct s_dvm    t_dvm;
 typedef struct s_proc   t_proc;
 
-struct          s_instructions
-{
-	int						id;
-	char					name[6];
-	short					nbr_args;
-	t_arg_type				types[MAX_ARGS_NUMBER];
-	int						flag_ocp;
-	int						flag_size_ind;
-};
-
-/*
-typedef struct		s_memory t_memory;
-
-struct					s_memory
-{
-	unsigned int		name:1;
-	unsigned int		ccomment:1;	
-	unsigned int		header:1;
-	unsigned int		arg:1;
-};
-
-*/
-
 struct					s_parser
 {
 	char			*code;
@@ -123,8 +128,8 @@ struct					s_parser
 	t_instructions	inst[17];
 //	t_memory		memory;
 	t_token			*focus;
-	t_parse_tree	*tree_header;
-	t_parse_tree	*tree_code;
+	t_parse_tree	*tree_header; // useless
+	t_parse_tree	*tree_code; // aussi
 	t_pile_tree		*debut_pile;
 	t_pile_tree		*end_pile;
 	t_pile_tree		*focus_pile;

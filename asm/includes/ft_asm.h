@@ -133,4 +133,34 @@ int			ft_shift_end(t_parser *parser);
 
 void		ft_add_node(t_parse_tree *tree, t_parse_tree *leaf);
 t_parse_tree *ft_create_leaf(t_token *token);
+
+/*
+**	compilation
+*/
+
+void			ft_init_compilation(t_compile *compile);
+int				ft_compilation(t_parse_tree *tree, t_parser *parser);
+unsigned char	ft_set_oc_p(unsigned int id, t_parse_tree *inst);
+int				ft_compile(t_parse_tree *tree,t_compile *compile, unsigned char *code);
+
+unsigned char	*ft_compile_name(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_comment(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_string(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_label(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_register(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_indirect(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_instruction(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_indirect_label(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_direct(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
+unsigned char	*ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
+		t_compile *compile);
 #endif

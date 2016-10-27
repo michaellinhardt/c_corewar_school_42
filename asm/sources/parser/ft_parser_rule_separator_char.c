@@ -32,7 +32,7 @@ int		ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
 		ft_add_leaf(pile->tree, pile->prev->tree);
 		ft_free_elem_pile(pile->prev, parser);
 		//ft_add_parent_tree(pile, parser);
-		pile->value = SEPARATOR_CHAR;
+		pile->value = VIRGULE;
 		parser->focus_pile = 0;
 		return (SHIFT);
 	}

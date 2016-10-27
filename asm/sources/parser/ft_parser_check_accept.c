@@ -169,7 +169,7 @@ int	ft_accept_separator_char(t_parser *parser, t_pile_tree *pile)
 		}	
 		if (pile->prev->value == INST)
 			return (0);
-		if (pile->prev->value == SEPARATOR_CHAR)
+		if (pile->prev->value == VIRGULE)
 		{
 			ft_putendl("accept separator char");
 			pile->value = LAST_ARG;
@@ -212,7 +212,7 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 		{
 				ft_putendl("erreur accept instruction");
 		}
-		if (pile->prev->value == SEPARATOR_CHAR)
+		if (pile->prev->value == VIRGULE)
 			return (0);
 		if (pile->prev->value == INST)
 		{
