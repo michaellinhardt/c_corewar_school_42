@@ -39,7 +39,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 
 		++test;
-		if (test == 14)
+		if (test == 32)
 		{
 		//	ft_putnbr(parser->focus->token);
 			break;
@@ -54,6 +54,7 @@ static int	ft_parse_code(t_parser *parser)
 	{
 		if (pile->tree)
 		{
+			ft_printf("value : %d\n", pile->value);
 			ft_display_parse_tree(pile->tree);
 		}
 		ft_putendl("----------------");

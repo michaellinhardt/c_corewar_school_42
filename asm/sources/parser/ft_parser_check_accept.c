@@ -52,6 +52,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 		{
 			if (pile->prev->value == CMD_COMMENT)
 			{
+				pile->value = HEADER;
 				ft_add_leaf(pile->tree, pile->prev->tree->fils[0]);
 				free(pile->prev->tree->fils);
 				free(pile->prev->tree);
@@ -68,6 +69,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 		{
 			if (pile->prev->value == CMD_NAME)
 			{
+				pile->prev->value = HEADER;
 				ft_add_leaf(pile->prev->tree, pile->tree->fils[0]);
 				free(pile->tree->fils);
 				free(pile->tree);
@@ -137,46 +139,51 @@ int	ft_accept_comment(t_parser *parser, t_pile_tree *pile)
 
 int	ft_accept_argument(t_parser *parser, t_pile_tree *pile)
 {
-	if (pile->value == ARG)
+	if (pile->value == ENDLINE)
 	{
-		if (!pile->next || pile->next->value != ENDLINE)
+		if (!pile->prev)
 		{
 			ft_putendl("erreur accept argument");
 			return (-1);
 		}
-		ft_putendl("accept last arg");
-		pile->next->value = LAST_ARG;
-		ft_add_leaf(pile->next->tree, pile->tree);
-		ft_free_elem_pile(pile, parser);
-		return (SHIFT);
+		if (pile->prev->value == ARG)
+		{
+			ft_putendl("accept last arg");
+			/*
+			pile->value = LAST_ARG;
+			ft_add_leaf(pile->tree, pile->prev->tree);
+			ft_free_elem_pile(pile->prev, parser);
+			*/
+			return (-1);
+		}
 	}
 	return (0);
 }
 
 int	ft_accept_separator_char(t_parser *parser, t_pile_tree *pile)
 {
-	if (pile->value == SEPARATOR_CHAR)
+	if (pile->value == LAST_ARG)
 	{
-		if (!pile->next)
+		if (!pile->prev)
 		{
 			ft_putendl("erreur accept separator char");
 			return (-1);
 		}	
-		if (pile->next->value == SEPARATOR_CHAR ||
-				pile->next->value == ARG)
+		if (pile->prev->value == INST)
 			return (0);
-
-		if (pile->next->value == LAST_ARG)
+		if (pile->prev->value == SEPARATOR_CHAR)
 		{
-			ft_add_leaf(pile->next->tree, pile->tree);
-			ft_free_elem_pile(pile, parser);
+			pile->value = LAST_ARG;
+			ft_add_leaf(pile->tree, pile->prev->tree);
+			free(pile->prev->tree->fils);
+			ft_free_elem_pile(pile->prev, parser);
+			return (1);
 		}
 		else
 		{
-			ft_putendl("touve l'erreur :)");
+			ft_putendl("erreur accept separator char");
 			return (-1);
 		}
-		return (SHIFT);
 	}
 	return (0);
 }
@@ -189,7 +196,6 @@ static void	ft_complete_instruction(t_parse_tree *inst, t_parse_tree *args)
 		int i;
 
 		i = args->nbr_fils - 1;
-
 		if (args->token->value)
 			ft_add_leaf(inst, args);
 		while (i >= 0)
@@ -197,13 +203,12 @@ static void	ft_complete_instruction(t_parse_tree *inst, t_parse_tree *args)
 			ft_complete_instruction(inst, args->fils[i]);
 			i--;
 		}
-
 	}
-
 }
 
 int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 {
+	/*
 	if (pile->value == INST)
 	{
 		if (!pile->next)
@@ -225,10 +230,12 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 				ft_putendl("erreur accept instruction");
 				return (-1);
 			}
+			*/
 			/*
 			   ft_add_leaf(pile->next->tree, pile->tree);
 			   ft_free_elem_pile(pile, parser);
 			   */
+	/*
 			return (1);
 		}
 		else
@@ -237,6 +244,7 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 			return (-1);
 		}
 	}
+	*/
 	return (0);
 }
 

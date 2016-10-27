@@ -72,8 +72,8 @@ typedef struct s_pile_tree t_pile_tree;
 typedef struct s_instructions t_instructions;
 
 enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER,
-				INST, ARG, VIRGULE};
-enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT, LAST_ARG, CPL_INST};
+				INST, ARG, VIRGULE, LAST_ARG, CPL_INST};
+enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT};
 
 struct				s_pile_tree
 {

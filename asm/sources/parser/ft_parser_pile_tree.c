@@ -6,6 +6,7 @@ t_pile_tree		*ft_new_pile_tree(void)
 	t_pile_tree *new;
 
 	new = (t_pile_tree *)ft_memalloc(sizeof(t_pile_tree));
+	new->value = 0;
 	return (new);
 }
 
