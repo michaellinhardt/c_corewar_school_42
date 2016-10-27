@@ -22,7 +22,10 @@ void	put_proc_img(t_img *img, t_img *proc, int x, int y)
 
 void	display_bloc(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 {
+
 	ft_printf("proc_id %d ¶ wait: %d, turfu: %d\n", proc->id, proc->wait, proc->pc_turfu);
+	if (proc->inst)
+		ft_printf("%s\n", proc->inst->name);
 	(void)m;
 	(void)proc;
 	(void)img;
