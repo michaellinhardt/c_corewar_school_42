@@ -10,13 +10,24 @@ void	reset_img(t_img *img)
 		ptr[img->i] = 0xFF000000;
 }
 
-void	bloc_fadeout(t_img *img)
+void	bloc_fadeout(t_img *i)
 {
-	img->i = -4;
-	while ((img->i += 4) < (WIN_Y * (WIN_X * 4)) + WIN_X * 4)
-		if ((img->str[img->i + 3] + 0) != 255)
-			img->str[img->i + 3] = (img->str[img->i + 3] + BLOC_FADE) >= 255 ?
-			255 : (img->str[img->i + 3] + BLOC_FADE);
+	static char	fade = 255;
+
+	i->i = -4;
+	while ((i->i += 4) < (i->sl * WIN_Y))
+	{
+		if (i->str[i->i + 3] != fade
+		&& (i->str[i->i + 3] += BLOC_FADE) > fade)
+			i->str[i->i + 3] = fade;
+	}
+		// {
+		// 	i->str[i->i + 3] += BLOC_FADE;
+		// 	if (i->str[i->i + 3] > 255)
+		// 		i->str[i->i + 3] = 255;
+		// }
+		// else
+		// 	ft_printf("good\n");
 }
 
 int		display(t_dmlx *m, t_dvm *v)
