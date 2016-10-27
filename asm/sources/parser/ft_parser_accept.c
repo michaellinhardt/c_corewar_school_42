@@ -5,6 +5,7 @@ int		ft_parser_accept(t_parser *parser)
 {
 	int ret;
 	int	i;
+	// refaire a partir de la fin
 	t_pile_tree *begin;
 
 	begin = parser->debut_pile;
