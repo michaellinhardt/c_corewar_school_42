@@ -85,6 +85,7 @@ int			ft_rule_instruction(t_parser *parser, t_pile_tree *pile);
 int			ft_rule_separator_char(t_parser *parser, t_pile_tree *pile);
 int			ft_rule_argument(t_parser *parser, t_pile_tree *tree);
 int			ft_rule_end(t_parser *parser, t_pile_tree *tree);
+int			ft_rule_label(t_parser *parser, t_pile_tree *tree);
 
 /*
 **			accept rules

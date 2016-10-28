@@ -15,9 +15,11 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_reduce[3] = ft_rule_instruction;
 	parser->f_reduce[4] = ft_rule_separator_char;
 	parser->f_reduce[5] = ft_rule_argument;
-	parser->f_reduce[6] = ft_rule_end;
+	parser->f_reduce[6] = ft_rule_label;
+	parser->f_reduce[7] = ft_rule_end;
 
 
+	// faire un shift pour les commentaires pour les ignorer
 	parser->f_shift[0] = ft_shift_no_focus;
 	parser->f_shift[1] = ft_shift_whitespaces;
 	parser->f_shift[2] = ft_shift_command_name;

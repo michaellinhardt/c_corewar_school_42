@@ -2,7 +2,7 @@
 # define FT_STRUCT_ASM_H
 # include "op.h"
 
-# define NBR_REDUCE 7
+# define NBR_REDUCE 8
 # define NBR_SHIFT 14
 # define NBR_ACCEPT 10
 # define DB_QUOTES -1
@@ -101,7 +101,9 @@ struct				s_parse_tree
 
 
 enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER,
-				INST, ARG, VIRGULE, LAST_ARG, CPL_INST, FIN_INST, FIN};
+				INST, ARG, VIRGULE, LAST_ARG, CPL_INST, FIN_INST, POSITION,
+				FIN_LINE,
+				FIN};
 enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT, CODE_ACCEPT};
 
 struct				s_pile_tree

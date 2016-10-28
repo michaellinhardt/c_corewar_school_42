@@ -43,14 +43,12 @@ static int	ft_parse_code(t_parser *parser)
 			return (0);
 		}
 
-		/*
 		++test;
 		if (test == 32)
 		{
 		//	ft_putnbr(parser->focus->token);
 			break;
 		}
-		*/
 	}
 	if (!parser->end_pile)
 		ft_printf("y a un soucis\n");
