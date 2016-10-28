@@ -70,7 +70,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 		}
 		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
-		put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
+		// put_proc_img(img, &m->scene_img[2][-proc->player + 5], x, y);
 		x -= 1;
 		y -= 2;
 		if (!proc->inst)
