@@ -66,10 +66,10 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 		turfu = 0;
 		if (opcode > 0 && opcode < 17)
 		{
-			emul.pc = proc->pc;
-			ft_get_instruction(data()->vm.instructions, &data()->vm, &emul);
-			ft_check_value_args(emul.args, emul.inst, &data()->vm, &emul);
-			turfu = ((emul.pc_turfu / 2) % MEM_SIZE) - proc->pc;
+			emul.pc = proc->pc % MEM_SIZE;
+			if (ft_get_instruction(data()->vm.instructions, &data()->vm, &emul)
+			&& ft_check_value_args(emul.args, emul.inst, &data()->vm, &emul))
+				turfu = ((emul.pc_turfu / 2) % MEM_SIZE) - proc->pc;
 			while (--turfu > 0)
 			{
 				emul.pc = (emul.pc + 1) % MEM_SIZE;
