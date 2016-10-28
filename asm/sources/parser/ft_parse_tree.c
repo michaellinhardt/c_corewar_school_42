@@ -4,20 +4,8 @@
 
 void	ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf)
 {
-	/*
-	if (!tree->fils)
-	{
-		tree->fils = (t_parse_tree **)malloc(sizeof(t_parse_tree *) * ++tree->nbr_fils);
-		tree->fils[0] = leaf;
-
-
-	}
-	else
-	*/
-	{
-		tree->fils = (t_parse_tree **)realloc(tree->fils, sizeof(t_parse_tree *) * ++tree->nbr_fils);
-		tree->fils[tree->nbr_fils - 1] = leaf;
-	}
+	tree->fils = (t_parse_tree **)realloc(tree->fils, sizeof(t_parse_tree *) * ++tree->nbr_fils);
+	tree->fils[tree->nbr_fils - 1] = leaf;
 }
 
 t_parse_tree	*ft_create_leaf(t_token *token)
@@ -26,11 +14,6 @@ t_parse_tree	*ft_create_leaf(t_token *token)
 
 	leaf = (t_parse_tree *)ft_memalloc(sizeof(t_parse_tree));
 	leaf->token = token;
-	// a voir
-	/*
-	if (token->token == COMMAND_NAME || token->token == COMMAND_COMMENT)
-		leaf->term = 1;
-		*/
 	return (leaf);
 }
 

@@ -30,17 +30,9 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser)
 	ft_bzero(&compile.header, sizeof(t_header));
 	ft_init_instructions(compile.inst);
 	ft_putendl("---------------");
-
-
 	ft_putnbr(ft_calcul_poids(tree, compile.inst, poids));
 	ft_display_poids(tree);
-
-
-
 	ft_compile(tree, &compile, compile.code);
-
-
-
 	ft_putendl("Resultat :");
 	ft_printf("name header :%s\n", compile.header.prog_name);
 	ft_printf("comment header :%s\n", compile.header.comment);

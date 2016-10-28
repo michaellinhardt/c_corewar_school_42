@@ -28,8 +28,8 @@ unsigned char	*ft_compile_string(t_parse_tree *tree, unsigned char *code,
 unsigned char	*ft_compile_label(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile)
 {
-
 	ft_putendl(tree->token->value);
+
 	return (0);
 }
 unsigned char	*ft_compile_register(t_parse_tree *tree, unsigned char *code,
