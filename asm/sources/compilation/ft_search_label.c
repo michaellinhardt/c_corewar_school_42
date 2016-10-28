@@ -11,9 +11,9 @@ int		ft_get_label(t_parse_tree *root, char *value, int *poids)
 		if (root->token->token == LABEL && !ft_strncmp(value,
 					root->token->value, ft_strlen(root->token->value) - 1))
 		{
-			if (!*(value + ft_strlen(root->token->value)))
+			if (!*(value + ft_strlen(root->token->value) - 1))
 			{
-		ft_putendl(value);
+				ft_putendl(value);
 				*poids = root->position - *poids;	
 				return (1);
 			}
