@@ -12,7 +12,7 @@ static int	ft_get_poids_args(t_token *token, t_instructions inst)
 		else
 			return (4);
 	}
-	return (4);
+	return (2);
 }
 
 int		ft_calcul_size_instruction(t_parse_tree *tree, t_instructions *inst,

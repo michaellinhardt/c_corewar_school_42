@@ -33,7 +33,8 @@ void	ft_init_parser(t_parser *parser)
 	parser->f_shift[10] = ft_shift_direct_label;
 	parser->f_shift[11] = ft_shift_direct;
 	parser->f_shift[12] = ft_shift_indirect;
-	parser->f_shift[13] = ft_shift_end;
+	parser->f_shift[13] = ft_shift_indirect_label;
+	parser->f_shift[14] = ft_shift_end;
 
 
 

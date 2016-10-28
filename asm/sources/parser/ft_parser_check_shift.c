@@ -175,6 +175,22 @@ int		ft_shift_indirect(t_parser *parser)
 	return (0);
 }
 
+int		ft_shift_indirect_label(t_parser *parser)
+{
+	if (parser->focus->token == INDIRECT_LABEL)
+	{
+		if (parser->focus_pile)
+		{
+			ft_putendl("erreur shift indirect label");
+			return (-1);
+		}
+		ft_add_tree_shift(parser);
+		parser->focus_pile->value = ARG;
+		parser->focus = parser->focus->next;
+		return (REDUCE);
+	}
+	return (0);
+}
 int		ft_shift_end(t_parser *parser)
 {
 	if (parser->focus->token == END)

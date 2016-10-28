@@ -176,6 +176,18 @@ int			ft_compile(t_parse_tree *tree, t_compile *compile, unsigned char *code)
 }
 */
 
+int			ft_compile_register(t_parse_tree *tree, unsigned char *code)
+{
+	char	*registre;
+
+	registre = tree->token->value;
+	++registre;
+	*code = *registre - 48;
+	if (*(++registre))
+		*code = (*registre - 48) + *code * 10;
+	return (1);
+}
+
 int		ft_compile_direct(t_parse_tree *tree, unsigned char *code,
 		int flag_dir)
 {
@@ -203,25 +215,51 @@ int		ft_compile_direct(t_parse_tree *tree, unsigned char *code,
 	return (size);
 }
 
-int			ft_compile_register(t_parse_tree *tree, unsigned char *code)
+int			ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
+		int	flag_dir)
 {
-	char	*registre;
-
-	registre = tree->token->value;
-	++registre;
-	*code = *registre - 48;
-	if (*(++registre))
-		*code = (*registre - 48) + *code * 10;
-	return (1);
+	unsigned int nbr;
+	unsigned int i;
+	unsigned int decal;
+	unsigned int size;
+	
+	nbr = tree->position;
+	if (flag_dir)
+	{
+		nbr = (unsigned short)nbr;
+		size = 2;
+	}
+	else
+		size = 4;
+	decal = (size - 1) * 8;
+	i = 0;
+	while (i < size)
+	{
+		*(code + i) = nbr >> decal;
+		decal -= 8;
+		++i;
+	}
+	return (size);
 }
 
-int			ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
-		int flag_dir, int size_actual)
+int			ft_compile_indirect(t_parse_tree *tree, unsigned char *code)
 {
-	int size;
-	
-	size = 0;
+	unsigned int nbr;
+	unsigned int i;
+	unsigned int decal;
+	unsigned int size;
 
+	nbr = ft_atoi(tree->token->value);
+	nbr = (unsigned short)nbr;
+	size = 2;
+	decal = (size - 1) * 8;
+	i = 0;
+	while (i < size)
+	{
+		*(code + i) = nbr >> decal;
+		decal -= 8;
+		++i;
+	}
 	return (size);
 }
 
@@ -249,19 +287,22 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 		else if (tree->fils[i] && tree->fils[i]->token->token == DIRECT)
 		{
 			size_inst += ft_compile_direct(tree->fils[i], code_inst + size_inst,
-					inst[tree->id_instruction].flag_ocp);
+					inst[tree->id_instruction].flag_size_ind);
 		} 
 		else if (tree->fils[i] && tree->fils[i]->token->token == DIRECT_LABEL)
 		{
-
+			size_inst += ft_compile_direct_label(tree->fils[i], code_inst
+					+ size_inst, inst[tree->id_instruction].flag_size_ind);
 		} 
 		else if (tree->fils[i] && tree->fils[i]->token->token == INDIRECT)
 		{
-
+			size_inst += ft_compile_indirect(tree->fils[i], code_inst
+					+ size_inst);
 		} 
 		else if (tree->fils[i] && tree->fils[i]->token->token == INDIRECT_LABEL)
 		{
-
+			size_inst += ft_compile_direct_label(tree->fils[i], code_inst
+					+ size_inst, 1);
 		} 
 		++i;
 	}
@@ -277,7 +318,7 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 				(size_inst + size));
 		ft_memcpy(*code + size, code_inst, size_inst);
 	}
-	return (size + size_inst);
+	return (size_inst);
 }
 
 int			ft_compile(t_parse_tree *tree, unsigned char **code,
@@ -291,10 +332,10 @@ int			ft_compile(t_parse_tree *tree, unsigned char **code,
 		while (i < tree->nbr_fils)
 		{
 			if (tree->fils[i] &&  tree->fils[i]->token->token == ENDLINE)
-					return (size + ft_compile(tree->fils[i], code, inst, size));
+				return (size + ft_compile(tree->fils[i], code, inst, size));
 			else if (tree->fils[i] && tree->fils[i]->token->token == INSTRUCTION)
 			{
-					size += ft_compile_instruction(tree->fils[i], code, inst, size);
+				size += ft_compile_instruction(tree->fils[i], code, inst, size);
 			}
 			else if (tree->fils[i] && tree->fils[i]->token->token == LABEL)
 			{

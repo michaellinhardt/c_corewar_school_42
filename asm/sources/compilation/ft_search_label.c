@@ -15,6 +15,8 @@ int		ft_get_label(t_parse_tree *root, char *value, int *poids)
 			{
 				ft_putendl(value);
 				*poids = root->position - *poids;	
+				ft_printf("valeur poids %d\n", *poids);
+				ft_printf("valeur label %d\n", root->position);
 				return (1);
 			}
 		}

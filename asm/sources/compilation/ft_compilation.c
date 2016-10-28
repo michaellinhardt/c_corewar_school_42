@@ -49,6 +49,7 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser)
 
 	code = 0;
 	size = ft_compile(tree, &code, compile.inst, 0);
+	ft_putnbr(size);
 
 	ft_putendl("Resultat :");
 	ft_printf("name header :%s\n", compile.header.prog_name);
