@@ -4,7 +4,7 @@
 
 # define NBR_REDUCE 8
 # define NBR_SHIFT 14
-# define NBR_ACCEPT 10
+# define NBR_ACCEPT 11
 # define DB_QUOTES -1
 enum	e_token{
 	NONE,
@@ -104,6 +104,7 @@ enum	e_value {NO_VALUE, MINI_NAME, CMD_NAME, MINI_COMMENT, CMD_COMMENT, HEADER,
 				INST, ARG, VIRGULE, LAST_ARG, CPL_INST, FIN_INST, POSITION,
 				FIN_LINE, FIN_LABEL,
 				FIN};
+
 enum	e_action {ERREUR, SHIFT, REDUCE, ACCEPT, CODE_ACCEPT};
 
 struct				s_pile_tree

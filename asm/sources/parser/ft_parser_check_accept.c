@@ -56,18 +56,21 @@ int	ft_accept_label(t_parser *parser, t_pile_tree *pile)
 		if (pile->prev->value == POSITION)
 		{
 			ft_putendl("accept label");
+			ft_fusion_fils(pile->prev->tree, pile->tree);
+			/*
 			pile->prev->tree->nbr_fils = pile->tree->nbr_fils;
 			pile->prev->tree->fils = ft_memalloc(sizeof(t_parse_tree *)
 					* pile->tree->nbr_fils);
 			ft_memcpy(pile->prev->tree->fils, pile->tree->fils,
 					sizeof(t_parse_tree *) * pile->tree->nbr_fils);
+					*/
 			free(pile->tree->fils);
 			pile->tree->fils = 0;
 			pile->tree->nbr_fils = 0;
 			ft_add_leaf(pile->tree, pile->prev->tree);
 			pile->prev->tree = pile->tree;
 			ft_free_elem_pile(pile, parser);
-			pile->prev->value = FIN_LABEL;
+			pile->prev->value = FIN_INST;
 			return (1);
 		}
 	}
@@ -200,6 +203,7 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 		{
 			if (ft_verif_instruction(pile->prev, pile, parser->inst))
 			{
+
 				ft_complete_instruction(pile->prev->tree, pile->tree);
 				pile->prev->value = CPL_INST;
 				ft_free_arguments(pile->tree);
@@ -246,13 +250,33 @@ int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
 	{
 		if (pile->prev->value == CPL_INST)
 		{
+			ft_putendl("accept instruction multiples");
+			pile->prev->tree = ft_fusion_fils(pile->prev->tree, pile->tree);
+			pile->prev->value = FIN_INST;
+			free(pile->tree->fils);
+			pile->tree->fils = 0;
+			pile->tree->nbr_fils = 0;
+		//	ft_add_leaf(pile->tree, pile->prev->tree);
+			//pile->prev->tree = pile->tree;
+			ft_free_elem_pile(pile, parser);
+			return (1);
+			/*
+			pile->prev->tree->nbr_fils = pile->tree->nbr_fils;
+
+			pile->prev->tree->fils = ft_memalloc(sizeof(t_parse_tree *)
+					* pile->tree->nbr_fils);
+			ft_memcpy(pile->prev->tree->fils, pile->tree->fils,
+					sizeof(t_parse_tree *) * pile->tree->nbr_fils);
+					*/
+						/*
+			//pile->prev->tree->nbr_fils += pile->tree->nbr_fils - 1;
 			ft_add_leaf(pile->prev->tree, pile->tree->fils[0]);
 			free(pile->tree->fils);
 			free(pile->tree);
 			ft_free_elem_pile(pile, parser);
 			pile->prev->value = FIN_INST;
 			ft_putendl("accept instruction multiples");
-			return (1);
+			*/
 		}
 	}
 	return (0);
