@@ -12,14 +12,20 @@ void	reset_img(t_img *img)
 
 void	bloc_fadeout(t_img *i)
 {
-	static char	fade = 255;
+	int		fade;
 
+	if (DONT_CLEAN_PROC)
+		return ;
 	i->i = -4;
 	while ((i->i += 4) < (i->sl * WIN_Y))
 	{
-		if (i->str[i->i + 3] != fade
-		&& (i->str[i->i + 3] += BLOC_FADE) > fade)
-			i->str[i->i + 3] = fade;
+		if ((unsigned char)i->str[i->i + 3] == fade)
+			continue ;
+		fade = (unsigned char)i->str[i->i + 3] + (unsigned char)BLOC_FADE;
+		if (fade > 255)
+			i->str[i->i + 3] = (unsigned char)255;
+		else
+			i->str[i->i + 3] = (unsigned char)fade;
 	}
 }
 

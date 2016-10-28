@@ -106,7 +106,7 @@ test: $(NAME)
 	@./$(NAME)
 
 clean:
-	@make clean -C $(LIBS)
+#@make clean -C $(LIBS)
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
@@ -115,8 +115,8 @@ clean2:
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
 fclean: clean2
-	@/bin/rm -rf *.dSYM
-	@make fclean -C $(LIBS)
+#@/bin/rm -rf *.dSYM
+#@make fclean -C $(LIBS)
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
