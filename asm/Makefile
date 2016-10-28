@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/28 18:41:12 by abary            ###   ########.fr        #
+#    Updated: 2016/10/28 21:37:43 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ SRC_PARSER = ft_parser.c ft_parse_tree.c ft_parser_shift.c\
 			ft_parser_rule_label.c ft_tree_fusion.c 
 
 SRC_COMPILATION = ft_compilation.c  ft_init_compilation.c\
-				  ft_compile.c ft_set_op_c.c ft_calcul_poids.c
+				  ft_compile.c ft_set_op_c.c ft_calcul_poids.c\
+				  ft_search_label.c
 
 
 SRCS = $(addprefix sources/,$(SRC))\

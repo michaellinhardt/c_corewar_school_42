@@ -22,7 +22,9 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser)
 	//	typedef unsigned char	(*f_compilation[ENDLINE])(t_parse_tree *tree);
 	t_compile compile;
 	unsigned int poids;
+	unsigned int size;
 
+	poids = 0;
 	compile.code = 0;
 	compile.total_size = 0;
 	ft_init_compilation(&compile);
@@ -30,13 +32,29 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser)
 	ft_bzero(&compile.header, sizeof(t_header));
 	ft_init_instructions(compile.inst);
 	ft_putendl("---------------");
-	ft_putnbr(ft_calcul_poids(tree, compile.inst, poids));
+	size = ft_calcul_poids(tree, compile.inst, poids);
+
+	if (ft_search_label(tree, tree))
+	{
+			ft_putendl("erreur compilation label search");
+	}
+
+	ft_putendl("display poids");
+	ft_putendl("---------------");
+	ft_putnbr(size);
 	ft_display_poids(tree);
-	ft_compile(tree, &compile, compile.code);
+	ft_putendl("---------------");
+
+	unsigned char	*code;
+
+	code = 0;
+	size = ft_compile(tree, &code, compile.inst, 0);
+
 	ft_putendl("Resultat :");
 	ft_printf("name header :%s\n", compile.header.prog_name);
 	ft_printf("comment header :%s\n", compile.header.comment);
 	ft_putendl("code ");
-	ft_print_memory(compile.code, compile.total_size);
+	ft_print_memory(code, size);
 	return (1);
+//	ft_print_memory(compile.code, compile.total_size);
 }

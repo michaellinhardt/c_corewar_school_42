@@ -32,6 +32,7 @@ int		ft_calcul_size_instruction(t_parse_tree *tree, t_instructions *inst,
 		while (i < tree->nbr_fils)
 		{
 			tree->poids += ft_get_poids_args(tree->fils[i]->token, inst[id]);
+			tree->fils[i]->position = tree->position;
 			++i;
 		}
 	}
@@ -68,7 +69,7 @@ int		ft_calcul_poids(t_parse_tree *tree, t_instructions *inst, unsigned int
 		while (i < tree->nbr_fils)
 		{
 			if (tree->fils[i] &&  tree->fils[i]->token->token == ENDLINE)
-				return (poids  + ft_calcul_poids(tree->fils[i], inst, poids));
+				return (poids + ft_calcul_poids(tree->fils[i], inst, poids));
 			else if (tree->fils[i] && tree->fils[i]->token->token == INSTRUCTION)
 				poids += (ft_calcul_size_instruction(tree->fils[i], inst, poids));
 			else if (tree->fils[i] && tree->fils[i]->token->token == LABEL)

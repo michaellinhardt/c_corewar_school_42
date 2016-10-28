@@ -2,6 +2,7 @@
 
 void	ft_init_compilation(t_compile *compile)
 {
+	/*
 	compile->f_compile[NONE] = 0;
 	compile->f_compile[COMMAND_NAME] = ft_compile_name;
 	compile->f_compile[COMMAND_COMMENT] = ft_compile_comment;
@@ -17,5 +18,6 @@ void	ft_init_compilation(t_compile *compile)
 	compile->f_compile[INDIRECT_LABEL] = ft_compile_indirect_label;
 	compile->f_compile[DIRECT] = ft_compile_direct;
 	compile->f_compile[ENDLINE] = ft_compile_endline;
+	*/
 
 }

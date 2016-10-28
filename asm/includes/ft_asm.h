@@ -146,8 +146,16 @@ int				ft_calcul_poids(t_parse_tree *tree, t_instructions *inst,
 void			ft_init_compilation(t_compile *compile);
 int				ft_compilation(t_parse_tree *tree, t_parser *parser);
 unsigned char	ft_set_oc_p(unsigned int id, t_parse_tree *inst);
+/*
 int				ft_compile(t_parse_tree *tree,t_compile *compile, unsigned char *code);
+*/
 
+int			ft_compile(t_parse_tree *tree, unsigned char **code, 
+		t_instructions *inst, unsigned int size);
+
+
+int			ft_search_label(t_parse_tree *root, t_parse_tree *tree);
+/*
 unsigned char	*ft_compile_name(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile);
 unsigned char	*ft_compile_comment(t_parse_tree *tree, unsigned char *code,
@@ -170,4 +178,5 @@ unsigned char	*ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile);
 unsigned char	*ft_compile_endline(t_parse_tree *tree, unsigned char *code,
 		t_compile *compile);
+		*/
 #endif
