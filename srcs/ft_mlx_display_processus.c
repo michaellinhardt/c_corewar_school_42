@@ -57,6 +57,8 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 			put_proc_bloc(img, &m->scene_img[2][27], x, y);
 		else
 			put_proc_bloc(img, &m->scene_img[2][28], x, y);
+		put_proc_bloc(bloc, &m->scene_img[2][-proc->player + 28], x, y);
+
 			// put_proc_bloc(img, &m->scene_img[2][-proc->player + 27], x, y);
 		already[(proc->pc)] = 1;
 		// display_bloc(m, proc, img, bloc);
