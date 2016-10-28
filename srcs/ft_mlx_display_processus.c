@@ -2,11 +2,10 @@
 
 void	put_proc_bloc(t_img *img, t_img *bloc, int x, int y)
 {
-	// int			*pbloc;
+	int			*pbloc;
 	int			*pimg;
 
-	(void)bloc;
-	// pbloc = (int *)bloc->str;
+	pbloc = (int *)bloc->str;
 	pimg = (int *)img->str;
 	img->i = (y * WIN_X + x) - 1;
 	y = -1;
@@ -15,8 +14,8 @@ void	put_proc_bloc(t_img *img, t_img *bloc, int x, int y)
 		x = -1;
 		while (++x < BLOCX)
 		{
-			pimg[++(img->i)] = 0;
-			// pimg[++(img->i)] = pbloc[y * BLOCX + x];
+			// pimg[++(img->i)] = 0;
+			pimg[++(img->i)] = pbloc[y * BLOCX + x];
 		}
 		img->i = img->i - x + WIN_X;
 	}
@@ -40,6 +39,7 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 	int			x;
 	int			y;
 
+	(void)bloc;
 	ft_bzero(already, sizeof(already));
 	while (proc)
 	{
@@ -56,7 +56,8 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 		if (!proc->inst)
 			put_proc_bloc(img, &m->scene_img[2][27], x, y);
 		else
-			put_proc_bloc(img, &m->scene_img[2][-proc->player + 27], x, y);
+			put_proc_bloc(img, &m->scene_img[2][28], x, y);
+			// put_proc_bloc(img, &m->scene_img[2][-proc->player + 27], x, y);
 		already[(proc->pc)] = 1;
 		// display_bloc(m, proc, img, bloc);
 		proc = proc->n;
