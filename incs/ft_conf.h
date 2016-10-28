@@ -58,7 +58,6 @@
 # define SCENE_START VM_INIT
 # define EFFECTS_MAX_SLOT 20
 # define BLOC_FADE 75
-# define DISPLAY_AURA 1
 
 /*
 ** CRAZY MODE ?

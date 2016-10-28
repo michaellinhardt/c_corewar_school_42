@@ -65,6 +65,7 @@ typedef struct		s_dmlx
 	enum e_scene	scene;
 	char			img_isload[SCENE_MAX];
 	t_img			scene_img[SCENE_MAX][SCENE_IMG_MAX];
+	char			already[MEM_SIZE];
 }					t_dmlx;
 
 #endif
