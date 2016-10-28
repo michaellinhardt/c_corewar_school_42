@@ -51,7 +51,7 @@ int			ft_calcul_size_label(t_parse_tree *tree, t_instructions *inst,
 		while (i < tree->nbr_fils)
 		{
 			tree->poids += ft_calcul_size_instruction(tree->fils[i], inst, 
-					poids);
+					tree->position + tree->poids);
 			++i;
 		}
 	}

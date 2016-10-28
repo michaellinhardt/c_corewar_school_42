@@ -321,6 +321,19 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 	return (size_inst);
 }
 
+int			ft_compile_label(t_parse_tree *tree, unsigned char **code,
+		t_instructions *inst, unsigned int size)
+{
+	unsigned int i;
+
+	i = 0;
+	while ( i < tree->nbr_fils)
+	{
+		size += ft_compile_instruction(tree->fils[i], code, inst, size); 
+		++i;
+	}
+	return (size);
+}
 int			ft_compile(t_parse_tree *tree, unsigned char **code,
 		t_instructions *inst, unsigned int size)
 {
@@ -339,6 +352,7 @@ int			ft_compile(t_parse_tree *tree, unsigned char **code,
 			}
 			else if (tree->fils[i] && tree->fils[i]->token->token == LABEL)
 			{
+				size = ft_compile_label(tree->fils[i], code, inst, size);
 			}
 			else if (tree->fils[i] && tree->fils[i]->token->token == COMMAND_NAME)
 			{

@@ -8,3 +8,4 @@ sti r1, %:live, r2
 and :live, %0, r1
 live:	live %1
 		zjmp %:live
+		and :live, %0, r1
