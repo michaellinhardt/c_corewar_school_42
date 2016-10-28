@@ -93,6 +93,8 @@ struct				s_parse_tree
 	t_token			*token;
 	int				nbr_fils;
 	int				id_instruction;
+	int				poids; // le poids du bordel
+	int				position;
 //	int				term;
 //	int				rule;
 	t_parse_tree	**fils;

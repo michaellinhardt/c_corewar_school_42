@@ -50,7 +50,6 @@ void	ft_display_parse_tree(t_parse_tree *tree)
 			else
 				ft_putendl("(NULL)");
 		}
-
 		while (i < tree->nbr_fils)
 		{
 			ft_display_parse_tree(tree->fils[i++]);
