@@ -46,14 +46,30 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 
 int	ft_accept_label(t_parser *parser, t_pile_tree *pile)
 {
-	if (pile->value == FIN_INST)
+	if (pile->value == FIN_INST || pile->value == ENDLINE)
 	{
 		if (!pile->prev)
 		{
 			ft_putendl("erreur accept label");
 			return (-1);
 		}
-
+		if (pile->prev->value == POSITION)
+		{
+			ft_putendl("accept label");
+			pile->prev->tree->nbr_fils = pile->tree->nbr_fils;
+			pile->prev->tree->fils = ft_memalloc(sizeof(t_parse_tree *)
+					* pile->tree->nbr_fils);
+			ft_memcpy(pile->prev->tree->fils, pile->tree->fils,
+					sizeof(t_parse_tree *) * pile->tree->nbr_fils);
+			free(pile->tree->fils);
+			pile->tree->fils = 0;
+			pile->tree->nbr_fils = 0;
+			ft_add_leaf(pile->tree, pile->prev->tree);
+			pile->prev->tree = pile->tree;
+			ft_free_elem_pile(pile, parser);
+			pile->prev->value = FIN_LABEL;
+			return (1);
+		}
 	}
 	return (0);
 }

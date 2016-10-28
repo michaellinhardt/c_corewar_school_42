@@ -52,7 +52,6 @@ void	ft_free_elem_pile(t_pile_tree *pile, t_parser *parser)
 		parser->debut_pile = parser->debut_pile->next;
 	if (pile == parser->end_pile)
 		parser->end_pile = parser->end_pile->prev;
-
 	if (pile->prev)
 		pile->prev->next = pile->next;
 	if (pile->next)
