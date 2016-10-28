@@ -41,6 +41,8 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 	char		opcode;
 	int			turfu;
 
+	t_proc		emul;
+
 	ft_bzero(already, sizeof(already));
 	while (proc)
 	{
@@ -51,29 +53,28 @@ void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 		}
 		x = (proc->pc % VMPERLINE) * VMSPACEBLANK + VMSTARTX + PROCDECALLAGEX;
 		y = (proc->pc / VMPERLINE) * VMSPACELINE + VMSTARTY + PROCDECALLAGEY;
-		// put_proc_bloc(img, &m->scene_img[2][-proc->player + 5], x, y);
 		x -= 1;
 		y -= 1;
+		opcode = (proc->inst) ? proc->inst->id : ft_getchar(
+		data()->vm.arene + (proc->pc * 2) % SIZE_CHAR_ARENE);
 		if (DISPLAY_AURA)
 		{
-			if (!proc->inst)
-			{
-				opcode = ft_getchar(data()->vm.arene + (proc->pc * 2)
-				% SIZE_CHAR_ARENE);
-				turfu = 0;
-				if (opcode <= 0 || opcode > 16)
-					put_proc_bloc(img, &m->scene_img[2][27], x, y);
-				else
-					put_proc_bloc(img, &m->scene_img[2][28], x, y);
-			}
+			if (opcode < 1 || opcode > 16)
+				put_proc_bloc(img, &m->scene_img[2][27], x, y);
 			else
-				put_proc_bloc(img, &m->scene_img[2][28], x, y);
+				put_proc_bloc(img, &m->scene_img[2][26], x, y);
 		}
 		put_proc_bloc(bloc, &m->scene_img[2][-proc->player + 28], x, y);
-
-			// put_proc_bloc(img, &m->scene_img[2][-proc->player + 27], x, y);
+		turfu = 0;
+		if (opcode > 0 && opcode < 17)
+		{
+			emul.pc = proc->pc;
+			ft_get_instruction(data()->vm.instructions, &data()->vm, &emul);
+			ft_check_value_args(emul.args, emul.inst, &data()->vm, &emul);
+			turfu = ((emul.pc_turfu / 2) % MEM_SIZE) - proc->pc;
+		}
 		already[(proc->pc)] = 1;
-		// display_bloc(m, proc, img, bloc);
 		proc = proc->n;
 	}
+	ft_printf("****************\n");
 }
