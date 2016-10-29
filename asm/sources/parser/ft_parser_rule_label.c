@@ -14,7 +14,6 @@ static int	ft_check_label(t_parse_tree *tree)
 
 int		ft_rule_label(t_parser *parser, t_pile_tree *pile)
 {
-
 	if (ft_check_label(pile->tree))
 	{
 		pile->value = POSITION;

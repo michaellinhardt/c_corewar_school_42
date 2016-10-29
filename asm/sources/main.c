@@ -26,7 +26,7 @@ int		main(int argc, char **argv)
 	if (ft_lexer(&lexer))
 	{
 		if (ft_parser(lexer.begin, &parser))
-			ft_compilation(parser.debut_pile->tree, &parser);
+			ft_compilation(parser.debut_pile->tree, &parser, lexer.begin);
 	}
 	return (0);
 }
