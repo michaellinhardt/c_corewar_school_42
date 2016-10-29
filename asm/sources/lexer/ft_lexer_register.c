@@ -10,8 +10,6 @@ int		ft_lexer_register(t_lexer *lexer, t_token *token)
 	i = 1;
 	while (i < lexer->size_line && ft_isdigit(*(lexer->focus + i)))
 		++i;
-
-
 	if (i == 1)
 		return (0);
 	if (*(lexer->focus + i) &&

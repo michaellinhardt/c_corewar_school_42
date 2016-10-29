@@ -4,19 +4,43 @@
 
 void		ft_lexer_error(t_lexer *lexer, int erreur)
 {
-	int off;
+	int 	off;
+	char	*c;
 
-	if (erreur == DB_QUOTES)
+	ft_putstr("lexical error : ");
+	if (erreur == LEXER_STRING)
+		ft_putstr("quotes missing ");
+	else if (erreur == LEXER_INCONNU)
 	{
-		ft_putnbr(lexer->y);
-		ft_putchar(':');
-		off = lseek(lexer->fd, 0, SEEK_CUR);
-		if (off)
-			ft_putnbr(lexer->y / off);
+		/*
+		if (lexer->focus)
+			ft_printf("token inconnu : %c ", *(lexer->focus));
+		else if (lexer->end)
+			ft_printf("token inconnu : %c ", *(lexer->end));
 		else
-			ft_putnbr(0);
-		ft_putendl("db quotes missing");
+		*/
+			ft_printf("token inconnu near : ");
+			c = 0;
+			if (lexer->focus)
+				c = lexer->focus;
+			else if (lexer->line)
+				c = lexer->line;
+			ft_putstr(RED);
+			while (c && *c && !ft_isspace(*c))
+			{
+				ft_putchar(*c++);
+			}
+			ft_putstr(NEUTRE);
+
+			ft_putchar(' ');
 	}
+	if (lexer->end)
+	{
+			ft_putstr("at : ");
+			ft_printf("[%d:", lexer->end->y);
+			ft_printf("%d]", lexer->end->x + 1);
+	}
+	ft_putchar('\n');
 	ft_free_tokens(lexer->begin);
 	if (lexer->line)
 		ft_strdel(&(lexer->line));

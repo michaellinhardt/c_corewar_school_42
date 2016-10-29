@@ -5,7 +5,12 @@
 # define NBR_REDUCE 8
 # define NBR_SHIFT 16
 # define NBR_ACCEPT 11
-# define DB_QUOTES -1
+
+
+#define LEXER_STRING -1
+#define LEXER_INCONNU -2
+# define RED "\033[0;31m"
+# define NEUTRE "\033[0;m"
 enum	e_token{
 	NONE,
 	COMMAND_NAME, 
@@ -51,7 +56,8 @@ struct          s_instructions
 
 
 
-struct	s_compile{
+struct	s_compile
+{
 	t_header		header;
 	unsigned char	*code;
 	unsigned int	size;
@@ -68,6 +74,8 @@ struct				s_token
 	unsigned int	token;
 	unsigned int	size;
 	char			*value;
+	unsigned int	y;
+	unsigned int	x;
 	t_token			*next;
 };
 
@@ -78,7 +86,8 @@ struct				s_lexer
 	int				head; // l'endroir tou on est dans le fichier
 	int				offset; // le decalage dans la fonction
 	int				size_line;
-	int				y;
+	unsigned int	y;
+	unsigned int 	x;
 	char			*line;
 	char			*focus;
 	int				size;
@@ -95,8 +104,6 @@ struct				s_parse_tree
 	int				id_instruction;
 	int				poids; // le poids du bordel
 	int				position;
-//	int				term;
-//	int				rule;
 	t_parse_tree	**fils;
 	// le pointeur sur fonction pour l'action a effectuer
 };

@@ -21,7 +21,7 @@ static int ft_lexer_read_string(t_lexer *lexer, t_token *token, int size)
 		++i;
 	}
 	if (c != '"')
-		return (DB_QUOTES);
+		return (LEXER_STRING);
 	else
 	{
 		if ((ret = lseek(lexer->fd, -(size + i + 1),
