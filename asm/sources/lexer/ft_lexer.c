@@ -49,7 +49,6 @@ int		ft_lexer(t_lexer *lexer)
 			break ;
 		if (i >= NBR_TOKEN)
 		{
-			ft_putendl("error lexer");
 			ft_lexer_error(lexer, LEXER_INCONNU);
 			return (0);
 		}
@@ -60,6 +59,5 @@ int		ft_lexer(t_lexer *lexer)
 		lexer->line = 0;
 	}
 	ft_display_tokenisation(lexer->begin);
-	exit(1);
 	return (1);
 }

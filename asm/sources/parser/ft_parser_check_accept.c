@@ -19,7 +19,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 			}
 			else
 			{
-				ft_putendl("erreur accept header");
+				ft_parse_error(parser, 0, pile->tree->token);
 				return (-1);
 			}
 		}
@@ -36,7 +36,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 			}
 			else
 			{
-				ft_putendl("erreur accept header");
+				ft_parse_error(parser, 0, pile->tree->token);
 				return (-1);
 			}
 		}
@@ -50,32 +50,52 @@ int	ft_accept_label(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev)
 		{
-			ft_putendl("erreur accept label");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}
 		if (pile->prev->value == POSITION)
 		{
 			ft_putendl("accept label");
 			ft_fusion_fils(pile->prev->tree, pile->tree);
-			/*
-			pile->prev->tree->nbr_fils = pile->tree->nbr_fils;
-			pile->prev->tree->fils = ft_memalloc(sizeof(t_parse_tree *)
-					* pile->tree->nbr_fils);
-			ft_memcpy(pile->prev->tree->fils, pile->tree->fils,
-					sizeof(t_parse_tree *) * pile->tree->nbr_fils);
-					*/
 			free(pile->tree->fils);
 			pile->tree->fils = 0;
 			pile->tree->nbr_fils = 0;
 			ft_add_leaf(pile->tree, pile->prev->tree);
 			pile->prev->tree = pile->tree;
 			ft_free_elem_pile(pile, parser);
-			pile->prev->value = FIN_INST;
+			pile->prev->value = FIN_LABEL;
 			return (1);
 		}
 	}
 	return (0);
 }
+
+int	ft_accept_label_inst(t_parser *parser, t_pile_tree *pile)
+{
+	if (pile->value == CPL_INST)
+	{
+		if (!pile->prev)
+		{
+			ft_parse_error(parser, 0, pile->tree->token);
+			return (-1);
+		}
+		if (pile->prev->value == FIN_LABEL)
+		{
+			ft_putendl("accept label + inst");
+			ft_fusion_fils(pile->prev->tree, pile->tree);
+			free(pile->tree->fils);
+			pile->tree->fils = 0;
+			pile->tree->nbr_fils = 0;
+			ft_add_leaf(pile->tree, pile->prev->tree);
+			pile->prev->tree = pile->tree;
+			ft_free_elem_pile(pile, parser);
+			pile->prev->value = FIN_LABEL;
+			return (1);
+		}
+	}
+	return (0);
+}
+
 
 int	ft_accept_name(t_parser *parser, t_pile_tree *pile)
 {
@@ -83,7 +103,7 @@ int	ft_accept_name(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev)
 		{
-			ft_putendl("erreur mini name");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}
 		if (pile->prev->value == MINI_NAME)
@@ -106,7 +126,7 @@ int	ft_accept_comment(t_parser *parser, t_pile_tree *pile)
 
 		if (!pile->prev)
 		{
-			ft_putendl("erreur mini comment");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}
 		if (pile->prev->value == MINI_COMMENT)
@@ -128,9 +148,12 @@ int	ft_accept_argument(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev)
 		{
-			ft_putendl("erreur accept argument");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}
+		if (pile->prev->value == POSITION || pile->prev->value == MINI_NAME
+				|| pile->prev->value == MINI_COMMENT)
+			return (0);
 		if (pile->prev->value == ARG)
 		{
 			ft_putendl("accept last arg");
@@ -139,6 +162,10 @@ int	ft_accept_argument(t_parser *parser, t_pile_tree *pile)
 			ft_free_elem_pile(pile->prev, parser);
 			return (1);
 		}
+		ft_putendl("lalala");
+		ft_parse_error(parser, 0, pile->prev->tree->token);
+		return (-1);
+
 	}
 	return (0);
 }
@@ -149,7 +176,7 @@ int	ft_accept_separator_char(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev)
 		{
-			ft_putendl("erreur accept separator char");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}	
 		if (pile->prev->value == INST)
@@ -164,7 +191,7 @@ int	ft_accept_separator_char(t_parser *parser, t_pile_tree *pile)
 		}
 		else
 		{
-			ft_putendl("erreur accept separator char");
+			ft_parse_error(parser, 0, pile->prev->tree->token);
 			return (-1);
 		}
 	}
@@ -194,9 +221,7 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 	if (pile->value == LAST_ARG)
 	{
 		if (!pile->prev)
-		{
 				ft_putendl("erreur accept instruction");
-		}
 		if (pile->prev->value == VIRGULE)
 			return (0);
 		if (pile->prev->value == INST)
@@ -217,12 +242,13 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 			else
 			{
 				ft_putendl("erreur accept: instruction invalide");
+				ft_parse_error(parser, 0, pile->tree->token);
 			}
 			return (0);
 		}
 		else
 		{
-			ft_putendl("erreur accept instruction");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}
 	}
@@ -256,27 +282,8 @@ int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
 			free(pile->tree->fils);
 			pile->tree->fils = 0;
 			pile->tree->nbr_fils = 0;
-		//	ft_add_leaf(pile->tree, pile->prev->tree);
-			//pile->prev->tree = pile->tree;
 			ft_free_elem_pile(pile, parser);
 			return (1);
-			/*
-			pile->prev->tree->nbr_fils = pile->tree->nbr_fils;
-
-			pile->prev->tree->fils = ft_memalloc(sizeof(t_parse_tree *)
-					* pile->tree->nbr_fils);
-			ft_memcpy(pile->prev->tree->fils, pile->tree->fils,
-					sizeof(t_parse_tree *) * pile->tree->nbr_fils);
-					*/
-						/*
-			//pile->prev->tree->nbr_fils += pile->tree->nbr_fils - 1;
-			ft_add_leaf(pile->prev->tree, pile->tree->fils[0]);
-			free(pile->tree->fils);
-			free(pile->tree);
-			ft_free_elem_pile(pile, parser);
-			pile->prev->value = FIN_INST;
-			ft_putendl("accept instruction multiples");
-			*/
 		}
 	}
 	return (0);
@@ -296,6 +303,7 @@ int			ft_accept_end(t_parser *parser, t_pile_tree *pile)
 		// ajouter condion poour label finis
 		else 
 		{
+			ft_parse_error(parser, 0, pile->tree->token);
 			ft_putendl("erreur accept end");
 			return (-1);
 		}

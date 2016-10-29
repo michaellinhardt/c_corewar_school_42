@@ -3,6 +3,7 @@
 
 // on parse d'abord l'header
 
+#include <stdlib.h>
 static int	ft_parse_code(t_parser *parser)
 {
 	int action;
@@ -37,10 +38,9 @@ static int	ft_parse_code(t_parser *parser)
 		}
 		else
 		{
-			ft_printf("error while 1\n");
-			//print error
+			ft_parse_error(parser, 0, 0);
 			break ;
-			return (0);
+//			return (0);
 		}
 
 		/*
@@ -67,6 +67,7 @@ static int	ft_parse_code(t_parser *parser)
 		ft_putendl("----------------");
 		pile = pile->next;
 	}
+
 	return (1);
 }
 

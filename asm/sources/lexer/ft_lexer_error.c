@@ -12,13 +12,6 @@ void		ft_lexer_error(t_lexer *lexer, int erreur)
 		ft_putstr("quotes missing ");
 	else if (erreur == LEXER_INCONNU)
 	{
-		/*
-		if (lexer->focus)
-			ft_printf("token inconnu : %c ", *(lexer->focus));
-		else if (lexer->end)
-			ft_printf("token inconnu : %c ", *(lexer->end));
-		else
-		*/
 			ft_printf("token inconnu near : ");
 			c = 0;
 			if (lexer->focus)
@@ -31,7 +24,6 @@ void		ft_lexer_error(t_lexer *lexer, int erreur)
 				ft_putchar(*c++);
 			}
 			ft_putstr(NEUTRE);
-
 			ft_putchar(' ');
 	}
 	if (lexer->end)

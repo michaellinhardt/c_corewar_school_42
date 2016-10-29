@@ -4,11 +4,17 @@
 
 # define NBR_REDUCE 8
 # define NBR_SHIFT 16
-# define NBR_ACCEPT 11
+# define NBR_ACCEPT 12
 
 
 #define LEXER_STRING -1
 #define LEXER_INCONNU -2
+
+#define PARSER_INSTRUCTION_WRONG -1
+#define PARSER_INSTRUCTION_NBR -2
+#define PARSER_INSTRUCTION_REGISTRE -3
+#define PARSER_ARG_WRONG -4
+
 # define RED "\033[0;31m"
 # define NEUTRE "\033[0;m"
 enum	e_token{

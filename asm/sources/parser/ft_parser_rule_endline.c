@@ -7,7 +7,6 @@ static int	ft_check_endline(t_pile_tree *pile, t_parse_tree *tree, t_parser *par
 	{
 		pile->value = FIN_LINE;
 		ft_putendl("reduction endline");
-//		ft_add_parent_tree(pile, parser);
 		return (1);
 	}
 	return (0);

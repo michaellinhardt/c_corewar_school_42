@@ -7,10 +7,7 @@ int		ft_check_argument(t_pile_tree *pile)
 	{
 		ft_putendl("reduce argument");
 		if (pile->tree->nbr_fils)
-		{
-			ft_putendl("erreur argument reduce");
 			return (-1);
-		}
 		return (1);
 	}
 	return (0);
@@ -23,10 +20,11 @@ int		ft_rule_argument(t_parser *parser, t_pile_tree *pile)
 	ret = ft_check_argument(pile);
 	if (ret == 1)
 	{
-//		parser->memory.arg = 1;
 		parser->focus_pile->value = ARG;
 		parser->focus_pile = 0;
 		return (SHIFT);
 	}
+	if (ret == -1)
+			ft_parse_error(parser, 0, pile->tree->token);
 	return (0);
 }
