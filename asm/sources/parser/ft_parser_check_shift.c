@@ -18,6 +18,16 @@ int		ft_shift_whitespaces(t_parser *parser)
 	return (0);
 }
 
+int		ft_shift_comment(t_parser *parser)
+{
+	if (parser->focus->token == COMMENT)
+	{
+		parser->focus = parser->focus->next;
+		return (SHIFT);
+	}
+	return (0);
+}
+
 int		ft_shift_command_name(t_parser *parser)
 {
 	if (parser->focus->token == COMMAND_NAME)

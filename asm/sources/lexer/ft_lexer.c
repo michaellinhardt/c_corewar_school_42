@@ -37,8 +37,17 @@ int		ft_lexer(t_lexer *lexer)
 				break ;
 			}
 		}
-		if (i >= NBR_TOKEN || token->token == END)
+		if (token->token == END)
+		{
+			//faire une verif que l'on lise rien derriere
 			break ;
+		}
+		if (i >= NBR_TOKEN)
+		{
+			ft_putendl("error lexer");
+			ft_lexer_error(lexer, ret);
+			return (0);
+		}
 		/*
 				test++;
 		if (test == 17)
@@ -47,10 +56,10 @@ int		ft_lexer(t_lexer *lexer)
 	}
 	if (lexer->line)
 	{
-
-				free(lexer->line);
-				lexer->line = 0;
+		free(lexer->line);
+		lexer->line = 0;
 	}
 	ft_display_tokenisation(lexer->begin);
+					exit(1);
 	return (1);
 }

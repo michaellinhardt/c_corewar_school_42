@@ -10,7 +10,8 @@ int		ft_lexer_direct_label(t_lexer *lexer, t_token *token)
 	if (*(lexer->focus + 1) != ':')
 		return (0);
 	i = 2;
-	while (i < lexer->size_line && ft_strchr(LABEL_CHARS, *(lexer->focus + i)))
+	while (i < lexer->size_line && ft_memchr(LABEL_CHARS, *(lexer->focus + i),
+				37))
 		++i;
 	if (i == 2)
 		return (0);

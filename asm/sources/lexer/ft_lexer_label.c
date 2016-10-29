@@ -6,7 +6,8 @@ int		ft_lexer_label(t_lexer *lexer, t_token *token)
 	int i;
 
 	i = 0;
-	while (i < lexer->size_line && ft_strchr(LABEL_CHARS, *(lexer->focus + i)))
+	while (i < lexer->size_line && ft_memchr(LABEL_CHARS, *(lexer->focus + i),
+			37))
 		++i;
 	if (!i || *(lexer->focus + i++) != ':')
 		return (0);

@@ -3,7 +3,7 @@
 # include "op.h"
 
 # define NBR_REDUCE 8
-# define NBR_SHIFT 15
+# define NBR_SHIFT 16
 # define NBR_ACCEPT 11
 # define DB_QUOTES -1
 enum	e_token{

@@ -45,6 +45,7 @@ void		ft_display_parse_tree(t_parse_tree *tree);
 /*
 **			Tokenisation
 */
+
 int			ft_lexer_command_name(t_lexer *lexer, t_token *token);
 int			ft_lexer_command_comment(t_lexer *lexer, t_token *token);
 int			ft_lexer_comment(t_lexer *lexer, t_token *token);
@@ -130,6 +131,7 @@ int			ft_shift_direct_label(t_parser *pasrer);
 int			ft_shift_direct(t_parser *pasrer);
 int			ft_shift_indirect(t_parser *parser);
 int			ft_shift_indirect_label(t_parser *parser);
+int			ft_shift_comment(t_parser *parser);
 int			ft_shift_end(t_parser *parser);
 /*
 ** Parse tree

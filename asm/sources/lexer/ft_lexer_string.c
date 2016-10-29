@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_asm.h"
-
 #include "libft.h"
 
 static int ft_lexer_read_string(t_lexer *lexer, t_token *token, int size)
