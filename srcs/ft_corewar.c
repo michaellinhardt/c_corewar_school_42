@@ -48,6 +48,8 @@ int			main(int argc, char **argv)
 		ascii(ASC_LOG);
 	ft_recup_options_players(d, argv, argc);
 	ft_get_init_players(d);
+	if (!d->vm.graphic)
+		d->mlx.scene = VM_INIT;
 	if (d->vm.graphic)
 		mlx_start(d, &d->mlx);
 	else

@@ -9,7 +9,6 @@
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
 # define WIN_Y 1200
-# define INTRO_FADE_SPEED 2
 
 /*
 **  COULEUR DE LA VM
@@ -31,6 +30,13 @@
 # define YELLOW "\033[0;33m"
 # define PURPLE "\033[0;35m"
 # define NEUTRE "\033[0;m"
+
+/*
+**  INTRO FADE SPEED
+*/
+# define INTRO_FADEIN_SPEED 2
+# define INTRO_FADEOUT_SPEED 5
+# define VM_FADEIN_SPEED 30
 
 /*
 **  DONNEE DE LA VM

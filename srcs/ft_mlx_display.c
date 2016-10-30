@@ -53,6 +53,7 @@ int		display(t_dmlx *m, t_dvm *v)
 	itow(m->scene_img[VM][10].img, 0, 0, "processus & bar layer");
 	itow(m->scene_img[VM][26].img, 0, 0, "processus bloc");
 	display_arene(m, v, 0, 0);
+	vm_load(data(), &m->scene_img[0][0]);
 	l2(-2, "display()", "printing cycle", v->cycle);
 	return (1);
 }

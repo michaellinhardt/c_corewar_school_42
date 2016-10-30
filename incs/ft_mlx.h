@@ -30,5 +30,8 @@ void		put_mid_img_3(t_dvm *v, t_img *img, int i, int posx);
 void		put_mid_img_4(t_dvm *v, t_img *img, int i, int posx);
 t_effect	*effect_data(void);
 void		intro_load(t_dmlx *m, t_img *i, t_img *l);
+void		intro_menu(t_img *i, t_img *l);
+void		intro_out(t_data *d, t_img *i, t_img *l, t_img *p);
+void		vm_load(t_data *d, t_img *i);
 
 #endif
