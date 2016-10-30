@@ -32,26 +32,26 @@ void	bloc_fadeout(t_img *i)
 int		display(t_dmlx *m, t_dvm *v)
 {
 	l2(100, "DISPLAYING", "build and print screen..", v->cycle);
-	itow(m->scene_img[2][0].img, 0, 0, "vm background");
-	reset_img(&m->scene_img[2][11]);
+	itow(m->scene_img[VM][0].img, 0, 0, "vm background");
+	reset_img(&m->scene_img[VM][11]);
 	display_effect(m, v, effect_data(), -1);
-	itow(m->scene_img[2][11].img, 0, 0, "effect layer");
+	itow(m->scene_img[VM][11].img, 0, 0, "effect layer");
 	display_cycle(m, v);
 	display_ctodie_bar(m, v, 0.0, 0);
-	reset_img(&m->scene_img[2][10]);
-	bloc_fadeout(&m->scene_img[2][26]);
-	display_processus(m, v->proc, &m->scene_img[2][10], &m->scene_img[2][26]);
+	reset_img(&m->scene_img[VM][10]);
+	bloc_fadeout(&m->scene_img[VM][26]);
+	display_processus(m, v->proc, &m->scene_img[VM][10], &m->scene_img[VM][26]);
 	display_processus_count(m, v);
 	if (v->nbr_proc)
-		display_bar_proc(m, v, &m->scene_img[2][10], 0);
+		display_bar_proc(m, v, &m->scene_img[VM][10], 0);
 	if (v->nbr_proc_dead)
-		display_bar_proc_dead(m, v, &m->scene_img[2][10], 0);
+		display_bar_proc_dead(m, v, &m->scene_img[VM][10], 0);
 	if (v->total_live)
-		display_bar_proc_live(m, v, &m->scene_img[2][10], 0);
+		display_bar_proc_live(m, v, &m->scene_img[VM][10], 0);
 	if (v->nbr_live)
-		display_bar_proc_live_current(m, v, &m->scene_img[2][10], 0);
-	itow(m->scene_img[2][10].img, 0, 0, "processus & bar layer");
-	itow(m->scene_img[2][26].img, 0, 0, "processus bloc");
+		display_bar_proc_live_current(m, v, &m->scene_img[VM][10], 0);
+	itow(m->scene_img[VM][10].img, 0, 0, "processus & bar layer");
+	itow(m->scene_img[VM][26].img, 0, 0, "processus bloc");
 	display_arene(m, v, 0, 0);
 	l2(-2, "display()", "printing cycle", v->cycle);
 	return (1);

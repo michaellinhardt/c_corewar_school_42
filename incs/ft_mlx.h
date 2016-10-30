@@ -14,9 +14,8 @@ void		loop_vm(t_data *d);
 void		*mlx_xpmtostruct(t_dmlx *m, t_img *img, char *file);
 int			itow(void *img, int x, int y, char *name);
 void		mlx_start(t_data *d, t_dmlx *m);
-void		scene(t_data *d, t_dmlx *m, t_input *i);
+void		scene(t_data *d, t_dmlx *m);
 void		scene_img(t_data *d, t_dmlx *m);
-void		scene_intro(t_data *d, t_dmlx *m, t_input *i);
 void		display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc);
 void		display_processus_count(t_dmlx *m, t_dvm *v);
 void		display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel);
@@ -30,5 +29,6 @@ void		display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i);
 void		put_mid_img_3(t_dvm *v, t_img *img, int i, int posx);
 void		put_mid_img_4(t_dvm *v, t_img *img, int i, int posx);
 t_effect	*effect_data(void);
+void		intro_load(t_dmlx *m, t_img *i, t_img *l);
 
 #endif

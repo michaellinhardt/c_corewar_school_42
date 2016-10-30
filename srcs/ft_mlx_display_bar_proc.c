@@ -58,7 +58,7 @@ static void	put_mid_img(t_dvm *v, t_img *img, int i, int posx)
 	{
 		if (!(v->p[i].total_proc_alive))
 			continue ;
-		pmid = (int *)data()->mlx.scene_img[2][BARIMGID + (i * 3) + 1].str;
+		pmid = (int *)data()->mlx.scene_img[VM][BARIMGID + (i * 3) + 1].str;
 		percent = ((double)v->p[i].total_proc_alive / (double)v->nbr_proc);
 		nbr = ((double)BARPROCALIVESIZE) * percent;
 		while (--nbr > -2 && ++posx <= BARPROCALIVESIZE && (y = -1))
@@ -85,9 +85,9 @@ void		display_bar_proc(t_dmlx *m, t_dvm *v, t_img *img, int i)
 	while (++i < MAX_PLAYERS)
 		if (v->p[i].total_proc_alive > 0 && ((pclose = i) + 1) && popen == -1)
 			popen = i;
-	put_open_img(img, &m->scene_img[2][BARIMGID + (popen * 3)]
+	put_open_img(img, &m->scene_img[VM][BARIMGID + (popen * 3)]
 	, BARPROCALIVEX, BARPROCALIVEY);
 	put_mid_img(v, img, -1, -1);
-	put_close_img(img, &m->scene_img[2][BARIMGID + (pclose * 3) + 2]
+	put_close_img(img, &m->scene_img[VM][BARIMGID + (pclose * 3) + 2]
 	, BARPROCALIVEX + BARPROCALIVESIZE, BARPROCALIVEY);
 }

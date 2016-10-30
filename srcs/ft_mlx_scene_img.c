@@ -58,6 +58,6 @@ void		scene_img(t_data *d, t_dmlx *m)
 		return ;
 	scene_img_folder(m, (DIR *)NULL, (struct dirent *)NULL);
 	if (m->scene == 2)
-		scene_layout_init(&m->scene_img[2][26]);
+		scene_layout_init(&m->scene_img[VM][26]);
 	m->img_isload[m->scene] = 1;
 }

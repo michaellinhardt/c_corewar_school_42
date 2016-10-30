@@ -46,7 +46,7 @@ void	display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i)
 		{
 			if (e[i].id_effect == 0 && l2(-2, "EFFECT_PRINT"
 			, "(looptodie) still alive", e[i].looptodie))
-				put_effect_img(&m->scene_img[2][11], i, -1, -1);
+				put_effect_img(&m->scene_img[VM][11], i, -1, -1);
 			else
 				break ;
 		}

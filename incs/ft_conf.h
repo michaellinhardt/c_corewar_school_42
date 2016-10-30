@@ -9,6 +9,7 @@
 # define WIN_TITLE "Corewar"
 # define WIN_X 1920
 # define WIN_Y 1200
+# define INTRO_FADE_SPEED 2
 
 /*
 **  COULEUR DE LA VM
@@ -46,7 +47,7 @@
 ** Cela évite de spam le processeur du PC pour RIEN
 */
 # define USLEEP_TIME 20000
-# define USLEEP_BOOL 1
+# define USLEEP_BOOL 0
 
 /*
 ** CONF PROPRE A MLX
@@ -55,7 +56,6 @@
 */
 # define SCENE_MAX 20
 # define SCENE_IMG_MAX 50
-# define SCENE_START VM_INIT
 # define EFFECTS_MAX_SLOT 20
 # define BLOC_FADE 75
 

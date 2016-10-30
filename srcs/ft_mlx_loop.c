@@ -15,7 +15,7 @@ int		loop(char etat)
 
 void	loop_vm(t_data *d)
 {
-	scene(d, &d->mlx, &d->mlx.input);
+	scene(d, &d->mlx);
 }
 
 int		loop_hook(t_data *d)

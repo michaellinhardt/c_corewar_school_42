@@ -3,7 +3,9 @@
 # define CPERLOOP_NUMBER 12
 
 enum	e_scene {
-	INTRO,
+	INTRO_LOAD,
+	INTRO_MENU,
+	INTRO_OUT,
 	VM_INIT,
 	VM
 };

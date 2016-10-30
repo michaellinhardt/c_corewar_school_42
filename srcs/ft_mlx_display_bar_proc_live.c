@@ -87,13 +87,13 @@ void		display_bar_proc_live(t_dmlx *m, t_dvm *v, t_img *img, int i)
 	while (++i < MAX_PLAYERS)
 		if (v->p[i].total_live > 0 && ((pclose = i) + 1) && popen == -1)
 			popen = i;
-	put_open_img_3(img, &m->scene_img[2][BARIMGID + (popen * 3)]
+	put_open_img_3(img, &m->scene_img[VM][BARIMGID + (popen * 3)]
 			, BARPROCALIVEX, BARPROCALIVEY + BARPROCLIVEINCY);
 	put_mid_img_3(v, img, -1, -1);
-	put_close_img_3(img, &m->scene_img[2][BARIMGID + (pclose * 3) + 2]
+	put_close_img_3(img, &m->scene_img[VM][BARIMGID + (pclose * 3) + 2]
 			, BARPROCALIVEX + BARPROCALIVESIZE,
 			BARPROCALIVEY + BARPROCLIVEINCY);
 	lastlivex = (ABS(v->last_live));
 	ft_set_lastlivex(&lastlivex);
-	put_last_live_img(img, &m->scene_img[2][25], lastlivex, LASTLIVEDISLAYY);
+	put_last_live_img(img, &m->scene_img[VM][25], lastlivex, LASTLIVEDISLAYY);
 }

@@ -41,7 +41,6 @@ int			main(int argc, char **argv)
 	t_data	*d;
 
 	d = data();
-	d->mlx.scene = SCENE_START;
 	d->vm.dump = -1;
 	d->vm.console = CONSOLE_LOG;
 	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
