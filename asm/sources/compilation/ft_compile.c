@@ -90,7 +90,7 @@ int			ft_compile_indirect(t_parse_tree *tree, unsigned char *code)
 
 #include <stdlib.h>
 int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
-		t_instructions *inst, unsigned int size)
+		const t_instructions *inst, unsigned int size)
 {
 	unsigned int 	i;
 	unsigned int	size_inst;
@@ -146,8 +146,21 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 	return (size_inst);
 }
 
+void			ft_compile_name(t_parse_tree *name, t_header *header)
+{
+	ft_memcpy(header->prog_name, name->fils[0]->token->value,
+			name->fils[0]->token->size);
+}	
+
+void			ft_compile_comment(t_parse_tree *name, t_header *header)
+{
+	ft_memcpy(header->comment, name->fils[0]->token->value,
+			name->fils[0]->token->size);
+}
+
+
 int			ft_compile_label(t_parse_tree *tree, unsigned char **code,
-		t_instructions *inst, unsigned int size)
+		const t_instructions *inst, unsigned int size)
 {
 	unsigned int i;
 
@@ -160,7 +173,7 @@ int			ft_compile_label(t_parse_tree *tree, unsigned char **code,
 	return (size);
 }
 int			ft_compile(t_parse_tree *tree, unsigned char **code,
-		t_instructions *inst, unsigned int size)
+		t_compile *compile, unsigned int size)
 {
 	unsigned int i;
 
@@ -170,21 +183,23 @@ int			ft_compile(t_parse_tree *tree, unsigned char **code,
 		while (i < tree->nbr_fils)
 		{
 			if (tree->fils[i] &&  tree->fils[i]->token->token == ENDLINE)
-				return (ft_compile(tree->fils[i], code, inst, size));
+				return (ft_compile(tree->fils[i], code, compile, size));
 			else if (tree->fils[i] && tree->fils[i]->token->token == INSTRUCTION)
 			{
-				size += ft_compile_instruction(tree->fils[i], code, inst, size);
+				size += ft_compile_instruction(tree->fils[i], code,
+						compile->inst, size);
 			}
 			else if (tree->fils[i] && tree->fils[i]->token->token == LABEL)
 			{
-				size = ft_compile_label(tree->fils[i], code, inst, size);
+				size = ft_compile_label(tree->fils[i], code, compile->inst, size);
 			}
 			else if (tree->fils[i] && tree->fils[i]->token->token == COMMAND_NAME)
 			{
-				// pas de size
+				ft_compile_name(tree->fils[i], &compile->header);
 			}
 			else if (tree->fils[i] && tree->fils[i]->token->token == COMMAND_COMMENT)
 			{
+				ft_compile_comment(tree->fils[i], &compile->header);
 				// pase de size
 			}
 			++i;

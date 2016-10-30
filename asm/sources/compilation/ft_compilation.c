@@ -81,17 +81,16 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 	unsigned char	*code;
 
 	code = 0;
-	size = ft_compile(tree, &code, compile.inst, 0);
+	size = ft_compile(tree, &code, &compile, 0);
 	compile.header.prog_size = size;
+	compile.header.magic = ft_little_to_big(COREWAR_EXEC_MAGIC);
 	ft_putnbr(size);
-
 	ft_putendl("Resultat :");
-//	ft_printf("Magic :%#x\nname header :%s\n", compile.header.magic, compile.header.prog_name);
-	/*
+	ft_printf("Magic :%#x\nname header :%s\n", compile.header.magic, compile.header.prog_name);
 	ft_printf("comment header :%s\nSize prog :%d\n", compile.header.comment, compile.header.prog_size);
 	ft_putendl("code ");
-	*/
 	ft_print_memory(code, size);
+
 	return (1);
 //	ft_print_memory(compile.code, compile.total_size);
 }

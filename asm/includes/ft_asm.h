@@ -11,7 +11,8 @@ int			ft_open_file(char **argv);
 int			ft_get_size_file(int fd);
 char		*ft_get_line(int fd, t_lexer *lexer);
 
-
+ 
+int			ft_little_to_big(int little);
 /*
 ** Instructions
 */
@@ -171,32 +172,8 @@ int				ft_compile(t_parse_tree *tree,t_compile *compile, unsigned char *code);
 */
 
 int			ft_compile(t_parse_tree *tree, unsigned char **code, 
-		t_instructions *inst, unsigned int size);
+		t_compile *compile, unsigned int size);
 
 
 int			ft_search_label(t_parse_tree *root, t_parse_tree *tree);
-/*
-unsigned char	*ft_compile_name(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_comment(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_string(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_label(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_register(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_indirect(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_instruction(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_indirect_label(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_direct(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-unsigned char	*ft_compile_endline(t_parse_tree *tree, unsigned char *code,
-		t_compile *compile);
-		*/
 #endif
