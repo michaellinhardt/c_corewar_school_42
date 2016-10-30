@@ -7,15 +7,15 @@ static int ft_check_rule_name(t_parse_tree *tree, t_parser *parser)
 	{
 		if (tree->nbr_fils != 1)
 		{
-			ft_putendl("ERROR RULE NAME");
+			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
 		if (tree->fils[0]->token->token != STRING)
 		{
-			ft_putendl("ERROR RULE NAME");
+			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
-		else if (tree->fils[0]->token->size > PROG_NAME_LENGTH)
+		else if (tree->fils[0]->token->size > PROG_NAME_LENGTH + 2)
 		{
 			ft_parse_error(parser, MINI_NAME, tree->fils[0]->token);
 			return (-1);

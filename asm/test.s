@@ -1,25 +1,11 @@
 .name "z
 efi    befef
-qwehfqvefqwe97fgqe f
-quiwegfyuqwevfefqwef
-qwooooooooooooooooooooooo
-pooooooooooodqwoiejfouwjefqwef
-qwuefhqwuiefhjqweiuf
-qwefqiwejfuqwefhqwef
-qweufhqiweufhqewufheqwf
-qweufhqweiufhqwuefh
-
-qwefuhquwehfuqwehfqwef
-qwiefhiqwuehfqweuf
-qwuehfqweuhfqwef
-qwuefhqwuefhqwefqw
-efqwuefhqwieufhqwef
-qwefuhqwe[fuhqwef
-qewfuhqwefhqwefqw
-efqweufhqwefhqwef
-qwefqiwuefhqwuefhqwe
-fwqfuihqwefqwehfqfqvwefyygqwfiv qwpeygfqvwefork"
-.comment "I'M ALIIIIVE"
+gfqvwefork"
+.comment "oooooooooooooooo
+ooooooooooooooooooo
+ooooooooooooooooooooo
+ppppppppppppppppppp
+"
 live %1
 zjmp %34
 sti r4 , %:live, r1
@@ -34,4 +20,4 @@ and :live1, %0, r1
 live:
 label1:
 and :live, %0, r1
-and :live1, %0, r99
+and :live1, %0, r1

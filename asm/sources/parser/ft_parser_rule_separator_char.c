@@ -1,14 +1,14 @@
 #include "libft.h"
 #include "ft_asm.h"
 
-static int	ft_check_separator_char(t_parse_tree *tree)
+static int	ft_check_separator_char(t_parser *parser, t_parse_tree *tree)
 {
 	if (tree->token->token == SEPARATOR)
 	{
 		ft_putendl("reduce separator char");
 		if (tree->nbr_fils)
 		{
-			ft_putendl("erreur check separator char");
+			ft_parse_error(parser, SEPARATOR, parser->focus);
 			return (-1);
 		}
 		else
@@ -21,12 +21,11 @@ int		ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
 {
 	int ret;
 
-	ret = ft_check_separator_char(pile->tree);
+	ret = ft_check_separator_char(parser, pile->tree);
 	if (ret)
 	{
 		if (!pile->prev || pile->prev->value != ARG)
 		{
-	//		ft_parse_error(parser, 0, pile->tree->token);
 			ft_putendl("erreur reduce SEPARATOR char");
 			ft_parse_error(parser, SEPARATOR, parser->focus);
 			return (-1);

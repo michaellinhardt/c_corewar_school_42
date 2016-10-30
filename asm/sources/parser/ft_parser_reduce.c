@@ -19,10 +19,7 @@ int		ft_parser_reduce(t_parser *parser)
 				if (ret > 0)
 					return (ret);
 				if (ret == -1)
-				{
-					ft_putendl("lalalalalllalaa");
 					return (ERREUR);
-				}
 			}
 		}
 		pile = pile->next;

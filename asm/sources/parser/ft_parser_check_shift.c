@@ -82,9 +82,6 @@ int		ft_shift_label(t_parser *parser)
 {
 	if (parser->focus->token == LABEL)
 	{
-		/*
-		 **	a voir apres
-		 */
 		ft_add_tree_shift(parser);
 		parser->focus = parser->focus->next;
 		return (REDUCE);
@@ -121,7 +118,7 @@ int		ft_shift_separator_char(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("erreur shift separator char");
+			ft_parse_error(parser, 0, parser->focus);
 			return (-1);
 		}
 		ft_add_tree_shift(parser);
@@ -137,7 +134,7 @@ int		ft_shift_direct_label(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("erreur shift direct label");
+			ft_parse_error(parser, 0, parser->focus);
 			return (-1);
 		}
 		ft_add_tree_shift(parser);
@@ -154,7 +151,6 @@ int		ft_shift_direct(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("ouahahahaha");
 			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
@@ -172,7 +168,7 @@ int		ft_shift_indirect(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("erreur shift indirect");
+			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
 		ft_add_tree_shift(parser);
@@ -189,7 +185,7 @@ int		ft_shift_indirect_label(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("erreur shift indirect label");
+			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
 		ft_add_tree_shift(parser);
@@ -205,7 +201,7 @@ int		ft_shift_end(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("erreur shift end");
+			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
 		ft_add_tree_shift(parser);

@@ -33,6 +33,7 @@ static int	ft_parse_code(t_parser *parser)
 		}
 		else
 		{
+			return (0);
 			ft_putendl("while error parser");
 			ft_parse_error(parser, 0, 0);
 			break ;

@@ -8,7 +8,6 @@ static int	ft_check_label(t_parse_tree *tree)
 		ft_putendl("reduction label");		
 		return (1);
 	}
-
 	return (0);
 }
 
