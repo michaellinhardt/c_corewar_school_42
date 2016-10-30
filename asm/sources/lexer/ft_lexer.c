@@ -9,7 +9,6 @@ int		ft_lexer(t_lexer *lexer)
 	int		ret;
 	t_token *token;
 	
-//	static int test = 0;
 	while (1)
 	{
 		i = 0;

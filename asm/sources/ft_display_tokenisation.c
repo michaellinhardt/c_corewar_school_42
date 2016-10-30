@@ -48,7 +48,7 @@ void		ft_display_tokenisation(t_token *begin)
 		if (begin->value)
 		{
 			ft_putendl(begin->value);
-			ft_print_memory(begin->value, begin->size);
+//			ft_print_memory(begin->value, begin->size);
 		}
 		else
 			ft_putendl("(NULL)");

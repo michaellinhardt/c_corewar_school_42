@@ -7,13 +7,8 @@
 static int	ft_parse_code(t_parser *parser)
 {
 	int action;
-	static int test = 0;
 
-	(void)parser;
 	action = 1;
-
-
-
 	while (1)
 	{
 
@@ -38,19 +33,11 @@ static int	ft_parse_code(t_parser *parser)
 		}
 		else
 		{
+			ft_putendl("while error parser");
 			ft_parse_error(parser, 0, 0);
 			break ;
-//			return (0);
 		}
 
-		/*
-		++test;
-		if (test == 73)
-		{
-		//	ft_putnbr(parser->focus->token);
-			break;
-		}
-		*/
 	}
 	if (!parser->end_pile)
 		ft_printf("y a un soucis\n");
@@ -68,7 +55,7 @@ static int	ft_parse_code(t_parser *parser)
 		pile = pile->next;
 	}
 
-//	exit(1);
+	exit(1);
 	return (1);
 }
 
