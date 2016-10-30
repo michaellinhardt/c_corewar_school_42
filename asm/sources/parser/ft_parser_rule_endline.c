@@ -1,7 +1,8 @@
 #include "libft.h"
 #include "ft_asm.h"
 
-static int	ft_check_endline(t_pile_tree *pile, t_parse_tree *tree, t_parser *parser)
+static int	ft_check_endline(t_pile_tree *pile, t_parse_tree *tree,
+		t_parser *parser)
 {
 	if (tree->token->token == ENDLINE)
 	{

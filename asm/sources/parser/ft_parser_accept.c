@@ -25,14 +25,14 @@ int		ft_parser_accept(t_parser *parser)
 			}
 			else if (ret == -1)
 			{
-					ft_putendl("Error accept");
-					return (0);
+				ft_putendl("Error accept");
+				return (0);
 			}
 			else if (ret == CODE_ACCEPT)
 				return CODE_ACCEPT;
 			++i;
 		}
-	end = end->prev;
+		end = end->prev;
 	}
 	return (SHIFT);
 }

@@ -44,6 +44,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 	return (0);
 }
 
+/*
 int	ft_accept_label(t_parser *parser, t_pile_tree *pile)
 {
 	if (pile->value == FIN_INST || pile->value == ENDLINE)
@@ -69,7 +70,8 @@ int	ft_accept_label(t_parser *parser, t_pile_tree *pile)
 	}
 	return (0);
 }
-
+*/
+/*
 int	ft_accept_label_inst(t_parser *parser, t_pile_tree *pile)
 {
 	if (pile->value == CPL_INST)
@@ -95,6 +97,7 @@ int	ft_accept_label_inst(t_parser *parser, t_pile_tree *pile)
 	}
 	return (0);
 }
+*/
 
 
 int	ft_accept_name(t_parser *parser, t_pile_tree *pile)
@@ -162,10 +165,8 @@ int	ft_accept_argument(t_parser *parser, t_pile_tree *pile)
 			ft_free_elem_pile(pile->prev, parser);
 			return (1);
 		}
-		ft_putendl("lalala");
 		ft_parse_error(parser, 0, pile->prev->tree->token);
 		return (-1);
-
 	}
 	return (0);
 }
@@ -221,14 +222,16 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 	if (pile->value == LAST_ARG)
 	{
 		if (!pile->prev)
+		{
 				ft_putendl("erreur accept instruction");
+				return (-1);
+		}
 		if (pile->prev->value == VIRGULE)
 			return (0);
 		if (pile->prev->value == INST)
 		{
 			if (ft_verif_instruction(pile->prev, pile, parser->inst))
 			{
-
 				ft_complete_instruction(pile->prev->tree, pile->tree);
 				pile->prev->value = CPL_INST;
 				ft_free_arguments(pile->tree);
@@ -255,58 +258,145 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 	return (0);
 }
 
-int			ft_accept_code_header(t_parser *parser, t_pile_tree *pile)
+int			ft_accept_instruction_plus(t_parser *parser, t_pile_tree *pile)
 {
-	//reduction final
-	if (pile->value == FIN_INST)
+	if (pile->value == CPL_INST)
 	{
-		if (pile->prev->value != HEADER)
-			return (0);
-		ft_putendl("reduction final");
-		ft_add_leaf(pile->prev->tree, pile->tree);
-		ft_free_elem_pile(pile, parser);
-		return (CODE_ACCEPT);
-	}
-	return (0);
-}
-
-int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
-{
-	if (pile->value == FIN_INST)
-	{
-		if (pile->prev->value == CPL_INST)
+		if (!pile->prev)
 		{
-			ft_putendl("accept instruction multiples");
-			pile->prev->tree = ft_fusion_fils(pile->prev->tree, pile->tree);
-			pile->prev->value = FIN_INST;
-			free(pile->tree->fils);
-			pile->tree->fils = 0;
-			pile->tree->nbr_fils = 0;
-			ft_free_elem_pile(pile, parser);
-			return (1);
-		}
-	}
-	return (0);
-}
-
-int			ft_accept_end(t_parser *parser, t_pile_tree *pile)
-{
-	if (pile->value == FIN)
-	{
-		if (pile->prev->value == CPL_INST)
-		{
-			ft_putendl("accept fin instruction");
-			pile->prev->value = FIN_INST;
-			ft_free_elem_pile(pile, parser);
-			return (1);
-		}
-		// ajouter condion poour label finis
-		else 
-		{
-			ft_parse_error(parser, 0, pile->tree->token);
-			ft_putendl("erreur accept end");
+			ft_putendl("erreur accept instruction plus");
 			return (-1);
 		}
+		if (pile->prev->value != CPL_INST)
+			return (0);
+		ft_putendl("accept multiple instruciotn ");
+		pile->prev->tree = ft_fusion_fils(pile->prev->tree, pile->tree);
+		pile->prev->value = CPL_INST;
+		free(pile->tree->fils);
+		pile->tree->fils = 0;
+		pile->tree->nbr_fils = 0;
+		ft_free_elem_pile(pile, parser);
+		return (1);
 	}
 	return (0);
 }
+
+int		ft_accept_label_inst(t_parser *parser, t_pile_tree *pile)
+{
+	if (pile->value == CPL_INST)
+	{
+		if (!pile->prev)
+		{
+			ft_putendl("erreur accept label inst");
+			return (-1);
+		}
+		if (pile->prev->value != POSITION)
+			return (0);
+		ft_putendl("accept label + inst");
+		ft_fusion_fils(pile->prev->tree, pile->tree);
+		free(pile->tree->fils);
+		pile->tree->fils = 0;
+		pile->tree->nbr_fils = 0;
+		ft_add_leaf(pile->tree, pile->prev->tree);
+		pile->prev->tree = pile->tree;
+		ft_free_elem_pile(pile, parser);
+		pile->prev->value = POSITION_INST;
+		return (1);
+	}
+	return (0);
+}
+
+// le mieux c'est de faire un nouvel etat mais la flemme :
+// si sa marche pas dans accept faire que les inst 
+// sinon creer un etat en plus quand token end 
+// qui vas faire les reductions majeur
+int		ft_accept_position_inst(t_parser *parser, t_pile_tree *pile)
+{
+	if (pile->value == CPL_INST)
+	{
+		if (!pile->prev)
+		{
+			ft_putendl("erreur accept label inst");
+			return (-1);
+		}
+		if (pile->prev->value != POSITION_INST)
+			return (0);
+		ft_putendl("accept positoin inst  + inst");
+		ft_fusion_fils(pile->prev->tree->fils[0], pile->tree);
+		free(pile->tree->fils);
+		pile->tree->fils = 0;
+		pile->tree->nbr_fils = 0;
+		ft_add_leaf(pile->tree, pile->prev->tree->fils[0]);
+		pile->prev->tree = pile->tree;
+		ft_free_elem_pile(pile, parser);
+		pile->prev->value = POSITION_INST;
+		return (1);
+	}
+	return (0);
+}
+/*
+int		ft_accept_add_inst_to_label(t_parser *parser, t_pile_tree *tree)
+{
+
+
+}
+*/
+/*
+   int			ft_accept_code_header(t_parser *parser, t_pile_tree *pile)
+   {
+//reduction final
+if (pile->value == FIN_INST)
+{
+if (pile->prev->value != HEADER)
+return (0);
+ft_putendl("reduction final");
+ft_add_leaf(pile->prev->tree, pile->tree);
+ft_free_elem_pile(pile, parser);
+return (CODE_ACCEPT);
+}
+return (0);
+}
+*/
+
+/*
+   int			ft_accept_end_inst(t_parser *parser, t_pile_tree *pile)
+   {
+   if (pile->value == FIN_INST)
+   {
+   if (pile->prev->value == CPL_INST)
+   {
+   ft_putendl("accept instruction multiples");
+   pile->prev->tree = ft_fusion_fils(pile->prev->tree, pile->tree);
+   pile->prev->value = FIN_INST;
+   free(pile->tree->fils);
+   pile->tree->fils = 0;
+   pile->tree->nbr_fils = 0;
+   ft_free_elem_pile(pile, parser);
+   return (1);
+   }
+   }
+   return (0);
+   }
+
+   int			ft_accept_end(t_parser *parser, t_pile_tree *pile)
+   {
+   if (pile->value == FIN)
+   {
+   if (pile->prev->value == CPL_INST)
+   {
+   ft_putendl("accept fin instruction");
+   pile->prev->value = FIN_INST;
+   ft_free_elem_pile(pile, parser);
+   return (1);
+   }
+// ajouter condion poour label finis
+else 
+{
+ft_parse_error(parser, 0, pile->tree->token);
+ft_putendl("erreur accept end");
+return (-1);
+}
+}
+return (0);
+}
+*/

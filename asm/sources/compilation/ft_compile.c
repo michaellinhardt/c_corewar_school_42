@@ -183,7 +183,7 @@ int			ft_compile(t_parse_tree *tree, unsigned char **code,
 			{
 				// pas de size
 			}
-			else if (tree->fils[i] && tree->fils[i]->token->token == COMMAND_NAME)
+			else if (tree->fils[i] && tree->fils[i]->token->token == COMMAND_COMMENT)
 			{
 				// pase de size
 			}

@@ -17,6 +17,7 @@ static void	ft_display_poids(t_parse_tree *tree)
 	}
 }
 
+/*
 void	ft_create_header(t_header *header, t_token *token)
 {
 	t_token			*ts;
@@ -42,8 +43,10 @@ void	ft_create_header(t_header *header, t_token *token)
 		while (++i < token->size && i < COMMENT_LENGTH + 1)
 			header->comment[i] = token->value[i];
 	}
+	memcpy(header.name, token->name, token->size);
 	header->magic = COREWAR_EXEC_MAGIC;
 }
+*/
 
 int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 {
@@ -58,7 +61,7 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 	ft_init_compilation(&compile);
 	ft_putendl("test compilation");
 	ft_bzero(&compile.header, sizeof(t_header));
-	ft_create_header(&compile.header, token);
+//	ft_create_header(&compile.header, token);
 	ft_init_instructions(compile.inst);
 	ft_putendl("---------------");
 	size = ft_calcul_poids(tree, compile.inst, poids);
@@ -82,9 +85,11 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 	ft_putnbr(size);
 
 	ft_putendl("Resultat :");
-	ft_printf("Magic :%#x\nname header :%s\n", compile.header.magic, compile.header.prog_name);
+//	ft_printf("Magic :%#x\nname header :%s\n", compile.header.magic, compile.header.prog_name);
+	/*
 	ft_printf("comment header :%s\nSize prog :%d\n", compile.header.comment, compile.header.prog_size);
 	ft_putendl("code ");
+	*/
 	ft_print_memory(code, size);
 	return (1);
 //	ft_print_memory(compile.code, compile.total_size);
