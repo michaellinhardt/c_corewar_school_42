@@ -12,16 +12,13 @@ void	intro_out_fade(t_img *i, int fade)
 	}
 }
 
-void	vm_load(t_data *d, t_img *i)
+void	vm_load(t_img *i)
 {
 	static int	fade = 0;
 
 	fade += VM_FADEIN_SPEED;
 	if (fade > 255)
-	{
-		d->mlx.scene = VM;
 		return ;
-	}
 	intro_out_fade(i, fade);
 	itow(i->img, 0, 0, "fade in");
 }

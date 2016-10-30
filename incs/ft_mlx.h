@@ -32,6 +32,7 @@ t_effect	*effect_data(void);
 void		intro_load(t_dmlx *m, t_img *i, t_img *l);
 void		intro_menu(t_img *i, t_img *l);
 void		intro_out(t_data *d, t_img *i, t_img *l, t_img *p);
-void		vm_load(t_data *d, t_img *i);
+void		vm_load(t_img *i);
+void		display_player_name(t_dmlx *m, t_dvm *v);
 
 #endif

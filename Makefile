@@ -27,6 +27,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display_cycle \
 			ft_mlx_display_effect \
 			ft_mlx_display_processus \
+			ft_mlx_display_player_name \
 			ft_mlx_display_processus_count \
 			ft_mlx_display_bar_proc_live_current \
 			ft_mlx_display_bar_proc_live \

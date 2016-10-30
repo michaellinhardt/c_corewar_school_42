@@ -56,8 +56,14 @@ void		scene_img(t_data *d, t_dmlx *m)
 	d->mlx.loop += 0;
 	if (m->img_isload[m->scene] == 1)
 		return ;
+	if (m->scene == VM && !m->img_isload[0])
+	{
+		m->scene = 0;
+		scene_img_folder(m, (DIR *)NULL, (struct dirent *)NULL);
+		m->scene = VM;
+	}
 	scene_img_folder(m, (DIR *)NULL, (struct dirent *)NULL);
-	if (m->scene == 2)
+	if (m->scene == VM)
 		scene_layout_init(&m->scene_img[VM][26]);
 	m->img_isload[m->scene] = 1;
 }
