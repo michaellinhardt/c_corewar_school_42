@@ -28,6 +28,8 @@ static void	ft_execute_studio(t_dvm *vm, t_proc *proc)
 {
 	vm->p[(ABS(proc->args[0].value)) - 1].last_cycle_live = vm->cycle;
 	vm->p[(ABS(proc->args[0].value)) - 1].total_live++;
+	vm->p[(ABS(proc->args[0].value)) - 1].total_live_current++;
+	vm->nbr_live_current++;
 	proc->live_player++;
 	vm->last_live = proc->args[0].value;
 	vm->last_live_cycle = vm->cycle;

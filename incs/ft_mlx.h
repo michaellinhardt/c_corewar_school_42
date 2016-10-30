@@ -24,8 +24,11 @@ void		display_cycle(t_dmlx *m, t_dvm *v);
 void		display_bar_proc(t_dmlx *m, t_dvm *v, t_img *img, int i);
 void		display_bar_proc_dead(t_dmlx *m, t_dvm *v, t_img *img, int i);
 void		display_bar_proc_live(t_dmlx *m, t_dvm *v, t_img *img, int i);
+void		display_bar_proc_live_current(t_dmlx *m,
+			t_dvm *v, t_img *img, int i);
 void		display_effect(t_dmlx *m, t_dvm *v, t_effect *e, int i);
 void		put_mid_img_3(t_dvm *v, t_img *img, int i, int posx);
+void		put_mid_img_4(t_dvm *v, t_img *img, int i, int posx);
 t_effect	*effect_data(void);
 
 #endif

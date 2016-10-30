@@ -33,3 +33,31 @@ void		put_mid_img_3(t_dvm *v, t_img *img, int i, int posx)
 		}
 	}
 }
+
+void		put_mid_img_4(t_dvm *v, t_img *img, int i, int posx)
+{
+	int			*pmid;
+	int			*pimg;
+	double		nbr;
+	int			y;
+	double		percent;
+
+	pimg = (int *)img->str;
+	while (++i < MAX_PLAYERS)
+	{
+		if (!(v->p[i].total_live_current))
+			continue ;
+		pmid = (int *)data()->mlx.scene_img[2][BARIMGID + (i * 3) + 1].str;
+		percent = ((double)v->p[i].total_live_current /
+		(double)v->nbr_live_current);
+		nbr = ((double)BARPROCALIVESIZE) * percent;
+		while (--nbr > -2 && ++posx <= BARPROCALIVESIZE)
+		{
+			y = -1;
+			img->i = ((BARPROCALIVEY + BARPROCLIVE2INCY) * WIN_X)
+				+ BARPROCALIVEX + BAROPENX + posx;
+			while (++y < BAROPENY)
+				ft_put_barliveprocalpha(img, pimg, pmid, y);
+		}
+	}
+}
