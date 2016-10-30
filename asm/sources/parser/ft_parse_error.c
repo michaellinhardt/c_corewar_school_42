@@ -12,6 +12,8 @@ void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 			ft_printf("%sno code", RED);
 		else if (erreur == CPL_INST)
 			ft_printf("%sheader not at top of the file", RED);
+		else if (erreur == MINI_NAME)
+			ft_printf("Size of string name is invalid");
 		else
 			ft_printf("Invalid syntax near : ");
 	if (token)

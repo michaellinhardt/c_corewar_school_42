@@ -44,6 +44,7 @@ int			main(int argc, char **argv)
 {
 	t_data	*d;
 
+	ft_putendl(*argv);
 	d = data();
 	d->mlx.scene = SCENE_START;
 	d->vm.dump = -1;

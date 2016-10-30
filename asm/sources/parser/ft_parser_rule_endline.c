@@ -18,7 +18,7 @@ int		ft_rule_endline(t_parser *parser, t_pile_tree *pile)
 	if (ft_check_endline(pile, pile->tree, parser))
 	{
 		parser->focus_pile = 0;
-			return (ACCEPT);
+		return (ACCEPT);
 	}
 	return (0);
 }

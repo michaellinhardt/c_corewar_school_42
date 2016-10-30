@@ -54,9 +54,6 @@ int		ft_shift_endline(t_parser *parser)
 {
 	 if (parser->focus->token == ENDLINE)
 	{
-		/*
-		 ** Ignorer les '\n' au debut et les '\n' multiples
-		 */
 		if (!parser->debut_pile || (parser->end_pile->tree && 
 					parser->end_pile->tree->token->token == ENDLINE))
 		{
@@ -157,7 +154,8 @@ int		ft_shift_direct(t_parser *parser)
 	{
 		if (parser->focus_pile)
 		{
-			ft_putendl("erreur shift direct");
+			ft_putendl("ouahahahaha");
+			ft_parse_error(parser, 0, parser->focus);	
 			return (-1);
 		}
 		ft_add_tree_shift(parser);
