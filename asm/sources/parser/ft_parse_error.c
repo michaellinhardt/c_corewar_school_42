@@ -5,17 +5,17 @@
 void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 {
 		if (erreur == CMD_NAME)
-			ft_printf("%sincomplete header", RED);
+			ft_printf("%sincomplete header ", RED);
 		else if (erreur == CMD_COMMENT)
-			ft_printf("%sincomplete header", RED);
+			ft_printf("%sincomplete header ", RED);
 		else if (erreur == HEADER)
-			ft_printf("%sno code", RED);
+			ft_printf("no code ");
 		else if (erreur == CPL_INST)
-			ft_printf("%sheader not at top of the file", RED);
+			ft_printf("%sheader not at top of the file ", RED);
 		else if (erreur == MINI_NAME)
-			ft_printf("Size of string name is invalid");
+			ft_printf("Size of string name is invalid ");
 		else if (erreur == MINI_COMMENT)
-			ft_printf("Size of string comment is invalid");
+			ft_printf("Size of string comment is invalid ");
 		else
 			ft_printf("Invalid syntax near : ");
 	if (token)
@@ -32,7 +32,7 @@ void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 			ft_printf("%s%s", RED, ",");
 		else
 			ft_printf("%s%s", RED, token->value);
-		ft_putnbr(erreur);
+//		ft_putnbr(erreur);
 		ft_putstr(NEUTRE);
 		ft_putstr(" at : ");
 		ft_printf("[%d:", token->y);

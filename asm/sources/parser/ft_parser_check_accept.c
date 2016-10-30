@@ -193,9 +193,10 @@ int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 			}
 			else
 			{
-				ft_putendl("erreur accept: instruction invalide");
-				ft_parse_error(parser, LAST_ARG, pile->tree->fils[0]->token);
-				ft_parse_error(parser, -32, pile->tree->token);
+				if (pile->tree && pile->tree->fils)
+					ft_parse_error(parser, LAST_ARG, pile->tree->fils[0]->token);
+				else
+					ft_parse_error(parser, LAST_ARG, parser->focus);
 			}
 			return (0);
 		}
@@ -263,13 +264,13 @@ int		ft_accept_code_fin(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev)
 		{
-			ft_putendl("erreur accept code fin");
+			ft_parse_error(parser, 0, parser->focus);
 			return (-1);
 		}
 		if (pile->prev->value != HEADER && pile->prev->value != CPL_INST &&
 				pile->prev->value != POSITION_INST)
 		{
-			ft_putendl("erreur code fin");
+			ft_parse_error(parser, 0, parser->focus);
 			return (-1);	
 		}
 		ft_putendl("accept label + inst");

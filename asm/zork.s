@@ -7,7 +7,7 @@
 live %1
 zjmp %34
 sti r4 , %:live, r2
-live : a
+live:
 and :live, %0, r1 # COMMENT
 live:	live %1
 		zjmp %:live
