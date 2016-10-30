@@ -13,6 +13,7 @@ int		ft_parser_shift(t_parser *parser)
 		ret = parser->f_shift[i](parser);
 		if (ret == -1)
 		{
+			ft_putnbr(i);
 			ft_putendl("erreur shift");
 			return (ret);
 		}
