@@ -66,6 +66,7 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 	ft_putendl("---------------");
 	size = ft_calcul_poids(tree, compile.inst, poids);
 
+	ft_putnbr(size);
 	if (ft_search_label(tree, tree))
 	{
 			ft_putendl("erreur compilation label search");

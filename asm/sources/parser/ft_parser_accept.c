@@ -5,9 +5,7 @@ int		ft_parser_accept(t_parser *parser)
 {
 	int ret;
 	int	i;
-	// refaire a partir de la fin
 	t_pile_tree *end;
-	t_pile_tree *prev;
 
 	end = parser->end_pile;
 	while (end)
@@ -20,8 +18,6 @@ int		ft_parser_accept(t_parser *parser)
 			{
 				end = parser->end_pile;
 				continue ;
-				// tant qu'on a des accept on continue de reduire
-				//return (ACCEPT);
 			}
 			else if (ret == -1)
 			{

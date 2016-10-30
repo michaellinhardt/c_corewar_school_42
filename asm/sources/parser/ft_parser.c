@@ -68,7 +68,7 @@ static int	ft_parse_code(t_parser *parser)
 		pile = pile->next;
 	}
 
-	exit(1);
+//	exit(1);
 	return (1);
 }
 

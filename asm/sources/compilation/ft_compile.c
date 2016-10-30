@@ -170,7 +170,7 @@ int			ft_compile(t_parse_tree *tree, unsigned char **code,
 		while (i < tree->nbr_fils)
 		{
 			if (tree->fils[i] &&  tree->fils[i]->token->token == ENDLINE)
-				return (size + ft_compile(tree->fils[i], code, inst, size));
+				return (ft_compile(tree->fils[i], code, inst, size));
 			else if (tree->fils[i] && tree->fils[i]->token->token == INSTRUCTION)
 			{
 				size += ft_compile_instruction(tree->fils[i], code, inst, size);

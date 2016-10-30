@@ -116,6 +116,8 @@ int			ft_accept_instruction_plus(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_separator_char(t_parser *parser, t_pile_tree *tree);
 int			ft_accept_label_inst(t_parser *parser, t_pile_tree *tree);
 int			ft_accept_position_inst(t_parser *parser, t_pile_tree *tree);
+int			ft_accept_fin(t_parser *parser, t_pile_tree *tree);
+int			ft_accept_code_fin(t_parser *parser, t_pile_tree *tree);
 /*
 **			checks
 */
