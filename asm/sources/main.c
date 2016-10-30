@@ -23,12 +23,13 @@ int		main(int argc, char **argv)
 		return (0);
 	lexer.fd = ft_open_file(argv);
 	lexer.size = ft_get_size_file(lexer.fd);
+	lexer.name = *(argv + 1);
 	if (lexer.size == -1)
 		return (0);
 	if (ft_lexer(&lexer))
 	{
 		if (ft_parser(lexer.begin, &parser))
-			ft_compilation(parser.debut_pile->tree, &parser, lexer.begin);
+			ft_compilation(parser.debut_pile->tree, &parser, &lexer);
 	}
 	return (0);
 }

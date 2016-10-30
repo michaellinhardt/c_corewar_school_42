@@ -148,14 +148,14 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 
 void			ft_compile_name(t_parse_tree *name, t_header *header)
 {
-	ft_memcpy(header->prog_name, name->fils[0]->token->value,
-			name->fils[0]->token->size);
+	ft_memcpy(header->prog_name, name->fils[0]->token->value + 1,
+			name->fils[0]->token->size -2);
 }	
 
 void			ft_compile_comment(t_parse_tree *name, t_header *header)
 {
-	ft_memcpy(header->comment, name->fils[0]->token->value,
-			name->fils[0]->token->size);
+	ft_memcpy(header->comment, name->fils[0]->token->value + 1,
+			name->fils[0]->token->size -2);
 }
 
 

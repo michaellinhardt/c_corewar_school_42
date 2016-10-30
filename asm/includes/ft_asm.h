@@ -161,19 +161,15 @@ t_parse_tree *ft_create_leaf(t_token *token);
 **	compilation
 */
 
+int				ft_create_file(char *name);
 int				ft_calcul_poids(t_parse_tree *tree, t_instructions *inst,
-		unsigned int poids);
+				unsigned int poids);
 void			ft_init_compilation(t_compile *compile);
 int				ft_compilation(t_parse_tree *tree, t_parser *parser,
-				t_token *token);
+				t_lexer *lexer);
 unsigned char	ft_set_oc_p(unsigned int id, t_parse_tree *inst);
-/*
-int				ft_compile(t_parse_tree *tree,t_compile *compile, unsigned char *code);
-*/
-
-int			ft_compile(t_parse_tree *tree, unsigned char **code, 
-		t_compile *compile, unsigned int size);
-
-
-int			ft_search_label(t_parse_tree *root, t_parse_tree *tree);
+int				ft_compile(t_parse_tree *tree, unsigned char **code, 
+				t_compile *compile, unsigned int size);
+int				ft_search_label(t_parse_tree *root, t_parse_tree *tree);
+char			*ft_create_name(char *name, int size);
 #endif

@@ -48,12 +48,14 @@ void	ft_create_header(t_header *header, t_token *token)
 }
 */
 
-int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
+#include <unistd.h>
+int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_lexer *lexer)
 {
 	//	typedef unsigned char	(*f_compilation[ENDLINE])(t_parse_tree *tree);
 	t_compile compile;
 	unsigned int poids;
 	unsigned int size;
+	int			fd;
 
 	poids = 0;
 	compile.code = 0;
@@ -82,7 +84,7 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 
 	code = 0;
 	size = ft_compile(tree, &code, &compile, 0);
-	compile.header.prog_size = size;
+	compile.header.prog_size = ft_little_to_big(size);
 	compile.header.magic = ft_little_to_big(COREWAR_EXEC_MAGIC);
 	ft_putnbr(size);
 	ft_putendl("Resultat :");
@@ -91,6 +93,14 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_token *token)
 	ft_putendl("code ");
 	ft_print_memory(code, size);
 
+	ft_putendl("Creation file");
+	if ((fd = ft_create_file(lexer->name)) != -1)
+	{
+		ft_putendl("ecriture du code");
+		write(fd, &compile.header, sizeof(t_header));
+		write(fd, code, size);
+		close (fd);
+	}
 	return (1);
 //	ft_print_memory(compile.code, compile.total_size);
 }

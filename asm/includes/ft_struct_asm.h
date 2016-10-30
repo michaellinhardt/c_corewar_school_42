@@ -95,6 +95,7 @@ struct				s_lexer
 	unsigned int 	x;
 	char			*line;
 	char			*focus;
+	char			*name;
 	int				size;
 	int				fd; // fd du fichier
 	int				(*f_tokens[NBR_TOKEN])(t_lexer *lexer, t_token *token);

@@ -8,9 +8,11 @@ int		ft_lexer_direct(t_lexer *lexer, t_token *token)
 	if (*(lexer->focus) == DIRECT_CHAR)
 	{
 		i = 1;
+		if (*(lexer->focus + 1) == '-')
+			++i;
 		while (i < lexer->size_line && ft_isdigit(*(lexer->focus + i)))
 			++i;
-		if (i == 1)
+		if (i == 1 || (*(lexer->focus + 1) == '-' && i == 2))
 			return (0);
 		ft_get_value(lexer, token, i);
 		lexer->focus += i;
