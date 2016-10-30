@@ -8,5 +8,6 @@ void	ft_display_help(void)
 	ft_putendl("  -v [number]\t\tlog like zaz to check diff");
 	ft_putendl("  -g [number]\t\tforce graphic mode regardless to header");
 	ft_putendl("  -l [number]\t\tforce colored log in terminal");
+	ft_putendl("  -c [number]\t\trewrite code take proc color");
 	exit(0);
 }

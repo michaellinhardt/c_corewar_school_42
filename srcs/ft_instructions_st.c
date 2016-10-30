@@ -51,7 +51,8 @@ void		ft_instructions_st(t_dvm *vm, t_instructions inst, t_proc *proc)
 				ft_log_st(vm, proc, tab[1], tab[0]);
 				ft_put_registre(vm->arene, (unsigned int)proc->args[0].value,
 						((proc->pc + tab[2]) * 2) % SIZE_CHAR_ARENE);
-				ft_put_color_size(vm->color, vm->code_color[ABS(proc->player)],
+				ft_put_color_size(vm->color, (vm->color_proc) ?
+				vm->code_color[ABS(proc->player)] : vm->color[proc->pc],
 						proc->pc + tab[2], 4);
 			}
 		}

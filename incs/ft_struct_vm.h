@@ -65,6 +65,7 @@ typedef struct		s_dvm
 	char			arene[8192];
 	int				color[MEM_SIZE];
 	int				code_color[9];
+	int				color_proc;
 	char			code[MEM_SIZE];
 	char			console;
 	char			consolee;
