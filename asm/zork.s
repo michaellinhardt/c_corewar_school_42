@@ -2,11 +2,9 @@
 	 efi	befef
 	 qwehfqvefqwe97fgqe f
 	 quiwegfyuqwevfefqwef
-	 qwfqvwefyygqwfv qwpeygfqvwefork"
+	 qwfqvwefyygqwfv qwpeygfqvwefork" "lol"
 .comment "I'M ALIIIIVE"
 live %1
-live %1
-r4, %:live
 #zjmp %34
 #sti r4 , %:live, r2
 #and :live, %0, r1 # COMMENT

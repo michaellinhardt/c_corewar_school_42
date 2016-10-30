@@ -24,6 +24,10 @@ void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 			*/
 		if (erreur == LAST_ARG && token->value)
 			ft_printf("%s%s", RED, token->value);
+		else if (erreur == SEPARATOR)
+			ft_printf("%s%s", RED, ",");
+		else
+			ft_printf("%s%s", RED, token->value);
 		ft_putnbr(erreur);
 		ft_putstr(NEUTRE);
 		ft_putstr(" at : ");

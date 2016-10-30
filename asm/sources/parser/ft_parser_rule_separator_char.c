@@ -26,8 +26,9 @@ int		ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev || pile->prev->value != ARG)
 		{
-			ft_parse_error(parser, 0, pile->tree->token);
+	//		ft_parse_error(parser, 0, pile->tree->token);
 			ft_putendl("erreur reduce SEPARATOR char");
+			ft_parse_error(parser, SEPARATOR, parser->focus);
 			return (-1);
 		}
 		ft_add_leaf(pile->tree, pile->prev->tree);
