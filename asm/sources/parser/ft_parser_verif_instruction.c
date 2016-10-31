@@ -23,7 +23,7 @@ static void	ft_erreur_parser_instruction(t_token *token, t_instructions inst,
 	exit(1);
 }
 
-static int	ft_check_type_arg(t_token *token , int nbr_arg, t_instructions inst)
+static int	ft_check_type_arg(t_token *token, int nbr_arg, t_instructions inst)
 {
 	int nbr;
 
@@ -37,33 +37,28 @@ static int	ft_check_type_arg(t_token *token , int nbr_arg, t_instructions inst)
 			if (nbr >= 1 && nbr <= 16)
 				return (1);
 			else
-			ft_erreur_parser_instruction(token, inst, PARSER_INSTRUCTION_REGISTRE);
+				ft_erreur_parser_instruction(token, inst, -3);
 		}
 	}
 	else if (token->token == DIRECT_LABEL || token->token == DIRECT)
 	{
 		if ((inst.types[nbr_arg] & T_DIR) == T_DIR)
 			return (1);
-
 	}
 	else if (token->token == INDIRECT_LABEL || token->token == INDIRECT)
-	{
 		if ((inst.types[nbr_arg] & T_IND) == T_IND)
 			return (1);
-	}
-		ft_erreur_parser_instruction(token, 
-				inst, PARSER_INSTRUCTION_NBR);
-//	ft_putendl("erreur verrif types arguments");
+	ft_erreur_parser_instruction(token, inst, PARSER_INSTRUCTION_NBR);
 	return (0);
 }
 
-static int 	ft_verif_args(t_parse_tree *args, t_instructions inst, 
+static int	ft_verif_args(t_parse_tree *args, t_instructions inst,
 		int *nbr)
 {
 	int i;
 
 	if (args)
-	{	
+	{
 		i = args->nbr_fils - 1;
 		if (args->token->value)
 		{
@@ -89,7 +84,7 @@ int			ft_verif_instruction(t_pile_tree *pile, t_pile_tree *next,
 	j = 0;
 	if (!(i = ft_check_name_instructions(pile->tree->token->value, inst)))
 	{
-		ft_erreur_parser_instruction(pile->tree->token, 
+		ft_erreur_parser_instruction(pile->tree->token,
 				inst[pile->tree->id_instruction], PARSER_INSTRUCTION_WRONG);
 		return (0);
 	}
@@ -97,7 +92,7 @@ int			ft_verif_instruction(t_pile_tree *pile, t_pile_tree *next,
 		return (0);
 	if (j != (*(inst + i)).nbr_args)
 	{
-		ft_erreur_parser_instruction(pile->tree->token, 
+		ft_erreur_parser_instruction(pile->tree->token,
 				inst[pile->tree->id_instruction], PARSER_INSTRUCTION_NBR);
 		return (0);
 	}

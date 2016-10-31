@@ -71,7 +71,7 @@ int			ft_lexer_end(t_lexer *lexer, t_token *token);
 */
 
 int			ft_parser(t_token *token, t_parser *parser);
-void		ft_parse_error(t_parser *parser, int erreur , t_token *token);
+int			ft_parse_error(t_parser *parser, int erreur , t_token *token);
 void		ft_init_parser(t_parser *parser);
 
 int			ft_parser_shift(t_parser *parser);

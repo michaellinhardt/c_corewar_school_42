@@ -3,8 +3,8 @@
 
 int		ft_parser_reduce(t_parser *parser)
 {
-	int		ret;
-	int		i;
+	int			ret;
+	int			i;
 	t_pile_tree *pile;
 
 	pile = parser->focus_pile;
@@ -13,7 +13,7 @@ int		ft_parser_reduce(t_parser *parser)
 		if (pile->tree)
 		{
 			i = 0;
-			while ( i < NBR_REDUCE)
+			while (i < NBR_REDUCE)
 			{
 				ret = parser->f_reduce[i++](parser, pile);
 				if (ret > 0)

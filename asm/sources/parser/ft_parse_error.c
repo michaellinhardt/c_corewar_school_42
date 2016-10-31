@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ft_asm.h"
 
-void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
+int		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 {
 	(void)parser;
 		if (erreur == CMD_NAME)
@@ -34,5 +34,6 @@ void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 		ft_printf("%d]", token->x + 1);
 		ft_putchar('\n');
 	}
+	return (-1);
 //	exit (1);
 }

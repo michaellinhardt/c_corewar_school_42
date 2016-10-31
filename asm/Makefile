@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/31 20:51:18 by abary            ###   ########.fr        #
+#    Updated: 2016/10/31 22:21:41 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,10 @@ SRC_PARSER = ft_parser.c ft_parse_tree.c ft_parser_shift.c\
 			ft_parser_check_shift.c ft_parser_rule_separator_char.c\
 			ft_parser_rule_argument.c ft_parser_check_accept.c\
 			ft_parser_verif_instruction.c ft_free.c ft_parser_rule_end.c\
-			ft_parser_rule_label.c ft_tree_fusion.c ft_parse_error.c
+			ft_parser_rule_label.c ft_tree_fusion.c ft_parse_error.c\
+			ft_parser_accept_header.c ft_parser_accept_instructon.c\
+			ft_parser_accept_fin.c ft_parser_check_shift_a.c\
+			ft_parser_check_shift_b.c ft_parser_check_shift_c.c
 
 SRC_COMPILATION = ft_compilation.c  \
 				  ft_compile.c ft_set_op_c.c ft_calcul_poids.c\

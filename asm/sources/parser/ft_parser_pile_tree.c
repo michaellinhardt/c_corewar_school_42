@@ -1,7 +1,8 @@
 #include "libft.h"
 #include "ft_asm.h"
+#include <stdlib.h>
 
-t_pile_tree		*ft_new_pile_tree(void)
+t_pile_tree	*ft_new_pile_tree(void)
 {
 	t_pile_tree *new;
 
@@ -27,10 +28,6 @@ void		ft_create_new_pile_tree(t_parser *parser)
 	}
 }
 
-/*
-** creer un nouveau node ou ajoutes des leafs au noeaud exisatn
-*/
-#include <stdlib.h>
 void		ft_add_tree_shift(t_parser *parser)
 {
 	t_parse_tree *leaf;
@@ -45,9 +42,7 @@ void		ft_add_tree_shift(t_parser *parser)
 		ft_add_leaf(parser->focus_pile->tree, leaf);
 }
 
-#include <stdlib.h>
-
-void	ft_free_elem_pile(t_pile_tree *pile, t_parser *parser)
+void		ft_free_elem_pile(t_pile_tree *pile, t_parser *parser)
 {
 	if (pile == parser->debut_pile)
 		parser->debut_pile = parser->debut_pile->next;
@@ -60,22 +55,10 @@ void	ft_free_elem_pile(t_pile_tree *pile, t_parser *parser)
 	free(pile);
 }
 
-void	ft_add_parent_tree(t_pile_tree *pile, t_parser *parser)
+void		ft_add_parent_tree(t_pile_tree *pile, t_parser *parser)
 {
 	if (pile->prev)
 	{
-		/*
-		if (pile->prev->value == MINI_NAME)
-		{
-//			parser->memory.name = 1;
-			pile->value = CMD_NAME;
-		}
-		else if (pile->prev->value == MINI_COMMENT)
-		{
-//			parser->memory.ccomment = 1;
-			pile->value = CMD_COMMENT;
-		}
-		*/
 		ft_add_leaf(pile->tree, pile->prev->tree);
 		ft_free_elem_pile(pile->prev, parser);
 	}
