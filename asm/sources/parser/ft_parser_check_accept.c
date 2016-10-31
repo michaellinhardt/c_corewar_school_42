@@ -305,6 +305,22 @@ int		ft_accept_label_inst(t_parser *parser, t_pile_tree *pile)
 		if (pile->prev->value != POSITION)
 			return (0);
 		ft_putendl("accept label + inst");
+		if (pile->value == FIN_LINE)
+		{
+			ft_add_leaf(pile->tree, pile->prev->tree);
+			pile->value = POSITION_INST;
+			ft_free_elem_pile(pile->prev, parser);
+			return (1);
+		}
+		ft_add_leaf(pile->prev->tree, pile->tree->fils[0]);
+		free(pile->tree->fils);
+		pile->tree->nbr_fils = 0;
+		pile->tree->fils = 0;
+		ft_add_leaf(pile->tree, pile->prev->tree);
+		ft_free_elem_pile(pile->prev, parser);
+		pile->value = POSITION_INST;
+		return (1);
+		/*
 		ft_fusion_fils(pile->prev->tree, pile->tree);
 		free(pile->tree->fils);
 		pile->tree->fils = 0;
@@ -313,7 +329,7 @@ int		ft_accept_label_inst(t_parser *parser, t_pile_tree *pile)
 		pile->prev->tree = pile->tree;
 		ft_free_elem_pile(pile, parser);
 		pile->prev->value = POSITION_INST;
-		return (1);
+		*/
 	}
 	return (0);
 }
