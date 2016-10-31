@@ -263,6 +263,8 @@ int		ft_accept_fin(t_parser *parser, t_pile_tree *pile)
 
 int		ft_accept_code_fin(t_parser *parser, t_pile_tree *pile)
 {
+	t_parse_tree *fils;
+
 	if (pile->value == CODE_FIN || pile->value == CODE_FIN)
 	{
 		if (!pile->prev)
@@ -283,8 +285,8 @@ int		ft_accept_code_fin(t_parser *parser, t_pile_tree *pile)
 		pile->tree->nbr_fils = 0;
 		ft_add_leaf(pile->tree, pile->prev->tree);
 		pile->prev->tree = pile->tree;
-		ft_free_elem_pile(pile, parser);
 		pile->prev->value = CODE_FIN;
+		ft_free_elem_pile(pile, parser);
 		if (parser->debut_pile == parser->end_pile)
 			return (CODE_ACCEPT);
 		return (1);
@@ -346,15 +348,23 @@ int		ft_accept_position_inst(t_parser *parser, t_pile_tree *pile)
 		if (pile->prev->value != POSITION_INST)
 			return (0);
 		ft_putendl("accept positoin inst  + inst");
-		ft_fusion_fils(pile->prev->tree->fils[0], pile->tree);
+		pile->prev->tree->fils[0] = 
+			ft_fusion_fils(pile->prev->tree->fils[0], pile->tree);
 		free(pile->tree->fils);
 		pile->tree->fils = 0;
 		pile->tree->nbr_fils = 0;
+		free(pile->tree);
+		pile->tree = 0;
+		pile->prev->value = POSITION_INST;
+		ft_free_elem_pile(pile, parser);
+		return (1);
+		/*
 		ft_add_leaf(pile->tree, pile->prev->tree->fils[0]);
 		pile->prev->tree = pile->tree;
 		ft_free_elem_pile(pile, parser);
 		pile->prev->value = POSITION_INST;
 		return (1);
+		*/
 	}
 	return (0);
 }
