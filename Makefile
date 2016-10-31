@@ -35,6 +35,7 @@ LIST 	= ft_corewar \
 			ft_mlx_display_bar_proc \
 			ft_mlx_display_arene \
 			ft_mlx_effect_init \
+			ft_mlx_end \
 			ft_terminal_ascii \
 			ft_terminal_log \
 			ft_convert_pc \

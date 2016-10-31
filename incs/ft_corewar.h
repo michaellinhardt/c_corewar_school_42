@@ -20,6 +20,7 @@
 int		exit1(int err, t_data *d, char *msg);
 int		exit2(int err, t_data *d, char *del, char *msg);
 int		exit3(int err, t_data *d, int winner);
+int		exit4(int err, t_data *d, int winner);
 void	exitascii(t_data *d, int err, char *msg);
 void	free_data(t_data *d);
 t_data	*data(void);

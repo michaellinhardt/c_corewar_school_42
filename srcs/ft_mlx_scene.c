@@ -13,4 +13,6 @@ void		scene(t_data *d, t_dmlx *m)
 	else if (m->scene == INTRO_OUT)
 		intro_out(d, &m->scene_img[0][0], &m->scene_img[0][1]
 			, &m->scene_img[0][3]);
+	else if (m->scene == END)
+		vm_end(d, &m->scene_img[0][0]);
 }

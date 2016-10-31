@@ -9,8 +9,10 @@ int		mouseo_hook(int x, int y, t_data *d)
 
 int		keyr_hook(int key, t_data *d)
 {
-	if (key == 53)
+	if (key == 53 && data()->mlx.scene != END)
 		exit1(0, d, "by pressing echap");
+	else if (key == 53 && data()->mlx.scene == END)
+		exit4(0, data(), ABS(data()->vm.last_live));
 	else if (d->mlx.scene == INTRO_MENU)
 		return (0 * (d->mlx.scene = INTRO_OUT));
 	else if (d->mlx.scene == VM)

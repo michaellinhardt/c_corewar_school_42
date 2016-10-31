@@ -59,3 +59,26 @@ int		exit3(int err, t_data *d, int winner)
 	exit(err);
 	return (1);
 }
+
+int		exit4(int err, t_data *d, int winner)
+{
+	char	*msg;
+
+	if (d->vm.console)
+	{
+		ft_printf("%!Contestant %d, \"%s\", has won !", &msg, winner,
+				data()->vm.p[winner - 1].header.prog_name);
+		free_data(d);
+		if (err != 0)
+			ascii(ASC_EXIT_1);
+		else
+			ascii(ASC_EXIT_0);
+		exitascii(d, err, msg);
+		ft_strdel(&msg);
+	}
+	else
+		ft_printf("Contestant %d, \"%s\", has won !\n", winner,
+				data()->vm.p[winner - 1].header.prog_name);
+	exit(err);
+	return (1);
+}
