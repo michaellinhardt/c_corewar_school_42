@@ -67,6 +67,7 @@ static void	ft_check_options(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 		ft_check_options2(vm, tab, args, argv);
 }
 
+
 int			ft_recup_options(t_dvm *vm, t_dargs *args, char **argv, int argc)
 {
 	int		tab[2];

@@ -50,6 +50,36 @@ static void	ft_create_number(t_dargs *args, t_dvm *vm, int *nbr)
 	}
 }
 
+static void	ft_swap(t_dargs *a, t_dargs *b)
+{
+	t_dargs	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+static void	ft_replace_number(t_dargs *args, t_dvm *vm)
+{
+	int		i;
+	int		d;
+
+	i = -1;
+	while (++i < vm->nbr_players)
+	{
+		d = i;
+		while (++d < vm->nbr_players)
+		{
+			if (args[d].player < args[i].player)
+			{
+				ft_swap(&args[d], &args[i]);
+				i = -1;
+				break ;
+			}
+		}
+	}
+}
+
 int			ft_check_value_number(t_dargs *args, t_dvm *vm)
 {
 	int i;
@@ -76,5 +106,6 @@ int			ft_check_value_number(t_dargs *args, t_dvm *vm)
 			++j;
 		}
 	}
+	ft_replace_number(args, vm);
 	return (1);
 }
