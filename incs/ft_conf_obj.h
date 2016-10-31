@@ -32,7 +32,7 @@
 /*
 ** INTRO PRESSANYKEY POSITION
 */
-# define PRESSANYX 918
+# define PRESSANYX 875
 # define PRESSANYY 731
 
 /*
