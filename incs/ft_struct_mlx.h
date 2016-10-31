@@ -7,7 +7,8 @@ enum	e_scene {
 	INTRO_MENU,
 	INTRO_OUT,
 	VM_INIT,
-	VM
+	VM,
+	END
 };
 
 typedef struct		s_img
