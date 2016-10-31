@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/30 20:57:56 by abary            ###   ########.fr        #
+#    Updated: 2016/10/31 17:58:58 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC_LIB_DIR = $(LIB_DIR)/$(INC_DIR)
 NAME_LIB = asm.a\
 
 #CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
-CFLAGS = -I$(INC_DIR) -I $(INC_LIB_DIR)
+CFLAGS = -I$(INC_DIR) -I $(INC_LIB_DIR) -g
 
 SRC = main.c  ft_open_file.c ft_get_size_file.c\
 	  ft_init_lexer.c ft_display_tokenisation.c\

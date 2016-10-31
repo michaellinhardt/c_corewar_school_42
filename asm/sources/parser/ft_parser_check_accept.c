@@ -16,6 +16,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 				free(pile->prev->tree);
 				ft_free_elem_pile(pile->prev, parser);
 				ft_putendl("accept header");
+				return (1);
 			}
 			else
 			{
@@ -33,6 +34,7 @@ int	ft_accept_header(t_parser *parser, t_pile_tree *pile)
 				free(pile->tree);
 				ft_free_elem_pile(pile, parser);
 				ft_putendl("accept header");
+				return (1);
 			}
 			else
 			{
@@ -252,6 +254,7 @@ int		ft_accept_fin(t_parser *parser, t_pile_tree *pile)
 			return (-1);
 		}
 		pile->prev->value = CODE_FIN;
+		free(pile->tree);
 		ft_free_elem_pile(pile, parser);
 		return (1);
 	}
