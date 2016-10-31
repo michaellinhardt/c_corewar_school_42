@@ -36,7 +36,8 @@
 */
 # define INTRO_FADEIN_SPEED 5
 # define INTRO_FADEOUT_SPEED 5
-# define VM_FADEIN_SPEED 30
+# define VM_FADEIN_SPEED 50
+# define VM_FADEOUT_SPEED 30
 
 /*
 **  DONNEE DE LA VM
