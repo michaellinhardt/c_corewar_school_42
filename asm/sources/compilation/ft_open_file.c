@@ -25,6 +25,7 @@ static	int		ft_get_size_extention(char *name)
 		return (size);
 }
 
+#include <stdlib.h>
 #include <fcntl.h>
 int		ft_create_file(char *name)
 {
@@ -39,5 +40,7 @@ int		ft_create_file(char *name)
 		ft_putendl("fichier deja exisant");
 		fd = open(name_cor, O_APPEND, O_WRONLY);
 	}
+	if (name_cor)
+		free(name_cor);
 	return (fd);
 }

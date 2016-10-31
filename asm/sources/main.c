@@ -31,5 +31,7 @@ int		main(int argc, char **argv)
 		if (ft_parser(lexer.begin, &parser))
 			ft_compilation(parser.debut_pile->tree, &parser, &lexer);
 	}
+	ft_destruct_lexer(&lexer);
+	ft_destruct_parser(&parser);
 	return (0);
 }

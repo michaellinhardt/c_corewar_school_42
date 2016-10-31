@@ -100,7 +100,7 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 	size_inst = 0;
 	ft_bzero(&code_inst, 20);
 	code_inst[size_inst++] = tree->id_instruction;
-	ft_putendl(tree->token->value);
+//	ft_putendl(tree->token->value);
 	if (inst[tree->id_instruction].flag_ocp)
 		code_inst[size_inst++] = ft_set_oc_p(tree->id_instruction, tree);
 	while (i < tree->nbr_fils)
@@ -131,7 +131,7 @@ int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 		} 
 		++i;
 	}
-	ft_print_memory(&code_inst, size_inst);
+//	ft_print_memory(&code_inst, size_inst);
 	if (!*code)
 	{
 		*code = ft_memalloc(sizeof(unsigned char) * size_inst);		

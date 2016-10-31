@@ -38,6 +38,12 @@ int		ft_lexer(t_lexer *lexer)
 				if (ret < 0)
 				{
 					ft_lexer_error(lexer, ret);
+
+					if (lexer->line)
+					{
+						free(lexer->line);
+						lexer->line = 0;
+					}
 					return (0);
 				}
 				lexer->x += token->size;
@@ -48,6 +54,12 @@ int		ft_lexer(t_lexer *lexer)
 			break ;
 		if (i >= NBR_TOKEN)
 		{
+
+			if (lexer->line)
+			{
+				free(lexer->line);
+				lexer->line = 0;
+			}
 			ft_lexer_error(lexer, LEXER_INCONNU);
 			return (0);
 		}

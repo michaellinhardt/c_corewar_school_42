@@ -30,6 +30,7 @@ void		ft_create_new_pile_tree(t_parser *parser)
 /*
 ** creer un nouveau node ou ajoutes des leafs au noeaud exisatn
 */
+#include <stdlib.h>
 void		ft_add_tree_shift(t_parser *parser)
 {
 	t_parse_tree *leaf;

@@ -48,6 +48,7 @@ void	ft_create_header(t_header *header, t_token *token)
 }
 */
 
+#include <stdlib.h>
 #include <unistd.h>
 int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_lexer *lexer)
 {
@@ -69,16 +70,19 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_lexer *lexer)
 	size = ft_calcul_poids(tree, compile.inst, poids);
 
 	ft_putnbr(size);
+
 	if (ft_search_label(tree, tree))
 	{
 			ft_putendl("erreur compilation label search");
 	}
+	/*
 
 	ft_putendl("display poids");
 	ft_putendl("---------------");
 	ft_putnbr(size);
 	ft_display_poids(tree);
 	ft_putendl("---------------");
+	*/
 
 	unsigned char	*code;
 
@@ -86,14 +90,6 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_lexer *lexer)
 	size = ft_compile(tree, &code, &compile, 0);
 	compile.header.prog_size = ft_little_to_big(size);
 	compile.header.magic = ft_little_to_big(COREWAR_EXEC_MAGIC);
-	ft_putnbr(size);
-	ft_putendl("Resultat :");
-	ft_printf("Magic :%#x\nname header :%s\n", compile.header.magic, compile.header.prog_name);
-	ft_printf("comment header :%s\nSize prog :%d\n", compile.header.comment, compile.header.prog_size);
-	ft_putendl("code ");
-	ft_print_memory(code, size);
-
-	ft_putendl("Creation file");
 	if ((fd = ft_create_file(lexer->name)) != -1)
 	{
 		ft_putendl("ecriture du code");
@@ -101,6 +97,8 @@ int		ft_compilation(t_parse_tree *tree, t_parser *parser, t_lexer *lexer)
 		write(fd, code, size);
 		close (fd);
 	}
+	free(code);
+
 	return (1);
-//	ft_print_memory(compile.code, compile.total_size);
+	//	ft_print_memory(compile.code, compile.total_size);
 }

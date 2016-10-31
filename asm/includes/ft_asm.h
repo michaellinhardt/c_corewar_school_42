@@ -13,6 +13,9 @@ char		*ft_get_line(int fd, t_lexer *lexer);
 
  
 int			ft_little_to_big(int little);
+
+void		ft_destruct_lexer(t_lexer *lexer);
+void		ft_destruct_parser(t_parser *parser);
 /*
 ** Instructions
 */

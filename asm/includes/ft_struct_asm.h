@@ -145,7 +145,6 @@ typedef struct s_proc   t_proc;
 
 struct					s_parser
 {
-	char			*code;
 	int				size;
 	int				size_fonction;
 	int				(*f_reduce[NBR_REDUCE])(t_parser *parser, t_pile_tree *pile);
@@ -154,8 +153,6 @@ struct					s_parser
 	t_instructions	inst[17];
 //	t_memory		memory;
 	t_token			*focus;
-	t_parse_tree	*tree_header; // useless
-	t_parse_tree	*tree_code; // aussi
 	t_pile_tree		*debut_pile;
 	t_pile_tree		*end_pile;
 	t_pile_tree		*focus_pile;
