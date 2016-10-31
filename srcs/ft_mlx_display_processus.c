@@ -21,18 +21,6 @@ void	put_proc_bloc(t_img *img, t_img *bloc, int x, int y)
 	}
 }
 
-void	display_bloc(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
-{
-	return ;
-	ft_printf("proc_id %d ¶ wait: %d, turfu: %d\n", proc->id, proc->wait, proc->pc_turfu);
-	if (proc->inst)
-		ft_printf("%s\n", proc->inst->name);
-	(void)m;
-	(void)proc;
-	(void)img;
-	(void)bloc;
-}
-
 void	display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc)
 {
 	int			x;
