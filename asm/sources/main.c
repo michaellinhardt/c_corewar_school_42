@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abary <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/31 21:42:20 by abary             #+#    #+#             */
+/*   Updated: 2016/10/31 21:42:25 by abary            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_asm.h"
 #include "libft.h"
-
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -26,7 +37,7 @@ int		main(int argc, char **argv)
 	lexer.name = *(argv + 1);
 	if (lexer.size == -1)
 		return (0);
-	if (ft_lexer(&lexer))
+	if (ft_lexer(&lexer, 0, 0))
 	{
 		if (ft_parser(lexer.begin, &parser))
 			ft_compilation(parser.debut_pile->tree, &parser, &lexer);

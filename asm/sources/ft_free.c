@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abary <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/31 21:42:35 by abary             #+#    #+#             */
+/*   Updated: 2016/10/31 21:42:39 by abary            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "ft_asm.h"
 #include <unistd.h>
+#include "libft.h"
+
 void	ft_free_tokens(t_token *token)
 {
 	if (token)
@@ -19,12 +33,14 @@ void	ft_destruct_lexer(t_lexer *lexer)
 	if (lexer->fd != 1)
 		close(lexer->fd);
 	ft_free_tokens(lexer->begin);
+	if (lexer->line)
+		free(lexer->line);
 	lexer = 0;
 }
 
 void	ft_destruct_parse_tree(t_parse_tree *parser)
 {
-	unsigned int i;
+	int i;
 
 	if (parser)
 	{
@@ -37,7 +53,6 @@ void	ft_destruct_parse_tree(t_parse_tree *parser)
 			free(parser->fils);
 		free(parser);
 		parser = 0;
-		
 	}
 }
 
@@ -49,6 +64,6 @@ void	ft_destruct_parser(t_parser *parser)
 	while (pile)
 	{
 		ft_destruct_parse_tree(pile->tree);
-		pile  = pile->next;
+		pile = pile->next;
 	}
 }

@@ -6,7 +6,7 @@ int		ft_lexer_whitespace(t_lexer *lexer, t_token *token)
 	int size;
 
 	size = 0;
-	while (ft_isspace(*(lexer->focus + size)) && 
+	while (ft_isspace(*(lexer->focus + size)) &&
 			*(lexer->focus + size) != '\n')
 		++size;
 	if (size)

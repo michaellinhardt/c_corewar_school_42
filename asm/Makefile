@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/31 17:58:58 by abary            ###   ########.fr        #
+#    Updated: 2016/10/31 20:51:18 by abary            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ INC_LIB_DIR = $(LIB_DIR)/$(INC_DIR)
 
 NAME_LIB = asm.a\
 
-#CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
-CFLAGS = -I$(INC_DIR) -I $(INC_LIB_DIR) -g
+CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR) -I $(INC_LIB_DIR)
+#CFLAGS = -I$(INC_DIR) -I $(INC_LIB_DIR)
 
 SRC = main.c  ft_open_file.c ft_get_size_file.c\
 	  ft_init_lexer.c ft_display_tokenisation.c\
@@ -45,7 +45,7 @@ SRC_PARSER = ft_parser.c ft_parse_tree.c ft_parser_shift.c\
 			ft_parser_verif_instruction.c ft_free.c ft_parser_rule_end.c\
 			ft_parser_rule_label.c ft_tree_fusion.c ft_parse_error.c
 
-SRC_COMPILATION = ft_compilation.c  ft_init_compilation.c\
+SRC_COMPILATION = ft_compilation.c  \
 				  ft_compile.c ft_set_op_c.c ft_calcul_poids.c\
 				  ft_search_label.c ft_open_file.c
 

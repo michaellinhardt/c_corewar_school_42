@@ -17,9 +17,5 @@ int		ft_lexer_indirect_label(t_lexer *lexer, t_token *token)
 	lexer->focus += i;
 	token->token = INDIRECT_LABEL;
 	lexer->size_line -= i;
-	/*
-	if (ft_check_label_char(token->value, token->size))
-		return (1);
-		*/
 	return (1);
 }

@@ -92,7 +92,7 @@ int			ft_compile_indirect(t_parse_tree *tree, unsigned char *code)
 int			ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
 		const t_instructions *inst, unsigned int size)
 {
-	unsigned int 	i;
+	int 	i;
 	unsigned int	size_inst;
 	unsigned char	code_inst[20];
 
@@ -162,7 +162,7 @@ void			ft_compile_comment(t_parse_tree *name, t_header *header)
 int			ft_compile_label(t_parse_tree *tree, unsigned char **code,
 		const t_instructions *inst, unsigned int size)
 {
-	unsigned int i;
+	int i;
 
 	i = 0;
 	while ( i < tree->nbr_fils)
@@ -175,7 +175,7 @@ int			ft_compile_label(t_parse_tree *tree, unsigned char **code,
 int			ft_compile(t_parse_tree *tree, unsigned char **code,
 		t_compile *compile, unsigned int size)
 {
-	unsigned int i;
+	int i;
 
 	if (tree)
 	{

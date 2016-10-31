@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include "ft_asm.h"
 
-#include "libft.h"
 int		ft_lexer_end(t_lexer *lexer, t_token *token)
 {
 	int off;

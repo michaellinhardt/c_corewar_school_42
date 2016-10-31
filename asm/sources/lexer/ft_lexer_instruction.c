@@ -6,7 +6,6 @@ int		ft_lexer_instruction(t_lexer *lexer, t_token *token)
 	int i;
 
 	i = 0;
-
 	while (i < lexer->size_line && ft_memchr(LABEL_CHARS, *(lexer->focus + i),
 			37))
 		++i;

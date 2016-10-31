@@ -8,7 +8,7 @@
 
 t_parse_tree	*ft_fusion_fils(t_parse_tree *t1, t_parse_tree *t2)
 {
-	unsigned int i;
+	int i;
 	t_parse_tree **fils;
 
 	fils = t2->fils;

@@ -18,7 +18,7 @@ static int	ft_get_poids_args(t_token *token, t_instructions inst)
 int		ft_calcul_size_instruction(t_parse_tree *tree, t_instructions *inst,
 		unsigned int poids)
 {
-	unsigned int 	i;
+	int 	i;
 	int 			id;
 
 	tree->position = poids;
@@ -42,7 +42,7 @@ int		ft_calcul_size_instruction(t_parse_tree *tree, t_instructions *inst,
 int			ft_calcul_size_label(t_parse_tree *tree, t_instructions *inst,
 		unsigned int poids)
 {
-	unsigned int 	i;
+	int 	i;
 
 	tree->position = poids;
 	if (tree->token->token == LABEL)
@@ -61,7 +61,7 @@ int			ft_calcul_size_label(t_parse_tree *tree, t_instructions *inst,
 int		ft_calcul_poids(t_parse_tree *tree, t_instructions *inst, unsigned int 
 		poids)
 {
-	unsigned int i;
+	int i;
 
 	if (tree)
 	{

@@ -3,8 +3,7 @@
 
 int		ft_get_label(t_parse_tree *root, char *value, int *poids)
 {
-	unsigned int i;
-
+	int i;
 	if (root)
 	{
 		i = 0;
@@ -33,7 +32,7 @@ int		ft_get_label(t_parse_tree *root, char *value, int *poids)
 
 int		ft_search_label(t_parse_tree *root, t_parse_tree *tree)
 {
-	unsigned int i;
+	int i;
 
 	if (tree)
 	{

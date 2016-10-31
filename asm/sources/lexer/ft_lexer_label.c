@@ -15,6 +15,5 @@ int		ft_lexer_label(t_lexer *lexer, t_token *token)
 	lexer->focus += i;
 	token->token = LABEL;
 	lexer->size_line -= i;
-
 	return (1);
 }

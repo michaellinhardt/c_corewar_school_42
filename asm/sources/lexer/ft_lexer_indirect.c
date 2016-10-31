@@ -10,7 +10,8 @@ int		ft_lexer_indirect(t_lexer *lexer, t_token *token)
 	i = *(lexer->focus) == '-' ? 1 : 0;
 	while (i < lexer->size_line && ft_isdigit(*(lexer->focus + i)))
 		++i;
-	if ((*(lexer->focus) == '-' && i == 1) || (*(lexer->focus) != '-' && i == 0))
+	if ((*(lexer->focus) == '-' && i == 1)
+			|| (*(lexer->focus) != '-' && i == 0))
 		return (0);
 	if (!ft_isspace(*(lexer->focus + i)) && *(lexer->focus + i) != ',')
 		return (0);

@@ -21,6 +21,7 @@ unsigned char	ft_set_oc_p(unsigned int id, t_parse_tree *inst)
 	oc_p = 0;
 	i = 0;
 	decalage = 6;
+	(void) id;
 	while (i < inst->nbr_fils)
 	{
 		oc_p |= ft_get_type(inst->fils[i]) << decalage;

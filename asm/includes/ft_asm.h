@@ -31,12 +31,12 @@ void		ft_init_instructions_types_arg_deux(t_instructions *inst);
 */
 t_token		*ft_new_token(t_lexer *lexer);
 void		ft_init_lexer(t_lexer *lexer);
-int			ft_lexer(t_lexer *lexer);
+int			ft_lexer(t_lexer *lexer, int i, int ret);
 void		ft_get_value(t_lexer *lexer, t_token *token, int size);
 
 
 void		ft_free_tokens(t_token *token);
-void		ft_lexer_error(t_lexer *lexer, int erreur);
+int			ft_lexer_error(t_lexer *lexer, int erreur);
 void		ft_free_elem_pile(t_pile_tree *tree, t_parser *parser);
 
 /*

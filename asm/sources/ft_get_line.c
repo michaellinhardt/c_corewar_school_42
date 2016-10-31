@@ -21,10 +21,9 @@ char	*ft_get_line(int fd, t_lexer *lexer)
 	lexer->size_line = lexer->offset;
 	if (!(lexer->line = ft_memalloc(sizeof(char) * (lexer->size_line + 1))))
 		return (0);
-	if ((ret = lseek(fd, -(lexer->offset), SEEK_CUR)) == - 1)
+	if ((ret = lseek(fd, -(lexer->offset), SEEK_CUR)) == -1)
 		return (0);
 	if (read(lexer->fd, lexer->line, lexer->size_line) == -1)
 		return (0);
-		//ft_putstr(lexer->line);
 	return (lexer->line);
 }

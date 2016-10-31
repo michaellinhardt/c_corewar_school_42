@@ -275,8 +275,6 @@ int		ft_accept_fin(t_parser *parser, t_pile_tree *pile)
 
 int		ft_accept_code_fin(t_parser *parser, t_pile_tree *pile)
 {
-	t_parse_tree *fils;
-
 	if (pile->value == CODE_FIN || pile->value == CODE_FIN)
 	{
 		if (!pile->prev)

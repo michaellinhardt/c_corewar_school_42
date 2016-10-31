@@ -4,6 +4,7 @@
 
 void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 {
+	(void)parser;
 		if (erreur == CMD_NAME)
 			ft_printf("%sincomplete header ", RED);
 		else if (erreur == CMD_COMMENT)
@@ -20,12 +21,6 @@ void		ft_parse_error(t_parser *parser, int erreur, t_token *token)
 			ft_printf("Invalid syntax near : ");
 	if (token)
 	{
-		/*
-		if (token->token == SEPARATOR)
-			ft_printf("%s,", RED);
-		else if (token->value)
-			ft_printf("%s%s,", RED, token->value);
-			*/
 		if (erreur == LAST_ARG && token->value)
 			ft_printf("%s%s", RED, token->value);
 		else if (erreur == SEPARATOR)

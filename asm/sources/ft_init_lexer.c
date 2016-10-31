@@ -17,9 +17,10 @@ t_token		*ft_new_token(t_lexer *lexer)
 		lexer->begin = new;
 		lexer->end = new;
 	}
+	new->y = lexer->y;
+	new->x = lexer->x;
 	return (new);
 }
-
 
 void		ft_init_lexer(t_lexer *lexer)
 {
