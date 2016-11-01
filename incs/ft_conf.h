@@ -44,9 +44,9 @@
 */
 # define SIZE_CHAR_ARENE (MEM_SIZE * 2)
 # define CHAMP_NAME_SIZE 2048
-# define CYCLE_PER_LOOP 5000
-# define CPERLOOP_INC 10
-# define CPERLOOP_MAX 200
+# define CYCLE_PER_LOOP 1
+# define CPERLOOP_INC 11
+# define CPERLOOP_MAX 300
 # define ARENE_CODE_COLOR 0xCCCCCC
 
 /*
