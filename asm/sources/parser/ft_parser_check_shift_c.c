@@ -83,4 +83,3 @@ int		ft_shift_indirect_label(t_parser *parser)
 	}
 	return (0);
 }
-

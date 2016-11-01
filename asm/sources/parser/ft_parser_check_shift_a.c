@@ -48,4 +48,3 @@ int		ft_shift_string(t_parser *parser)
 	}
 	return (0);
 }
-

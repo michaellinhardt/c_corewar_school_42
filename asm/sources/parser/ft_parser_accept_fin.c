@@ -8,7 +8,7 @@ int		ft_accept_fin(t_parser *parser, t_pile_tree *pile)
 	{
 		if (!pile->prev)
 		{
-			ft_putendl("erreur accept  fin");
+			ft_parse_error(parser, 0, pile->tree->token);
 			return (-1);
 		}
 		if (pile->prev->value != CPL_INST && pile->prev->value != POSITION_INST)
@@ -52,4 +52,3 @@ int		ft_accept_code_fin(t_parser *parser, t_pile_tree *pile)
 	}
 	return (0);
 }
-

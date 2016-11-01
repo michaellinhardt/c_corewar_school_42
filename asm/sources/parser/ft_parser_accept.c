@@ -3,7 +3,7 @@
 
 int		ft_parser_accept(t_parser *parser)
 {
-	int 		ret;
+	int			ret;
 	int			i;
 	t_pile_tree *end;
 
@@ -22,7 +22,7 @@ int		ft_parser_accept(t_parser *parser)
 			else if (ret == -1)
 				return (0);
 			else if (ret == CODE_ACCEPT)
-				return CODE_ACCEPT;
+				return (CODE_ACCEPT);
 			++i;
 		}
 		end = end->prev;

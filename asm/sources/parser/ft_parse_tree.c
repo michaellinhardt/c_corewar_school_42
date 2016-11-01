@@ -2,9 +2,10 @@
 #include "libft.h"
 #include "ft_asm.h"
 
-void	ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf)
+void			ft_add_leaf(t_parse_tree *tree, t_parse_tree *leaf)
 {
-	tree->fils = (t_parse_tree **)realloc(tree->fils, sizeof(t_parse_tree *) * ++tree->nbr_fils);
+	tree->fils = (t_parse_tree **)realloc(tree->fils,
+			sizeof(t_parse_tree *) * ++tree->nbr_fils);
 	tree->fils[tree->nbr_fils - 1] = leaf;
 }
 
@@ -17,7 +18,7 @@ t_parse_tree	*ft_create_leaf(t_token *token)
 	return (leaf);
 }
 
-void	ft_display_parse_tree(t_parse_tree *tree)
+void			ft_display_parse_tree(t_parse_tree *tree)
 {
 	int i;
 

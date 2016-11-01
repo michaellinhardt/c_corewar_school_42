@@ -19,7 +19,7 @@ static void	ft_complete_instruction(t_parse_tree *inst, t_parse_tree *args)
 	}
 }
 
-static int ft_accept_instruction_error(t_parser *parser, t_pile_tree *pile)
+static int	ft_accept_instruction_error(t_parser *parser, t_pile_tree *pile)
 {
 	if (pile->tree && pile->tree->fils)
 		ft_parse_error(parser, LAST_ARG, pile->tree->fils[0]->token);
@@ -40,7 +40,7 @@ static void	ft_accept_instruction_cpl(t_parser *parser, t_pile_tree *pile)
 	ft_free_elem_pile(pile, parser);
 }
 
-int	ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
+int			ft_accept_instruction(t_parser *parser, t_pile_tree *pile)
 {
 	if (pile->value == LAST_ARG)
 	{

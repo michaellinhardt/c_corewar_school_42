@@ -27,7 +27,7 @@ void		ft_free_pointeur_tab_fils(t_parse_tree *tree)
 	}
 }
 
-void	ft_free_arguments(t_parse_tree *tree)
+void		ft_free_arguments(t_parse_tree *tree)
 {
 	int i;
 
@@ -48,8 +48,8 @@ void	ft_free_arguments(t_parse_tree *tree)
 		{
 			if (tree->token->token != ENDLINE)
 			{
-			free(tree);
-			tree = 0;
+				free(tree);
+				tree = 0;
 			}
 		}
 	}

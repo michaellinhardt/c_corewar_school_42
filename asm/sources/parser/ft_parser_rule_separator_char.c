@@ -17,7 +17,7 @@ static int	ft_check_separator_char(t_parser *parser, t_parse_tree *tree)
 	return (0);
 }
 
-int		ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
+int			ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
 {
 	int ret;
 
@@ -32,7 +32,6 @@ int		ft_rule_separator_char(t_parser *parser, t_pile_tree *pile)
 		}
 		ft_add_leaf(pile->tree, pile->prev->tree);
 		ft_free_elem_pile(pile->prev, parser);
-		//ft_add_parent_tree(pile, parser);
 		pile->value = VIRGULE;
 		parser->focus_pile = 0;
 		return (SHIFT);

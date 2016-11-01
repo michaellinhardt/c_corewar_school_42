@@ -11,7 +11,7 @@ static int	ft_check_instruction(t_parse_tree *tree)
 	return (0);
 }
 
-int		ft_rule_instruction(t_parser *parser, t_pile_tree *pile)
+int			ft_rule_instruction(t_parser *parser, t_pile_tree *pile)
 {
 	int ret;
 

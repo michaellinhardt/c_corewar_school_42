@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "ft_asm.h"
 
-static	int	ft_check_rule_ccomment(t_parser *parser, t_parse_tree *tree)
+static int	ft_check_rule_ccomment(t_parser *parser, t_parse_tree *tree)
 {
 	if (tree && tree->token->token == COMMAND_COMMENT)
 	{
@@ -27,7 +27,7 @@ static	int	ft_check_rule_ccomment(t_parser *parser, t_parse_tree *tree)
 	return (0);
 }
 
-int		ft_rule_ccomment(t_parser *parser, t_pile_tree *pile)
+int			ft_rule_ccomment(t_parser *parser, t_pile_tree *pile)
 {
 	int ret;
 
