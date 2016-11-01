@@ -50,7 +50,7 @@ int		display(t_dmlx *m, t_dvm *v)
 		display_bar_proc_dead(m, v, &m->scene_img[VM][10], 0);
 	if (v->total_live)
 		display_bar_proc_live(m, v, &m->scene_img[VM][10], 0);
-	if (v->nbr_live)
+	if (v->nbr_live_current)
 		display_bar_proc_live_current(m, v, &m->scene_img[VM][10], 0);
 	itow(m->scene_img[VM][10].img, 0, 0, "bar layer");
 	itow(m->scene_img[VM][26].img, 0, 0, "processus layer");
