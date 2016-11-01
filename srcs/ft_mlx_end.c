@@ -21,6 +21,6 @@ void		vm_end(t_dmlx *m, t_dvm *v, t_img *i)
 	itow(m->scene_img[VM][34].img, WINNERIMGX, WINNERIMGY, "winner");
 	mlx_string_put(m->mlx, m->win, WINNERTXTX - ((ft_strlen(
 	v->p[(ABS(v->last_live)) - 1].header.prog_name) / 2)
-	* TXTDECALLAGEX), WINNERIMGY, TXTCOLPROCTOTAL
+	* TXTDECALLAGEX), WINNERTXTY, WINNERCOLOR
 	, v->p[(ABS(v->last_live)) - 1].header.prog_name);
 }
