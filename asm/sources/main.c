@@ -6,7 +6,7 @@
 /*   By: abary <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 21:42:20 by abary             #+#    #+#             */
-/*   Updated: 2016/10/31 21:42:25 by abary            ###   ########.fr       */
+/*   Updated: 2016/11/01 16:22:24 by abary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		ft_little_to_big(int little)
 
 int		main(int argc, char **argv)
 {
-	t_lexer lexer;
-	t_parser parser;
+	t_lexer		lexer;
+	t_parser	parser;
 
 	ft_bzero(&lexer, sizeof(t_lexer));
 	ft_init_parser(&parser);

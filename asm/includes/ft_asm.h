@@ -97,20 +97,6 @@ int			ft_rule_label(t_parser *parser, t_pile_tree *tree);
 **			accept rules
 */
 
-/*
-int			ft_accept_header(t_parser *parser, t_pile_tree *pile);
-int			ft_accept_label(t_parser *parser, t_pile_tree *pile);
-int			ft_accept_name(t_parser *parser, t_pile_tree *pile);
-int			ft_accept_comment(t_parser *parser, t_pile_tree *pile);
-int			ft_accept_argument(t_parser *parser, t_pile_tree *pile);
-int			ft_accept_instruction(t_parser *parser, t_pile_tree *pile);
-int			ft_accept_separator_char(t_parser *parser, t_pile_tree *tree);
-int			ft_accept_end(t_parser *parser, t_pile_tree *tree);
-int			ft_accept_code_header(t_parser *parser, t_pile_tree *tree);
-int			ft_accept_end_inst(t_parser *parser, t_pile_tree *tree);
-int			ft_accept_label_inst(t_parser *parser, t_pile_tree *tree);
-*/
-
 int			ft_accept_header(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_name(t_parser *parser, t_pile_tree *pile);
 int			ft_accept_comment(t_parser *parser, t_pile_tree *pile);
@@ -175,4 +161,13 @@ int				ft_compile(t_parse_tree *tree, unsigned char **code,
 				t_compile *compile, unsigned int size);
 int				ft_search_label(t_parse_tree *root, t_parse_tree *tree);
 char			*ft_create_name(char *name, int size);
+int				ft_compile_register(t_parse_tree *tree, unsigned char *code);
+int				ft_compile_direct(t_parse_tree *tree, unsigned char *code,
+		int flag_dir);
+int				ft_compile_direct_label(t_parse_tree *tree, unsigned char *code,
+		int flag_dir);
+int				ft_compile_indirect(t_parse_tree *tree, unsigned char *code);
+int				ft_compile_instruction(t_parse_tree *tree, unsigned char **code,
+		const t_instructions *inst, unsigned int size);
+
 #endif

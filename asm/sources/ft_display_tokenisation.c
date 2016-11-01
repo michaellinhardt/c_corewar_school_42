@@ -21,7 +21,7 @@ static void	ft_display_type_token_s(int token)
 		ft_putstr("INDIRECT_LABEL");
 }
 
-void	ft_display_type_token(int token)
+void		ft_display_type_token(int token)
 {
 	ft_putchar('[');
 	if (token == COMMAND_COMMENT)
