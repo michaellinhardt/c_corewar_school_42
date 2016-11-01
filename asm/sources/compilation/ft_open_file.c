@@ -35,8 +35,10 @@ int			ft_create_file(char *name)
 
 	size = ft_get_size_extention(name);
 	name_cor = ft_create_name(name, size);
-	if ((fd = open(name_cor, O_CREAT | O_WRONLY)) == -1)
-		fd = open(name_cor, O_APPEND, O_WRONLY);
+	if ((fd = open(name_cor, O_CREAT | O_WRONLY,
+					S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH)) == -1)
+		fd = open(name_cor, O_WRONLY,
+				S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
 	if (name_cor)
 		free(name_cor);
 	return (fd);
