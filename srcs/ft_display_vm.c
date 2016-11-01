@@ -65,7 +65,7 @@ void		ft_display_vm(t_dvm *vm)
 	i = 0;
 	while (i < SIZE_CHAR_ARENE)
 	{
-		if (!(i % 128))
+		if (!(i % 64))
 			ft_put_hex_compteur(i / 2);
 		ok = ft_display_pc(vm, i);
 		if (!(i % 2) && !ok)
@@ -74,7 +74,7 @@ void		ft_display_vm(t_dvm *vm)
 		++i;
 		if (!(i % 2))
 			ft_putchar(' ');
-		if (!(i % 128))
+		if (!(i % 64))
 			ft_putchar('\n');
 	}
 }

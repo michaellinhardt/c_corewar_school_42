@@ -1,6 +1,0 @@
-Norme: ./Error:
-Warning: Not a valid file
-Norme: ./42
-Warning: Not a valid file
-Norme: ./srcs/ft_check_args.c
-Error: 42 header not at top of the file
