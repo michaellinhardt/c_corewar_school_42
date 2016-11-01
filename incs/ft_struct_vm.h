@@ -37,6 +37,15 @@ typedef struct		s_proc
 	struct s_proc	*p;
 }					t_proc;
 
+typedef struct		s_mlx_proc
+{
+	int			x;
+	int			y;
+	char		opc;
+	int			pc;
+	t_proc		e;
+}					t_mlx_proc;
+
 typedef struct		s_player
 {
 	t_header		header;

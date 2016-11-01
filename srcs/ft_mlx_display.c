@@ -42,7 +42,7 @@ int		display(t_dmlx *m, t_dvm *v)
 	display_ctodie_bar(m, v, 0.0, 0);
 	reset_img(m, &m->scene_img[VM][10]);
 	bloc_fadeout(&m->scene_img[VM][26]);
-	display_processus(m, v->proc, &m->scene_img[VM][10], &m->scene_img[VM][26]);
+	display_processus(m, v->proc, &m->scene_img[VM][26]);
 	display_processus_count(m, v);
 	if (v->nbr_proc)
 		display_bar_proc(m, v, &m->scene_img[VM][10], 0);

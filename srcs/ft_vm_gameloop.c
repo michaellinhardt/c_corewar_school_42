@@ -28,12 +28,13 @@ static void		ft_kill_dead_process(t_proc *p)
 	}
 }
 
-void			ft_reset_player_current_live(t_dvm *v)
+int				ft_reset_player_current_live(t_dvm *v)
 {
 	v->p[0].total_live_current = 0;
 	v->p[1].total_live_current = 0;
 	v->p[2].total_live_current = 0;
 	v->p[3].total_live_current = 0;
+	return (0);
 }
 
 static int		ft_checklive(t_dvm *v, t_proc *p)
@@ -61,8 +62,7 @@ static int		ft_checklive(t_dvm *v, t_proc *p)
 	palive = v->nbr_live;
 	v->nbr_live = 0;
 	v->nbr_live_current = 0;
-	v->live_player = 0;
-	ft_reset_player_current_live(v);
+	v->live_player = ft_reset_player_current_live(v);
 	return (palive);
 }
 

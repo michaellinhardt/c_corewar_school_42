@@ -70,7 +70,8 @@ void	intro_load(t_dmlx *m, t_img *i, t_img *l)
 		i->str[i->i + 2] = 255;
 		i->str[i->i + 3] = fade;
 	}
-	fade += ((fade + INTRO_FADEIN_SPEED) < 255) ? INTRO_FADEIN_SPEED : (fade * -1);
+	fade += ((fade + INTRO_FADEIN_SPEED) < 255) ?
+	INTRO_FADEIN_SPEED : (fade * -1);
 	(fade == 0) ? (m->scene = INTRO_MENU) : 1;
 	itow(i->img, 0, 0, "fade in");
 }

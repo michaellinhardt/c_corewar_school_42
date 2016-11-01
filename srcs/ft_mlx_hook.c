@@ -19,10 +19,12 @@ int		keyr_hook(int key, t_data *d)
 	{
 		if (key == 126)
 			d->mlx.input.up = 0;
-		else if (key == 123 && (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
+		else if (key == 123
+		&& (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
 			d->vm.cperloop -=
 				(d->vm.cperloop - CPERLOOP_INC <= 0) ? 0 : CPERLOOP_INC;
-		else if (key == 124 && (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
+		else if (key == 124
+		&& (d->mlx.effect[e_effect_cperloop].start_cycle = 1))
 			d->vm.cperloop += (d->vm.cperloop
 				+ CPERLOOP_INC <= CPERLOOP_MAX) ? CPERLOOP_INC : 0;
 		else if (key == 125)

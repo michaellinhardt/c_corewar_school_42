@@ -16,7 +16,7 @@ int			itow(void *img, int x, int y, char *name);
 void		mlx_start(t_data *d, t_dmlx *m);
 void		scene(t_data *d, t_dmlx *m);
 void		scene_img(t_data *d, t_dmlx *m);
-void		display_processus(t_dmlx *m, t_proc *proc, t_img *img, t_img *bloc);
+void		display_processus(t_dmlx *m, t_proc *proc, t_img *bloc);
 void		display_processus_count(t_dmlx *m, t_dvm *v);
 void		display_ctodie_bar(t_dmlx *m, t_dvm *v, double cycle, int pixel);
 void		display_cycle(t_dmlx *m, t_dvm *v);

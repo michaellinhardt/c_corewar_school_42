@@ -90,8 +90,7 @@ int			ft_check_value_number(t_dargs *args, t_dvm *vm)
 	nbr[1] = 2;
 	nbr[2] = 3;
 	nbr[3] = 4;
-	i = -1;
-	if (!ft_check_doublons(vm, args, nbr))
+	if ((i = -1) && !ft_check_doublons(vm, args, nbr))
 		exit1(1, data(), "Two players with same number");
 	ft_create_number(args, vm, nbr);
 	while (++i < vm->nbr_players)

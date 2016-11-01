@@ -14,7 +14,7 @@ void	vm_end_shadow(t_img *i)
 	itow(i->img, 0, 0, "fade in");
 }
 
-void		vm_end(t_dmlx *m, t_dvm *v, t_img *i)
+void	vm_end(t_dmlx *m, t_dvm *v, t_img *i)
 {
 	display(m, v);
 	vm_end_shadow(i);
