@@ -1,10 +1,14 @@
 # VAR COMP
 FLAGS	= -Wall -Wextra -Werror
 CC		= gcc $(FLAGS)
-INCS 	= -I./incs -I./libft/includes
+FWS		= Frameworks/SDL.framework/Headers/
+FWSM	= Frameworks/SDL_mixer.framework/Headers/
+INCS 	= -I./incs -I./libft/includes -I $(FWS) -I $(FWSM)
 LIBS	= ./libft
 LIBFT 	= -L$(LIBS) -lft
-LIBMLX	= -L./minilibx -lmlx -framework OpenGL -framework AppKit
+LIBMLX	= -L./minilibx -lmlx -framework OpenGL -framework Appkit
+SDL2	= -framework SDL
+SDL2_M	= -framework SDL_mixer
 LANGAGE	= c
 NAME	= corewar
 
@@ -97,7 +101,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBS)
-	$(CC) $(OBJ) -o $@ $(FLAGS) $(INCS) $(LIBFT) $(LIBMLX)
+	$(CC) $(INCS) $(SDL2_M) $(SDL2) $(OBJ) -o $@ $(FLAGS) $(LIBFT) $(LIBMLX)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
