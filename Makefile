@@ -20,8 +20,67 @@ LIST 	= ft_corewar \
 			ft_mlx_img \
 			ft_mlx_scene \
 			ft_mlx_scene_img \
+			ft_mlx_scene_intro \
+			ft_mlx_display \
+			ft_check_value_number \
+			ft_get_indirect \
+			ft_mlx_display_cycle \
+			ft_mlx_display_effect \
+			ft_mlx_display_processus \
+			ft_mlx_display_player_name \
+			ft_mlx_display_processus_count \
+			ft_mlx_display_bar_proc_live_current \
+			ft_mlx_display_bar_proc_live \
+			ft_mlx_display_bar_proc_dead \
+			ft_mlx_display_bar_proc \
+			ft_mlx_display_arene \
+			ft_mlx_effect_init \
+			ft_mlx_end \
 			ft_terminal_ascii \
 			ft_terminal_log \
+			ft_convert_pc \
+			ft_vm_init \
+			ft_vm \
+			ft_recup_headers \
+			ft_display_vm_papy \
+			ft_vm_processus \
+			ft_vm_processus_read \
+			ft_vm_gameloop \
+			ft_little_to_big \
+			ft_recup_code \
+			ft_fill_arene \
+			ft_recup_files \
+			ft_init_instructions \
+			ft_init_instructions_end \
+			ft_mlx_put_mid_img_3 \
+			ft_init_instructions_suite \
+			ft_instructions_live \
+			ft_instructions_ld \
+			ft_instructions_st \
+			ft_instructions_add \
+			ft_instructions_sub \
+			ft_instructions_and \
+			ft_instructions_or \
+			ft_instructions_xor \
+			ft_instructions_zjmp \
+			ft_instructions_ldi \
+			ft_instructions_sti \
+			ft_instructions_fork \
+			ft_instructions_lld \
+			ft_instructions_lldi \
+			ft_instructions_lfork \
+			ft_instructions_aff \
+			ft_get_instructions \
+			ft_recup_options \
+			ft_display_help \
+			ft_put_registre \
+			ft_get_args \
+			ft_get_value_registre \
+			ft_check_args \
+			ft_fill_args \
+			ft_getchar \
+			ft_decode_args \
+			ft_display_vm \
 			ft_free \
 			ft_exit \
 
@@ -37,7 +96,7 @@ C_BLUE	= "\033[34;1m"
 all: $(NAME)
 
 $(NAME): $(OBJ)
-#@make -C $(LIBS)
+	@make -C $(LIBS)
 	$(CC) $(OBJ) -o $@ $(FLAGS) $(INCS) $(LIBFT) $(LIBMLX)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
@@ -59,13 +118,14 @@ clean2:
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
 fclean: clean2
-	@/bin/rm -rf *.dSYM
+#@/bin/rm -rf *.dSYM
 #@make fclean -C $(LIBS)
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 #leaks: $(NAME) -leaks
-leaks: $(NAME) test
+leaks: $(NAME)
+	./corewar ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor
 
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)

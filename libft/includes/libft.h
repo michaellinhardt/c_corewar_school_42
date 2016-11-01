@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/06/07 08:39:15 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/09/26 21:31:08 by abary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void				ft_putchar(char c);
 int					ft_putstr(char const *s);
 void				ft_putnbr(int n);
 int					ft_putendl(char const *s);
+void				ft_print_memory(const void *addr, size_t size);
 
 size_t				ft_strlen(const char *s);
 int					ft_strcmp(const char *s1, const char *s2);
@@ -50,6 +51,7 @@ char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 
 char				*ft_itoa(int n);
+char				*ft_itoastatic(intmax_t n);
 int					ft_atoi(const char *nptr);
 char				*ft_ldtoa(long double ld, int preci);
 intmax_t			ft_atoimax(const char *str);

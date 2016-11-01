@@ -1,15 +1,59 @@
 #include "ft_corewar.h"
 
-int		main(int argc, char **argv)
+static void	ft_recup_options_players(t_data *d, char **argv, int argc)
+{
+	d->args[0].player = -1;
+	d->args[1].player = -1;
+	d->args[2].player = -1;
+	d->args[3].player = -1;
+	if (!(ft_recup_options(&d->vm, d->args, argv, argc)))
+		exit1(1, d, "Missing options");
+	if (d->vm.nbr_players == 0)
+		exit1(1, d, "Missing options");
+	if (!(ft_check_value_number(d->args, &d->vm)))
+		exit1(1, d, "Two players with same number");
+}
+
+static void	ft_get_init_players(t_data *d)
+{
+	int		p;
+
+	p = 0;
+	if (!d->vm.console)
+		ft_printf("Introducing contestants...\n");
+	ft_recup_files(&d->vm, d->args);
+	ft_recup_headers(&d->vm, d->args);
+	ft_recup_code(&d->vm, d->args);
+	ft_init_instructions(d->vm.instructions);
+	while (p < d->vm.nbr_players)
+	{
+		if (!d->vm.console)
+			ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+				ABS(d->args[p].player), d->vm.p[p].header.prog_size,
+				d->vm.p[p].header.prog_name,
+				d->vm.p[p].header.comment);
+		++p;
+	}
+}
+
+int			main(int argc, char **argv)
 {
 	t_data	*d;
 
 	d = data();
-	*argv += 0 * argc; // brain compilateur flag
-	/* lance les 4 premiers affichage dans le terminal, puis démarre mlx */
-	d->mlx.scene = SCENE_START;
-	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init() && ascii(ASC_LOG))
+	d->vm.dump = -1;
+	d->vm.console = CONSOLE_LOG;
+	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
+	if (ascii(ASC_LOGO) && ascii(ASC_INIT) && ascii_init())
+		ascii(ASC_LOG);
+	ft_recup_options_players(d, argv, argc);
+	ft_get_init_players(d);
+	if (!d->vm.graphic)
+		d->mlx.scene = VM_INIT;
+	if (d->vm.graphic)
 		mlx_start(d, &d->mlx);
-	ft_printf("lol\n");
+	else
+		while (42)
+			loop_vm(d);
 	return (0);
 }

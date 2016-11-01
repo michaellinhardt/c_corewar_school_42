@@ -1,27 +1,29 @@
 #include "ft_corewar.h"
 
-/* AFFICHE L'ETAT DE LA CONF AU CHARGEMENT 2/2 */
 void	ascii_init2(void)
 {
+	if (!data()->vm.console)
+		return ;
 	ft_putstr("🎼  ╠═══════════════════════╬═══════════════════════════════");
 	ft_putendl("═══════════════════╣");
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG NEW IMG"
-	,LINE_GREEN2 , ((LOG_NEWI) ? "true" : "false"), LINE_YEL);
+	, LINE_GREEN2, ((LOG_NEWI) ? "true" : "false"), LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG IMG TO WIN"
-	,LINE_GREEN2 , ((LOG_ITOW) ? "true" : "false"), LINE_YEL);
+	, LINE_GREEN2, ((LOG_ITOW) ? "true" : "false"), LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG XPM TO IMG"
-	,LINE_GREEN2 , ((LOG_XTOI) ? "true" : "false"), LINE_YEL);
+	, LINE_GREEN2, ((LOG_XTOI) ? "true" : "false"), LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG MOUSE INPUT"
-	,LINE_GREEN2 , ((LOG_MOUSE) ? "true" : "false"), LINE_YEL);
+	, LINE_GREEN2, ((LOG_MOUSE) ? "true" : "false"), LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG KEY INPUT"
-	,LINE_GREEN2 , ((LOG_KEY) ? "true" : "false"), LINE_YEL);
+	, LINE_GREEN2, ((LOG_KEY) ? "true" : "false"), LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "LOG LOOP"
-	,LINE_GREEN2 , ((LOG_LOOP) ? "true" : "false"), LINE_YEL);
+	, LINE_GREEN2, ((LOG_LOOP) ? "true" : "false"), LINE_YEL);
 }
 
-/* AFFICHE L'ETAT DE LA CONF AU CHARGEMENT 1/1 */
 int		ascii_init(void)
 {
+	if (!data()->vm.console)
+		return (1);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "WIN_TITLE"
 	, LINE_GREEN2, WIN_TITLE, LINE_YEL);
 	ft_printf("🎼  %s %20s  %s  %47s %s\n", LINE_MAG, "GIF_DIR", LINE_GREEN2
@@ -40,12 +42,13 @@ int		ascii_init(void)
 	return (1);
 }
 
-/* AFFICHE DANS LE TERMINAL LE CONTENUE DU FICHIER TEXT */
 int		ascii(char *path)
 {
 	int		fd;
 	char	*line;
 
+	if (!data()->vm.console)
+		return (1);
 	line = NULL;
 	fd = open(path, O_RDONLY);
 	ft_putstr(TERMINAL_COLOR);
