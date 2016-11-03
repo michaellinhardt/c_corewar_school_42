@@ -1,95 +1,103 @@
 # VAR COMP
-FLAGS	= -Wall -Wextra -Werror
-CC		= gcc $(FLAGS)
-FWS		= Frameworks/SDL.framework/Headers/
-FWSM	= Frameworks/SDL_mixer.framework/Headers/
-INCS 	= -I./incs -I./libft/includes -I $(FWS) -I $(FWSM)
+FLAGS	= -Wall -Wextra -Werror -O3 -march=native
+CC		= gcc
+INCS	= ./incs
+LINCS	=./libft/includes
 LIBS	= ./libft
-LIBFT 	= -L$(LIBS) -lft
+LIBFT 	= -L$(LIBS) -lft -lm
 LIBMLX	= -L./minilibx -lmlx -framework OpenGL -framework Appkit
-SDL2	= -framework SDL
-SDL2_M	= -framework SDL_mixer
 LANGAGE	= c
 NAME	= corewar
+SDL2		= -framework SDL2
+SDL2_MIXER	= -framework SDL2_mixer
+
+SDL2_HEADER			= -I ~/Library/Frameworks/SDL2.framework/Headers/
+SDL2_HEADER_MIXER	= -I ~/Library/Frameworks/SDL2_mixer.framework/Headers/
+
+SDL			= -F ~/Library/Frameworks $(SDL2_MIXER) $(SDL2)
+SDL_HEADER	= -F ~/Library/Frameworks $(SDL2_HEADER_MIXER) $(SDL2_HEADER)
+
 
 # VAR FOLDER/FILE
 SRC_DIR = srcs
 OBJ_DIR = objs
 
-LIST 	= ft_corewar \
-			ft_data \
-			ft_mlx_init \
-			ft_mlx_hook \
-			ft_mlx_loop \
-			ft_mlx_img \
-			ft_mlx_scene \
-			ft_mlx_scene_img \
-			ft_mlx_scene_intro \
-			ft_mlx_display \
-			ft_check_value_number \
-			ft_get_indirect \
-			ft_mlx_display_cycle \
-			ft_mlx_display_effect \
-			ft_mlx_display_processus \
-			ft_mlx_display_player_name \
-			ft_mlx_display_processus_count \
-			ft_mlx_display_bar_proc_live_current \
-			ft_mlx_display_bar_proc_live \
-			ft_mlx_display_bar_proc_dead \
-			ft_mlx_display_bar_proc \
-			ft_mlx_display_arene \
-			ft_mlx_effect_init \
-			ft_mlx_end \
-			ft_terminal_ascii \
-			ft_terminal_log \
-			ft_convert_pc \
-			ft_vm_init \
-			ft_vm \
-			ft_recup_headers \
-			ft_display_vm_papy \
-			ft_vm_processus \
-			ft_vm_processus_read \
-			ft_vm_gameloop \
-			ft_little_to_big \
-			ft_recup_code \
-			ft_fill_arene \
-			ft_recup_files \
-			ft_init_instructions \
-			ft_init_instructions_end \
-			ft_mlx_put_mid_img_3 \
-			ft_init_instructions_suite \
-			ft_instructions_live \
-			ft_instructions_ld \
-			ft_instructions_st \
-			ft_instructions_add \
-			ft_instructions_sub \
-			ft_instructions_and \
-			ft_instructions_or \
-			ft_instructions_xor \
-			ft_instructions_zjmp \
-			ft_instructions_ldi \
-			ft_instructions_sti \
-			ft_instructions_fork \
-			ft_instructions_lld \
-			ft_instructions_lldi \
-			ft_instructions_lfork \
-			ft_instructions_aff \
-			ft_get_instructions \
-			ft_recup_options \
-			ft_display_help \
-			ft_put_registre \
-			ft_get_args \
-			ft_get_value_registre \
-			ft_check_args \
-			ft_fill_args \
-			ft_getchar \
-			ft_decode_args \
-			ft_display_vm \
-			ft_free \
-			ft_exit \
+LIST	=	ft_corewar.c \
+			ft_data.c \
+			ft_mlx_init.c \
+			ft_mlx_hook.c \
+			ft_mlx_loop.c \
+			ft_mlx_img.c \
+			ft_mlx_scene.c \
+			ft_mlx_scene_img.c \
+			ft_mlx_scene_intro.c \
+			ft_mlx_display.c \
+			ft_check_value_number.c \
+			ft_get_indirect.c \
+			ft_mlx_display_cycle.c \
+			ft_mlx_display_effect.c \
+			ft_mlx_display_processus.c \
+			ft_mlx_display_player_name.c \
+			ft_mlx_display_processus_count.c \
+			ft_mlx_display_bar_proc_live_current.c \
+			ft_mlx_display_bar_proc_live.c \
+			ft_mlx_display_bar_proc_dead.c \
+			ft_mlx_display_bar_proc.c \
+			ft_mlx_display_arene.c \
+			ft_mlx_effect_init.c \
+			ft_mlx_end.c \
+			ft_terminal_ascii.c \
+			ft_terminal_log.c \
+			ft_convert_pc.c \
+			ft_vm_init.c \
+			ft_vm.c \
+			ft_recup_headers.c \
+			ft_display_vm_papy.c \
+			ft_vm_processus.c \
+			ft_vm_processus_read.c \
+			ft_vm_gameloop.c \
+			ft_little_to_big.c \
+			ft_recup_code.c \
+			ft_fill_arene.c \
+			ft_recup_files.c \
+			ft_init_instructions.c \
+			ft_init_instructions_end.c \
+			ft_mlx_put_mid_img_3.c \
+			ft_init_instructions_suite.c \
+			ft_instructions_live.c \
+			ft_instructions_ld.c \
+			ft_instructions_st.c \
+			ft_instructions_add.c \
+			ft_instructions_sub.c \
+			ft_instructions_and.c \
+			ft_instructions_or.c \
+			ft_instructions_xor.c \
+			ft_instructions_zjmp.c \
+			ft_instructions_ldi.c \
+			ft_instructions_sti.c \
+			ft_instructions_fork.c \
+			ft_instructions_lld.c \
+			ft_instructions_lldi.c \
+			ft_instructions_lfork.c \
+			ft_instructions_aff.c \
+			ft_get_instructions.c \
+			ft_recup_options.c \
+			ft_display_help.c \
+			ft_put_registre.c \
+			ft_get_args.c \
+			ft_get_value_registre.c \
+			ft_check_args.c \
+			ft_fill_args.c \
+			ft_getchar.c \
+			ft_decode_args.c \
+			ft_display_vm.c \
+			ft_free.c \
+			ft_exit.c \
 
-SRC := $(addprefix $(SRC_DIR)/, $(addsuffix .$(LANGAGE), $(LIST)))
-OBJ := $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIST)))
+OBJO = $(LIST:.c=.o)
+SRC = $(addprefix $(SRC_DIR)/, $(LIST))
+OBJ = $(addprefix $(OBJ_DIR)/, $(OBJO))
+H = ./incs/ft_corewar
 
 C_END	= "\033[0m"
 C_GOOD	= "\033[32m"
@@ -99,14 +107,15 @@ C_BLUE	= "\033[34;1m"
 
 all: $(NAME)
 
+#$(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) -c $(FLAGS) -I $(INCS) -I $(LINCS) $(SDL_HEADER) $< -o $@
+
 $(NAME): $(OBJ)
 	@make -C $(LIBS)
-	$(CC) $(INCS) $(SDL2_M) $(SDL2) $(OBJ) -o $@ $(FLAGS) $(LIBFT) $(LIBMLX)
+	$(CC) -o $(NAME) $(FLAGS) $(OBJ) $(LIBFT) $(LIBMLX) $(SDL) $(SDL_HEADER)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
-	@mkdir -p $(dir $@)
-	$(CC) $(INCS) -o $@ -c $<
 
 test: $(NAME)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] start"
@@ -127,6 +136,9 @@ fclean: clean2
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
+sdl_install :
+	curl https://dl.dropboxusercontent.com/u/22561204/SDL/Archive.zip > /tmp/Archive.zip
+	unzip -o /tmp/Archive.zip -d ~/Library/Frameworks/
 #leaks: $(NAME) -leaks
 leaks: $(NAME)
 	./corewar ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor
