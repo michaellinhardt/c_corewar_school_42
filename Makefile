@@ -1,10 +1,12 @@
 # VAR COMP
 FLAGS	= -Wall -Wextra -Werror -O3 -march=native
 CC		= gcc
-INCS	= ./incs
-LINCS	=./libft/includes
+LINCS	= ./libft/includes
+MLX_INC	= ./minilibx
+INCS	= -I ./incs -I $(MLX_INC) -I $(LINCS)
 LIBS	= ./libft
 LIBFT 	= -L$(LIBS) -lft -lm
+MLX_PATH = ./minilibx/
 LIBMLX	= -L./minilibx -lmlx -framework OpenGL -framework Appkit
 LANGAGE	= c
 NAME	= corewar
@@ -97,7 +99,6 @@ LIST	=	ft_corewar.c \
 OBJO = $(LIST:.c=.o)
 SRC = $(addprefix $(SRC_DIR)/, $(LIST))
 OBJ = $(addprefix $(OBJ_DIR)/, $(OBJO))
-H = ./incs/ft_corewar
 
 C_END	= "\033[0m"
 C_GOOD	= "\033[32m"
@@ -105,15 +106,18 @@ C_GREY  = "\033[1;30m"
 C_BAD	= "\033[31m"
 C_BLUE	= "\033[34;1m"
 
+.PHONY: all clean clean2 fclean re test leaks -leaks ready sdl_install
+
 all: $(NAME)
 
 #$(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(LANGAGE)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) -c $(FLAGS) -I $(INCS) -I $(LINCS) $(SDL_HEADER) $< -o $@
+	$(CC) -c $(FLAGS) $(INCS) $(SDL_HEADER) $< -o $@
 
 $(NAME): $(OBJ)
 	@make -C $(LIBS)
+	@make -C $(MLX_PATH)
 	$(CC) -o $(NAME) $(FLAGS) $(OBJ) $(LIBFT) $(LIBMLX) $(SDL) $(SDL_HEADER)
 	@echo "✅  ["$(C_GOOD) $(NAME) $(C_END)"] created"
 
@@ -122,7 +126,8 @@ test: $(NAME)
 	@./$(NAME)
 
 clean:
-#@make clean -C $(LIBS)
+	@make clean -C $(LIBS)
+	@make clean -C $(MLX_PATH)
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
@@ -130,15 +135,16 @@ clean2:
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] $(OBJ_DIR) folder deleted"
 
-fclean: clean2
-#@/bin/rm -rf *.dSYM
-#@make fclean -C $(LIBS)
+fclean: clean
+	@/bin/rm -rf *.dSYM
+	@make fclean -C $(LIBS)
 	@/bin/rm -f $(NAME)
 	@echo "⚰  ["$(C_GREY) $(NAME) $(C_END)"] bin deleted"
 
 sdl_install :
 	curl https://dl.dropboxusercontent.com/u/22561204/SDL/Archive.zip > /tmp/Archive.zip
 	unzip -o /tmp/Archive.zip -d ~/Library/Frameworks/
+
 #leaks: $(NAME) -leaks
 leaks: $(NAME)
 	./corewar ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor ./zaz/bee_gees.cor
@@ -146,6 +152,7 @@ leaks: $(NAME)
 -leaks:
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
-re: fclean libft $(NAME)
+ready: re clean
+	@printf '\033[32m[ ✔ ] %s\n\033[0m' "$(NAME) is ready ! 🍺  and cleaned poop 💩"
 
-.PHONY: all clean clean2 fclean re libft test leaks
+re: fclean all
