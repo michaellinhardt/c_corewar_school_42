@@ -1,0 +1,46 @@
+recup r1 et lecrire,
+
+- STI ecris la valeur dun reg
+	a ladresse donnee
+
+- LD qui charge le param ecris
+	dans un registre
+
+- LLD ? lit le param a une adresse
+	et le stock dans le registre
+
+- ST permet de copier un registre
+	vers un autre et peux effacer
+	le r1 des autre procs
+
+EXEMPLE #1:
+	STI ecris en dur R1 dans les parametre de LD
+	puis lis le LD pour stocker ce R1 dans R8
+prep_reg:
+	sti		r1, %:load_reg, %2
+
+load_reg:
+	ld		%255, r8
+
+EXEMPLE #2:
+# ecris r1 dans les param du live
+prep_live:
+	sti		r1, %:live1, %1
+# ecris les param du live dans r5
+erase_reg:
+	ldi		%:live1, %1, r5
+# ..live
+live1:
+	live	%255
+# ecris r5 plus loins pour verif la valeur
+verif:
+	sti		r5, %0, %10
+
+
+
+SIZE ->
+	LIVE	5
+	STI		7
+	LDI		7
+
+1 2 3 4 5 6 7
