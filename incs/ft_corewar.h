@@ -4,6 +4,9 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include <limits.h>
+# include <SDL.h>
+# include <SDL_mixer.h>
+# include <stdlib.h>
 # include "libft.h"
 # include "mlx.h"
 # include "op.h"

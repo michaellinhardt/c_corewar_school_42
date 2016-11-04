@@ -89,5 +89,6 @@ typedef struct		s_dvm
 	int				nbr_proc;
 	int				nbr_proc_dead;
 	t_proc			*proc;
+	Mix_Music		*son;
 }					t_dvm;
 #endif

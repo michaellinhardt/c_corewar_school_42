@@ -1,8 +1,8 @@
 #include "ft_corewar.h"
 #include <SDL.h>
 #include <SDL_mixer.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static void	ft_recup_options_players(t_data *d, char **argv, int argc)
 {
@@ -43,23 +43,8 @@ static void	ft_get_init_players(t_data *d)
 int			main(int argc, char **argv)
 {
 	t_data	*d;
-	Mix_Music *son;
-//	Mix_Chunk *son;//Créer un pointeur pour stocker un .WAV
 
-	son = NULL;
-	Mix_AllocateChannels(32); //Allouer 32 canaux
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0)
-		printf("Error %s\n", Mix_GetError());
-	son = Mix_LoadMUS("./music/is_this_love.mp3");
-//	son = Mix_LoadWAV("./is_this_love.wav"); //Charger un wav dans un pointeur
-//	Mix_PlayChannel(1, son, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
-	if (!son)
-		printf("Error\n");
-	Mix_PlayMusic(son, 0);
-/*	Mix_FreeChunk(son);//Libération du son 1
-	Mix_CloseAudio(); //Fermeture de l'API
-	return EXIT_SUCCESS;
-*/	d = data();
+	d = data();
 	d->vm.dump = -1;
 	d->vm.console = CONSOLE_LOG;
 	d->vm.graphic = d->vm.dump == -1 ? GRAPHIC_MODE : 0;
@@ -74,8 +59,5 @@ int			main(int argc, char **argv)
 	else
 		while (42)
 			loop_vm(d);
-	(void)d;
-	(void)argc;
-	(void)argv;
 	return (0);
 }

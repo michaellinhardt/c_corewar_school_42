@@ -1,6 +1,7 @@
 #ifndef FT_MLX_H
 # define FT_MLX_H
 
+
 int			display(t_dmlx *m, t_dvm *v);
 void		display_arene(t_dmlx *m, t_dvm *v, int x, int y);
 int			mouseo_hook(int x, int y, t_data *d);
@@ -35,5 +36,7 @@ void		intro_out(t_data *d, t_img *i, t_img *l, t_img *p);
 void		vm_load(t_img *i);
 void		display_player_name(t_dmlx *m, t_dvm *v);
 void		vm_end(t_dmlx *m, t_dvm *v, t_img *i);
+void		ft_music_start(t_dvm *vm, int off);
+void		ft_music_init(t_dvm *vm);
 
 #endif
