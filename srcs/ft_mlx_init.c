@@ -11,6 +11,7 @@ int		red_cross(void)
 
 void	mlx_start(t_data *d, t_dmlx *m)
 {
+	ft_music_start(&d->vm, 0);
 	m->mlx = mlx_init();
 	m->win = mlx_new_window(m->mlx, WIN_X, WIN_Y, WIN_TITLE);
 	l1(10, "D->MLX", "get mlx_init() return");

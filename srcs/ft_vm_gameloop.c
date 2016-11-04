@@ -75,6 +75,9 @@ int				gameloop(t_dvm *v)
 	++(v->ctodiecount);
 	if (v->ctodiecount >= v->ctodie
 			&& !(ret = ft_checklive(v, v->proc)))
+	{
+		ft_music_start(v, 2);
 		return (0);
+	}
 	return (1);
 }

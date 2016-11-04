@@ -37,6 +37,5 @@ void		vm_load(t_img *i);
 void		display_player_name(t_dmlx *m, t_dvm *v);
 void		vm_end(t_dmlx *m, t_dvm *v, t_img *i);
 void		ft_music_start(t_dvm *vm, int off);
-void		ft_music_init(t_dvm *vm);
 
 #endif
