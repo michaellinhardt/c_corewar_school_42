@@ -95,7 +95,6 @@ int		ft_accept_position_inst(t_parser *parser, t_pile_tree *pile)
 		}
 		if (pile->prev->value != POSITION_INST)
 			return (0);
-		ft_putendl("accept positoin inst  + inst");
 		pile->prev->tree->fils[0] =
 			ft_fusion_fils(pile->prev->tree->fils[0], pile->tree);
 		free(pile->tree->fils);

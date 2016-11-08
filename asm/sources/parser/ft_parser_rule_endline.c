@@ -6,7 +6,6 @@ static int	ft_check_endline(t_pile_tree *pile, t_parse_tree *tree)
 	if (tree->token->token == ENDLINE)
 	{
 		pile->value = FIN_LINE;
-		ft_putendl("reduction endline");
 		return (1);
 	}
 	return (0);

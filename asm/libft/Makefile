@@ -6,7 +6,7 @@
 #    By: abary <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:31:57 by abary             #+#    #+#              #
-#    Updated: 2016/10/18 15:25:02 by abary            ###   ########.fr        #
+#    Updated: 2016/11/08 02:20:46 by jgeslin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR)
 
 SRC = ft_strsplit_space.c\
 	ft_isgraph.c\
+	ft_putnstr.c\
 	ft_ispace.c\
 	ft_strlen.c\
 	ft_putstrtab.c\

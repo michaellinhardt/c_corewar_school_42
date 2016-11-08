@@ -20,8 +20,6 @@ static int	ft_check_rule_ccomment(t_parser *parser, t_parse_tree *tree)
 			ft_parse_error(parser, MINI_COMMENT, tree->fils[0]->token);
 			return (-1);
 		}
-		ft_putnbr(tree->fils[0]->token->size);
-		ft_putendl("reduction command comment + string");
 		return (1);
 	}
 	return (0);

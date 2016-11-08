@@ -12,11 +12,7 @@ int		ft_get_label(t_parse_tree *root, char *value, int *poids)
 		{
 			if (!*(value + ft_strlen(root->token->value) - 1))
 			{
-				ft_putendl(value);
-				ft_printf("valeur poids before %d\n", *poids);
 				*poids = root->position - *poids;
-				ft_printf("valeur poids %d\n", *poids);
-				ft_printf("valeur label %d\n", root->position);
 				return (1);
 			}
 		}

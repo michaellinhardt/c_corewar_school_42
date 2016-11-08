@@ -41,5 +41,8 @@ int			ft_compilation(t_parse_tree *tree, t_parser *parser, t_lexer *lexer)
 	size = ft_compile(tree, &code, &compile, 0);
 	compile.header.prog_size = ft_little_to_big(size);
 	ft_write_code(code, lexer, &compile.header);
+	ft_putstr("Writing output program to ");
+	ft_putnstr(lexer->name, ft_strlen(lexer->name) - 2);
+	ft_putendl(".cor");
 	return (1);
 }

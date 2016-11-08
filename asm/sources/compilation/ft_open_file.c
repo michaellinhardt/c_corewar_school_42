@@ -10,7 +10,6 @@ char		*ft_create_name(char *name, int size)
 	name_cor = (char *)ft_memalloc(sizeof(char) * (size + 5));
 	ft_memcpy(name_cor, name, size);
 	ft_memcpy(name_cor + size, ".cor", 4);
-	ft_print_memory(name_cor, size + 4);
 	return (name_cor);
 }
 

@@ -5,7 +5,6 @@ static int	ft_check_separator_char(t_parser *parser, t_parse_tree *tree)
 {
 	if (tree->token->token == SEPARATOR)
 	{
-		ft_putendl("reduce separator char");
 		if (tree->nbr_fils)
 		{
 			ft_parse_error(parser, SEPARATOR, parser->focus);

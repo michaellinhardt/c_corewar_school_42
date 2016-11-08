@@ -6,7 +6,7 @@
 /*   By: abary <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:28:56 by abary             #+#    #+#             */
-/*   Updated: 2016/09/11 13:58:11 by abary            ###   ########.fr       */
+/*   Updated: 2016/11/08 02:20:03 by jgeslin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ union			u_db
 };
 
 int				ft_isgraph(int c);
+void			ft_putnstr(char const *s, int n);
 void			ft_putwchar(const wchar_t *str);
 size_t			ft_strlen(const char *s);
 size_t			ft_wlen(const char *str);

@@ -6,7 +6,6 @@ static int	ft_check_end(t_pile_tree *pile, t_parse_tree *tree)
 	if (tree->token->token == END)
 	{
 		pile->value = FIN;
-		ft_putendl("reduction end");
 		return (1);
 	}
 	return (0);

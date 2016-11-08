@@ -5,7 +5,6 @@ static int	ft_check_instruction(t_parse_tree *tree)
 {
 	if (tree->token->token == INSTRUCTION)
 	{
-		ft_putendl("reduce rule instruction");
 		return (SHIFT);
 	}
 	return (0);

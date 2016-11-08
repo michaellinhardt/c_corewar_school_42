@@ -20,7 +20,6 @@ static int	ft_check_rule_name(t_parse_tree *tree, t_parser *parser)
 			ft_parse_error(parser, MINI_NAME, tree->fils[0]->token);
 			return (-1);
 		}
-		ft_putendl("reduction name + string");
 		return (1);
 	}
 	return (0);

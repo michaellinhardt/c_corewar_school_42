@@ -57,7 +57,6 @@ int			ft_accept_name(t_parser *parser, t_pile_tree *pile)
 		}
 		if (pile->prev->value == MINI_NAME)
 		{
-			ft_putendl("accept mini name");
 			ft_add_leaf(pile->tree, pile->prev->tree);
 			pile->value = CMD_NAME;
 			ft_free_elem_pile(pile->prev, parser);
