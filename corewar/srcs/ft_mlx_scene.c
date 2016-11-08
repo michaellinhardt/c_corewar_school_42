@@ -37,9 +37,11 @@ void		ft_music_start(t_dvm *vm, int off)
 		vm->son = Mix_LoadMUS("./music/ff7_prelude.mp3");
 	else if (off == 1 && data()->mlx.sound == 1 && ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/paranoid.mp3");
-	else if (off == 1 && data()->mlx.sound == 2 && ft_is_nestbot(vm) && ft_init_music(vm, 1))
+	else if (off == 1 && data()->mlx.sound == 2 && ft_is_nestbot(vm)
+	&& ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/ff7_boss.mp3");
-	else if (off == 1 && data()->mlx.sound == 2 && !ft_is_nestbot(vm) && ft_init_music(vm, 1))
+	else if (off == 1 && data()->mlx.sound == 2 && !ft_is_nestbot(vm)
+	&& ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/ff7_fighting.mp3");
 	else if (off == 2 && data()->mlx.sound == 1 && ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/sail.mp3");
