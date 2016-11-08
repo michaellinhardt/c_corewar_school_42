@@ -34,6 +34,10 @@ static void	ft_check_options2(t_dvm *vm, int *tab, t_dargs **args, char **argv)
 		vm->consolee = 1;
 	else if (!ft_strcmp(*(argv + tab[0]), "-h"))
 		ft_display_help();
+	else if (!ft_strcmp(*(argv + tab[0]), "-m"))
+		data()->mlx.sound = 1;
+	else if (!ft_strcmp(*(argv + tab[0]), "-ff7"))
+		data()->mlx.sound = 2;
 	else
 	{
 		(*args)->file = *(argv + tab[0]);

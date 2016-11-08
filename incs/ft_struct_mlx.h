@@ -63,6 +63,7 @@ typedef struct		s_dmlx
 	void			*win;
 	t_input			input;
 	t_effect		*effect;
+	char			sound;
 	char			loop;
 	char			loopstop;
 	enum e_scene	scene;
