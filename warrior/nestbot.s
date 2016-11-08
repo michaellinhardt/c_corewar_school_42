@@ -9,7 +9,7 @@ prep_live:
 erase_reg:
 	ldi		%:live1, %1, r1
 
-# ecris R1 dans param de live1
+# ecris R1 dans param de live2
 live_countdown:
 	sti		r1, %:live2, %1
 
