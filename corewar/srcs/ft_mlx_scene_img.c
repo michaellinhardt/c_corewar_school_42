@@ -5,9 +5,9 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 	char	*folder;
 	char	*file;
 
-	ft_printf("%!./xpm/%s", &folder, path);
+	ft_printf("%!%sxpm/%s", &folder, data()->vm.folder, path);
 	if (!(dir = opendir(folder)))
-		exit1(1, data(), "Cant open xpm sub dir.");
+		exit2(1, data(), folder, "Cant open xpm sub dir.");
 	while ((f = readdir(dir)))
 	{
 		if (!ft_isdigit(f->d_name[0]) || !ft_strstr(f->d_name, ".xpm"))
@@ -25,8 +25,11 @@ int			scene_img_file(t_dmlx *m, DIR *dir, struct dirent *f, char *path)
 
 void		scene_img_folder(t_dmlx *m, DIR *dir, struct dirent *f)
 {
-	if (!(dir = opendir("./xpm")))
-		exit1(1, data(), "Cant open xpm dir.");
+	char	*folder;
+
+	ft_printf("%!%sxpm", &folder, data()->vm.folder);
+	if (!(dir = opendir(folder)))
+		exit2(1, data(), folder, "Cant open xpm dir.");
 	while ((f = readdir(dir)))
 	{
 		if (!ft_strstr(f->d_name, ".xpm"))
@@ -37,6 +40,7 @@ void		scene_img_folder(t_dmlx *m, DIR *dir, struct dirent *f)
 			break ;
 	}
 	closedir(dir);
+	ft_strdel(&folder);
 }
 
 void		scene_layout_init(t_img *i)

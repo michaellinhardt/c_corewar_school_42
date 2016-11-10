@@ -72,6 +72,7 @@ typedef struct		s_dvm
 	t_player		p[MAX_PLAYERS];
 	t_instructions	instructions[17];
 	t_options		options;
+	char			folder[255];
 	char			arene[8192];
 	int				color[MEM_SIZE];
 	int				code_color[9];

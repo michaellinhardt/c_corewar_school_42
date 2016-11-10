@@ -9,8 +9,25 @@ int		red_cross(void)
 	return (0);
 }
 
+void	mlx_set_folder(t_dvm *v)
+{
+	DIR		*dir;
+
+	dir = (DIR *)NULL;
+	ft_strcpy(v->folder, "unknow?!");
+	if ((dir = opendir("./xpm")) && ft_strcpy(v->folder, "./"))
+		closedir(dir);
+	else if ((dir = opendir("./corewar/xpm"))
+	&& ft_strcpy(v->folder, "./corewar/"))
+		closedir(dir);
+	else
+		exit1(1, data(), "Cant start graphic mode from this folder.");
+	l1(10, "FOLDER PATH", v->folder);
+}
+
 void	mlx_start(t_data *d, t_dmlx *m)
 {
+	mlx_set_folder(&d->vm);
 	m->mlx = mlx_init();
 	ft_music_start(&d->vm, 0);
 	m->win = mlx_new_window(m->mlx, WIN_X, WIN_Y, WIN_TITLE);
