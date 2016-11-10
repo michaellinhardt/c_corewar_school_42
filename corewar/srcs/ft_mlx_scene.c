@@ -1,12 +1,14 @@
 #include "ft_corewar.h"
 
-int			ft_is_nestbot(t_dvm *v)
+int			ft_is_mine(t_dvm *v)
 {
 	int		i;
 
 	i = -1;
 	while (++i < MAX_PLAYERS)
-		if (!ft_strcmp(v->p[i].header.prog_name, "nestbot"))
+		if (!ft_strcmp(v->p[i].header.prog_name, "zorkyou"))
+			return (1);
+		else if (!ft_strcmp(v->p[i].header.prog_name, "brainfuck"))
 			return (1);
 	return (0);
 }
@@ -37,10 +39,10 @@ void		ft_music_start(t_dvm *vm, int off)
 		vm->son = Mix_LoadMUS("./music/ff7_prelude.mp3");
 	else if (off == 1 && data()->mlx.sound == 1 && ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/paranoid.mp3");
-	else if (off == 1 && data()->mlx.sound == 2 && ft_is_nestbot(vm)
+	else if (off == 1 && data()->mlx.sound == 2 && ft_is_mine(vm)
 	&& ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/ff7_boss.mp3");
-	else if (off == 1 && data()->mlx.sound == 2 && !ft_is_nestbot(vm)
+	else if (off == 1 && data()->mlx.sound == 2 && !ft_is_mine(vm)
 	&& ft_init_music(vm, 1))
 		vm->son = Mix_LoadMUS("./music/ff7_fighting.mp3");
 	else if (off == 2 && data()->mlx.sound == 1 && ft_init_music(vm, 1))
