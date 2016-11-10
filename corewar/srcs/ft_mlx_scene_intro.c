@@ -31,6 +31,7 @@ void	intro_out(t_data *d, t_img *i, t_img *l, t_img *p)
 	if (fade < 1)
 	{
 		d->mlx.scene = VM_INIT;
+		ft_music_start(&d->vm, 1);
 		return ;
 	}
 	intro_out_fade(i, fade);

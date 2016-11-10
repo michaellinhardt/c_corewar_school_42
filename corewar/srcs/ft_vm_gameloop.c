@@ -74,10 +74,10 @@ int				gameloop(t_dvm *v)
 	processus_read(v, v->proc);
 	++(v->ctodiecount);
 	if (v->ctodiecount >= v->ctodie
-			&& !(ret = ft_checklive(v, v->proc)))
+	&& !(ret = ft_checklive(v, v->proc)))
 	{
 		if (v->graphic)
-			ft_music_start(v, 2);
+			ft_music_start(&data()->vm, 2);
 		return (0);
 	}
 	return (1);

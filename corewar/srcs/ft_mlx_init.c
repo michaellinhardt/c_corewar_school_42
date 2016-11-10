@@ -29,7 +29,13 @@ void	mlx_start(t_data *d, t_dmlx *m)
 {
 	mlx_set_folder(&d->vm);
 	m->mlx = mlx_init();
-	ft_music_start(&d->vm, 0);
+	if (m->scene != VM_INIT)
+		ft_music_start(&d->vm, 0);
+	else
+	{
+		ft_music_start(&d->vm, 0);
+		ft_music_start(&d->vm, 1);
+	}
 	m->win = mlx_new_window(m->mlx, WIN_X, WIN_Y, WIN_TITLE);
 	l1(10, "D->MLX", "get mlx_init() return");
 	l1(10, "D->WIN", "get the mlx_new_window return");
