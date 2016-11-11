@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_corewar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abary <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/11 13:10:42 by abary             #+#    #+#             */
+/*   Updated: 2016/11/11 13:10:42 by abary            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_corewar.h"
 
 static void	ft_recup_options_players(t_data *d, char **argv, int argc)
@@ -7,9 +19,9 @@ static void	ft_recup_options_players(t_data *d, char **argv, int argc)
 	d->args[2].player = -1;
 	d->args[3].player = -1;
 	if (!(ft_recup_options(&d->vm, d->args, argv, argc)))
-		exit1(1, d, "Missing options");
+		exit1(1, d, "Missing options, use -h for help");
 	if (d->vm.nbr_players == 0)
-		exit1(1, d, "Missing options");
+		exit1(1, d, "No players: ex ./corewar [options] /path/players");
 	if (!(ft_check_value_number(d->args, &d->vm)))
 		exit1(1, d, "Two players with same number");
 }

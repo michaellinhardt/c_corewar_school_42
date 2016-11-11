@@ -1,7 +1,15 @@
-/* FONCTION PERMETANT DE FERMER LE PROGRAMME PROPREMENT EN LANCANT LES FREE
- * exit1 free les donné data
- * exit2 free aussi le char * qu'il reçoit dans le cas d'un leave sur gnl
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abary <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/11 13:10:42 by abary             #+#    #+#             */
+/*   Updated: 2016/11/11 13:11:36 by abary            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_corewar.h"
 
 void	exitascii(t_data *d, int err, char *msg)
