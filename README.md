@@ -3,7 +3,7 @@
 - Date: April 2016
 - Team: abary jgeslin pba mlinhard
 
-![alt tag](https://raw.githubusercontent.com/nesthub/c_corewar/master/docs/corewar.png)
+![alt tag](https://github.com/nesthub/c_corewar_school_42/raw/master/corewar.png)
 
 ## installation
   - run "make" from the repo's folder
